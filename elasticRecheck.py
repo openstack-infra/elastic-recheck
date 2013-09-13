@@ -4,6 +4,7 @@ import gerritlib.gerrit
 from pyelasticsearch import ElasticSearch
 
 import ConfigParser
+import json
 
 
 class Stream(object):
@@ -26,6 +27,7 @@ class Stream(object):
             event = self.gerrit.getEvent()
             if event.get('type', '') != 'comment-added':
                 continue
+            username = event['author'].get('username', '')
             if (event['author']['username'] == 'jenkins' and
                     "Build failed.  For information on how to proceed" in
                     event['comment']):
@@ -42,29 +44,35 @@ class Classifier():
     that are mapped to specific bugs.
     """
     ES_URL = "http://logstash.openstack.org/elasticsearch"
-    #TODO(jogo): make the query below a template that takes a query and
-    #            change and patch number
-    tempest_failed_jobs = {
+    template = {
             "sort": {
                 "@timestamp": {"order": "desc"}
                 },
             "query": {
                 "query_string": {
-                    "query": '@tags:"console.html" AND @message:"Finished: FAILURE" AND @fields.build_change:"46396" AND @fields.build_patchset:"1"'
+                    "query": '%s AND @fields.build_change:"%s" AND @fields.build_patchset:"%s"'
                     }
                 }
             }
+    queries = None
 
     def __init__(self):
         self.es = ElasticSearch(self.ES_URL)
+        self.queries = json.loads(open('queries.json').read())
+        for x in self.queries:
+            print x['bug']
         #TODO(jogo): import a list of queries from a config file
 
     def test(self):
-        results = self.es.search(self.tempest_failed_jobs, size='10')
+        query = self.template.copy()
+        query['query']['query_string']['query'] = (query['query']['query_string']['query'] %
+            ('@tags:"console.html" AND @message:"Finished: FAILURE"', '34825', '3'))
+        results = self.es.search(query, size='10')
         for x in results['hits']['hits']:
             try:
                 change = x["_source"]['@fields']['build_change']
                 patchset = x["_source"]['@fields']['build_patchset']
+                print "build_name %s" % x["_source"]['@fields']['build_name']
                 print "https://review.openstack.org/#/c/%(change)s/%(patchset)s" % locals()
             except KeyError:
                 print "build_name %s" % x["_source"]['@fields']['build_name']

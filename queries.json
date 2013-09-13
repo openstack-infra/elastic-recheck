@@ -1,0 +1,10 @@
+[
+    {
+        "bug": "123",
+        "query": "a query"
+    },
+    {
+        "bug": "1234",
+        "query": "a second query"
+    }
+]
