@@ -1,10 +1,10 @@
 [
     {
-        "bug": "123",
-        "query": "a query"
+        "bug": "1211915",
+        "query": "@message:\"ConnectionFailed: Connection to neutron failed: Maximum attempts reached\" AND @fields.filename:\"console.html\""
     },
     {
-        "bug": "1234",
-        "query": "a second query"
+        "bug": "1218391",
+        "query": "@message:\"Cannot 'createImage'\" AND @fields.filename:\"console.html\" AND @fields.build_status:\"FAILURE\""
     }
 ]

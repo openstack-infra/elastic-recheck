@@ -14,4 +14,5 @@ class TestClassifier(testtools.TestCase):
 
     def test_elasticSearch(self):
         self.classifier.test()
+        self.classifier.last_failures()
         self.assertFalse(True)

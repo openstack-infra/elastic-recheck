@@ -5,12 +5,13 @@ from pyelasticsearch import ElasticSearch
 
 import ConfigParser
 import json
+import time
 
 
 class Stream(object):
     """Gerrit Stream.
 
-    Monitors gerrit stream looking for devstack-tempest failures.
+    Monitors gerrit stream looking for tempest-devstack failures.
     """
 
     def __init__(self):
@@ -31,20 +32,26 @@ class Stream(object):
             if (event['author']['username'] == 'jenkins' and
                     "Build failed.  For information on how to proceed" in
                     event['comment']):
+                found = False
                 for line in event['comment'].split('\n'):
+                    if "FAILURE" in line and "python2" in line:
+                        # Unit Test Failure
+                        continue
                     if "FAILURE" in line and "tempest-devstack" in line:
-                        return event
+                        found = True
+                if found:
+                    return event
                 continue
 
 
 class Classifier():
-    """Classify failed devstack-tempest jobs based.
+    """Classify failed tempest-devstack jobs based.
 
     Given a change and revision, query logstash with a list of known queries
     that are mapped to specific bugs.
     """
     ES_URL = "http://logstash.openstack.org/elasticsearch"
-    template = {
+    targeted_template = {
             "sort": {
                 "@timestamp": {"order": "desc"}
                 },
@@ -54,6 +61,27 @@ class Classifier():
                     }
                 }
             }
+    ready_template = {
+            "sort": {
+                "@timestamp": {"order": "desc"}
+                },
+            "query": {
+                "query_string": {
+                    "query": '@fields.filename:"console.html" AND @fields.build_status:"FAILURE" AND @message:"skipped" AND @message:"FAILED (failures" AND @fields.build_change:"%s" AND @fields.build_patchset:"%s"'
+                    }
+                }
+            }
+    general_template = {
+            "sort": {
+                "@timestamp": {"order": "desc"}
+                },
+            "query": {
+                "query_string": {
+                    "query": '%s'
+                    }
+                }
+            }
+
     queries = None
 
     def __init__(self):
@@ -64,10 +92,21 @@ class Classifier():
         #TODO(jogo): import a list of queries from a config file
 
     def test(self):
-        query = self.template.copy()
+        query = self.targeted_template.copy()
         query['query']['query_string']['query'] = (query['query']['query_string']['query'] %
             ('@tags:"console.html" AND @message:"Finished: FAILURE"', '34825', '3'))
         results = self.es.search(query, size='10')
+        self._parse_results(results)
+
+    def last_failures(self):
+        for x in self.queries:
+            print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
+            query = self.general_template.copy()
+            query['query']['query_string']['query'] = (query['query']['query_string']['query'] % x['query'])
+            results = self.es.search(query, size='10')
+            self._parse_results(results)
+
+    def _parse_results(self, results):
         for x in results['hits']['hits']:
             try:
                 change = x["_source"]['@fields']['build_change']
@@ -81,6 +120,17 @@ class Classifier():
     def classify(self, change_number, patch_number):
         """Returns either None or a bug number"""
         #TODO(jogo): implement me
+        #Wait till Elastic search is ready
+        query = self.ready_template.copy()
+        query['query']['query_string']['query'] = (query['query']['query_string']['query'] %
+            (change_number, patch_number))
+        while True:
+            results = self.es.search(query, size='1')
+            if results['total']>0:
+                    break
+            else:
+                time.sleep(5)
+        #ES ready?, to actual search
         pass
 
 def main():
@@ -91,8 +141,6 @@ def main():
         event = stream.get_failed_tempest()
         change =  event['change']['number']
         rev = event['patchSet']['number']
-        print change, rev
-        print event['comment']
         bug_number = classifier.classify(change, rev)
         print "======================="
         print "https://review.openstack.org/#/c/%(change)s/%(rev)s" % locals()
@@ -100,7 +148,6 @@ def main():
             print "unable to classify failure"
         else:
             print "Found bug: https://bugs.launchpad.net/bugs/%d" % bug_number
-
 
 if __name__ == "__main__":
     main()
