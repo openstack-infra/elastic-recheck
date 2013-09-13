@@ -31,7 +31,7 @@ class Stream(object):
             if (event['author']['username'] == 'jenkins' and
                     "Build failed.  For information on how to proceed" in
                     event['comment']):
-                for line in event['comment'].split():
+                for line in event['comment'].split('\n'):
                     if "FAILURE" in line and "tempest-devstack" in line:
                         return event
                 continue
