@@ -9,5 +9,5 @@ Eventually this can be tied into the rechecker tool and launchpad
 
 Dependencies
 ------------
-gerritlib
-pyelasticsearch
+- gerritlib
+- pyelasticsearch
