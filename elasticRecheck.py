@@ -105,7 +105,6 @@ class Classifier():
         for x in self.queries:
             print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
             query = self._apply_template(self.general_template, x['query'])
-            print query
             results = self.es.search(query, size='10')
             self._parse_results(results)
 
@@ -131,13 +130,11 @@ class Classifier():
                     break
             else:
                 time.sleep(40)
-        print "READY!"
         for x in self.queries:
             print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
             query = self._apply_template(self.targeted_template, (x['query'],
                     change_number, patch_number))
             results = self.es.search(query, size='1')
-            print results
             if results['hits']['total']>0:
                 print "Found bug!"
                 return x['bug']
