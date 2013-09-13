@@ -7,7 +7,10 @@ import ConfigParser
 
 
 class Stream(object):
-    """Gerrit Stream."""
+    """Gerrit Stream.
+
+    Monitors gerrit stream looking for devstack-tempest failures.
+    """
 
     def __init__(self):
         config = ConfigParser.ConfigParser()
@@ -33,7 +36,14 @@ class Stream(object):
 
 
 class Classifier():
+    """Classify failed devstack-tempest jobs based.
+
+    Given a change and revision, query logstash with a list of known queries
+    that are mapped to specific bugs.
+    """
     ES_URL = "http://logstash.openstack.org/elasticsearch"
+    #TODO(jogo): make the query below a template that takes a query and
+    #            change and patch number
     tempest_failed_jobs = {
             "sort": {
                 "@timestamp": {"order": "desc"}
@@ -47,6 +57,7 @@ class Classifier():
 
     def __init__(self):
         self.es = ElasticSearch(self.ES_URL)
+        #TODO(jogo): import a list of queries from a config file
 
     def test(self):
         results = self.es.search(self.tempest_failed_jobs, size='10')
@@ -59,7 +70,10 @@ class Classifier():
                 print "build_name %s" % x["_source"]['@fields']['build_name']
                 pass
 
-
+    def classify(self, change_number, patch_number):
+        """Returns either None or a bug number"""
+        #TODO(jogo): implement me
+        pass
 
 def main():
     classifier = Classifier()
@@ -67,9 +81,17 @@ def main():
     stream = Stream()
     while True:
         event = stream.get_failed_tempest()
-        print event['change']['number']
-        print event['patchSet']['number']
+        change =  event['change']['number']
+        rev = event['patchSet']['number']
+        print change, rev
         print event['comment']
+        bug_number = classifier.classify(change, rev)
+        print "======================="
+        print "https://review.openstack.org/#/c/%(change)s/%(rev)s" % locals()
+        if bug_number is None:
+            print "unable to classify failure"
+        else:
+            print "Found bug: https://bugs.launchpad.net/bugs/%d" % bug_number
 
 
 if __name__ == "__main__":
