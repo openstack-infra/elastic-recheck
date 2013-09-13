@@ -130,12 +130,12 @@ class Classifier():
             if results['hits']['total'] > 0:
                     break
             else:
-                time.sleep(5)
+                time.sleep(40)
         print "READY!"
         for x in self.queries:
             print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
-            query = self._apply_template(self.targeted_template, x['query'],
-                    change_number, patch_number)
+            query = self._apply_template(self.targeted_template, (x['query'],
+                    change_number, patch_number))
             results = self.es.search(query, size='1')
             print results
             if results['hits']['total']>0:
@@ -157,7 +157,7 @@ def main():
         if bug_number is None:
             print "unable to classify failure"
         else:
-            print "Found bug: https://bugs.launchpad.net/bugs/%d" % bug_number
+            print "Found bug: https://bugs.launchpad.net/bugs/%s" % bug_number
 
 if __name__ == "__main__":
     main()

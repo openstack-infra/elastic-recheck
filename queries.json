@@ -4,6 +4,10 @@
         "query": "@message:\"ConnectionFailed: Connection to neutron failed: Maximum attempts reached\" AND @fields.filename:\"console.html\""
     },
     {
+        "bug": "1221987",
+        "query": "@tags:\"logs/screen-n-sch.txt\" AND @message:(tempest* AND \"Setting instance to ERROR state\")"
+    },
+    {
         "bug": "1218391",
         "query": "@message:\"Cannot 'createImage'\" AND @fields.filename:\"console.html\" AND @fields.build_status:\"FAILURE\""
     }
