@@ -21,7 +21,8 @@ for x in results['hits']['hits']:
     try:
         change = x["_source"]['@fields']['build_change']
         patchset = x["_source"]['@fields']['build_patchset']
-        print x["_source"]['@timestamp']
+        #print x["_source"]['@timestamp']
+        #print x["_source"]['@fields']['received_at'][0]
         print "https://review.openstack.org/#/c/%(change)s/%(patchset)s" % locals()
     except KeyError:
         print "build_name %s" % x["_source"]['@fields']['build_name']
