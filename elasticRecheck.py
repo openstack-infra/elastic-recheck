@@ -4,6 +4,7 @@ import gerritlib.gerrit
 from pyelasticsearch import ElasticSearch
 
 import ConfigParser
+import copy
 import json
 import time
 
@@ -29,7 +30,7 @@ class Stream(object):
             if event.get('type', '') != 'comment-added':
                 continue
             username = event['author'].get('username', '')
-            if (event['author']['username'] == 'jenkins' and
+            if (username  == 'jenkins' and
                     "Build failed.  For information on how to proceed" in
                     event['comment']):
                 found = False
@@ -67,7 +68,8 @@ class Classifier():
                 },
             "query": {
                 "query_string": {
-                    "query": '@fields.filename:"console.html" AND @fields.build_status:"FAILURE" AND @message:"skipped" AND @message:"FAILED (failures" AND @fields.build_change:"%s" AND @fields.build_patchset:"%s"'
+                    "query": '@tags:"console.html" AND (@message:"Finished: FAILURE") AND @fields.build_change:"%s" AND @fields.build_patchset:"%s"'
+                    #"query": '@fields.filename:"console.html" AND @fields.build_status:"FAILURE" AND @message:"skipped" AND @message:"FAILED (failures" AND @fields.build_change:"%s" AND @fields.build_patchset:"%s"'
                     }
                 }
             }
@@ -87,22 +89,23 @@ class Classifier():
     def __init__(self):
         self.es = ElasticSearch(self.ES_URL)
         self.queries = json.loads(open('queries.json').read())
-        for x in self.queries:
-            print x['bug']
-        #TODO(jogo): import a list of queries from a config file
+
+    def _apply_template(self, template, values):
+        query = copy.deepcopy(template)
+        query['query']['query_string']['query'] = query['query']['query_string']['query'] % values
+        return query
 
     def test(self):
-        query = self.targeted_template.copy()
-        query['query']['query_string']['query'] = (query['query']['query_string']['query'] %
-            ('@tags:"console.html" AND @message:"Finished: FAILURE"', '34825', '3'))
+        query = self._apply_template(self.targeted_template, ('@tags:"console.html" AND @message:"Finished: FAILURE"', '34825', '3'))
         results = self.es.search(query, size='10')
+        print results['hits']['total']
         self._parse_results(results)
 
     def last_failures(self):
         for x in self.queries:
             print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
-            query = self.general_template.copy()
-            query['query']['query_string']['query'] = (query['query']['query_string']['query'] % x['query'])
+            query = self._apply_template(self.general_template, x['query'])
+            print query
             results = self.es.search(query, size='10')
             self._parse_results(results)
 
@@ -115,23 +118,30 @@ class Classifier():
                 print "https://review.openstack.org/#/c/%(change)s/%(patchset)s" % locals()
             except KeyError:
                 print "build_name %s" % x["_source"]['@fields']['build_name']
-                pass
 
     def classify(self, change_number, patch_number):
         """Returns either None or a bug number"""
-        #TODO(jogo): implement me
+        #Reload each time
+        self.queries = json.loads(open('queries.json').read())
         #Wait till Elastic search is ready
-        query = self.ready_template.copy()
-        query['query']['query_string']['query'] = (query['query']['query_string']['query'] %
-            (change_number, patch_number))
+        query = self._apply_template(self.ready_template, (change_number, patch_number))
         while True:
             results = self.es.search(query, size='1')
-            if results['total']>0:
+            if results['hits']['total'] > 0:
                     break
             else:
                 time.sleep(5)
-        #ES ready?, to actual search
-        pass
+        print "READY!"
+        for x in self.queries:
+            print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
+            query = self._apply_template(self.targeted_template, x['query'],
+                    change_number, patch_number)
+            results = self.es.search(query, size='1')
+            print results
+            if results['hits']['total']>0:
+                print "Found bug!"
+                return x['bug']
+
 
 def main():
     classifier = Classifier()
@@ -139,11 +149,11 @@ def main():
     stream = Stream()
     while True:
         event = stream.get_failed_tempest()
-        change =  event['change']['number']
+        change = event['change']['number']
         rev = event['patchSet']['number']
-        bug_number = classifier.classify(change, rev)
         print "======================="
         print "https://review.openstack.org/#/c/%(change)s/%(rev)s" % locals()
+        bug_number = classifier.classify(change, rev)
         if bug_number is None:
             print "unable to classify failure"
         else:
