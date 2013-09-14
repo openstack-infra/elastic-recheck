@@ -21,3 +21,8 @@ class TestClassifier(testtools.TestCase):
             ' blah http://logs.openstack.org/58/43258/13/check/gate-tempest-devstack-vm-neutron/55a7887')
         self.assertEqual(bug_number, '1211915')
 
+    def test_url(self):
+        url = self.classifier._prep_url('http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44/console.html')
+        self.assertEqual(url,
+                         'http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44')
+

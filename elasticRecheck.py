@@ -130,6 +130,9 @@ class Classifier():
                     break
             else:
                 time.sleep(40)
+            # Just because one file is parsed doesn't mean all are, so wait a
+            # bit
+            time.sleep(40)
         for x in self.queries:
             print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
             query = self._apply_template(self.targeted_template, (x['query'],
