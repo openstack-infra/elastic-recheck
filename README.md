@@ -13,9 +13,7 @@ Future Work
 ------------
 - IRC bot output to #openstack-qa with output
 - Pull in list of queries from a more flexible source, so a commit isn't needed to update each time
-- https://bugs.launchpad.net/openstack-ci/+bug/1225108
 - Turn into a server app
-- Comment on classified failures saying what the issue probably is
 - Make unit tests robust and not need internet
 
 Dependencies

@@ -118,7 +118,7 @@ class Classifier():
             except KeyError:
                 print "build_name %s" % x["_source"]['@fields']['build_name']
 
-    def classify(self, change_number, patch_number):
+    def classify(self, change_number, patch_number, comment):
         """Returns either None or a bug number"""
         #Reload each time
         self.queries = json.loads(open('queries.json').read())
@@ -134,10 +134,16 @@ class Classifier():
             print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
             query = self._apply_template(self.targeted_template, (x['query'],
                     change_number, patch_number))
-            results = self.es.search(query, size='1')
-            if results['hits']['total']>0:
-                print "Found bug!"
-                return x['bug']
+            results = self.es.search(query, size='10')
+            for result in results['hits']['hits']:
+                url = result["_source"]['@fields']['log_url']
+                print result
+                if self._prep_url(url) in comment:
+                    print "found bug!"
+                    return x['bug']
+
+    def _prep_url(self, url):
+        return '/'.join(url.split('/')[:-1])
 
 
 def main():
@@ -150,7 +156,7 @@ def main():
         rev = event['patchSet']['number']
         print "======================="
         print "https://review.openstack.org/#/c/%(change)s/%(rev)s" % locals()
-        bug_number = classifier.classify(change, rev)
+        bug_number = classifier.classify(change, rev, event['comment'])
         if bug_number is None:
             print "unable to classify failure"
         else:
