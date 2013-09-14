@@ -137,9 +137,7 @@ class Classifier():
             results = self.es.search(query, size='10')
             for result in results['hits']['hits']:
                 url = result["_source"]['@fields']['log_url']
-                print result
                 if self._prep_url(url) in comment:
-                    print "found bug!"
                     return x['bug']
 
     def _prep_url(self, url):
