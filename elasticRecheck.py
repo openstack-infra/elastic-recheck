@@ -146,6 +146,8 @@ class Classifier():
                     return x['bug']
 
     def _prep_url(self, url):
+        if "/logs/" in url:
+            return '/'.join(url.split('/')[:-2])
         return '/'.join(url.split('/')[:-1])
 
 
