@@ -9,7 +9,7 @@
     },
     {
         "bug": "1191960",
-        "query": "@message:\"Unable to deactivate logical volume\" AND @fields.filename:\"logs/screen-c-vol.txt\""
+        "query": "@message:\"Exit code: 5\"  AND @message:\" sudo cinder-rootwrap /etc/cinder/rootwrap.conf lvremove -f\" AND @fields.filename:\"logs/screen-c-vol.txt\" AND @fields.build_status:\"FAILURE\""
     },
     {
         "bug": "1225664",
