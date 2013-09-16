@@ -8,6 +8,10 @@
         "query": "@tags:\"logs/screen-n-sch.txt\" AND @message:(tempest* AND \"Setting instance to ERROR state\")"
     },
     {
+        "bug": "1191960",
+        "query": "@message:\"Unable to deactivate logical volume\" AND @fields.filename:\"logs/screen-c-vol.txt\""
+    },
+    {
         "bug": "1218391",
         "query": "@message:\"Cannot 'createImage'\" AND @fields.filename:\"console.html\" AND @fields.build_status:\"FAILURE\""
     }
