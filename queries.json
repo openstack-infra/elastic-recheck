@@ -18,5 +18,9 @@
     {
         "bug": "1218391",
         "query": "@message:\"Cannot 'createImage'\" AND @fields.filename:\"console.html\" AND @fields.build_status:\"FAILURE\""
+    },
+    {
+        "bug": "1223469",
+        "query": "@message:\"with code 22\" AND @fields.filename:\"logs/screen-c-vol.txt\" AND @fields.build_status:\"FAILURE\""
     }
 ]
