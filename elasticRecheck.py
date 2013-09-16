@@ -6,8 +6,10 @@ from pyelasticsearch import ElasticSearch
 import ConfigParser
 import copy
 import json
+import logging
 import time
 
+logging.basicConfig()
 
 class Stream(object):
     """Gerrit Stream.
