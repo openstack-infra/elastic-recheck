@@ -12,6 +12,11 @@
         "query": "@message:\"Exit code: 5\"  AND @message:\" sudo cinder-rootwrap /etc/cinder/rootwrap.conf lvremove -f\" AND @fields.filename:\"logs/screen-c-vol.txt\" AND @fields.build_status:\"FAILURE\""
     },
     {
+        "bug": "1226791",
+        "query": "\"KeyError: 'nova'\" AND @fields.filename:\"logs/screen-n-api.txt\" AND @fields.build_status:\"FAILURE\" AND \"_describe_availability_zones_verbose\""
+    },
+
+    {
         "bug": "1225664",
         "query": "@message:\"Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.\" AND @fields.filename:\"console.html\" AND @fields.build_status:\"FAILURE\""
     },
