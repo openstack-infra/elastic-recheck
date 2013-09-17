@@ -7,6 +7,7 @@ import ConfigParser
 import copy
 import json
 import logging
+import sys
 import time
 
 logging.basicConfig()
@@ -152,6 +153,11 @@ def main():
     classifier = Classifier()
     #classifier.test()
     config = ConfigParser.ConfigParser()
+    if len(sys.argv) is 2:
+        config_path = sys.argv[1]
+    else:
+        config_path = 'elasticRecheck.conf'
+    config.read(config_path)
     user = config.get('gerrit', 'user', 'jogo')
     stream = Stream(user)
     while True:
