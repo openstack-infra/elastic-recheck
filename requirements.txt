@@ -1,3 +1,7 @@
 pyelasticsearch
 gerritlib
 testtools
+daemon
+irc
+pyyaml
+lockfile

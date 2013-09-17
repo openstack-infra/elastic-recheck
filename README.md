@@ -11,7 +11,6 @@ Eventually this can be tied into the rechecker tool and launchpad
 
 Future Work
 ------------
-- IRC bot output to #openstack-qa with output
 - Pull in list of queries from a more flexible source, so a commit isn't needed to update each time
 - Turn into a server app
 - Make unit tests robust and not need internet

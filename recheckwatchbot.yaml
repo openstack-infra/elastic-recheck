@@ -1,0 +1,5 @@
+openstack-recheck-watch-test:
+    events:
+      - positive
+      - negative
+

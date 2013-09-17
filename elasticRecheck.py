@@ -17,11 +17,8 @@ class Stream(object):
     Monitors gerrit stream looking for tempest-devstack failures.
     """
 
-    def __init__(self):
-        config = ConfigParser.ConfigParser()
-        config.read('elasticRecheck.conf')
+    def __init__(self, user):
         host = 'review.openstack.org'
-        user = config.get('gerrit', 'user', 'jogo')
         port = 29418
         self.gerrit = gerritlib.gerrit.Gerrit(host, user, port)
         self.gerrit.startWatching()
@@ -154,7 +151,9 @@ class Classifier():
 def main():
     classifier = Classifier()
     #classifier.test()
-    stream = Stream()
+    config = ConfigParser.ConfigParser()
+    user = config.get('gerrit', 'user', 'jogo')
+    stream = Stream(user)
     while True:
         event = stream.get_failed_tempest()
         change = event['change']['number']
