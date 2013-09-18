@@ -12,6 +12,7 @@ import time
 
 logging.basicConfig()
 
+
 class Stream(object):
     """Gerrit Stream.
 
@@ -30,7 +31,7 @@ class Stream(object):
             if event.get('type', '') != 'comment-added':
                 continue
             username = event['author'].get('username', '')
-            if (username  == 'jenkins' and
+            if (username == 'jenkins' and
                     "Build failed.  For information on how to proceed" in
                     event['comment']):
                 found = False
@@ -125,23 +126,29 @@ class Classifier():
         #Wait till Elastic search is ready
         query = self._apply_template(self.ready_template, (change_number, patch_number))
         while True:
-            results = self.es.search(query, size='1')
+            results = self.es.search(query, size='10')
             if results['hits']['total'] > 0:
-                    break
+                    if self._urls_match(comment, results['hits']['hits']):
+                        break
             else:
                 time.sleep(40)
-            # Just because one file is parsed doesn't mean all are, so wait a
-            # bit
-            time.sleep(80)
+        # Just because one file is parsed doesn't mean all are, so wait a
+        # bit
+        time.sleep(20)
         for x in self.queries:
             print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
             query = self._apply_template(self.targeted_template, (x['query'],
                     change_number, patch_number))
             results = self.es.search(query, size='10')
-            for result in results['hits']['hits']:
-                url = result["_source"]['@fields']['log_url']
-                if self._prep_url(url) in comment:
-                    return x['bug']
+            if self._urls_match(comment, results['hits']['hits']):
+                return x['bug']
+
+    def _urls_match(self, comment, results):
+        for result in results:
+            url = result["_source"]['@fields']['log_url']
+            if self._prep_url(url) in comment:
+                return True
+        return False
 
     def _prep_url(self, url):
         if isinstance(url, list):
