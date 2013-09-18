@@ -1,4 +1,4 @@
-openstack-recheck-watch-test:
+openstack-qa:
     events:
       - positive
       - negative

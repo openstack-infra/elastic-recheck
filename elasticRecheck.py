@@ -104,9 +104,10 @@ class Classifier():
 
     queries = None
 
-    def __init__(self):
+    def __init__(self, queries):
         self.es = ElasticSearch(self.ES_URL)
-        self.queries = json.loads(open('queries.json').read())
+        self.queries = json.loads(open(queries).read())
+        self.log = logging.getLogger("recheckwatchbot")
 
     def _apply_template(self, template, values):
         query = copy.deepcopy(template)
@@ -121,7 +122,7 @@ class Classifier():
 
     def last_failures(self):
         for x in self.queries:
-            print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
+            self.log.debug("Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug'])
             query = self._apply_template(self.general_template, x['query'])
             results = self.es.search(query, size='10')
             self._parse_results(results)
@@ -131,10 +132,10 @@ class Classifier():
             try:
                 change = x["_source"]['@fields']['build_change']
                 patchset = x["_source"]['@fields']['build_patchset']
-                print "build_name %s" % x["_source"]['@fields']['build_name']
-                print "https://review.openstack.org/#/c/%(change)s/%(patchset)s" % locals()
+                self.log.debug("build_name %s" % x["_source"]['@fields']['build_name'])
+                self.log.debug("https://review.openstack.org/#/c/%(change)s/%(patchset)s" % locals())
             except KeyError:
-                print "build_name %s" % x["_source"]['@fields']['build_name']
+                self.log.debug("build_name %s" % x["_source"]['@fields']['build_name'])
 
     def classify(self, change_number, patch_number, comment):
         """Returns either None or a bug number"""
@@ -143,7 +144,7 @@ class Classifier():
         #Wait till Elastic search is ready
         self._wait_till_ready(change_number, patch_number, comment)
         for x in self.queries:
-            print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
+            self.log.debug("Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug'])
             query = self._apply_template(self.targeted_template, (x['query'],
                     change_number, patch_number))
             results = self.es.search(query, size='10')
@@ -201,7 +202,7 @@ class Classifier():
 
 
 def main():
-    classifier = Classifier()
+
     #classifier.test()
     config = ConfigParser.ConfigParser()
     if len(sys.argv) is 2:
@@ -210,6 +211,8 @@ def main():
         config_path = 'elasticRecheck.conf'
     config.read(config_path)
     user = config.get('gerrit', 'user', 'jogo')
+    queries = config.get('gerrit', 'query_file', 'queries.json')
+    classifier = Classifier(queries)
     stream = Stream(user)
     while True:
         event = stream.get_failed_tempest()

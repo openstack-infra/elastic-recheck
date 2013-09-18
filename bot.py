@@ -25,7 +25,6 @@ openstack-qa:
 
 import ConfigParser
 import daemon
-import lockfile
 import irc.bot
 import os
 import sys
@@ -37,6 +36,14 @@ import logging
 from elasticRecheck import Stream
 from elasticRecheck import Classifier
 
+try:
+    import daemon.pidlockfile
+    pid_file_module = daemon.pidlockfile
+except Exception:
+    # as of python-daemon 1.6 it doesn't bundle pidlockfile anymore
+    # instead it depends on lockfile-0.9.1
+    import daemon.pidfile
+    pid_file_module = daemon.pidfile
 
 
 class RecheckWatchBot(irc.bot.SingleServerIRCBot):
@@ -47,7 +54,7 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
         self.channel_list = channels
         self.nickname = nickname
         self.password = password
-        self.log = logging.getLogger('gerritbot')
+        self.log = logging.getLogger('recheckwatchbot')
 
     def on_nicknameinuse(self, c, e):
         self.log.info('Nick previously in use, recovering.')
@@ -73,13 +80,15 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
         self.connection.privmsg(channel, msg)
         time.sleep(0.5)
 
+
 class RecheckWatch(threading.Thread):
-    def __init__(self, ircbot, channel_config, username):
+    def __init__(self, ircbot, channel_config, username, queries):
         threading.Thread.__init__(self)
         self.ircbot = ircbot
         self.channel_config = channel_config
         self.log = logging.getLogger('recheckwatchbot')
         self.username = username
+        self.queries = queries
         self.connected = False
 
     def new_error(self, channel, data):
@@ -108,7 +117,7 @@ class RecheckWatch(threading.Thread):
                     self.new_error(channel, data)
 
     def run(self):
-        classifier = Classifier()
+        classifier = Classifier(self.queries)
         stream = Stream(self.username)
         while True:
             event = stream.get_failed_tempest()
@@ -120,7 +129,6 @@ class RecheckWatch(threading.Thread):
             else:
                 event['bug_number'] = bug_number
                 self._read(event)
-            
 
 
 class ChannelConfig(object):
@@ -160,7 +168,9 @@ def _main():
                           config.get('ircbot', 'server'),
                           config.getint('ircbot', 'port'),
                           config.get('ircbot', 'server_password'))
-    recheck = RecheckWatch(bot, channel_config, config.get('gerrit', 'user'))
+    recheck = RecheckWatch(bot, channel_config,
+                           config.get('gerrit', 'user'),
+                           config.get('gerrit', 'query_file'))
 
     recheck.start()
     bot.start()
@@ -171,10 +181,10 @@ def main():
         print "Usage: %s CONFIGFILE" % sys.argv[0]
         sys.exit(1)
 
-    pid = lockfile.FileLock(
-        "/var/run/recheckwatchbot/recheckwatchbot.pid", 10)
-#    with daemon.DaemonContext(pidfile=pid):
-    _main()
+    pid = pid_file_module.TimeoutPIDLockFile(
+        "/tmp/recheckwatchbot.pid", 10)
+    with daemon.DaemonContext(pidfile=pid):
+        _main()
 
 
 def setup_logging(config):
