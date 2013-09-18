@@ -63,6 +63,24 @@ class Classifier():
                     }
                 }
             }
+    files_ready_template = {
+            "sort": {
+                "@timestamp": {"order": "desc"}
+                },
+            "query": {
+                "query_string": {
+                    "query": '@fields.build_status:"FAILURE" AND @fields.build_change:"%s" AND @fields.build_patchset:"%s"'
+                    }
+                },
+            "facets": {
+                "tag": {
+                    "terms": {
+                        "field": "@fields.filename",
+                        "size": 80
+                        }
+                    }
+                }
+            }
     ready_template = {
             "sort": {
                 "@timestamp": {"order": "desc"}
@@ -70,7 +88,6 @@ class Classifier():
             "query": {
                 "query_string": {
                     "query": '@tags:"console.html" AND (@message:"Finished: FAILURE") AND @fields.build_change:"%s" AND @fields.build_patchset:"%s"'
-                    #"query": '@fields.filename:"console.html" AND @fields.build_status:"FAILURE" AND @message:"skipped" AND @message:"FAILED (failures" AND @fields.build_change:"%s" AND @fields.build_patchset:"%s"'
                     }
                 }
             }
@@ -124,17 +141,7 @@ class Classifier():
         #Reload each time
         self.queries = json.loads(open('queries.json').read())
         #Wait till Elastic search is ready
-        query = self._apply_template(self.ready_template, (change_number, patch_number))
-        while True:
-            results = self.es.search(query, size='10')
-            if results['hits']['total'] > 0:
-                    if self._urls_match(comment, results['hits']['hits']):
-                        break
-            else:
-                time.sleep(40)
-        # Just because one file is parsed doesn't mean all are, so wait a
-        # bit
-        time.sleep(20)
+        self._wait_till_ready(change_number, patch_number, comment)
         for x in self.queries:
             print "Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug']
             query = self._apply_template(self.targeted_template, (x['query'],
@@ -142,6 +149,40 @@ class Classifier():
             results = self.es.search(query, size='10')
             if self._urls_match(comment, results['hits']['hits']):
                 return x['bug']
+
+    def _wait_till_ready(self, change_number, patch_number, comment):
+        query = self._apply_template(self.ready_template, (change_number,
+            patch_number))
+        while True:
+            results = self.es.search(query, size='10')
+            if (results['hits']['total'] > 0 and
+                    self._urls_match(comment, results['hits']['hits'])):
+                break
+            else:
+                time.sleep(40)
+        query = self._apply_template(self.files_ready_template, (change_number,
+            patch_number))
+        while True:
+            results = self.es.search(query, size='80')
+            files = results['facets']['tag']['terms']
+            files = [x['term'] for x in files]
+            required_files = [
+                    'console.html',
+                    'logs/screen-key.txt',
+                    'logs/screen-n-api.txt',
+                    'logs/screen-n-cpu.txt',
+                    'logs/screen-n-sch.txt',
+                    'logs/screen-c-api.txt',
+                    'logs/screen-c-vol.txt'
+                    ]
+            missing_files = [x for x in required_files if x not in files]
+            if len(missing_files) is 0:
+                break
+            else:
+                time.sleep(40)
+        # Just because one file is parsed doesn't mean all are, so wait a
+        # bit
+        time.sleep(20)
 
     def _urls_match(self, comment, results):
         for result in results:

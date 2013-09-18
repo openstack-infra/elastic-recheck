@@ -14,7 +14,9 @@ class TestClassifier(testtools.TestCase):
     def test_elasticSearch(self):
         self.classifier.test()
         self.classifier.last_failures()
-        #self.assertFalse(True)
+
+    def test_ready(self):
+        self.classifier._wait_till_ready('30043', '34','BLAH http://logs.openstack.org/43/30043/34/check/gate-tempest-devstack-vm-full/b852a33')
 
     def test_classify(self):
         bug_number = self.classifier.classify('43258', '13',
