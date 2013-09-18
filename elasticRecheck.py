@@ -144,6 +144,9 @@ class Classifier():
                     return x['bug']
 
     def _prep_url(self, url):
+        if isinstance(url, list):
+            # The url is sometimes a list of one value
+            url = url[0]
         if "/logs/" in url:
             return '/'.join(url.split('/')[:-2])
         return '/'.join(url.split('/')[:-1])
