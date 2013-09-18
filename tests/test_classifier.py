@@ -1,5 +1,19 @@
-import testtools
+# All Rights Reserved.
+#
+#    Licensed under the Apache License, Version 2.0 (the "License"); you may
+#    not use this file except in compliance with the License. You may obtain
+#    a copy of the License at
+#
+#         http://www.apache.org/licenses/LICENSE-2.0
+#
+#    Unless required by applicable law or agreed to in writing, software
+#    distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+#    WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+#    License for the specific language governing permissions and limitations
+#    under the License.
+
 import elasticRecheck
+import testtools
 
 
 class TestClassifier(testtools.TestCase):
@@ -16,7 +30,7 @@ class TestClassifier(testtools.TestCase):
         self.classifier.last_failures()
 
     def test_ready(self):
-        self.classifier._wait_till_ready('30043', '34','BLAH http://logs.openstack.org/43/30043/34/check/gate-tempest-devstack-vm-full/b852a33')
+        self.classifier._wait_till_ready('30043', '34', 'BLAH http://logs.openstack.org/43/30043/34/check/gate-tempest-devstack-vm-full/b852a33')
 
     def test_classify(self):
         bug_number = self.classifier.classify('43258', '13',
@@ -27,4 +41,3 @@ class TestClassifier(testtools.TestCase):
         url = self.classifier._prep_url('http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44/console.html')
         self.assertEqual(url,
                          'http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44')
-
