@@ -16,7 +16,7 @@
 
 
 import gerritlib.gerrit
-from pyelasticsearch import ElasticSearch
+import pyelasticsearch
 
 import ConfigParser
 import copy
@@ -120,7 +120,7 @@ class Classifier():
     queries = None
 
     def __init__(self, queries):
-        self.es = ElasticSearch(self.ES_URL)
+        self.es = pyelasticsearch.ElasticSearch(self.ES_URL)
         self.queries = json.loads(open(queries).read())
         self.log = logging.getLogger("recheckwatchbot")
 
@@ -170,11 +170,19 @@ class Classifier():
         query = self._apply_template(self.ready_template, (change_number,
             patch_number))
         while True:
-            results = self.es.search(query, size='10')
+            try:
+                results = self.es.search(query, size='10')
+            except pyelasticsearch.exceptions.InvalidJsonResponseError:
+                # If ElasticSearch returns an error code, sleep and retry
+                #TODO(jogo): if this works pull out search into a helper function that  does this.
+                print "UHUH hit InvalidJsonResponseError"
+                time.sleep(20)
+                continue
             if (results['hits']['total'] > 0 and
                     self._urls_match(comment, results['hits']['hits'])):
                 break
             else:
+                print "ES is not ready, retry in 40 seconds"
                 time.sleep(40)
         query = self._apply_template(self.files_ready_template, (change_number,
             patch_number))
@@ -195,9 +203,11 @@ class Classifier():
             if len(missing_files) is 0:
                 break
             else:
+                print "ES not finished parsing all files retry in 40 seconds"
                 time.sleep(40)
         # Just because one file is parsed doesn't mean all are, so wait a
         # bit
+        print "Ready! but sleeping for 20 to be safe"
         time.sleep(20)
 
     def _urls_match(self, comment, results):
