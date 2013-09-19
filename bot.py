@@ -33,9 +33,6 @@ import time
 import yaml
 import logging
 
-from elasticRecheck import Stream
-from elasticRecheck import Classifier
-
 try:
     import daemon.pidlockfile
     pid_file_module = daemon.pidlockfile
@@ -119,6 +116,9 @@ class RecheckWatch(threading.Thread):
                     self.new_error(channel, data)
 
     def run(self):
+        # Import here because it needs to happen after daemonization
+        from elasticRecheck import Stream
+        from elasticRecheck import Classifier
         classifier = Classifier(self.queries)
         stream = Stream(self.username, self.host, self.key)
         while True:
