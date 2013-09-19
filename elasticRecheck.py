@@ -133,6 +133,7 @@ class Classifier():
     def __init__(self, queries):
         self.es = pyelasticsearch.ElasticSearch(self.ES_URL)
         self.queries = json.loads(open(queries).read())
+        self.queries_json = queries
         self.log = logging.getLogger("recheckwatchbot")
 
     def _apply_template(self, template, values):
@@ -166,7 +167,7 @@ class Classifier():
     def classify(self, change_number, patch_number, comment):
         """Returns either None or a bug number"""
         #Reload each time
-        self.queries = json.loads(open('queries.json').read())
+        self.queries = json.loads(open(self.queries_json).read())
         #Wait till Elastic search is ready
         self._wait_till_ready(change_number, patch_number, comment)
         for x in self.queries:
