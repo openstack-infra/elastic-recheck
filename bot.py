@@ -130,7 +130,6 @@ class RecheckWatch(threading.Thread):
             bug_number = classifier.classify(change, rev, event['comment'])
             if bug_number is None:
                 self._read(event)
-                stream.leave_comment(project, change_id)
             else:
                 event['bug_number'] = bug_number
                 self._read(event)
