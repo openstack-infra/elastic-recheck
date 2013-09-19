@@ -82,7 +82,7 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
 
 
 class RecheckWatch(threading.Thread):
-    def __init__(self, ircbot, channel_config, username, queries, host):
+    def __init__(self, ircbot, channel_config, username, queries, host, key):
         threading.Thread.__init__(self)
         self.ircbot = ircbot
         self.channel_config = channel_config
@@ -91,6 +91,7 @@ class RecheckWatch(threading.Thread):
         self.queries = queries
         self.host = host
         self.connected = False
+        self.key = key
 
     def new_error(self, channel, data):
         msg = '%s change: %s failed tempest with an unrecognized error' % (
@@ -119,7 +120,7 @@ class RecheckWatch(threading.Thread):
 
     def run(self):
         classifier = Classifier(self.queries)
-        stream = Stream(self.username, self.host)
+        stream = Stream(self.username, self.host, self.key)
         while True:
             event = stream.get_failed_tempest()
             change = event['change']['number']
@@ -176,7 +177,8 @@ def _main():
     recheck = RecheckWatch(bot, channel_config,
                            config.get('gerrit', 'user'),
                            config.get('gerrit', 'query_file'),
-                           config.get('gerrit', 'host', 'review.openstack.org'))
+                           config.get('gerrit', 'host', 'review.openstack.org'),
+                           config.get('gerrit', 'key'))
 
     recheck.start()
     bot.start()

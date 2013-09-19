@@ -34,9 +34,9 @@ class Stream(object):
     Monitors gerrit stream looking for tempest-devstack failures.
     """
 
-    def __init__(self, user, host, thread=True):
+    def __init__(self, user, host, key, thread=True):
         port = 29418
-        self.gerrit = gerritlib.gerrit.Gerrit(host, user, port)
+        self.gerrit = gerritlib.gerrit.Gerrit(host, user, port, key)
         if thread:
             self.gerrit.startWatching()
 
@@ -249,8 +249,9 @@ def main():
     user = config.get('gerrit', 'user', 'jogo')
     host = config.get('gerrit', 'host', 'review.openstack.org')
     queries = config.get('gerrit', 'query_file', 'queries.json')
+    key = config.get('gerrit', 'key')
     classifier = Classifier(queries)
-    stream = Stream(user, host)
+    stream = Stream(user, host, key)
     while True:
         event = stream.get_failed_tempest()
         change = event['change']['number']
