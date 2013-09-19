@@ -8,6 +8,11 @@
         "query": "@tags:\"logs/screen-n-sch.txt\" AND @message:(tempest* AND \"Setting instance to ERROR state\")"
     },
     {
+        "bug": "1227915",
+        "query": "\"already exists in volume group\" AND @fields.build_status:\"FAILURE\" AND @fields.loglevel:\"ERROR\" AND @fields.filename:\"logs/screen-c-vol.txt\""
+    },
+
+    {
         "bug": "1191960",
         "query": "@message:\"Exit code: 5\"  AND @message:\" sudo cinder-rootwrap /etc/cinder/rootwrap.conf lvremove -f\" AND @fields.filename:\"logs/screen-c-vol.txt\" AND @fields.build_status:\"FAILURE\""
     },
