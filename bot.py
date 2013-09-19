@@ -82,13 +82,14 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
 
 
 class RecheckWatch(threading.Thread):
-    def __init__(self, ircbot, channel_config, username, queries):
+    def __init__(self, ircbot, channel_config, username, queries, host):
         threading.Thread.__init__(self)
         self.ircbot = ircbot
         self.channel_config = channel_config
         self.log = logging.getLogger('recheckwatchbot')
         self.username = username
         self.queries = queries
+        self.host = host
         self.connected = False
 
     def new_error(self, channel, data):
@@ -118,17 +119,21 @@ class RecheckWatch(threading.Thread):
 
     def run(self):
         classifier = Classifier(self.queries)
-        stream = Stream(self.username)
+        stream = Stream(self.username, self.host)
         while True:
             event = stream.get_failed_tempest()
             change = event['change']['number']
             rev = event['patchSet']['number']
+            change_id = "%s,%s" % (change, rev)
+            project = event['change']['project']
             bug_number = classifier.classify(change, rev, event['comment'])
             if bug_number is None:
                 self._read(event)
+                stream.leave_comment(project, change_id)
             else:
                 event['bug_number'] = bug_number
                 self._read(event)
+                stream.leave_comment(project, change_id, bug_number)
 
 
 class ChannelConfig(object):
@@ -170,7 +175,8 @@ def _main():
                           config.get('ircbot', 'server_password'))
     recheck = RecheckWatch(bot, channel_config,
                            config.get('gerrit', 'user'),
-                           config.get('gerrit', 'query_file'))
+                           config.get('gerrit', 'query_file'),
+                           config.get('gerrit', 'host', 'review.openstack.org'))
 
     recheck.start()
     bot.start()

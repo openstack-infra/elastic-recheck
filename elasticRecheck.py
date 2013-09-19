@@ -34,11 +34,11 @@ class Stream(object):
     Monitors gerrit stream looking for tempest-devstack failures.
     """
 
-    def __init__(self, user):
-        host = 'review.openstack.org'
+    def __init__(self, user, host, thread=True):
         port = 29418
         self.gerrit = gerritlib.gerrit.Gerrit(host, user, port)
-        self.gerrit.startWatching()
+        if thread:
+            self.gerrit.startWatching()
 
     def get_failed_tempest(self):
         while True:
@@ -59,6 +59,17 @@ class Stream(object):
                 if found:
                     return event
                 continue
+
+    def leave_comment(self, project, commit, bug=None):
+        if bug:
+            bug_url = 'https://bugs.launchpad.net/bugs/%s' % bug
+            message = ("I noticed tempest failed, I think you hit bug %s" %
+                       bug_url)
+        else:
+            message = ("I noticed tempest failed, refer to: "
+                       "https://wiki.openstack.org/wiki/"
+                       "GerritJenkinsGithub#Test_Failures")
+        self.gerrit.review(project, commit, message)
 
 
 class Classifier():
@@ -236,9 +247,10 @@ def main():
         config_path = 'elasticRecheck.conf'
     config.read(config_path)
     user = config.get('gerrit', 'user', 'jogo')
+    host = config.get('gerrit', 'host', 'review.openstack.org')
     queries = config.get('gerrit', 'query_file', 'queries.json')
     classifier = Classifier(queries)
-    stream = Stream(user)
+    stream = Stream(user, host)
     while True:
         event = stream.get_failed_tempest()
         change = event['change']['number']
