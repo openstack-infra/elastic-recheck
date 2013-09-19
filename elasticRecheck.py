@@ -17,6 +17,7 @@
 
 import gerritlib.gerrit
 import pyelasticsearch
+import urllib2
 
 import ConfigParser
 import copy
@@ -51,11 +52,13 @@ class Stream(object):
                     event['comment']):
                 found = False
                 for line in event['comment'].split('\n'):
-                    if "FAILURE" in line and "python2" in line:
+                    if "FAILURE" in line and ("python2" in line or "pep8" in line):
                         # Unit Test Failure
-                        continue
+                        break
                     if "FAILURE" in line and "tempest-devstack" in line:
-                        found = True
+                        url = [x for x in line.split() if "http" in x][0]
+                        if RequiredFiles.files_at_url(url):
+                            found = True
                 if found:
                     return event
                 continue
@@ -194,7 +197,6 @@ class Classifier():
                     self._urls_match(comment, results['hits']['hits'])):
                 break
             else:
-                print "ES is not ready, retry in 40 seconds"
                 time.sleep(40)
         query = self._apply_template(self.files_ready_template, (change_number,
             patch_number))
@@ -215,27 +217,49 @@ class Classifier():
             if len(missing_files) is 0:
                 break
             else:
-                print "ES not finished parsing all files retry in 40 seconds"
                 time.sleep(40)
         # Just because one file is parsed doesn't mean all are, so wait a
         # bit
-        print "Ready! but sleeping for 20 to be safe"
         time.sleep(20)
 
     def _urls_match(self, comment, results):
         for result in results:
             url = result["_source"]['@fields']['log_url']
-            if self._prep_url(url) in comment:
+            if RequiredFiles.prep_url(url) in comment:
                 return True
         return False
 
-    def _prep_url(self, url):
+
+class RequiredFiles(object):
+
+    required_files = [
+        'console.html',
+        'logs/screen-key.txt',
+        'logs/screen-n-api.txt',
+        'logs/screen-n-cpu.txt',
+        'logs/screen-n-sch.txt',
+        'logs/screen-c-api.txt',
+        'logs/screen-c-vol.txt'
+    ]
+
+    @staticmethod
+    def prep_url(url):
         if isinstance(url, list):
             # The url is sometimes a list of one value
             url = url[0]
         if "/logs/" in url:
             return '/'.join(url.split('/')[:-2])
         return '/'.join(url.split('/')[:-1])
+
+    @staticmethod
+    def files_at_url(url):
+        for f in RequiredFiles.required_files:
+            try:
+                urllib2.urlopen(url + '/' + f).code
+            except urllib2.HTTPError:
+                # File does not exist at URL
+                return False
+        return True
 
 
 def main():
