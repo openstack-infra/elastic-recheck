@@ -9,7 +9,7 @@
     },
     {
         "bug": "1227915",
-        "query": "\"already exists in volume group\" AND @fields.build_status:\"FAILURE\" AND @fields.loglevel:\"ERROR\" AND @fields.filename:\"logs/screen-c-vol.txt\""
+        "query": "@message:\"already exists in volume group\" AND @fields.build_status:\"FAILURE\" AND @fields.loglevel:\"ERROR\" AND @fields.filename:\"logs/screen-c-vol.txt\""
     },
 
     {
@@ -18,7 +18,7 @@
     },
     {
         "bug": "1226791",
-        "query": "@message:\"KeyError: 'nova'\" AND @fields.filename:\"logs/screen-n-api.txt\" AND @fields.build_status:\"FAILURE\" AND \"_describe_availability_zones_verbose\""
+        "query": "@message:\"KeyError: 'nova'\" AND @fields.filename:\"logs/screen-n-api.txt\" AND @fields.build_status:\"FAILURE\" AND @message:\"_describe_availability_zones_verbose\""
     },
     {
         "bug": "1225664",
