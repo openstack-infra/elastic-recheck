@@ -1,7 +1,11 @@
-elasticRecheck
-==============
+===============================
+elastic-recheck
+===============================
 
-Classify tempest-devstack failures using a list of elastic search queries.
+"Classify tempest-devstack failures using ElasticSearch"
+
+* Free software: Apache license
+* Documentation: http://docs.openstack.org/developer/elastic-recheck
 
 Idea
 ----
@@ -11,8 +15,7 @@ Eventually this can be tied into the rechecker tool and launchpad
 
 Future Work
 ------------
-- Make unit tests robust and not need internet
-- Use cookiecutter to clean this repo up
+- Make unit tests robust
 
 Dependencies
 ------------

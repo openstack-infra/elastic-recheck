@@ -1,0 +1,7 @@
+[run]
+branch = True
+source = elastic-recheck
+omit = elastic-recheck/tests/*,elastic-recheck/openstack/*
+
+[report]
+ignore-errors = True
