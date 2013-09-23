@@ -1,7 +1,7 @@
 [
     {
         "bug": "1226337",
-        "query": "@message:\"qemu-nbd: Failed to bdrv_open\" AND @fields.build_status:\"FAILURE\" AND @fields.filename:\"logs/screen-n-cpu.txt\""
+        "query": "@message:\"NovaException: iSCSI device not found at\" AND @fields.build_status:\"FAILURE\" AND @fields.filename:\"logs/screen-n-cpu.txt\""
     },
     {
         "bug": "1211915",
