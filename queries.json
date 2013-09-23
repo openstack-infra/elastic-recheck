@@ -8,10 +8,6 @@
         "query": "@message:\"ConnectionFailed: Connection to neutron failed: Maximum attempts reached\" AND @fields.filename:\"console.html\""
     },
     {
-        "bug": "1221987",
-        "query": "@tags:\"logs/screen-n-sch.txt\" AND @message:(tempest* AND \"Setting instance to ERROR state\")"
-    },
-    {
         "bug": "1227915",
         "query": "@message:\"already exists in volume group\" AND @fields.build_status:\"FAILURE\" AND @fields.loglevel:\"ERROR\" AND @fields.filename:\"logs/screen-c-vol.txt\""
     },
