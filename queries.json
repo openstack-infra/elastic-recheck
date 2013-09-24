@@ -29,6 +29,11 @@
         "query": "@message:\"Cannot 'createImage'\" AND @fields.filename:\"console.html\" AND @fields.build_status:\"FAILURE\""
     },
     {
+        "bug": "1223161",
+        "query": "@message:\"Cannot understand JSON*\" AND @fields.build_name:\"gate-tempest-devstack-vm-neutron\" AND @fields.build_status:\"FAILURE\" AND @fields.filename:\"logs/screen-n-sch.txt\""
+    },
+
+    {
         "bug": "1223469",
         "query": "@message:\"with code 22\" AND @fields.filename:\"logs/screen-c-vol.txt\" AND @fields.build_status:\"FAILURE\""
     }
