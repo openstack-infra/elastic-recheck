@@ -11,7 +11,10 @@
         "bug": "1227915",
         "query": "@message:\"already exists in volume group\" AND @fields.build_status:\"FAILURE\" AND @fields.loglevel:\"ERROR\" AND @fields.filename:\"logs/screen-c-vol.txt\""
     },
-
+    {
+        "bug": "1217734",
+        "query": "@message:\"Unauthorized: Unauthorized (HTTP 401)\" AND @message:\"cinderclient\" AND @fields.build_status:\"FAILURE\""
+    },
     {
         "bug": "1191960",
         "query": "@message:\"Exit code: 5\"  AND @message:\" sudo cinder-rootwrap /etc/cinder/rootwrap.conf lvremove -f\" AND @fields.filename:\"logs/screen-c-vol.txt\" AND @fields.build_status:\"FAILURE\""
