@@ -32,6 +32,12 @@
         "bug": "1223161",
         "query": "@message:\"Cannot understand JSON*\" AND @fields.build_name:\"gate-tempest-devstack-vm-neutron\" AND @fields.build_status:\"FAILURE\" AND @fields.filename:\"logs/screen-n-sch.txt\""
     },
+    {
+        "bug": "1229475",
+        "query": "@message:\"Second simultaneous read on fileno\" AND @fields.build_status:\"FAILURE\""
+    },
+
+
 
     {
         "bug": "1223469",
