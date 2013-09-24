@@ -54,7 +54,6 @@ class Stream(object):
                 for line in event['comment'].split('\n'):
                     if "FAILURE" in line and ("python2" in line or "pep8" in line):
                         # Unit Test Failure
-                        print "SKIPPING %s" % line
                         found = False
                         break
                     if "FAILURE" in line and "tempest-devstack" in line:
