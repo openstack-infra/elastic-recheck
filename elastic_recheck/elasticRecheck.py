@@ -28,6 +28,16 @@ import time
 
 logging.basicConfig()
 
+REQUIRED_FILES = [
+        'console.html',
+        'logs/screen-key.txt',
+        'logs/screen-n-api.txt',
+        'logs/screen-n-cpu.txt',
+        'logs/screen-n-sch.txt',
+        'logs/screen-c-api.txt',
+        'logs/screen-c-vol.txt'
+        ]
+
 
 class Stream(object):
     """Gerrit Stream.
@@ -205,16 +215,7 @@ class Classifier():
             results = self.es.search(query, size='80')
             files = results['facets']['tag']['terms']
             files = [x['term'] for x in files]
-            required_files = [
-                    'console.html',
-                    'logs/screen-key.txt',
-                    'logs/screen-n-api.txt',
-                    'logs/screen-n-cpu.txt',
-                    'logs/screen-n-sch.txt',
-                    'logs/screen-c-api.txt',
-                    'logs/screen-c-vol.txt'
-                    ]
-            missing_files = [x for x in required_files if x not in files]
+            missing_files = [x for x in REQUIRED_FILES if x not in files]
             if len(missing_files) is 0:
                 break
             else:
@@ -233,16 +234,6 @@ class Classifier():
 
 class RequiredFiles(object):
 
-    required_files = [
-        'console.html',
-        'logs/screen-key.txt',
-        'logs/screen-n-api.txt',
-        'logs/screen-n-cpu.txt',
-        'logs/screen-n-sch.txt',
-        'logs/screen-c-api.txt',
-        'logs/screen-c-vol.txt'
-    ]
-
     @staticmethod
     def prep_url(url):
         if isinstance(url, list):
@@ -254,12 +245,16 @@ class RequiredFiles(object):
 
     @staticmethod
     def files_at_url(url):
-        for f in RequiredFiles.required_files:
+        for f in REQUIRED_FILES:
             try:
                 urllib2.urlopen(url + '/' + f).code
             except urllib2.HTTPError:
-                # File does not exist at URL
-                return False
+                try:
+                    urllib2.urlopen(url + '/' + f + '.gz').code
+                except urllib2.HTTPError:
+                    # File does not exist at URL
+                    print f
+                    return False
         return True
 
 

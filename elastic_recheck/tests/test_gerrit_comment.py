@@ -26,8 +26,9 @@ class TestGerritComment(testtools.TestCase):
         config = ConfigParser.ConfigParser({'server_password': None})
         config.read('elasticRecheck.conf')
         self.user = config.get('gerrit', 'user')
+        key = config.get('gerrit', 'key')
         host = 'review-dev.openstack.org'
-        self.stream = elasticRecheck.Stream(self.user, host, thread=False)
+        self.stream = elasticRecheck.Stream(self.user, host, key, thread=False)
         port = 29418
         self.gerrit = gerritlib.gerrit.Gerrit(host, self.user, port)
 
