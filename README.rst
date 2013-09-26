@@ -15,9 +15,18 @@ Eventually this can be tied into the rechecker tool and launchpad
 
 Future Work
 ------------
+- Move config files into a seperate directory
+- Update sample config files
 - Make unit tests robust
+- Make pip installable, merge both binaries
+- Add debug mode flag
+- Split out queries repo
+- Expand gating testing
+- Cleanup and document code better
+- Move away from polling ElasticSearch to discover if its ready or not
+- Add nightly job to propose a patch to remove bug queries that return no hits -- Bug hasn't been seen in 2 weeks and must be closed
 
-Dependencies
-------------
+Main Dependencies
+------------------
 - gerritlib
 - pyelasticsearch
