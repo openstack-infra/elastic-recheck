@@ -39,9 +39,10 @@
         "bug": "1229475",
         "query": "@message:\"Second simultaneous read on fileno\" AND @fields.build_status:\"FAILURE\""
     },
-
-
-
+    {
+        "bug": "1230407",
+        "query": "@message:\"AssertionError: State change timeout exceeded!\" AND @fields.build_status:\"FAILURE\" AND @fields.filename:\"console.html\""
+    },
     {
         "bug": "1223469",
         "query": "@message:\"with code 22\" AND @fields.filename:\"logs/screen-c-vol.txt\" AND @fields.build_status:\"FAILURE\""
