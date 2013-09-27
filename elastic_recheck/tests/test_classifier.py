@@ -27,8 +27,10 @@ class TestClassifier(testtools.TestCase):
         self.assertNotEqual(self.classifier.queries, None)
 
     def test_elasticSearch(self):
-        self.classifier.test()
-        self.classifier.last_failures()
+        query = self.classifier._apply_template(self.classifier.targeted_template,
+                ('@tags:"console.html" AND @message:"Finished: FAILURE"', '34825', '3'))
+        results = self.classifier.es.search(query, size='10')
+        self.assertTrue(int(results['hits']['total']) > 0, ("unable to find hit"))
 
     def test_ready(self):
         self.assertTrue(self.classifier._is_ready('49282', '3',
