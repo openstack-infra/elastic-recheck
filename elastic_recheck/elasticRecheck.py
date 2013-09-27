@@ -186,7 +186,10 @@ class Classifier():
         #Reload each time
         self.queries = yaml.load(open(self.queries_filename).read())
         #Wait till Elastic search is ready
-        self._wait_till_ready(change_number, patch_number, comment)
+        if not self._is_ready(change_number, patch_number, comment):
+            self.log.error("something went wrong, ElasticSearch is still not ready, "
+                    "giving up and trying next failure")
+            return None
         bug_matches = []
         for x in self.queries:
             self.log.debug("Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug'])
@@ -197,26 +200,31 @@ class Classifier():
                 bug_matches.append(x['bug'])
         return bug_matches
 
-    def _wait_till_ready(self, change_number, patch_number, comment):
+    def _is_ready(self, change_number, patch_number, comment):
+        """Wait till ElasticSearch is ready, but return False if timeout."""
+        NUMBER_OF_RETRIES = 20
+        SLEEP_TIME = 40
         query = self._apply_template(self.ready_template, (change_number,
             patch_number))
-        while True:
+        for i in range(NUMBER_OF_RETRIES):
             try:
                 results = self.es.search(query, size='10')
             except pyelasticsearch.exceptions.InvalidJsonResponseError:
                 # If ElasticSearch returns an error code, sleep and retry
                 #TODO(jogo): if this works pull out search into a helper function that  does this.
                 print "UHUH hit InvalidJsonResponseError"
-                time.sleep(20)
+                time.sleep(NUMBER_OF_RETRIES)
                 continue
             if (results['hits']['total'] > 0 and
                     self._urls_match(comment, results['hits']['hits'])):
                 break
             else:
-                time.sleep(40)
+                time.sleep(SLEEP_TIME)
+        if i == NUMBER_OF_RETRIES - 1:
+            return False
         query = self._apply_template(self.files_ready_template, (change_number,
             patch_number))
-        while True:
+        for i in range(NUMBER_OF_RETRIES):
             results = self.es.search(query, size='80')
             files = results['facets']['tag']['terms']
             files = [x['term'] for x in files]
@@ -224,10 +232,13 @@ class Classifier():
             if len(missing_files) is 0:
                 break
             else:
-                time.sleep(40)
+                time.sleep(SLEEP_TIME)
+        if i == NUMBER_OF_RETRIES - 1:
+            return False
         # Just because one file is parsed doesn't mean all are, so wait a
         # bit
-        time.sleep(20)
+        time.sleep(10)
+        return True
 
     def _urls_match(self, comment, results):
         for result in results:
