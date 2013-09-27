@@ -30,7 +30,6 @@ logging.basicConfig()
 
 REQUIRED_FILES = [
         'console.html',
-        'logs/screen-key.txt',
         'logs/screen-n-api.txt',
         'logs/screen-n-cpu.txt',
         'logs/screen-n-sch.txt',
