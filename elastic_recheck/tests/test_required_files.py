@@ -12,8 +12,9 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-from elastic_recheck import elasticRecheck
 import testtools
+
+from elastic_recheck import elasticRecheck
 
 
 class TestRequiredFiles(testtools.TestCase):

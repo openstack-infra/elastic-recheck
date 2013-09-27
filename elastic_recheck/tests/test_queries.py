@@ -19,7 +19,7 @@ import json
 from launchpadlib import launchpad
 import testtools
 
-import elasticRecheck
+from elastic_recheck import elasticRecheck
 
 LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
 

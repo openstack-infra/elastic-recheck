@@ -16,7 +16,7 @@ import ConfigParser
 import gerritlib
 import testtools
 
-import elasticRecheck
+from elastic_recheck import elasticRecheck
 
 
 class TestGerritComment(testtools.TestCase):
