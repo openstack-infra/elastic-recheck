@@ -13,7 +13,7 @@
     },
     {
         "bug": "1217734",
-        "query": "@message:\"Unauthorized: Unauthorized (HTTP 401)\" AND @message:\"cinderclient\" AND @fields.build_status:\"FAILURE\""
+        "query": "@message:\"CalledProcessError: Command 'openssl' returned non-zero exit status\" AND @fields.build_status:\"FAILURE\""
     },
     {
         "bug": "1191960",
