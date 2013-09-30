@@ -15,9 +15,9 @@
 import os
 
 import ConfigParser
-import json
 from launchpadlib import launchpad
 import testtools
+import yaml
 
 from elastic_recheck import elasticRecheck
 
@@ -43,7 +43,7 @@ class TestQueries(testtools.TestCase):
         lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
                                                    'production',
                                                    LPCACHEDIR)
-        query_dict = json.loads(open(self.queries).read())
+        query_dict = yaml.load(open(self.queries).read())
         bugs = map(lambda x: x['bug'], query_dict)
         openstack_group = lp.project_groups['openstack']
         openstack_projects = map(lambda project: project.name,

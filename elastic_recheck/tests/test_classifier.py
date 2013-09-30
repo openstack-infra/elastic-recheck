@@ -21,7 +21,7 @@ class TestClassifier(testtools.TestCase):
 
     def setUp(self):
         super(TestClassifier, self).setUp()
-        self.classifier = elasticRecheck.Classifier('queries.json')
+        self.classifier = elasticRecheck.Classifier('queries.yaml')
 
     def test_read_qeuries_file(self):
         self.assertNotEqual(self.classifier.queries, None)

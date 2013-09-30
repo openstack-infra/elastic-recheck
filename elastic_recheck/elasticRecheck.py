@@ -21,10 +21,10 @@ import urllib2
 
 import ConfigParser
 import copy
-import json
 import logging
 import sys
 import time
+import yaml
 
 logging.basicConfig()
 
@@ -145,8 +145,8 @@ class Classifier():
 
     def __init__(self, queries):
         self.es = pyelasticsearch.ElasticSearch(self.ES_URL)
-        self.queries = json.loads(open(queries).read())
-        self.queries_json = queries
+        self.queries = yaml.load(open(queries).read())
+        self.queries_filename = queries
         self.log = logging.getLogger("recheckwatchbot")
 
     def _apply_template(self, template, values):
@@ -180,7 +180,7 @@ class Classifier():
     def classify(self, change_number, patch_number, comment):
         """Returns either None or a bug number"""
         #Reload each time
-        self.queries = json.loads(open(self.queries_json).read())
+        self.queries = yaml.load(open(self.queries_filename).read())
         #Wait till Elastic search is ready
         self._wait_till_ready(change_number, patch_number, comment)
         for x in self.queries:
@@ -267,7 +267,7 @@ def main():
     config.read(config_path)
     user = config.get('gerrit', 'user', 'jogo')
     host = config.get('gerrit', 'host', 'review.openstack.org')
-    queries = config.get('gerrit', 'query_file', 'queries.json')
+    queries = config.get('gerrit', 'query_file', 'queries.yaml')
     key = config.get('gerrit', 'key')
     classifier = Classifier(queries)
     stream = Stream(user, host, key)
