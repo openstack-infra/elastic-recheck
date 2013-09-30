@@ -22,6 +22,7 @@ import urllib2
 import ConfigParser
 import copy
 import logging
+import os
 import sys
 import time
 import yaml
@@ -268,6 +269,7 @@ def main():
     user = config.get('gerrit', 'user', 'jogo')
     host = config.get('gerrit', 'host', 'review.openstack.org')
     queries = config.get('gerrit', 'query_file', 'queries.yaml')
+    queries = os.path.expanduser(queries)
     key = config.get('gerrit', 'key')
     classifier = Classifier(queries)
     stream = Stream(user, host, key)

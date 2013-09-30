@@ -1,6 +1,6 @@
 pyelasticsearch
 gerritlib
-daemon
+python-daemon
 irc
 pyyaml
 lockfile

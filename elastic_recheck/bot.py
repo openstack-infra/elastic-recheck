@@ -42,6 +42,7 @@ import ConfigParser
 import daemon
 import irc.bot
 import logging
+import logging.config
 import os
 import sys
 import threading
@@ -167,9 +168,7 @@ class ChannelConfig(object):
                 self.events[event] = event_set
 
 
-def _main():
-    config = ConfigParser.ConfigParser({'server_password': None})
-    config.read(sys.argv[1])
+def _main(config):
     setup_logging(config)
 
     fp = config.get('ircbot', 'channel_config')
@@ -199,14 +198,24 @@ def _main():
 
 
 def main():
-    if len(sys.argv) != 2:
+    if len(sys.argv) < 2:
         print "Usage: %s CONFIGFILE" % sys.argv[0]
         sys.exit(1)
 
-    pid = pid_file_module.TimeoutPIDLockFile(
-        "/tmp/recheckwatchbot.pid", 10)
-    with daemon.DaemonContext(pidfile=pid):
-        _main()
+    config = ConfigParser.ConfigParser({'server_password': None})
+    config.read(sys.argv[1])
+
+    if config.has_option('ircbot', 'pidfile'):
+        pid_fn = os.path.expanduser(config.get('ircbot', 'pidfile'))
+    else:
+        pid_fn = '/var/run/elastic-recheck/elastic-recheck.pid'
+
+    if '-d' in sys.argv:
+        _main(config)
+    else:
+        pid = pid_file_module.TimeoutPIDLockFile(pid_fn, 10)
+        with daemon.DaemonContext(pidfile=pid):
+            _main(config)
 
 
 def setup_logging(config):
