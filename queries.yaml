@@ -58,3 +58,8 @@
     @message:"with code 22"
     AND @fields.filename:"logs/screen-c-vol.txt"
     AND @fields.build_status:"FAILURE"
+- bug: 1224001
+  query: >
+    @message:"tempest.scenario.test_network_basic_ops AssertionError\: Timed out waiting for"
+    AND @fields.filename:"console.html"
+    AND @fields.build_status:"FAILURE"
