@@ -42,8 +42,8 @@
     @message:"Second simultaneous read on fileno"
 - bug: 1230407
   query: >
-    @message:"AssertionError: State change timeout exceeded!"
-    AND @fields.filename:"console.html"
+    @message:"Lock wait timeout exceeded; try restarting transaction"
+    AND @fields.filename:"logs/screen-q-svc.txt"
 - bug: 1223469
   query: >
     @message:"with code 22"
