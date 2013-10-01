@@ -74,11 +74,14 @@ class Stream(object):
                     return event
                 continue
 
-    def leave_comment(self, project, commit, bug=None):
-        if bug:
-            bug_url = 'https://bugs.launchpad.net/bugs/%s' % bug
-            message = ("I noticed tempest failed, I think you hit bug %s" %
-                       bug_url)
+    def leave_comment(self, project, commit, bugs=None):
+        if bugs:
+            message = "I noticed tempest failed, I think you hit bugs:"
+            if len(bugs) > 1:
+                for bug in bugs:
+                    message += ' https://bugs.launchpad.net/bugs/%s and' % bug
+            else:
+                message += ' https://bugs.launchpad.net/bugs/%s' % bug
         else:
             message = ("I noticed tempest failed, refer to: "
                        "https://wiki.openstack.org/wiki/"
@@ -184,13 +187,15 @@ class Classifier():
         self.queries = yaml.load(open(self.queries_filename).read())
         #Wait till Elastic search is ready
         self._wait_till_ready(change_number, patch_number, comment)
+        bug_matches = []
         for x in self.queries:
             self.log.debug("Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug'])
             query = self._apply_template(self.targeted_template, (x['query'],
                     change_number, patch_number))
             results = self.es.search(query, size='10')
             if self._urls_match(comment, results['hits']['hits']):
-                return x['bug']
+                bug_matches.append(x['bug'])
+        return bug_matches
 
     def _wait_till_ready(self, change_number, patch_number, comment):
         query = self._apply_template(self.ready_template, (change_number,
@@ -279,11 +284,12 @@ def main():
         rev = event['patchSet']['number']
         print "======================="
         print "https://review.openstack.org/#/c/%(change)s/%(rev)s" % locals()
-        bug_number = classifier.classify(change, rev, event['comment'])
-        if bug_number is None:
+        bug_numbers = classifier.classify(change, rev, event['comment'])
+        if not bug_numbers:
             print "unable to classify failure"
         else:
-            print "Found bug: https://bugs.launchpad.net/bugs/%s" % bug_number
+            for bug_number in bug_numbers:
+                print "Found bug: https://bugs.launchpad.net/bugs/%s" % bug_number
 
 if __name__ == "__main__":
     main()
