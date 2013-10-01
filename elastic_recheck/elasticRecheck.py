@@ -247,10 +247,10 @@ class RequiredFiles(object):
     def files_at_url(url):
         for f in REQUIRED_FILES:
             try:
-                urllib2.urlopen(url + '/' + f).code
+                urllib2.urlopen(url + '/' + f)
             except urllib2.HTTPError:
                 try:
-                    urllib2.urlopen(url + '/' + f + '.gz').code
+                    urllib2.urlopen(url + '/' + f + '.gz')
                 except urllib2.HTTPError:
                     # File does not exist at URL
                     print f

@@ -12,20 +12,28 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import testtools
+import urllib2
 
 from elastic_recheck import elasticRecheck
+from elastic_recheck import tests
 
 
-class TestRequiredFiles(testtools.TestCase):
+class TestRequiredFiles(tests.TestCase):
     def test_url(self):
         url = elasticRecheck.RequiredFiles.prep_url('http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44/console.html')
         self.assertEqual(url,
                          'http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44')
 
     def test_files_at_url_pass(self):
-        self.assertTrue(elasticRecheck.RequiredFiles.files_at_url('http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44'))
+        self.mox.StubOutWithMock(urllib2, 'urlopen')
+        result = elasticRecheck.RequiredFiles.files_at_url('http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44')
+        self.mox.ReplayAll()
+        self.assertTrue(result)
+
+    def _invalid_url_open(self, url):
+        raise urllib2.HTTPError(url, 404, 'NotFound', '', None)
 
     def test_files_at_url_fail(self):
+        self.stubs.Set(urllib2, 'urlopen', self._invalid_url_open)
         self.assertFalse(elasticRecheck.RequiredFiles.files_at_url('http://logs.openstack.org/02/44502/7/check/gate-tempest-devstack-vm-neutron/4f386e5'))
         self.assertFalse(elasticRecheck.RequiredFiles.files_at_url('http://logs.openstack.org/45/47445/3/check/gate-tempest-devstack-vm-full/0e43e09/'))
