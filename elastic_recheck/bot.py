@@ -114,17 +114,21 @@ class RecheckWatch(threading.Thread):
         self.ircbot.send(channel, msg)
 
     def error_found(self, channel, data):
-        msg = ('%s change: %s failed tempest because of: '
-               'https://bugs.launchpad.net/bugs/%s' % (
+        msg = ('%s change: %s failed tempest because of:' % (
             data['change']['project'],
-            data['change']['url'],
-            data['bug_number']))
+            data['change']['url']))
+        if len(data['bug_numbers']) > 1:
+            for bug in data['bug_numbers']:
+                msg += ' https://bugs.launchpad.net/bugs/%s and' % bug
+        else:
+            msg += (' https://bugs.launchpad.net/bugs/%s' %
+                    data['bug_numbers'][0])
         self.log.info('Compiled Message %s: %s' % (channel, msg))
         self.ircbot.send(channel, msg)
 
     def _read(self, data):
         for channel in self.channel_config.channels:
-            if data.get('bug_number'):
+            if data.get('bug_numbers'):
                 if channel in self.channel_config.events['positive']:
                     self.error_found(channel, data)
             else:
@@ -143,13 +147,13 @@ class RecheckWatch(threading.Thread):
             rev = event['patchSet']['number']
             change_id = "%s,%s" % (change, rev)
             project = event['change']['project']
-            bug_number = classifier.classify(change, rev, event['comment'])
-            if bug_number is None:
+            bug_numbers = classifier.classify(change, rev, event['comment'])
+            if not bug_numbers:
                 self._read(event)
             else:
-                event['bug_number'] = bug_number
+                event['bug_numbers'] = bug_numbers
                 self._read(event)
-                stream.leave_comment(project, change_id, bug_number)
+                stream.leave_comment(project, change_id, bug_numbers)
 
 
 class ChannelConfig(object):
