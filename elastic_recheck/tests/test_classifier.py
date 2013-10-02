@@ -31,9 +31,10 @@ class TestClassifier(testtools.TestCase):
         self.classifier.last_failures()
 
     def test_ready(self):
-        self.classifier._wait_till_ready('30043', '34', 'BLAH http://logs.openstack.org/43/30043/34/check/gate-tempest-devstack-vm-full/b852a33')
+        self.assertTrue(self.classifier._is_ready('49282', '3',
+            'BLAH http://logs.openstack.org/82/49282/3/gate/gate-tempest-devstack-vm-postgres-full/ffc0540'))
 
     def test_classify(self):
-        bug_number = self.classifier.classify('43258', '13',
-            ' blah http://logs.openstack.org/58/43258/13/check/gate-tempest-devstack-vm-neutron/55a7887')
-        self.assertEqual(bug_number, '1211915')
+        bug_numbers = self.classifier.classify('47463', '3',
+            ' blah http://logs.openstack.org/63/47463/3/gate/gate-tempest-devstack-vm-postgres-full/99bb8f6')
+        self.assertEqual(bug_numbers, [1218391])
