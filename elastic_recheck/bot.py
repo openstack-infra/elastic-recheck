@@ -137,10 +137,9 @@ class RecheckWatch(threading.Thread):
 
     def run(self):
         # Import here because it needs to happen after daemonization
-        from elasticRecheck import Classifier
-        from elasticRecheck import Stream
-        classifier = Classifier(self.queries)
-        stream = Stream(self.username, self.host, self.key)
+        import elastic_recheck.elasticRecheck as er
+        classifier = er.Classifier(self.queries)
+        stream = er.Stream(self.username, self.host, self.key)
         while True:
             event = stream.get_failed_tempest()
             change = event['change']['number']
