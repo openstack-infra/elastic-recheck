@@ -15,10 +15,9 @@ Eventually this can be tied into the rechecker tool and launchpad
 
 Future Work
 ------------
-- Move config files into a seperate directory
-- Update sample config files
+- Move config files into a separate directory
 - Make unit tests robust
-- Make pip installable, merge both binaries
+- Merge both binaries
 - Add debug mode flag
 - Split out queries repo
 - Expand gating testing
