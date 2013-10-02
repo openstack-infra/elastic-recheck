@@ -186,13 +186,16 @@ class Classifier():
 
     def classify(self, change_number, patch_number, comment):
         """Returns either None or a bug number"""
+        self.log.debug("Entering classify")
         #Reload each time
         self.queries = yaml.load(open(self.queries_filename).read())
         #Wait till Elastic search is ready
+        self.log.debug("checking if ElasticSearch is ready")
         if not self._is_ready(change_number, patch_number, comment):
             self.log.error("something went wrong, ElasticSearch is still not ready, "
                     "giving up and trying next failure")
             return None
+        self.log.debug("ElasticSearch is ready, starting to classify")
         bug_matches = []
         for x in self.queries:
             self.log.debug("Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug'])
@@ -225,6 +228,7 @@ class Classifier():
                 time.sleep(SLEEP_TIME)
         if i == NUMBER_OF_RETRIES - 1:
             return False
+        self.log.debug("Found hits for change_number: %s, patch_number: %s" % (change_number, patch_number))
         query = self._apply_template(self.files_ready_template, (change_number,
             patch_number))
         for i in range(NUMBER_OF_RETRIES):
@@ -238,6 +242,7 @@ class Classifier():
                 time.sleep(SLEEP_TIME)
         if i == NUMBER_OF_RETRIES - 1:
             return False
+        self.log.debug("All files present for change_number: %s, patch_number: %s" % (change_number, patch_number))
         # Just because one file is parsed doesn't mean all are, so wait a
         # bit
         time.sleep(10)
