@@ -168,11 +168,10 @@ class Classifier():
         es_query = self._apply_template(self.general_template, query)
         return self.es.search(es_query, size=size)
 
-    def last_failures(self):
+    def last_failures(self, size=10):
         for x in self.queries:
             self.log.debug("Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug'])
-            query = self._apply_template(self.general_template, x['query'])
-            results = self.es.search(query, size='10')
+            results = self.hits_by_query(x['query'], size=size)
             self._parse_results(results)
 
     def _parse_results(self, results):
