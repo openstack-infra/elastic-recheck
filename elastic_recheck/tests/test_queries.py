@@ -16,15 +16,15 @@ import os
 
 import ConfigParser
 from launchpadlib import launchpad
-import testtools
 import yaml
 
 from elastic_recheck import elasticRecheck
+from elastic_recheck import tests
 
 LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
 
 
-class TestQueries(testtools.TestCase):
+class TestQueries(tests.TestCase):
     def setUp(self):
         super(TestQueries, self).setUp()
         config = ConfigParser.ConfigParser({'server_password': None})
