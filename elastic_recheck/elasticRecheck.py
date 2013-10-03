@@ -29,6 +29,7 @@ import yaml
 
 logging.basicConfig()
 
+
 REQUIRED_FILES = [
         'console.html',
         'logs/screen-n-api.txt',
@@ -45,6 +46,8 @@ class Stream(object):
     Monitors gerrit stream looking for tempest-devstack failures.
     """
 
+    log = logging.getLogger("recheckwatchbot")
+
     def __init__(self, user, host, key, thread=True):
         port = 29418
         self.gerrit = gerritlib.gerrit.Gerrit(host, user, port, key)
@@ -52,6 +55,7 @@ class Stream(object):
             self.gerrit.startWatching()
 
     def get_failed_tempest(self):
+        self.log.debug("entering get_failed_tempest")
         while True:
             event = self.gerrit.getEvent()
             if event.get('type', '') != 'comment-added':
@@ -60,6 +64,7 @@ class Stream(object):
             if (username == 'jenkins' and
                     "Build failed.  For information on how to proceed" in
                     event['comment']):
+                self.log.debug("potential failed_tempest")
                 found = False
                 for line in event['comment'].split('\n'):
                     if "FAILURE" in line and ("python2" in line or "pep8" in line):
@@ -69,6 +74,7 @@ class Stream(object):
                     if "FAILURE" in line and "tempest-devstack" in line:
                         url = [x for x in line.split() if "http" in x][0]
                         if RequiredFiles.files_at_url(url):
+                            self.log.debug("All file present")
                             found = True
                 if found:
                     return event
@@ -95,6 +101,7 @@ class Classifier():
     Given a change and revision, query logstash with a list of known queries
     that are mapped to specific bugs.
     """
+    log = logging.getLogger("recheckwatchbot")
     ES_URL = "http://logstash.openstack.org/elasticsearch"
     targeted_template = {
             "sort": {
@@ -151,7 +158,6 @@ class Classifier():
         self.es = pyelasticsearch.ElasticSearch(self.ES_URL)
         self.queries = yaml.load(open(queries).read())
         self.queries_filename = queries
-        self.log = logging.getLogger("recheckwatchbot")
 
     def _apply_template(self, template, values):
         query = copy.deepcopy(template)
@@ -236,6 +242,8 @@ class Classifier():
 
 class RequiredFiles(object):
 
+    log = logging.getLogger("recheckwatchbot")
+
     @staticmethod
     def prep_url(url):
         if isinstance(url, list):
@@ -255,13 +263,12 @@ class RequiredFiles(object):
                     urllib2.urlopen(url + '/' + f + '.gz')
                 except urllib2.HTTPError:
                     # File does not exist at URL
-                    print f
+                    RequiredFiles.log.debug("missing file %s" % f)
                     return False
         return True
 
 
 def main():
-
     config = ConfigParser.ConfigParser()
     if len(sys.argv) is 2:
         config_path = sys.argv[1]
