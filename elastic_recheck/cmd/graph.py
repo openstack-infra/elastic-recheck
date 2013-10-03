@@ -78,6 +78,11 @@ def main():
                 hist[pos] = 0
             hist[pos] += 1
 
+        ts = datetime.now()
+        ts = datetime(ts.year, ts.month, ts.day, ts.hour)
+        # ms since epoch
+        now = int(((ts - epoch).total_seconds()) * 1000)
+
         for name, hist in histograms.items():
             d = dict(label=name,
                      data=[])
@@ -86,12 +91,14 @@ def main():
             last = None
             for pos in positions:
                 if last is not None:
-                    prev = pos - 3600000
-                    if prev > last:
-                        for i in range(last, prev, 3600000):
+                    if last + 3600000 < pos:
+                        for i in range(last + 3600000, pos, 3600000):
                             d['data'].append([i, 0])
                 d['data'].append([pos, hist[pos]])
                 last = pos
+            if last + 3600000 < now:
+                for i in range(last + 3600000, now, 3600000):
+                    d['data'].append([i, 0])
             bug['data'].append(d)
 
     out = open(args.output, 'w')
