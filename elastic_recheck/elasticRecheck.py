@@ -158,31 +158,9 @@ class Classifier():
         query['query']['query_string']['query'] = query['query']['query_string']['query'] % values
         return query
 
-    def test(self):
-        query = self._apply_template(self.targeted_template, ('@tags:"console.html" AND @message:"Finished: FAILURE"', '34825', '3'))
-        results = self.es.search(query, size='10')
-        print results['hits']['total']
-        self._parse_results(results)
-
     def hits_by_query(self, query, size=100):
         es_query = self._apply_template(self.general_template, query)
         return self.es.search(es_query, size=size)
-
-    def last_failures(self, size=10):
-        for x in self.queries:
-            self.log.debug("Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug'])
-            results = self.hits_by_query(x['query'], size=size)
-            self._parse_results(results)
-
-    def _parse_results(self, results):
-        for x in results['hits']['hits']:
-            try:
-                change = x["_source"]['@fields']['build_change']
-                patchset = x["_source"]['@fields']['build_patchset']
-                self.log.debug("build_name %s" % x["_source"]['@fields']['build_name'])
-                self.log.debug("https://review.openstack.org/#/c/%(change)s/%(patchset)s" % locals())
-            except KeyError:
-                self.log.debug("build_name %s" % x["_source"]['@fields']['build_name'])
 
     def classify(self, change_number, patch_number, comment):
         """Returns either None or a bug number"""
