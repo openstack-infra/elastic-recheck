@@ -54,7 +54,8 @@ class TestQueries(tests.TestCase):
             bug_complete = map(lambda bug_task: bug_task.is_complete, bug_tasks)
             projects = map(lambda bug_task: bug_task.bug_target_name, bug_tasks)
             # Check if all open bug tasks are closed if is_complete is true for all tasks.
-            self.assertNotEquals(len(bug_complete), bug_complete.count(True))
+            self.assertNotEquals(len(bug_complete), bug_complete.count(True),
+                                 "bug %s is closed in launchpad" % bug)
             # Check that all bug_tasks are targetted to OpenStack Projects
             for project in projects:
                 self.assertIn(project, openstack_projects)
