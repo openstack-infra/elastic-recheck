@@ -56,3 +56,7 @@
     @message:"One or more ports have an IP allocation from this subnet"
     AND @fields.filename:"logs/screen-q-svc.txt"
     AND @message:" SubnetInUse: Unable to complete operation on subnet"
+- bug: 1235437
+  query: >
+    @message:"failed to reach ACTIVE status within the required time (400 s). Current status: BUILD"
+    AND @fields.filename:"console.html"
