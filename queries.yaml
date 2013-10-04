@@ -47,6 +47,10 @@
   query: >
     @message:"tempest.scenario.test_network_basic_ops AssertionError: Timed out waiting for"
     AND @fields.filename:"console.html"
+- bug: 1235486
+  query: >
+    @message:"update or delete on table \"networks\" violates foreign key constraint"
+    AND @fields.filename:"logs/screen-q-svc.txt"
 - bug: 1232748
   query: >
     @message:"OperationalError: (OperationalError) could not translate host name \"localhost\" to address"
