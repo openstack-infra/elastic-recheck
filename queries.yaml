@@ -56,4 +56,8 @@
   query: >
     @message:"OperationalError: (OperationalError) could not translate host name \"localhost\" to address"
     AND @fields.filename:"logs/screen-n-api.txt"
-
+- bug: 1235435
+  query: >
+    @message:"One or more ports have an IP allocation from this subnet"
+    AND @fields.filename:"logs/screen-q-svc.txt"
+    AND @message:" SubnetInUse: Unable to complete operation on subnet"
