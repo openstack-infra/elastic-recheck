@@ -87,7 +87,7 @@ class Stream(object):
                 for bug in bugs:
                     message += ' https://bugs.launchpad.net/bugs/%s and' % bug
             else:
-                message += ' https://bugs.launchpad.net/bugs/%s' % bug
+                message += ' https://bugs.launchpad.net/bugs/%s' % bugs[0]
         else:
             message = ("I noticed tempest failed, refer to: "
                        "https://wiki.openstack.org/wiki/"
@@ -169,7 +169,7 @@ class Classifier():
         return self.es.search(es_query, size=size)
 
     def classify(self, change_number, patch_number, comment):
-        """Returns either None or a bug number"""
+        """Returns either empty list or list with matched bugs."""
         self.log.debug("Entering classify")
         #Reload each time
         self.queries = yaml.load(open(self.queries_filename).read())

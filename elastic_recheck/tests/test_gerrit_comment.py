@@ -33,15 +33,26 @@ class TestGerritComment(testtools.TestCase):
         self.gerrit = gerritlib.gerrit.Gerrit(host, self.user, port)
 
     def test_bug_found(self):
-        bug_number = '1223158'
+        bug_numbers = ['1223158']
         project = 'gtest-org/test'
         commit_id = '434,1'
         commit = '434'
-        self.stream.leave_comment(project, commit_id, bug_number)
+        self.stream.leave_comment(project, commit_id, bug_numbers)
         result = self.gerrit.query(commit, comments=True)
         comments = result.get('comments')
         comment = comments[-1]
         self.assertIn("I noticed tempest failed, I think you hit bug https://bugs.launchpad.net/bugs/1223158", comment.get('message'))
+
+    def test_bugs_found(self):
+        bug_numbers = ['1223158', '424242']
+        project = 'gtest-org/test'
+        commit_id = '434,1'
+        commit = '434'
+        self.stream.leave_comment(project, commit_id, bug_numbers)
+        result = self.gerrit.query(commit, comments=True)
+        comments = result.get('comments')
+        comment = comments[-1]
+        self.assertIn("I noticed tempest failed, I think you hit bug https://bugs.launchpad.net/bugs/1223158 and https://bugs.launchpad.net/bugs/424242 and", comment.get('message'))
 
     def test_bug_not_found(self):
         project = 'gtest-org/test'
