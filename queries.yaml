@@ -39,10 +39,6 @@
   query: >
     @message:"Lock wait timeout exceeded; try restarting transaction"
     AND @fields.filename:"logs/screen-q-svc.txt"
-- bug: 1223469
-  query: >
-    @message:"with code 22"
-    AND @fields.filename:"logs/screen-c-vol.txt"
 - bug: 1224001
   query: >
     @message:"tempest.scenario.test_network_basic_ops AssertionError: Timed out waiting for"
