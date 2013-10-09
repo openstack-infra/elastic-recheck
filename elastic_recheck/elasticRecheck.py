@@ -82,12 +82,9 @@ class Stream(object):
 
     def leave_comment(self, project, commit, bugs=None):
         if bugs:
-            message = "I noticed tempest failed, I think you hit bugs:"
-            if len(bugs) > 1:
-                for bug in bugs:
-                    message += ' https://bugs.launchpad.net/bugs/%s and' % bug
-            else:
-                message += ' https://bugs.launchpad.net/bugs/%s' % bugs[0]
+            message = "I noticed tempest failed, I think you hit bug(s): "
+            bug_urls = ['https://bugs.launchpad.net/bugs/%s' % x for x in bugs]
+            message += " and ".join(bug_urls)
         else:
             message = ("I noticed tempest failed, refer to: "
                        "https://wiki.openstack.org/wiki/"
