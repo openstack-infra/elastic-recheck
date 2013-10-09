@@ -24,10 +24,12 @@ class TestRequiredFiles(tests.TestCase):
         self.assertEqual(url,
                          'http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44')
 
+    def _fake_urlopen(self, url):
+        pass
+
     def test_files_at_url_pass(self):
-        self.mox.StubOutWithMock(urllib2, 'urlopen')
+        self.stubs.Set(urllib2, 'urlopen', self._fake_urlopen)
         result = elasticRecheck.RequiredFiles.files_at_url('http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44')
-        self.mox.ReplayAll()
         self.assertTrue(result)
 
     def _invalid_url_open(self, url):
