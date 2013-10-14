@@ -6,11 +6,6 @@
   query: >
     @message:"ConnectionFailed: Connection to neutron failed: Maximum attempts reached"
     AND @fields.filename:"console.html"
-- bug: 1227915
-  query: >
-    @message:"already exists in volume group" AND @fields.build_status:"FAILURE"
-    AND @fields.loglevel:"ERROR"
-    AND @fields.filename:"logs/screen-c-vol.txt"
 - bug: 1217734
   query: >
     @message:"CalledProcessError: Command 'openssl' returned non-zero exit status"
