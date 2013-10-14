@@ -59,3 +59,7 @@
   query: >
     @message:"DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint"
     AND @fields.filename:"logs/screen-q-svc.txt"
+- bug: 1239856
+  query: >
+    @message:"tempest/services" AND @message:"/images_client.py" AND @message:"wait_for_image_status"
+    AND @tags:"console.html"
