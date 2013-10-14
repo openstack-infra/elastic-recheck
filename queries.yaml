@@ -60,3 +60,7 @@
   query: >
     @message:"failed to reach ACTIVE status within the required time (400 s). Current status: BUILD"
     AND @fields.filename:"console.html"
+- bug: 1239637
+  query: >
+    @message:"DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint"
+    AND @fields.filename:"logs/screen-q-svc.txt"
