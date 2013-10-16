@@ -37,6 +37,7 @@ REQUIRED_FILES = [
         'logs/screen-n-sch.txt',
         'logs/screen-c-api.txt',
         'logs/screen-c-vol.txt'
+        'logs/syslog.txt',
         ]
 
 
