@@ -22,11 +22,6 @@
   query: >
     @message:"Cannot 'createImage'"
     AND @fields.filename:"console.html"
-- bug: 1223161
-  query: >
-    @message:"Cannot understand JSON*"
-    AND @fields.build_name:"gate-tempest-devstack-vm-neutron"
-    AND @fields.filename:"logs/screen-n-sch.txt"
 - bug: 1229475
   query: >
     @message:"Second simultaneous read on fileno"
