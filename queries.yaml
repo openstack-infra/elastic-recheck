@@ -58,3 +58,7 @@
   query: >
     @message:"tempest/services" AND @message:"/images_client.py" AND @message:"wait_for_image_status"
     AND @tags:"console.html"
+- bug: 1240256
+  query: >
+    @message:" 503" AND @fields.filename:"logs/syslog.txt"
+    AND @fields.syslog_program:"proxy-server"
