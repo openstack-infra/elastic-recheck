@@ -46,8 +46,12 @@ def collect_metrics(classifier):
             else:
                 rate[success].add(uuid)
 
+        num_fails = 0
+        if "FAILURE" in rate:
+            num_fails = len(rate["FAILURE"])
+
         data[q['bug']] = {
-            'fails': len(rate["FAILURE"]),
+            'fails': num_fails,
             'hits': rate,
             'query': q['query']
             }
@@ -58,7 +62,7 @@ def collect_metrics(classifier):
 def print_metrics(data):
     print "Elastic recheck known issues"
     sorted_data = sorted(data.iteritems(),
-                         key=lambda x: -len(x[1]['hits']['FAILURE']))
+                         key=lambda x: -x[1]['fails'])
     for d in sorted_data:
         print "Bug: %s => %s" % (d[0], d[1]['query'].rstrip())
         for s in d[1]['hits'].keys():
