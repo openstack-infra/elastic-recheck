@@ -146,13 +146,17 @@ class RecheckWatch(threading.Thread):
             rev = event['patchSet']['number']
             change_id = "%s,%s" % (change, rev)
             project = event['change']['project']
-            bug_numbers = classifier.classify(change, rev, event['comment'])
-            if not bug_numbers:
-                self._read(event)
-            else:
-                event['bug_numbers'] = bug_numbers
-                self._read(event)
-                stream.leave_comment(project, change_id, bug_numbers)
+            try:
+                bug_numbers = classifier.classify(change, rev,
+                                                  event['comment'])
+                if not bug_numbers:
+                    self._read(event)
+                else:
+                    event['bug_numbers'] = bug_numbers
+                    self._read(event)
+                    stream.leave_comment(project, change_id, bug_numbers)
+            except Exception:
+                self.log.exception("Uncaught exception processing event.")
 
 
 class ChannelConfig(object):
