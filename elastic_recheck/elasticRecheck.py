@@ -107,7 +107,7 @@ class Classifier():
                 },
             "query": {
                 "query_string": {
-                    "query": '%s AND @fields.build_change:"%s" AND @fields.build_patchset:"%s"'
+                    "query": '%s AND build_change:"%s" AND build_patchset:"%s"'
                     }
                 }
             }
@@ -117,13 +117,13 @@ class Classifier():
                 },
             "query": {
                 "query_string": {
-                    "query": '@fields.build_status:"FAILURE" AND @fields.build_change:"%s" AND @fields.build_patchset:"%s"'
+                    "query": 'build_status:"FAILURE" AND build_change:"%s" AND build_patchset:"%s"'
                     }
                 },
             "facets": {
                 "tag": {
                     "terms": {
-                        "field": "@fields.filename",
+                        "field": "filename",
                         "size": 80
                         }
                     }
@@ -135,7 +135,7 @@ class Classifier():
                 },
             "query": {
                 "query_string": {
-                    "query": '@tags:"console.html" AND (@message:"Finished: FAILURE") AND @fields.build_change:"%s" AND @fields.build_patchset:"%s"'
+                    "query": 'filename:"console.html" AND (@message:"Finished: FAILURE" OR message:"Finished: FAILURE") AND build_change:"%s" AND build_patchset:"%s"'
                     }
                 }
             }
@@ -232,7 +232,8 @@ class Classifier():
 
     def _urls_match(self, comment, results):
         for result in results:
-            url = result["_source"]['@fields']['log_url']
+            fields = result['_source'].get('@fields', result['_source'])
+            url = fields['log_url']
             if RequiredFiles.prep_url(url) in comment:
                 return True
         return False
