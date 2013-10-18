@@ -1,0 +1,3340 @@
+{
+    "hits": {
+        "hits": [
+            {
+                "sort": [
+                    1382119628721
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "7", 
+                        "build_ref": "refs/zuul/master/Zdf47578a09824670ab0f67f4d0af7f5c", 
+                        "log_url": "http://logs.openstack.org/53/51753/7/check/check-tempest-devstack-vm-postgres-full/95c8cdc/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "51753", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "95c8cdc69b884b0cbbf5d75bf2d524f1", 
+                        "received_at": [
+                            "2013-10-18T18:09:39.326Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T18:07:08.721Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "xvF2zKf6QLifeWRDV89VnQ"
+            }, 
+            {
+                "sort": [
+                    1382106787484
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z5445281b83d74d40a753f5440d68a7af", 
+                        "log_url": "http://logs.openstack.org/30/52630/2/check/check-grenade-devstack-vm/674f693/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "52630", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "674f69334cd74e9e8a6503e960fa7a0d", 
+                        "received_at": [
+                            "2013-10-18T14:34:43.552Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T14:33:07.484Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "JrP_Lb_PTva80Qo4ACHH6A"
+            }, 
+            {
+                "sort": [
+                    1382106787448
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z5445281b83d74d40a753f5440d68a7af", 
+                        "log_url": "http://logs.openstack.org/30/52630/2/check/check-grenade-devstack-vm/674f693/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "52630", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "674f69334cd74e9e8a6503e960fa7a0d", 
+                        "received_at": [
+                            "2013-10-18T14:34:43.458Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T14:33:07.448Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 90, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "Fm0NqWVhT-ySALmWl4YNhQ"
+            }, 
+            {
+                "sort": [
+                    1382100948687
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:30.214Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.687Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "Ky1dEwMGSW6QVpiwpOaKzA"
+            }, 
+            {
+                "sort": [
+                    1382100948681
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:30.197Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.681Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "kzCwa5XcSjy64frb-dY09A"
+            }, 
+            {
+                "sort": [
+                    1382100948677
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:30.181Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.677Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "ac6bnABnTqO2OxBnZbB-mQ"
+            }, 
+            {
+                "sort": [
+                    1382100948672
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:30.164Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.672Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "3D_stdktRAil2YTNi6bh0g"
+            }, 
+            {
+                "sort": [
+                    1382100948649
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:30.044Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.649Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "lRMsjUZZT7Or3DxY6ZvBKw"
+            }, 
+            {
+                "sort": [
+                    1382100948629
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:29.860Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.629Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "pngvCUmhSU23vu8fxXU8WA"
+            }, 
+            {
+                "sort": [
+                    1382100948586
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:29.630Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.586Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "8iQ76euJTmWZSBC7d4gY_A"
+            }, 
+            {
+                "sort": [
+                    1382100948565
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:29.407Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.565Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "5biOU9jjSLKVD8QxfEvWFw"
+            }, 
+            {
+                "sort": [
+                    1382100948519
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:29.161Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.519Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "ph69GKAhT_qUve5pZqaCDQ"
+            }, 
+            {
+                "sort": [
+                    1382100948504
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:29.061Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.504Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "UVHqmQ_HR52vCwvxUK3Ufw"
+            }, 
+            {
+                "sort": [
+                    1382100948474
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:28.963Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.474Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "Q8yPdb6zQ8iQNGkvpo3OsA"
+            }, 
+            {
+                "sort": [
+                    1382100948468
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-full/d524157/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d52415771d264be8ae2b8603b5b322ea", 
+                        "received_at": [
+                            "2013-10-18T12:57:28.938Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:55:48.468Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "LF0gkkZQQy6t4BDO5h5foA"
+            }, 
+            {
+                "sort": [
+                    1382100885642
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:41.708Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.642Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "qgxIhDxiS-2rUw8KfSHuGA"
+            }, 
+            {
+                "sort": [
+                    1382100885639
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:41.685Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.639Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "CgJsPg-0Re-V13DJktHw7g"
+            }, 
+            {
+                "sort": [
+                    1382100885636
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:41.662Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.636Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "X3P4OBSdTTGKDGcpH1QgTw"
+            }, 
+            {
+                "sort": [
+                    1382100885632
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:41.639Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.632Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "CLVNBJSAS0CduGt2e-K3ZQ"
+            }, 
+            {
+                "sort": [
+                    1382100885613
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:41.490Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.613Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "1L0t2Sv0RKyDG5tZhbVlow"
+            }, 
+            {
+                "sort": [
+                    1382100885593
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:41.347Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.593Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "gjbhZwMbSbqsjrJxBB1oMg"
+            }, 
+            {
+                "sort": [
+                    1382100885560
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:41.055Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.560Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "06AHGayURnWhY3eIA9HxRw"
+            }, 
+            {
+                "sort": [
+                    1382100885542
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:40.917Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.542Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "RdoGJxeWT_qr3kpsRTcjwg"
+            }, 
+            {
+                "sort": [
+                    1382100885527
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:40.817Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.527Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "B9zkhWxhT9mHD0qei6BhjQ"
+            }, 
+            {
+                "sort": [
+                    1382100885514
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:40.723Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.514Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 90, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "04G0yX-iQtuSgVQwOo2xow"
+            }, 
+            {
+                "sort": [
+                    1382100885498
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:40.635Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.498Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "ZE1xCIu_Qe-icoNpnpWfSg"
+            }, 
+            {
+                "sort": [
+                    1382100885487
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:40.549Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.487Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "kwHx7KRIRLaTvels3NU_AQ"
+            }, 
+            {
+                "sort": [
+                    1382100885475
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:40.448Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.475Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "7b-cVkfJR0KWClBSO1lxIw"
+            }, 
+            {
+                "sort": [
+                    1382100885472
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-postgres-full/c2fa1d1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "c2fa1d1deae94c2c9beb2fbc84696f8a", 
+                        "received_at": [
+                            "2013-10-18T12:56:40.424Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:54:45.472Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "WaHY-PTHRVuE1KmrpOzcvA"
+            }, 
+            {
+                "sort": [
+                    1382100604933
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-grenade-devstack-vm/b466774/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "b466774b97514ba2bd0062deebbe9665", 
+                        "received_at": [
+                            "2013-10-18T12:51:40.822Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:50:04.933Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "mlnViCZRSP-EZaPACxsing"
+            }, 
+            {
+                "sort": [
+                    1382100604920
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-grenade-devstack-vm/b466774/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "b466774b97514ba2bd0062deebbe9665", 
+                        "received_at": [
+                            "2013-10-18T12:51:40.752Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:50:04.920Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 90, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "zoIBEZ8KRxOjBN133MlvzA"
+            }, 
+            {
+                "sort": [
+                    1382100170780
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-neutron/638418e/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-neutron", 
+                        "build_uuid": "638418e35e444f5dbaf4a976fd4063a3", 
+                        "received_at": [
+                            "2013-10-18T12:44:14.762Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:42:50.780Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "E1nkOHWTTkyGhmeWouFtIg"
+            }, 
+            {
+                "sort": [
+                    1382100170766
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z8be8c1cb388d4675a680824ef7e799e2", 
+                        "log_url": "http://logs.openstack.org/36/47836/8/check/check-tempest-devstack-vm-neutron/638418e/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "47836", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-neutron", 
+                        "build_uuid": "638418e35e444f5dbaf4a976fd4063a3", 
+                        "received_at": [
+                            "2013-10-18T12:44:14.676Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:42:50.766Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "BP9232-WSDiiU1_Nw8rLmQ"
+            }, 
+            {
+                "sort": [
+                    1382098883087
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "9", 
+                        "build_ref": "refs/zuul/master/Z35caf496e8d44266827684602d8f80d3", 
+                        "log_url": "http://logs.openstack.org/43/47143/9/check/check-tempest-devstack-vm-full/58b8508/console.html", 
+                        "project": "openstack/ceilometer", 
+                        "build_change": "47143", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "58b8508538d9482a8b98f3f73e014fd9", 
+                        "received_at": [
+                            "2013-10-18T12:24:04.219Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T12:21:23.087Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:45774/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "qVMCxhkrR6Cbj7nNz4Gi3w"
+            }, 
+            {
+                "sort": [
+                    1382085958703
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "5", 
+                        "build_ref": "refs/zuul/master/Z978314d610c54d76b3519b885bc650b6", 
+                        "log_url": "http://logs.openstack.org/23/51523/5/check/check-tempest-devstack-vm-postgres-full/954868c/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "51523", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "954868c652d647dfbf5dcd9f522d8a1d", 
+                        "received_at": [
+                            "2013-10-18T08:47:28.870Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T08:45:58.703Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "7u3njQcORxeemrcDYxjSuQ"
+            }, 
+            {
+                "sort": [
+                    1382081416306
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z106f8dfd01d848708b4a38b562a771fe", 
+                        "log_url": "http://logs.openstack.org/74/52374/2/check/check-grenade-devstack-vm/2fc7449/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "52374", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "2fc74491fdcb455981e0ef2b5f3b626f", 
+                        "received_at": [
+                            "2013-10-18T07:31:58.895Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T07:30:16.306Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "VDAq2_RYTHKLkLqObVWdrw"
+            }, 
+            {
+                "sort": [
+                    1382081416235
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z106f8dfd01d848708b4a38b562a771fe", 
+                        "log_url": "http://logs.openstack.org/74/52374/2/check/check-grenade-devstack-vm/2fc7449/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "52374", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "2fc74491fdcb455981e0ef2b5f3b626f", 
+                        "received_at": [
+                            "2013-10-18T07:31:58.821Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-18T07:30:16.235Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 90, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "bo74r4ypQa-dJJT3YOmCiQ"
+            }, 
+            {
+                "sort": [
+                    1382030016930
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z79b7dabfbd90415188836f61eb9e559c", 
+                        "log_url": "http://logs.openstack.org/29/52429/2/check/check-tempest-devstack-vm-postgres-full/2b58d23/console.html", 
+                        "project": "openstack/tempest", 
+                        "build_change": "52429", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "2b58d23ad8694cee844e420252ae737d", 
+                        "received_at": [
+                            "2013-10-17T17:15:09.207Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T17:13:36.930Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:59513/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "LRICHcp4TDmTmFQa_dx3vw"
+            }, 
+            {
+                "sort": [
+                    1382027767961
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "7", 
+                        "build_ref": "refs/zuul/master/Z8e8814670bc14e6c9a8407d3362610ee", 
+                        "log_url": "http://logs.openstack.org/68/51568/7/check/check-tempest-devstack-vm-postgres-full/fa2f32a/console.html", 
+                        "project": "openstack/keystone", 
+                        "build_change": "51568", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "fa2f32a3db4c44618a428d631ff0aae2", 
+                        "received_at": [
+                            "2013-10-17T16:39:20.365Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T16:36:07.961Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "Qg8P5PBrT-m0N9jtHP4p_A"
+            }, 
+            {
+                "sort": [
+                    1381946792971
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z9f614779a1ab4b8b8c0e5a8583c114e1", 
+                        "log_url": "http://logs.openstack.org/59/52059/2/check/check-tempest-devstack-vm-postgres-full/d7b5156/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "52059", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "d7b5156cd2994b8d82c7fcfacc2a7222", 
+                        "received_at": [
+                            "2013-10-16T18:08:08.263Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-16T18:06:32.971Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "2cK1CP-5Qr6ReLtY4D-noQ"
+            }, 
+            {
+                "sort": [
+                    1381945976286
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Zd665c6b995324782a5b866cc448a9e42", 
+                        "log_url": "http://logs.openstack.org/90/51590/4/check/check-tempest-devstack-vm-full/35c5f6a/console.html", 
+                        "project": "openstack/tempest", 
+                        "build_change": "51590", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "35c5f6aa0d6840da9210c3c387569317", 
+                        "received_at": [
+                            "2013-10-16T17:54:30.759Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-16T17:52:56.286Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:59513/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "_bjlgA3aQBO_qtKQnHBttg"
+            }, 
+            {
+                "sort": [
+                    1381944671883
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Zc974e6c6b56e4351a15fd2733b0367a9", 
+                        "log_url": "http://logs.openstack.org/57/52157/1/check/check-tempest-devstack-vm-postgres-full/acb643d/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "52157", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "acb643d41afa40daab0f403fa1432fd2", 
+                        "received_at": [
+                            "2013-10-16T17:33:18.823Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-16T17:31:11.883Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "h4ugVJdfQomLVFqJZ2rcaw"
+            }, 
+            {
+                "sort": [
+                    1381932255164
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Zfd53c362c643491eb88189d0d55a9a1f", 
+                        "log_url": "http://logs.openstack.org/00/52100/1/check/check-tempest-devstack-vm-postgres-full/bbbdde9/console.html", 
+                        "project": "openstack/cinder", 
+                        "build_change": "52100", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "bbbdde9b4a5a477aac3f567e4fc4d19e", 
+                        "received_at": [
+                            "2013-10-16T14:06:01.799Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-16T14:04:15.164Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "zAPtZDZqRg69DXzW7WnDrw"
+            }, 
+            {
+                "sort": [
+                    1381915345880
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z98a75f58a45b4940bb55eb954227f950", 
+                        "log_url": "http://logs.openstack.org/76/48976/2/check/check-grenade-devstack-vm/85b7e13/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "48976", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "85b7e13e070442a1b49d433d5e690fdf", 
+                        "received_at": [
+                            "2013-10-16T09:24:13.312Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-16T09:22:25.880Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:48897/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "b0bq1Ks1Q0ehw_ph_3Xgdw"
+            }, 
+            {
+                "sort": [
+                    1381915345868
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z98a75f58a45b4940bb55eb954227f950", 
+                        "log_url": "http://logs.openstack.org/76/48976/2/check/check-grenade-devstack-vm/85b7e13/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "48976", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "85b7e13e070442a1b49d433d5e690fdf", 
+                        "received_at": [
+                            "2013-10-16T09:24:13.256Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-16T09:22:25.868Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:48897/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 93, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "wobHJIUuTui6yCoRyL2WNA"
+            }, 
+            {
+                "sort": [
+                    1381913053870
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Z3e8b6b82f5c042c7845b4d4222a6872f", 
+                        "log_url": "http://logs.openstack.org/28/52028/1/check/check-tempest-devstack-vm-full/797eaf6/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "52028", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "797eaf652e9144b4bf7114a36df29386", 
+                        "received_at": [
+                            "2013-10-16T08:45:47.233Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-16T08:44:13.870Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "4Y33ynluT5SCj5E3atnJvA"
+            }, 
+            {
+                "sort": [
+                    1381896145271
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "13", 
+                        "build_ref": "refs/zuul/master/Z458d399fa880463a96e2fcc60a2cada6", 
+                        "log_url": "http://logs.openstack.org/21/39621/13/check/check-tempest-devstack-vm-full/10bafd5/console.html", 
+                        "project": "openstack/tempest", 
+                        "build_change": "39621", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "10bafd548498423d9693056cc9eac8e4", 
+                        "received_at": [
+                            "2013-10-16T04:04:32.316Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-16T04:02:25.271Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:48897/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "vbGhkmJMSXqviYe51W9ITw"
+            }, 
+            {
+                "sort": [
+                    1381895111307
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/stable/grizzly/Zb63fddf8871c416e95d0137c308fdb8d", 
+                        "log_url": "http://logs.openstack.org/95/51995/1/check/check-tempest-devstack-vm-full/6e33b46/console.html", 
+                        "project": "openstack/keystone", 
+                        "build_change": "51995", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "6e33b460f2f442a89f75b474b1619629", 
+                        "received_at": [
+                            "2013-10-16T03:46:59.936Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-16T03:45:11.307Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:48897/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"/opt/stack/new/tempest/tempest/services/compute/json/images_client.py\", line 110, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "X-EeJVixTRmadA2lmu_GXQ"
+            }, 
+            {
+                "sort": [
+                    1381891267647
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Zee875cc8beed4a22baa5586293333a19", 
+                        "log_url": "http://logs.openstack.org/76/50076/4/gate/gate-grenade-devstack-vm/36cbeba/console.html", 
+                        "project": "openstack/keystone", 
+                        "build_change": "50076", 
+                        "filename": "console.html", 
+                        "build_name": "gate-grenade-devstack-vm", 
+                        "build_uuid": "36cbeba7d761437eb113dfa2db6c0879", 
+                        "received_at": [
+                            "2013-10-16T02:43:06.872Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-16T02:41:07.647Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:48897/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "NFz1RSAXRzOv2NA-FxgAcQ"
+            }, 
+            {
+                "sort": [
+                    1381891267635
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Zee875cc8beed4a22baa5586293333a19", 
+                        "log_url": "http://logs.openstack.org/76/50076/4/gate/gate-grenade-devstack-vm/36cbeba/console.html", 
+                        "project": "openstack/keystone", 
+                        "build_change": "50076", 
+                        "filename": "console.html", 
+                        "build_name": "gate-grenade-devstack-vm", 
+                        "build_uuid": "36cbeba7d761437eb113dfa2db6c0879", 
+                        "received_at": [
+                            "2013-10-16T02:43:06.827Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-16T02:41:07.635Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:48897/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 90, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "ubj5djRET0S9gLMg87Qy0w"
+            }, 
+            {
+                "sort": [
+                    1381861583225
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Zdcd8d8f0830d40eeb79fc3a0c9d548b4", 
+                        "log_url": "http://logs.openstack.org/20/37420/8/gate/gate-tempest-devstack-vm-full/9acd554/console.html", 
+                        "project": "openstack/glance", 
+                        "build_change": "37420", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-full", 
+                        "build_uuid": "9acd554fe3704c4699b8340c3af8c82a", 
+                        "received_at": [
+                            "2013-10-15T18:30:20.252Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-15T18:26:23.225Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:36765/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "7DZE1yOCS5G1GDAAcBe3fw"
+            }, 
+            {
+                "sort": [
+                    1381827425562
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Zde46bf17ccff4b708c71c87ee842936e", 
+                        "log_url": "http://logs.openstack.org/88/49588/4/check/check-tempest-devstack-vm-full/9b42b16/console.html", 
+                        "project": "openstack/tempest", 
+                        "build_change": "49588", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "9b42b167b0804d25bd39f4cdc7303566", 
+                        "received_at": [
+                            "2013-10-15T08:58:58.288Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-15T08:57:05.562Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "KkVOecc5S82DhAyk578K0Q"
+            }, 
+            {
+                "sort": [
+                    1381799912395
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Z67da6e18727e457a882a67980bd4e1ad", 
+                        "log_url": "http://logs.openstack.org/65/50465/4/check/check-tempest-devstack-vm-full/5ba99c2/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "50465", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "5ba99c2834264503a2560fd915383abd", 
+                        "received_at": [
+                            "2013-10-15T01:21:55.512Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-15T01:18:32.395Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "1k-ZN2bERN-gl-MuoqvUfA"
+            }, 
+            {
+                "sort": [
+                    1381791167372
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Zc3bda78e127b4393b4eafc6d7333ee4c", 
+                        "log_url": "http://logs.openstack.org/53/50953/1/gate/gate-tempest-devstack-vm-postgres-full/e8a7119/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "50953", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "e8a7119a556f40438ddab8a930e51f4d", 
+                        "received_at": [
+                            "2013-10-14T22:54:00.053Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-14T22:52:47.372Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.14", 
+                "_id": "ZR-QDe2XTciRNrMrgJyglw"
+            }, 
+            {
+                "sort": [
+                    1381784273233
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/milestone-proposed/Zb5c60857cdec4d119d765cbabab5e33b", 
+                        "log_url": "http://logs.openstack.org/66/50966/1/gate/gate-tempest-devstack-vm-postgres-full/672f3c0/console.html", 
+                        "project": "openstack/keystone", 
+                        "build_change": "50966", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "672f3c020cd04f419d88e91695fb324b", 
+                        "received_at": [
+                            "2013-10-14T21:00:47.997Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-14T20:57:53.233Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.14", 
+                "_id": "phmfeMIkQnCBZvVULWvRBg"
+            }, 
+            {
+                "sort": [
+                    1381769431218
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Z7f93c880eacf46d4aa6b855c1c3df016", 
+                        "log_url": "http://logs.openstack.org/48/50748/4/gate/gate-grenade-devstack-vm/8a7486a/console.html", 
+                        "project": "openstack-dev/devstack", 
+                        "build_change": "50748", 
+                        "filename": "console.html", 
+                        "build_name": "gate-grenade-devstack-vm", 
+                        "build_uuid": "8a7486a9aada4260b36da896a7a1b6d0", 
+                        "received_at": [
+                            "2013-10-14T16:54:03.817Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-14T16:50:31.218Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:59513/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.14", 
+                "_id": "zBG5z8BIQDCYWhl8kZLoMQ"
+            }, 
+            {
+                "sort": [
+                    1381769431209
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Z7f93c880eacf46d4aa6b855c1c3df016", 
+                        "log_url": "http://logs.openstack.org/48/50748/4/gate/gate-grenade-devstack-vm/8a7486a/console.html", 
+                        "project": "openstack-dev/devstack", 
+                        "build_change": "50748", 
+                        "filename": "console.html", 
+                        "build_name": "gate-grenade-devstack-vm", 
+                        "build_uuid": "8a7486a9aada4260b36da896a7a1b6d0", 
+                        "received_at": [
+                            "2013-10-14T16:54:03.777Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-14T16:50:31.209Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:59513/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 93, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.14", 
+                "_id": "CoK44pbpTmiVrt3OQemhUw"
+            }, 
+            {
+                "sort": [
+                    1381762740641
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Z4221c42e2c9e444ba39912cc5e79fa3e", 
+                        "log_url": "http://logs.openstack.org/22/51622/1/check/check-tempest-devstack-vm-postgres-full/ec4975e/console.html", 
+                        "project": "openstack-dev/devstack", 
+                        "build_change": "51622", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "ec4975e0b09e49658946b152d9555dc4", 
+                        "received_at": [
+                            "2013-10-14T15:00:23.982Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-14T14:59:00.641Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 90, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.14", 
+                "_id": "DrXXSGJbQ6i_3qjzfsa_eQ"
+            }, 
+            {
+                "sort": [
+                    1381741065293
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Zaf9e90cac86544e7aa53bfdeb93045a8", 
+                        "log_url": "http://logs.openstack.org/38/44238/4/gate/gate-tempest-devstack-vm-full/14f46e9/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "44238", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-full", 
+                        "build_uuid": "14f46e95ca4a431b8cc84c85c1c52f0b", 
+                        "received_at": [
+                            "2013-10-14T08:59:27.925Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-14T08:57:45.293Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:55818/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.14", 
+                "_id": "5tBQ8NLwRj60fsttI4GNuQ"
+            }, 
+            {
+                "sort": [
+                    1381713811024
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Ze902c79d5f3d466694c540ae1d38bf2d", 
+                        "log_url": "http://logs.openstack.org/81/51481/2/check/check-tempest-devstack-vm-full/821f0ff/console.html", 
+                        "project": "openstack/keystone", 
+                        "build_change": "51481", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "821f0ff149fc4b89ab86571c1e2494a2", 
+                        "received_at": [
+                            "2013-10-14T01:24:53.359Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-14T01:23:31.024Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.14", 
+                "_id": "5aUV0IpDQkO9RW9vkYnANA"
+            }, 
+            {
+                "sort": [
+                    1381695786782
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "14", 
+                        "build_ref": "refs/zuul/master/Z4d48679bd3a7400c816f074c2f6ddb55", 
+                        "log_url": "http://logs.openstack.org/60/49460/14/check/check-tempest-devstack-vm-postgres-full/3f75ba9/console.html", 
+                        "project": "openstack/keystone", 
+                        "build_change": "49460", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "3f75ba9fa2a14bd3be22949db19f0caa", 
+                        "received_at": [
+                            "2013-10-13T20:24:23.475Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-13T20:23:06.782Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 90, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.13", 
+                "_id": "BRYbIb5tQBSTQ9wYmQjbvQ"
+            }, 
+            {
+                "sort": [
+                    1381567737900
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "18", 
+                        "build_ref": "refs/zuul/master/Zb61bff500d2a4cf9b8f4f8eb17b74ae0", 
+                        "log_url": "http://logs.openstack.org/22/43822/18/check/check-tempest-devstack-vm-full/8b01031/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "43822", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "8b0103119e7a4320a084274c158be151", 
+                        "received_at": [
+                            "2013-10-12T08:50:16.608Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-12T08:48:57.900Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.12", 
+                "_id": "BUWAmu29TxKoihaZgL6Sig"
+            }, 
+            {
+                "sort": [
+                    1381548824907
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Zedaa8f9f4b1d4ab7a3407cebaaf324df", 
+                        "log_url": "http://logs.openstack.org/35/51335/1/check/check-tempest-devstack-vm-full/2125c1f/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "51335", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "2125c1fc34bf47e09425da0cb1d68904", 
+                        "received_at": [
+                            "2013-10-12T03:35:18.240Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-12T03:33:44.907Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.12", 
+                "_id": "E-sLSkM4RoS2jWOyEfp2mQ"
+            }, 
+            {
+                "sort": [
+                    1381545111122
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "15", 
+                        "build_ref": "refs/zuul/master/Zd352fe3eaf204f88b565f504305e93a1", 
+                        "log_url": "http://logs.openstack.org/94/46894/15/check/check-grenade-devstack-vm/f44cd9b/console.html", 
+                        "project": "openstack/tempest", 
+                        "build_change": "46894", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "f44cd9ba94a14a98a573e98e8372339e", 
+                        "received_at": [
+                            "2013-10-12T02:33:28.995Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-12T02:31:51.122Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.12", 
+                "_id": "yVqoxkceRQq5RGwP2SB5Yw"
+            }, 
+            {
+                "sort": [
+                    1381545111087
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "15", 
+                        "build_ref": "refs/zuul/master/Zd352fe3eaf204f88b565f504305e93a1", 
+                        "log_url": "http://logs.openstack.org/94/46894/15/check/check-grenade-devstack-vm/f44cd9b/console.html", 
+                        "project": "openstack/tempest", 
+                        "build_change": "46894", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "f44cd9ba94a14a98a573e98e8372339e", 
+                        "received_at": [
+                            "2013-10-12T02:33:28.924Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-12T02:31:51.087Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 90, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.12", 
+                "_id": "JufrvZOdS2G9n-EvJxeyDA"
+            }, 
+            {
+                "sort": [
+                    1381535417009
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Z4e674e5183244b6f89d428c17ada909e", 
+                        "log_url": "http://logs.openstack.org/05/51305/1/gate/gate-tempest-devstack-vm-postgres-full/f5ce894/console.html", 
+                        "project": "openstack/cinder", 
+                        "build_change": "51305", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "f5ce894152084a618edb8430d076043c", 
+                        "received_at": [
+                            "2013-10-11T23:51:36.721Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-11T23:50:17.009Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.11", 
+                "_id": "76xYju63RxGOWg3teCgF7A"
+            }, 
+            {
+                "sort": [
+                    1381522803825
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Z4016fa1f3f5d49998bef814786703b45", 
+                        "log_url": "http://logs.openstack.org/51/50351/4/gate/gate-tempest-devstack-vm-postgres-full/5be9976/console.html", 
+                        "project": "openstack/ceilometer", 
+                        "build_change": "50351", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "5be99761d448430abf39db314bc025da", 
+                        "received_at": [
+                            "2013-10-11T20:23:40.635Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-11T20:20:03.825Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:44866/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.11", 
+                "_id": "BH3DBWDvQUexyAfUgD1niw"
+            }, 
+            {
+                "sort": [
+                    1381486568349
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "12", 
+                        "build_ref": "refs/zuul/master/Z3ec8cbe993574db1870bcbfa42693353", 
+                        "log_url": "http://logs.openstack.org/86/46286/12/check/check-tempest-devstack-vm-full/6b2bcf4/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "46286", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "6b2bcf4d224d411893c54e87efd5601d", 
+                        "received_at": [
+                            "2013-10-11T10:18:16.850Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-11T10:16:08.349Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.11", 
+                "_id": "9Gg0TNW6TMSRCFWEWWGFMw"
+            }, 
+            {
+                "sort": [
+                    1381477959719
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z0e948bc12bfa439880a256a6a55973cc", 
+                        "log_url": "http://logs.openstack.org/31/51131/2/check/check-tempest-devstack-vm-full/e3215f2/console.html", 
+                        "project": "openstack/requirements", 
+                        "build_change": "51131", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "e3215f27062a4ad1b782d03dfc85b081", 
+                        "received_at": [
+                            "2013-10-11T07:54:28.272Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-11T07:52:39.719Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:59513/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.11", 
+                "_id": "Lrkb6Y8JS3GnLx1hJ39KjA"
+            }, 
+            {
+                "sort": [
+                    1381451566439
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "11", 
+                        "build_ref": "refs/zuul/master/Z37b60bf252ca4d9d87f5e63b6031a739", 
+                        "log_url": "http://logs.openstack.org/26/49626/11/check/check-grenade-devstack-vm/e50e5b1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "49626", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "e50e5b1c6fb148a1bba40ff2e714954c", 
+                        "received_at": [
+                            "2013-10-11T00:35:08.472Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-11T00:32:46.439Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:55818/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.11", 
+                "_id": "59ZjNiReS0utogWPxPtFng"
+            }, 
+            {
+                "sort": [
+                    1381451566430
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "11", 
+                        "build_ref": "refs/zuul/master/Z37b60bf252ca4d9d87f5e63b6031a739", 
+                        "log_url": "http://logs.openstack.org/26/49626/11/check/check-grenade-devstack-vm/e50e5b1/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "49626", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "e50e5b1c6fb148a1bba40ff2e714954c", 
+                        "received_at": [
+                            "2013-10-11T00:35:08.424Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-11T00:32:46.430Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:55818/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 90, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.11", 
+                "_id": "tl3zgguNSDeriwEONZYuRQ"
+            }, 
+            {
+                "sort": [
+                    1381439105323
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/milestone-proposed/Za8f45f0145934e0ba339e12294b913ce", 
+                        "log_url": "http://logs.openstack.org/87/50987/1/gate/gate-tempest-devstack-vm-postgres-full/904d66c/console.html", 
+                        "project": "openstack/cinder", 
+                        "build_change": "50987", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "904d66c50866461496a848e77aa31436", 
+                        "received_at": [
+                            "2013-10-10T21:06:21.255Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-10T21:05:05.323Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "OSEl-SJZSCmas2NktmOw4Q"
+            }, 
+            {
+                "sort": [
+                    1381427277758
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Zc7353c3c63504dc691f08192830da7f8", 
+                        "log_url": "http://logs.openstack.org/86/50986/1/check/check-tempest-devstack-vm-postgres-full/aabbd5c/console.html", 
+                        "project": "openstack/python-keystoneclient", 
+                        "build_change": "50986", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "aabbd5cce9a44dc9922314d7ff02e5c2", 
+                        "received_at": [
+                            "2013-10-10T17:52:30.277Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-10T17:47:57.758Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "C9e4L1wpTUq1rJhpn3K3Zg"
+            }, 
+            {
+                "sort": [
+                    1381420885152
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "7", 
+                        "build_ref": "refs/zuul/master/Z87784c4b9005426fb18b9f390dda2224", 
+                        "log_url": "http://logs.openstack.org/30/45130/7/check/check-tempest-devstack-vm-full/df80dd7/console.html", 
+                        "project": "openstack/cinder", 
+                        "build_change": "45130", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "df80dd7d2452485ea36d2abd54c397be", 
+                        "received_at": [
+                            "2013-10-10T16:07:49.263Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-10T16:01:25.152Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "MEE8ZhUMRZy0K3Ioum6Z_Q"
+            }, 
+            {
+                "sort": [
+                    1381392176800
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "3", 
+                        "build_ref": "refs/zuul/master/Zb42833edf4ec4b208fb953687508de22", 
+                        "log_url": "http://logs.openstack.org/30/50230/3/check/check-tempest-devstack-vm-full/b042295/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "50230", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "b0422950e22142a7b8114cab86bb6e14", 
+                        "received_at": [
+                            "2013-10-10T08:04:25.084Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-10T08:02:56.800Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "kGrn1rZ4SHi69zqfKTxRyQ"
+            }, 
+            {
+                "sort": [
+                    1381356459888
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "13", 
+                        "build_ref": "refs/zuul/master/Zb434b2a8cd634a2f990d980e9f90323b", 
+                        "log_url": "http://logs.openstack.org/27/49627/13/check/check-tempest-devstack-vm-full/212f92c/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "49627", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "212f92cabe0f44ab93a683cb91cbc217", 
+                        "received_at": [
+                            "2013-10-09T22:09:16.341Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-09T22:07:39.888Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "fmCnxgymTbuf8230SVBnfw"
+            }, 
+            {
+                "sort": [
+                    1381350269335
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "9", 
+                        "build_ref": "refs/zuul/master/Z16b628d0f5b24f8cb5973cdcb7ec7b45", 
+                        "log_url": "http://logs.openstack.org/17/49617/9/check/check-tempest-devstack-vm-full/ca131de/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "49617", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "ca131dea315c4a45a7e0e674df2ee780", 
+                        "received_at": [
+                            "2013-10-09T20:26:30.851Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-09T20:24:29.335Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "sFCxCM1-TTyHRlQew34KHw"
+            }, 
+            {
+                "sort": [
+                    1381345935322
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Z492e7e7988bb4a5dade5aa0d1c924624", 
+                        "log_url": "http://logs.openstack.org/09/49309/8/gate/gate-tempest-devstack-vm-postgres-full/dacc594/console.html", 
+                        "project": "openstack/keystone", 
+                        "build_change": "49309", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "dacc59425e854344b5700509d155d407", 
+                        "received_at": [
+                            "2013-10-09T19:14:55.994Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-09T19:12:15.322Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "O7r3-81cQOeXjwKe5WCE6w"
+            }, 
+            {
+                "sort": [
+                    1381309219691
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "3", 
+                        "build_ref": "refs/zuul/master/Zfeef49b0dc8f4ba09feb15c41c6f1b88", 
+                        "log_url": "http://logs.openstack.org/84/50184/3/gate/gate-tempest-devstack-vm-neutron/dd115db/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "50184", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-neutron", 
+                        "build_uuid": "dd115db8bf5a48839eb0564a52c8dae9", 
+                        "received_at": [
+                            "2013-10-09T09:01:28.838Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-09T09:00:19.691Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "pdUayuv3Ri-2VKeeWbtinQ"
+            }, 
+            {
+                "sort": [
+                    1381309219680
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "3", 
+                        "build_ref": "refs/zuul/master/Zfeef49b0dc8f4ba09feb15c41c6f1b88", 
+                        "log_url": "http://logs.openstack.org/84/50184/3/gate/gate-tempest-devstack-vm-neutron/dd115db/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "50184", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-neutron", 
+                        "build_uuid": "dd115db8bf5a48839eb0564a52c8dae9", 
+                        "received_at": [
+                            "2013-10-09T09:01:28.803Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-09T09:00:19.680Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "a9cwv5c7TqKAsa3BgWHDbg"
+            }, 
+            {
+                "sort": [
+                    1381302928340
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "3", 
+                        "build_ref": "refs/zuul/master/Ze0bbf89029634b2da6584db1d5952823", 
+                        "log_url": "http://logs.openstack.org/84/50184/3/check/check-tempest-devstack-vm-neutron/aaed2c2/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "50184", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-neutron", 
+                        "build_uuid": "aaed2c2622974ee68e8c4aac7864b9a8", 
+                        "received_at": [
+                            "2013-10-09T07:16:50.860Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-09T07:15:28.340Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "LrXdG9jTT8aLMWUtcCjiJg"
+            }, 
+            {
+                "sort": [
+                    1381302928329
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "3", 
+                        "build_ref": "refs/zuul/master/Ze0bbf89029634b2da6584db1d5952823", 
+                        "log_url": "http://logs.openstack.org/84/50184/3/check/check-tempest-devstack-vm-neutron/aaed2c2/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "50184", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-neutron", 
+                        "build_uuid": "aaed2c2622974ee68e8c4aac7864b9a8", 
+                        "received_at": [
+                            "2013-10-09T07:16:50.833Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-09T07:15:28.329Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 90, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "gRFnC0KGQAO80Bs9aX4nNA"
+            }, 
+            {
+                "sort": [
+                    1381291218277
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z269dade1fd3f467fbb78b4d2b0dcd90a", 
+                        "log_url": "http://logs.openstack.org/63/50463/2/gate/gate-tempest-devstack-vm-postgres-full/f6e6c48/console.html", 
+                        "project": "openstack/cinder", 
+                        "build_change": "50463", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "f6e6c482b5ed42eb8924d6014e0068ba", 
+                        "received_at": [
+                            "2013-10-09T04:01:39.231Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-09T04:00:18.277Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:55818/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "SUYMLMFJTNCJoE6XXjJZ1g"
+            }, 
+            {
+                "sort": [
+                    1381277386033
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z0b5bb81a402d4142973e3616091758b8", 
+                        "log_url": "http://logs.openstack.org/77/50377/2/check/check-tempest-devstack-vm-postgres-full/2910253/console.html", 
+                        "project": "openstack/swift", 
+                        "build_change": "50377", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "29102538c3db4c3dbf50f56af5a7319a", 
+                        "received_at": [
+                            "2013-10-09T00:11:07.628Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-09T00:09:46.033Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "X-7kUENhTGCbwu8coPQTEg"
+            }, 
+            {
+                "sort": [
+                    1381273317138
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "3", 
+                        "build_ref": "refs/zuul/master/Zbcbca97355d64e84a6b78992eb71cbe1", 
+                        "log_url": "http://logs.openstack.org/84/50184/3/check/check-tempest-devstack-vm-neutron/64a9f70/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "50184", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-neutron", 
+                        "build_uuid": "64a9f701c9b148d98ea2434aa602419b", 
+                        "received_at": [
+                            "2013-10-08T23:03:08.278Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-08T23:01:57.138Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:56929/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 143, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "Zcgr31HFQDGKs-_3FBaP9g"
+            }, 
+            {
+                "sort": [
+                    1381273317133
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "3", 
+                        "build_ref": "refs/zuul/master/Zbcbca97355d64e84a6b78992eb71cbe1", 
+                        "log_url": "http://logs.openstack.org/84/50184/3/check/check-tempest-devstack-vm-neutron/64a9f70/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "50184", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-neutron", 
+                        "build_uuid": "64a9f701c9b148d98ea2434aa602419b", 
+                        "received_at": [
+                            "2013-10-08T23:03:08.210Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-08T23:01:57.133Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:56929/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 85, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "i0eFxAcGSHS6vRpZvbFUZg"
+            }, 
+            {
+                "sort": [
+                    1381268872458
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "3", 
+                        "build_ref": "refs/zuul/master/Z5dae3ae7aa614b0e8c20158b13400253", 
+                        "log_url": "http://logs.openstack.org/40/49440/3/check/check-tempest-devstack-vm-postgres-full/fb28b10/console.html", 
+                        "project": "openstack/heat", 
+                        "build_change": "49440", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "fb28b10dcfb04b998483af375f5ad542", 
+                        "received_at": [
+                            "2013-10-08T21:49:39.705Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-08T21:47:52.458Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:55818/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "kZa0e42ORC2jFkX3bJ3Z-g"
+            }, 
+            {
+                "sort": [
+                    1381233034165
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Zf5f048645e524efa9d2eb3befe652777", 
+                        "log_url": "http://logs.openstack.org/15/48815/2/gate/gate-tempest-devstack-vm-full/be81782/console.html", 
+                        "project": "openstack/oslo.version", 
+                        "build_change": "48815", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-full", 
+                        "build_uuid": "be817825a33c481a807e3b69f0e4e3a2", 
+                        "received_at": [
+                            "2013-10-08T11:52:10.959Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-08T11:50:34.165Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:55818/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "f6_am7WsQcqw1Ki2aVWnYg"
+            }, 
+            {
+                "sort": [
+                    1381217286411
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Z2566658628874e07953de667b6bf7d56", 
+                        "log_url": "http://logs.openstack.org/14/50214/1/gate/gate-tempest-devstack-vm-full/c3cfcf8/console.html", 
+                        "project": "openstack/heat", 
+                        "build_change": "50214", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-full", 
+                        "build_uuid": "c3cfcf84ab6845239fdc7f993c36f217", 
+                        "received_at": [
+                            "2013-10-08T07:29:29.329Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-08T07:28:06.411Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 96, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "lxMiey9JRUCwIA3NdWsgRA"
+            }, 
+            {
+                "sort": [
+                    1381208508704
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Zaf0a4da5d6554c84b1429cd63709e314", 
+                        "log_url": "http://logs.openstack.org/91/49991/4/check/check-tempest-devstack-vm-postgres-full/e37e714/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "49991", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "e37e714905354da8865fda6086cf2d92", 
+                        "received_at": [
+                            "2013-10-08T05:03:19.370Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-08T05:01:48.704Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "RywsdFsDTvKYJQWBop9Sww"
+            }, 
+            {
+                "sort": [
+                    1381186600516
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Z441fb43a74044e03be24508edc38953d", 
+                        "log_url": "http://logs.openstack.org/13/49613/4/check/check-grenade-devstack-vm/e89d18b/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "49613", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "e89d18bc3c4c4ec99c1ee51ba3780367", 
+                        "received_at": [
+                            "2013-10-07T22:59:38.657Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-07T22:56:40.516Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 148, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.07", 
+                "_id": "oymiezo5SE2eRZuzgCXWRA"
+            }, 
+            {
+                "sort": [
+                    1381186600502
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "4", 
+                        "build_ref": "refs/zuul/master/Z441fb43a74044e03be24508edc38953d", 
+                        "log_url": "http://logs.openstack.org/13/49613/4/check/check-grenade-devstack-vm/e89d18b/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "49613", 
+                        "filename": "console.html", 
+                        "build_name": "check-grenade-devstack-vm", 
+                        "build_uuid": "e89d18bc3c4c4ec99c1ee51ba3780367", 
+                        "received_at": [
+                            "2013-10-07T22:59:38.609Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-07T22:56:40.502Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/json/images_client.py\", line 90, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.07", 
+                "_id": "QNKUEexLRDaTqJ3uEnYp7A"
+            }, 
+            {
+                "sort": [
+                    1381132086453
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "5", 
+                        "build_ref": "refs/zuul/master/Z65e23b8c1b834ff08b89cfa8ede2244a", 
+                        "log_url": "http://logs.openstack.org/86/48886/5/check/check-tempest-devstack-vm-full/32a8fde/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "48886", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "32a8fdec5d9b4decbe46bfe03b2019eb", 
+                        "received_at": [
+                            "2013-10-07T07:49:32.826Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-07T07:48:06.453Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:54630/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.07", 
+                "_id": "37jbSyVUQ8C2eO1TTGyW_Q"
+            }, 
+            {
+                "sort": [
+                    1381118909362
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Z4c6261e6fbc34c60a8ec90f98e62b216", 
+                        "log_url": "http://logs.openstack.org/45/49645/1/check/check-tempest-devstack-vm-full/b1106de/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "49645", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "b1106dee375a4caba569f87418db0894", 
+                        "received_at": [
+                            "2013-10-07T04:09:45.654Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-07T04:08:29.362Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:54630/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.07", 
+                "_id": "UT35UGcsRyywAeW0Fh3-Ww"
+            }, 
+            {
+                "sort": [
+                    1381112611470
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "8", 
+                        "build_ref": "refs/zuul/master/Ze3dd9768591a4af0bc3360de48856016", 
+                        "log_url": "http://logs.openstack.org/96/48196/8/gate/gate-tempest-devstack-vm-full/aa6d2b0/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "48196", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-full", 
+                        "build_uuid": "aa6d2b03cc244e099f87a4fb4abe99a1", 
+                        "received_at": [
+                            "2013-10-07T02:24:52.495Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-07T02:23:31.470Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:54630/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "  File \"tempest/services/compute/xml/images_client.py\", line 153, in wait_for_image_status", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.07", 
+                "_id": "C51MhwsuToOpPHWVmSEL7w"
+            }
+        ], 
+        "total": 95, 
+        "max_score": null
+    }, 
+    "_shards": {
+        "successful": 75, 
+        "failed": 0, 
+        "total": 75
+    }, 
+    "took": 78, 
+    "timed_out": false
+}

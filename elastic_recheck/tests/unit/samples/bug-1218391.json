@@ -1,0 +1,715 @@
+{
+    "hits": {
+        "hits": [
+            {
+                "sort": [
+                    1382045032747
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Zc6ec816145dc495e90726151e9dc6f5c", 
+                        "log_url": "http://logs.openstack.org/37/52137/2/check/check-tempest-devstack-vm-full/bdeda2d/console.html", 
+                        "project": "openstack/requirements", 
+                        "build_change": "52137", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "bdeda2dd347b4501a0c757a76cf17afc", 
+                        "received_at": [
+                            "2013-10-17T21:26:01.014Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T21:23:52.747Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "raB-nZ15TL6S5fkgc3BVxQ"
+            }, 
+            {
+                "sort": [
+                    1382044972964
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Zc6ec816145dc495e90726151e9dc6f5c", 
+                        "log_url": "http://logs.openstack.org/37/52137/2/check/check-tempest-devstack-vm-postgres-full/fa6d0f6/console.html", 
+                        "project": "openstack/requirements", 
+                        "build_change": "52137", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "fa6d0f667f964f06afd34093c19dd1bf", 
+                        "received_at": [
+                            "2013-10-17T21:24:17.836Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T21:22:52.964Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "EjnEZJAaQmGtfEPfBNrm2g"
+            }, 
+            {
+                "sort": [
+                    1381939241236
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Z0ce147bfd29c43d6ae39f08d4ecb8821", 
+                        "log_url": "http://logs.openstack.org/37/52137/1/check/check-tempest-devstack-vm-postgres-full/f1fa0f6/console.html", 
+                        "project": "openstack/requirements", 
+                        "build_change": "52137", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "f1fa0f68162140b9aa5e2178b3d79abb", 
+                        "received_at": [
+                            "2013-10-16T16:02:33.723Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-16T16:00:41.236Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:56153/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "mxGCDaMnRAqWo3AbzhkJXg"
+            }, 
+            {
+                "sort": [
+                    1381844456733
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z8bfd864a44494c1eba422395dbe848c5", 
+                        "log_url": "http://logs.openstack.org/12/49712/2/check/check-tempest-devstack-vm-postgres-full/8de52f8/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "49712", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "8de52f85e2134cb69dee78db2c68f3dc", 
+                        "received_at": [
+                            "2013-10-15T13:42:57.270Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-15T13:40:56.733Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "VLHShVlHRvSX7fjiwQTU8Q"
+            }, 
+            {
+                "sort": [
+                    1381844446479
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z8bfd864a44494c1eba422395dbe848c5", 
+                        "log_url": "http://logs.openstack.org/12/49712/2/check/check-tempest-devstack-vm-full/8e1ea46/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "49712", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "8e1ea46bf0434ff094efab31b8215c36", 
+                        "received_at": [
+                            "2013-10-15T13:43:46.293Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-15T13:40:46.479Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:48897/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "c1eU1-5sTlmmbA8plwJ2rg"
+            }, 
+            {
+                "sort": [
+                    1381844003439
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z36f0853ce995453393150deda8eda741", 
+                        "log_url": "http://logs.openstack.org/10/49710/2/check/check-tempest-devstack-vm-postgres-full/f0d99c3/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "49710", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "f0d99c3c77af4260ac6ce7486d06e3a7", 
+                        "received_at": [
+                            "2013-10-15T13:36:01.008Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-15T13:33:23.439Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "2nAEiGSwQ_q4d-zTCSHVtA"
+            }, 
+            {
+                "sort": [
+                    1381843757475
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z36f0853ce995453393150deda8eda741", 
+                        "log_url": "http://logs.openstack.org/10/49710/2/check/check-tempest-devstack-vm-full/64c774e/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "49710", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "64c774e36c174748bf89c03bd2f01598", 
+                        "received_at": [
+                            "2013-10-15T13:31:24.769Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-15T13:29:17.475Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "fdkH5KQKRCugf_yFcGT-jA"
+            }, 
+            {
+                "sort": [
+                    1381835869847
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Ze2836250d7bc431893c39e503897bab9", 
+                        "log_url": "http://logs.openstack.org/12/51812/1/check/check-tempest-devstack-vm-postgres-full/0762da3/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "51812", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "0762da3f369a43059a8eb5566d5585ca", 
+                        "received_at": [
+                            "2013-10-15T11:19:49.143Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-15T11:17:49.847Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:59513/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "rpMSi5LrRvCpcpYsLe2L3w"
+            }, 
+            {
+                "sort": [
+                    1381793035214
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Zc3927ff483b64f098e22a6e373ddb6de", 
+                        "log_url": "http://logs.openstack.org/84/51584/2/check/check-tempest-devstack-vm-postgres-full/158336b/console.html", 
+                        "project": "openstack/python-ceilometerclient", 
+                        "build_change": "51584", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "158336b74911487ca6b8874589b3e321", 
+                        "received_at": [
+                            "2013-10-14T23:25:23.957Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-14T23:23:55.214Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.14", 
+                "_id": "eP20GqLbSBGR8iFb3_Kcvg"
+            }, 
+            {
+                "sort": [
+                    1381465455687
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z8d8b6cbbcce04fc88457baa178acf20f", 
+                        "log_url": "http://logs.openstack.org/40/42240/2/check/check-tempest-devstack-vm-full/99936a3/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "42240", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "99936a3f55034df5977357857dd194c5", 
+                        "received_at": [
+                            "2013-10-11T04:26:24.308Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-11T04:24:15.687Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.11", 
+                "_id": "0kRV5zVdTEy5bYLenbgu4A"
+            }, 
+            {
+                "sort": [
+                    1381464990721
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z8d8b6cbbcce04fc88457baa178acf20f", 
+                        "log_url": "http://logs.openstack.org/40/42240/2/check/check-tempest-devstack-vm-postgres-full/3f22c83/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "42240", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "3f22c83a6277479ba6e5efc9f1d3923d", 
+                        "received_at": [
+                            "2013-10-11T04:17:59.249Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-11T04:16:30.721Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.11", 
+                "_id": "tAahgnT4T0WuTgqfw0MUOg"
+            }, 
+            {
+                "sort": [
+                    1381421142434
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "6", 
+                        "build_ref": "refs/zuul/master/Z5b0eab8dd6004cd4a39a6e3348c5349b", 
+                        "log_url": "http://logs.openstack.org/31/46531/6/gate/gate-tempest-devstack-vm-postgres-full/aa0cbc2/console.html", 
+                        "project": "openstack/nova", 
+                        "build_change": "46531", 
+                        "filename": "console.html", 
+                        "build_name": "gate-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "aa0cbc254abb47e1aad81ba6fbbf29c6", 
+                        "received_at": [
+                            "2013-10-10T16:10:10.047Z"
+                        ], 
+                        "build_queue": "gate"
+                    }, 
+                    "@timestamp": "2013-10-10T16:05:42.434Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "bgd3kx8WTiCM3E9CqDLuMg"
+            }, 
+            {
+                "sort": [
+                    1381377160738
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Z6e0d241e5c104ccb8c28ae623f68808f", 
+                        "log_url": "http://logs.openstack.org/12/50812/1/check/check-tempest-devstack-vm-postgres-full/49841c0/console.html", 
+                        "project": "openstack/requirements", 
+                        "build_change": "50812", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "49841c0bb765447785d0297c820960b8", 
+                        "received_at": [
+                            "2013-10-10T03:53:55.837Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-10T03:52:40.738Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "hGrKinoLQ5WWVIg_63Aewg"
+            }, 
+            {
+                "sort": [
+                    1381377006864
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/master/Z6e0d241e5c104ccb8c28ae623f68808f", 
+                        "log_url": "http://logs.openstack.org/12/50812/1/check/check-tempest-devstack-vm-full/cd3279c/console.html", 
+                        "project": "openstack/requirements", 
+                        "build_change": "50812", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "cd3279c1b53a47c7b9a5d5d551c52139", 
+                        "received_at": [
+                            "2013-10-10T03:51:34.541Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-10T03:50:06.864Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:55818/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "liGn7WjOSaWL2eVpqyBmyw"
+            }, 
+            {
+                "sort": [
+                    1381376917313
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z22ba915580794534b5e1c6cbfde5b145", 
+                        "log_url": "http://logs.openstack.org/40/42240/2/check/check-tempest-devstack-vm-postgres-full/be8854f/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "42240", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "be8854f9411740a4adde2b594665ca56", 
+                        "received_at": [
+                            "2013-10-10T03:50:39.816Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-10T03:48:37.313Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:55818/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "mLICACsXTN282snKhcLi7g"
+            }, 
+            {
+                "sort": [
+                    1381376260147
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z22ba915580794534b5e1c6cbfde5b145", 
+                        "log_url": "http://logs.openstack.org/40/42240/2/check/check-tempest-devstack-vm-full/d077968/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "42240", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "d07796817218493da77ae22821dd7abd", 
+                        "received_at": [
+                            "2013-10-10T03:39:26.575Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-10T03:37:40.147Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "jaOeXnIHTT6lxXlxfqwXDw"
+            }, 
+            {
+                "sort": [
+                    1381357134894
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z870155b7d0414e57939dfb5cd81ca2ef", 
+                        "log_url": "http://logs.openstack.org/40/42240/2/check/check-tempest-devstack-vm-full/0e9744b/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "42240", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "0e9744b6e1c047c0b96c4958f9b1e1dc", 
+                        "received_at": [
+                            "2013-10-09T22:21:37.498Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-09T22:18:54.894Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "wkV50ouYRJqjcqCAXI4E7w"
+            }, 
+            {
+                "sort": [
+                    1381357060152
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z870155b7d0414e57939dfb5cd81ca2ef", 
+                        "log_url": "http://logs.openstack.org/40/42240/2/check/check-tempest-devstack-vm-postgres-full/6abcb53/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "42240", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "6abcb53ac3ee4bf1a94940bb066c7742", 
+                        "received_at": [
+                            "2013-10-09T22:18:51.524Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-09T22:17:40.152Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "_ASTwjP8T3CR8sxod6Lh9Q"
+            }, 
+            {
+                "sort": [
+                    1381335486598
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z866e3ba3e43d4c1bbfd58d1c6d3af3e4", 
+                        "log_url": "http://logs.openstack.org/40/42240/2/check/check-tempest-devstack-vm-full/55b46ee/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "42240", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-full", 
+                        "build_uuid": "55b46ee115cd4fdb9414cfb2469e2fd2", 
+                        "received_at": [
+                            "2013-10-09T16:20:23.074Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-09T16:18:06.598Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "pLj4WkEOTP-GFQE-8G6W9A"
+            }, 
+            {
+                "sort": [
+                    1381335025077
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/master/Z866e3ba3e43d4c1bbfd58d1c6d3af3e4", 
+                        "log_url": "http://logs.openstack.org/40/42240/2/check/check-tempest-devstack-vm-postgres-full/23d76fa/console.html", 
+                        "project": "openstack/horizon", 
+                        "build_change": "42240", 
+                        "filename": "console.html", 
+                        "build_name": "check-tempest-devstack-vm-postgres-full", 
+                        "build_uuid": "23d76fab37364768885c1bea01d91627", 
+                        "received_at": [
+                            "2013-10-09T16:11:49.888Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-09T16:10:25.077Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:59513/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed.", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "pFUlUWoKThOBqOJKco30Kw"
+            }
+        ], 
+        "total": 20, 
+        "max_score": null
+    }, 
+    "_shards": {
+        "successful": 75, 
+        "failed": 0, 
+        "total": 75
+    }, 
+    "took": 46, 
+    "timed_out": false
+}

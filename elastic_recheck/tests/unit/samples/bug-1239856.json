@@ -1,0 +1,1757 @@
+{
+    "hits": {
+        "hits": [
+            {
+                "sort": [
+                    1382102102562
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "7"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z2b1fb404918a4b9ea217aa66d66c7ec3"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/57/47557/7/check/check-tempest-devstack-vm-neutron-pg-isolated/10cce1e/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "47557"
+                        ], 
+                        "pid": [
+                            "32450"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "10cce1eca11440aba3641d7bb992b851"
+                        ], 
+                        "received_at": [
+                            "2013-10-18T13:20:01.191Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-18T13:15:02.562Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:59513/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource     break\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource     self.commit()\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'0945fc69-3f7b-407b-b29e-629465cd1b7e'}\n2013-10-18 13:15:02.562 32450 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "w_V1qQrmTLa38zERWttXrQ"
+            }, 
+            {
+                "sort": [
+                    1382057445516
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "4"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Zddb3ed2401b544658a93f67d91107339"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/53/52253/4/gate/gate-tempest-devstack-vm-neutron-pg-isolated/c43393b/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "52253"
+                        ], 
+                        "pid": [
+                            "868"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "c43393bbcc8f4f049a7c28119df5576e"
+                        ], 
+                        "received_at": [
+                            "2013-10-18T00:54:35.904Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-18T00:50:45.516Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource     break\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource     self.commit()\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'ports_id': u'df478662-14da-420f-bdf9-0755555bc22b', 'network_id': None}\n2013-10-18 00:50:45.516 868 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "onSY4Zx4TPKx3jWDk92ZAA"
+            }, 
+            {
+                "sort": [
+                    1381980267163
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "41"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Zc32756ee5612426582ece87ec5ee512f"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/07/45507/41/check/check-tempest-devstack-vm-neutron-pg-isolated/71824c6/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "45507"
+                        ], 
+                        "pid": [
+                            "32144"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "71824c69789943a1888f25b25d7ebcc4"
+                        ], 
+                        "received_at": [
+                            "2013-10-17T03:31:54.054Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-17T03:24:27.163Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:56153/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 438, in delete\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource     break\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource     self.commit()\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'7a016294-31bf-4f79-87bb-4ca5e8f17175'}\n2013-10-17 03:24:27.163 32144 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "SujnKWewRPChvllkohnQUg"
+            }, 
+            {
+                "sort": [
+                    1381980037753
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "11"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z9071d85f831e49cfb6acb988715201a6"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/12/42412/11/check/check-tempest-devstack-vm-neutron-pg-isolated/d56dc09/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "42412"
+                        ], 
+                        "pid": [
+                            "8114"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "d56dc09afb2447108177f53b4e9d52b8"
+                        ], 
+                        "received_at": [
+                            "2013-10-17T03:27:27.712Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-17T03:20:37.753Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource     break\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource     self.commit()\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'215f3491-0875-4cbd-9e0e-87fcf7e69460'}\n2013-10-17 03:20:37.753 8114 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "KpZN589VRgKzqpjjSS3rhg"
+            }, 
+            {
+                "sort": [
+                    1381944219173
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "8"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z39a279bd5a7f4d1389556eca08401eda"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/63/49063/8/check/check-tempest-devstack-vm-neutron-pg-isolated/d771dbe/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "49063"
+                        ], 
+                        "pid": [
+                            "408"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "d771dbead85448e5a6cf9298076b3807"
+                        ], 
+                        "received_at": [
+                            "2013-10-16T17:32:47.990Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-16T17:23:39.173Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource     break\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource     self.commit()\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'ece64953-b695-4931-b036-e307d8f98343'}\n2013-10-16 17:23:39.173 408 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "o46Yx0h1TciOpiOHtC2c8w"
+            }, 
+            {
+                "sort": [
+                    1381938489004
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "1"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/milestone-proposed/Z95163a9a2c93492993b1a57ff66ad75d"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/22/52122/1/gate/gate-tempest-devstack-vm-neutron-pg-isolated/b28daad/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "52122"
+                        ], 
+                        "pid": [
+                            "401"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "b28daadec551465ab47708d3f189e6c7"
+                        ], 
+                        "received_at": [
+                            "2013-10-16T15:54:53.243Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-16T15:48:09.004Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:45774/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource     break\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource     self.commit()\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'c99c4365-e3e1-4b4a-9a42-b93481caae92'}\n2013-10-16 15:48:09.004 401 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "XMAk-2WyRsS_EsVAeCKUVw"
+            }, 
+            {
+                "sort": [
+                    1381890169743
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "4"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z27e7e41a015d43668e5bc375538dfe97"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/78/49478/4/check/check-tempest-devstack-vm-neutron-pg-isolated/c4801c6/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "49478"
+                        ], 
+                        "pid": [
+                            "32187"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "c4801c656b1b440bab392ad56c953e63"
+                        ], 
+                        "received_at": [
+                            "2013-10-16T02:27:14.782Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-16T02:22:49.743Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:56153/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource     break\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource     self.commit()\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'bf190813-25d6-49f1-9640-153079d31444'}\n2013-10-16 02:22:49.743 32187 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "qdYfImB7T5OXvWQSwxgCnw"
+            }, 
+            {
+                "sort": [
+                    1381885222235
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "4"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Zb7d5a3d8e2444599aadebae8fcba81de"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/96/49596/4/gate/gate-tempest-devstack-vm-neutron-pg-isolated/fda7026/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "49596"
+                        ], 
+                        "pid": [
+                            "545"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "fda70261be134582907c4cbd984b2764"
+                        ], 
+                        "received_at": [
+                            "2013-10-16T01:05:10.466Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-16T01:00:22.235Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:48897/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource     break\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource     self.commit()\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'a045e6ca-0124-4cd9-b28a-7ddd57674731'}\n2013-10-16 01:00:22.235 545 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "WxtXNkpOSD6wnmZf4VbuMA"
+            }, 
+            {
+                "sort": [
+                    1381868746051
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "13"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z9d39fd6a71ea485886eafabedc0bf395"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/32/47432/13/check/check-tempest-devstack-vm-neutron-pg-isolated/78e8aa6/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "47432"
+                        ], 
+                        "pid": [
+                            "2390"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "78e8aa6d888b4b9191779dab27326f94"
+                        ], 
+                        "received_at": [
+                            "2013-10-15T20:32:20.186Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-15T20:25:46.051Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource     break\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource     self.commit()\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'ef8b55a0-19b6-4236-aed3-190d6d4456de'}\n2013-10-15 20:25:46.051 2390 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "b-SGse22S2OPa7jBxPfkjA"
+            }, 
+            {
+                "sort": [
+                    1381861905008
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "9"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Zf1d14f74eec4429e847190592838b909"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/89/50389/9/check/check-tempest-devstack-vm-neutron-pg-isolated/5774dc0/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "50389"
+                        ], 
+                        "pid": [
+                            "530"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "5774dc0feeeb4fad919e5ea81ca160af"
+                        ], 
+                        "received_at": [
+                            "2013-10-15T18:36:23.567Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-15T18:31:45.008Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource     break\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource     self.commit()\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'33288b16-3c2b-4e39-98c4-3f808105d8a8'}\n2013-10-15 18:31:45.008 530 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "eFvtlf6zSuq9fXsPOpLKVw"
+            }, 
+            {
+                "sort": [
+                    1381853781776
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "1"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z9c990845c4614339be440ab51f6196a0"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/72/51872/1/check/check-tempest-devstack-vm-neutron-pg-isolated/e745ba6/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "51872"
+                        ], 
+                        "pid": [
+                            "519"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "e745ba6840744139b711efe2fc1a7d67"
+                        ], 
+                        "received_at": [
+                            "2013-10-15T16:23:55.130Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-15T16:16:21.776Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:52966/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource     break\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource     self.commit()\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'afb23b86-5b88-4f22-8237-c447169db71d'}\n2013-10-15 16:16:21.776 519 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "VXpy3trUS-2mEQ9iYGyyMg"
+            }, 
+            {
+                "sort": [
+                    1381825390906
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "3"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Za4450b7997e3407ab3609c6216640639"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/78/49478/3/check/check-tempest-devstack-vm-neutron-pg-isolated/d008108/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "49478"
+                        ], 
+                        "pid": [
+                            "395"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "d0081080ae054047823353fa1a4edc46"
+                        ], 
+                        "received_at": [
+                            "2013-10-15T08:27:50.464Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-15T08:23:10.906Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource     break\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource     self.commit()\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'177b0213-43a9-42c6-810b-2793e5851ab4'}\n2013-10-15 08:23:10.906 395 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "yudz4Yv5QF6jhlSkeStdBw"
+            }, 
+            {
+                "sort": [
+                    1381796045022
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "1"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z6647d7574aed4790a1161966b6e6743b"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/38/51738/1/check/check-tempest-devstack-vm-neutron-pg-isolated/73aad7a/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "51738"
+                        ], 
+                        "pid": [
+                            "32377"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "73aad7abc0dc45af8ea95439bc6a337b"
+                        ], 
+                        "received_at": [
+                            "2013-10-15T00:19:43.081Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-15T00:14:05.022Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:44866/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource     break\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource     self.commit()\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'54c3d653-da1e-446b-894f-56b884a9b888'}\n2013-10-15 00:14:05.022 32377 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.15", 
+                "_id": "sXcBJ7d2RoyCZQzI__l_dg"
+            }, 
+            {
+                "sort": [
+                    1381745581431
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "2"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z6d1d41e638d84d3faeb3bdd1cd78be99"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/22/51522/2/check/check-tempest-devstack-vm-neutron-pg-isolated/015b3d9/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "51522"
+                        ], 
+                        "pid": [
+                            "874"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "015b3d9418bc4b3ca8a45d2131d04ea7"
+                        ], 
+                        "received_at": [
+                            "2013-10-14T10:17:17.244Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-14T10:13:01.431Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:59513/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 420, in delete_network\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource     break\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource     self.commit()\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'8f3e0a3a-b89b-4e9b-8bb9-78ef3ecbeb6f'}\n2013-10-14 10:13:01.431 874 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.14", 
+                "_id": "N79ZDzzGQf2lydFqI6XE-A"
+            }, 
+            {
+                "sort": [
+                    1381442549654
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "9"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z46f8ad0ca3bb45a484ae66b184f1e5b4"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/63/46563/9/check/check-tempest-devstack-vm-neutron-pg-isolated/1a43d18/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "46563"
+                        ], 
+                        "pid": [
+                            "883"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "1a43d188a3a24ac6928773d3da3dac4b"
+                        ], 
+                        "received_at": [
+                            "2013-10-10T22:09:47.503Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-10T22:02:29.654Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource     break\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource     self.commit()\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'ports_id': u'888a6827-bde2-42c6-9c4a-9f94f50c52bc', 'network_id': None}\n2013-10-10 22:02:29.654 883 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "Fzs95S4_QimkSJYIt1gdyw"
+            }, 
+            {
+                "sort": [
+                    1381438499107
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "4"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z4888f3e88e014b2380e204f7455a7b7f"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/06/48306/4/gate/gate-tempest-devstack-vm-neutron-pg-isolated/55dd3ee/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "48306"
+                        ], 
+                        "pid": [
+                            "31149"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "55dd3ee1858a45468e59c8138268da2f"
+                        ], 
+                        "received_at": [
+                            "2013-10-10T21:06:04.312Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-10T20:54:59.107Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:56153/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource     break\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource     self.commit()\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'fe709fcc-c22b-47f3-910e-5539662b9a2b'}\n2013-10-10 20:54:59.107 31149 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "RixNNiidTRWhcwmXd8PTug"
+            }, 
+            {
+                "sort": [
+                    1381421333411
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "1"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z3bc95e61fd034213b4826bf54921c523"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/36/50836/1/gate/gate-tempest-devstack-vm-neutron-pg-isolated/5186cf1/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "50836"
+                        ], 
+                        "pid": [
+                            "31485"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "5186cf1f05fc4a9cb2df8f0b4a325bd5"
+                        ], 
+                        "received_at": [
+                            "2013-10-10T16:16:21.251Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-10T16:08:53.411Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource     break\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource     self.commit()\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'64df724a-3e78-4df9-a1ee-f94994f1d9fc'}\n2013-10-10 16:08:53.411 31485 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "thJoR54qT_yhapQRLW73Rw"
+            }, 
+            {
+                "sort": [
+                    1381405944922
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "1"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/milestone-proposed/Ze637f86144df449b912f5e520cab37d6"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/17/50817/1/check/check-tempest-devstack-vm-neutron-pg-isolated/2596dee/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "50817"
+                        ], 
+                        "pid": [
+                            "31087"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "2596dee5b3954b9da92a3938fb406431"
+                        ], 
+                        "received_at": [
+                            "2013-10-10T11:56:47.051Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-10T11:52:24.922Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:56153/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource     break\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource     self.commit()\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'a7d78d65-1978-49b1-a6b1-21efeba8b4ea'}\n2013-10-10 11:52:24.922 31087 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.10", 
+                "_id": "hEYjxJn0QMyVH-Y-1h18ZA"
+            }, 
+            {
+                "sort": [
+                    1381316359267
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "2"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/milestone-proposed/Z0c8f7c11c5c048c6bbb662573c0e0471"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/91/50391/2/gate/gate-tempest-devstack-vm-neutron-pg-isolated/c6952b6/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "50391"
+                        ], 
+                        "pid": [
+                            "31188"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "c6952b68b8394e2fa3933ff91ac3cdc0"
+                        ], 
+                        "received_at": [
+                            "2013-10-09T11:05:01.302Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-09T10:59:19.267Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:56153/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource     break\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource     self.commit()\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'475e9ab2-eb1b-43b9-899a-6ed6801d0c52'}\n2013-10-09 10:59:19.267 31188 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.09", 
+                "_id": "UyFscYouRaOh_rj2oMKynw"
+            }, 
+            {
+                "sort": [
+                    1381275398338
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "2"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/milestone-proposed/Z887741a96c9b4394b23e57b04bc8a1c8"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/84/50384/2/gate/gate-tempest-devstack-vm-neutron-pg-isolated/0600e23/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "50384"
+                        ], 
+                        "pid": [
+                            "31343"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "0600e235fd434df09d0fce693283bdf6"
+                        ], 
+                        "received_at": [
+                            "2013-10-08T23:44:20.769Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-08T23:36:38.338Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:44866/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource     break\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource     self.commit()\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'd686d589-0e30-4df7-906f-9dcb195149ca'}\n2013-10-08 23:36:38.338 31343 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "5X9w70i2QICCVO_ahCWGPg"
+            }, 
+            {
+                "sort": [
+                    1381273541008
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "1"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/milestone-proposed/Z15d6d82fd5244fa196aaddaba3425722"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/81/50381/1/check/check-tempest-devstack-vm-neutron-pg-isolated/031ae80/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "50381"
+                        ], 
+                        "pid": [
+                            "31118"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "031ae80aebdb48c8afb16f1ced4aff62"
+                        ], 
+                        "received_at": [
+                            "2013-10-08T23:13:08.741Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-08T23:05:41.008Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:55818/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource     break\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource     self.commit()\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'9abba735-77c3-48d5-8215-b82bebc4a5b0'}\n2013-10-08 23:05:41.008 31118 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "mNysUmNgSXyfiaX2l3ENYw"
+            }, 
+            {
+                "sort": [
+                    1381268015912
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "3"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z9295a055d3ab40c78350fc121bd2fc0e"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/33/50433/3/check/check-tempest-devstack-vm-neutron-pg-isolated/a10fcd8/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "50433"
+                        ], 
+                        "pid": [
+                            "30852"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "a10fcd8c366d4b698bdd8845b5ceb750"
+                        ], 
+                        "received_at": [
+                            "2013-10-08T21:38:23.914Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-08T21:33:35.912Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:44866/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource     break\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource     self.commit()\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'45da68f8-fe57-4834-b61b-4622b5af3470'}\n2013-10-08 21:33:35.912 30852 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "oo-QmnKlSxi9GvNW6vprtw"
+            }, 
+            {
+                "sort": [
+                    1381238436247
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "22"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z521c9c350d1b4105a139fe827993d9c2"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/24/49424/22/check/check-tempest-devstack-vm-neutron-pg-isolated/919eb17/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "49424"
+                        ], 
+                        "pid": [
+                            "31155"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "919eb1742d874ca784514f79d84e6244"
+                        ], 
+                        "received_at": [
+                            "2013-10-08T13:28:08.786Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-08T13:20:36.247Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource     break\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource     self.commit()\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'ports_id': u'33bad670-f214-4ba5-a852-b417fdb63002', 'network_id': None}\n2013-10-08 13:20:36.247 31155 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "etKUiB3LRGiqAwYNJnYe0w"
+            }, 
+            {
+                "sort": [
+                    1381232779627
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "21"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z3ea2da4aa9a847cfa80108aaecc1aad9"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/24/49424/21/check/check-tempest-devstack-vm-neutron-pg-isolated/abc880f/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "49424"
+                        ], 
+                        "pid": [
+                            "809"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "abc880ffb6eb4947b95ac45ce2d0b19d"
+                        ], 
+                        "received_at": [
+                            "2013-10-08T11:56:33.671Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-08T11:46:19.627Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:56929/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource     break\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource     self.commit()\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'ae556460-45d6-4672-a069-be1d17ef0f57'}\n2013-10-08 11:46:19.627 809 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "4_034w_0SVCdGh3CtWnkxA"
+            }, 
+            {
+                "sort": [
+                    1381230563348
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "1"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Zec29cd314d034ffe99f1daf91bc21853"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/92/50292/1/check/check-tempest-devstack-vm-neutron-pg-isolated/6915e5d/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "50292"
+                        ], 
+                        "pid": [
+                            "30432"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "6915e5dba2c14d96930cc220db79f9d5"
+                        ], 
+                        "received_at": [
+                            "2013-10-08T11:14:21.193Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-08T11:09:23.348Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource     break\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource     self.commit()\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'ports_id': u'cfee5a95-ef7f-402b-8a00-37e880e3bdf0', 'network_id': None}\n2013-10-08 11:09:23.348 30432 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "PtAiU5VKQZiZOofwEAN3ow"
+            }, 
+            {
+                "sort": [
+                    1381084474894
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "2"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z068331a6fafe432090393915266daa21"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/43/49943/2/gate/gate-tempest-devstack-vm-neutron-pg-isolated/e483d3f/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/python-neutronclient"
+                        ], 
+                        "build_change": [
+                            "49943"
+                        ], 
+                        "pid": [
+                            "2261"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "e483d3f0fa534e67a24633656ad98d92"
+                        ], 
+                        "received_at": [
+                            "2013-10-06T18:38:02.102Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-06T18:34:34.894Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:59513/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 411, in delete_network\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource     break\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 456, in __exit__\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource     self.commit()\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 368, in commit\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource     self._prepare_impl()\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource   File \"/usr/local/lib/python2.7/dist-packages/sqlalchemy/orm/session.py\", line 347, in _prepare_impl\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource     self.session.flush()\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/openstack/common/db/sqlalchemy/session.py\", line 542, in _wrap\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource     raise exception.DBError(e)\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource  'UPDATE ports SET network_id=%(network_id)s WHERE ports.id = %(ports_id)s' {'network_id': None, 'ports_id': u'f1a7d43f-ac9e-4a23-9448-bb3fc4487268'}\n2013-10-06 18:34:34.894 2261 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.06", 
+                "_id": "Jfa5adrqROKr3wctTvPk1Q"
+            }
+        ], 
+        "total": 26, 
+        "max_score": null
+    }, 
+    "_shards": {
+        "successful": 75, 
+        "failed": 0, 
+        "total": 75
+    }, 
+    "took": 45, 
+    "timed_out": false
+}
