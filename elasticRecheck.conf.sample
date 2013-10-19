@@ -10,4 +10,4 @@ channel_config=/home/mtreinish/elasticRecheck/recheckwatchbot.yaml
 user=treinish
 host=review.openstack.org
 query_file=/home/mtreinish/elasticRecheck/queries.yaml
-key=/home/mtreinish/.ssh/id_rsa.pub
+key=/home/mtreinish/.ssh/id_rsa
