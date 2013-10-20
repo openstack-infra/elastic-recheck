@@ -20,13 +20,13 @@ import pyelasticsearch
 import urllib2
 
 import ConfigParser
-import copy
 import logging
 import os
 import sys
 import time
 import yaml
 
+import elastic_recheck.query_builder as qb
 from elastic_recheck import results
 
 logging.basicConfig()
@@ -103,54 +103,6 @@ class Classifier():
     """
     log = logging.getLogger("recheckwatchbot")
     ES_URL = "http://logstash.openstack.org/elasticsearch"
-    targeted_template = {
-            "sort": {
-                "@timestamp": {"order": "desc"}
-                },
-            "query": {
-                "query_string": {
-                    "query": '%s AND build_change:"%s" AND build_patchset:"%s"'
-                    }
-                }
-            }
-    files_ready_template = {
-            "sort": {
-                "@timestamp": {"order": "desc"}
-                },
-            "query": {
-                "query_string": {
-                    "query": 'build_status:"FAILURE" AND build_change:"%s" AND build_patchset:"%s"'
-                    }
-                },
-            "facets": {
-                "tag": {
-                    "terms": {
-                        "field": "filename",
-                        "size": 80
-                        }
-                    }
-                }
-            }
-    ready_template = {
-            "sort": {
-                "@timestamp": {"order": "desc"}
-                },
-            "query": {
-                "query_string": {
-                    "query": 'filename:"console.html" AND (@message:"Finished: FAILURE" OR message:"Finished: FAILURE") AND build_change:"%s" AND build_patchset:"%s"'
-                    }
-                }
-            }
-    general_template = {
-            "sort": {
-                "@timestamp": {"order": "desc"}
-                },
-            "query": {
-                "query_string": {
-                    "query": '%s'
-                    }
-                }
-            }
 
     queries = None
 
@@ -159,13 +111,8 @@ class Classifier():
         self.queries = yaml.load(open(queries).read())
         self.queries_filename = queries
 
-    def _apply_template(self, template, values):
-        query = copy.deepcopy(template)
-        query['query']['query_string']['query'] = query['query']['query_string']['query'] % values
-        return query
-
-    def hits_by_query(self, query, size=100):
-        es_query = self._apply_template(self.general_template, query)
+    def hits_by_query(self, query, facet=None, size=100):
+        es_query = qb.generic(query, facet=facet)
         return self.es.search(es_query, size=size)
 
     def classify(self, change_number, patch_number, comment):
@@ -183,8 +130,7 @@ class Classifier():
         bug_matches = []
         for x in self.queries:
             self.log.debug("Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug'])
-            query = self._apply_template(self.targeted_template, (x['query'],
-                    change_number, patch_number))
+            query = qb.single_patch(x['query'], change_number, patch_number)
             results = self.es.search(query, size='10')
             if self._urls_match(comment, results):
                 bug_matches.append(x['bug'])
@@ -194,8 +140,7 @@ class Classifier():
         """Wait till ElasticSearch is ready, but return False if timeout."""
         NUMBER_OF_RETRIES = 20
         SLEEP_TIME = 40
-        query = self._apply_template(self.ready_template, (change_number,
-            patch_number))
+        query = qb.result_ready(change_number, patch_number)
         for i in range(NUMBER_OF_RETRIES):
             try:
                 results = self.es.search(query, size='10')
@@ -212,8 +157,7 @@ class Classifier():
         if i == NUMBER_OF_RETRIES - 1:
             return False
         self.log.debug("Found hits for change_number: %s, patch_number: %s" % (change_number, patch_number))
-        query = self._apply_template(self.files_ready_template, (change_number,
-            patch_number))
+        query = qb.files_ready(change_number, patch_number)
         for i in range(NUMBER_OF_RETRIES):
             results = self.es.search(query, size='80')
             files = [x['term'] for x in results.terms]
