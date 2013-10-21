@@ -29,10 +29,6 @@
     ( @message:"Cannot 'createImage'"
     OR message:"Cannot 'createImage'" )
     AND filename:"console.html"
-- bug: 1229475
-  query: >
-    ( @message:"Second simultaneous read on fileno"
-    OR message:"Second simultaneous read on fileno" )
 - bug: 1230407
   query: >
     ( @message:"Lock wait timeout exceeded; try restarting transaction"
