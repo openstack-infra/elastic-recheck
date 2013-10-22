@@ -117,12 +117,9 @@ class RecheckWatch(threading.Thread):
         msg = ('%s change: %s failed tempest because of:' % (
             data['change']['project'],
             data['change']['url']))
-        if len(data['bug_numbers']) > 1:
-            for bug in data['bug_numbers']:
-                msg += ' https://bugs.launchpad.net/bugs/%s and' % bug
-        else:
-            msg += (' https://bugs.launchpad.net/bugs/%s' %
-                    data['bug_numbers'][0])
+        bug_urls = ['https://bugs.launchpad.net/bugs/%s' % x for x
+                    in data['bug_numbers']]
+        msg += ' and '.join(bug_urls)
         self.log.info('Compiled Message %s: %s' % (channel, msg))
         self.ircbot.send(channel, msg)
 
