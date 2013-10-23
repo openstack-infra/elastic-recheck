@@ -114,7 +114,7 @@ class RecheckWatch(threading.Thread):
         self.ircbot.send(channel, msg)
 
     def error_found(self, channel, data):
-        msg = ('%s change: %s failed tempest because of:' % (
+        msg = ('%s change: %s failed tempest because of: ' % (
             data['change']['project'],
             data['change']['url']))
         bug_urls = ['https://bugs.launchpad.net/bugs/%s' % x for x
