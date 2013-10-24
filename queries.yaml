@@ -82,3 +82,8 @@
     (( @message:"MismatchError: {u'service':" AND @message:"not in [{")
     OR (message:"MismatchError: {u'service':" AND message:"not in [{"))
     AND filename:"console.html"
+- bug: 1244255
+  query: >
+    (( @message:"NovaException: Unexpected vif_type=binding_failed")
+    OR (message:"NovaException: Unexpected vif_type=binding_failed"))
+    AND filename:"logs/screen-n-cpu.txt"
