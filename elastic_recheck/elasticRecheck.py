@@ -27,6 +27,8 @@ import sys
 import time
 import yaml
 
+from elastic_recheck import results
+
 logging.basicConfig()
 
 
@@ -153,7 +155,7 @@ class Classifier():
     queries = None
 
     def __init__(self, queries):
-        self.es = pyelasticsearch.ElasticSearch(self.ES_URL)
+        self.es = results.SearchEngine(self.ES_URL)
         self.queries = yaml.load(open(queries).read())
         self.queries_filename = queries
 
@@ -184,7 +186,7 @@ class Classifier():
             query = self._apply_template(self.targeted_template, (x['query'],
                     change_number, patch_number))
             results = self.es.search(query, size='10')
-            if self._urls_match(comment, results['hits']['hits']):
+            if self._urls_match(comment, results):
                 bug_matches.append(x['bug'])
         return bug_matches
 
@@ -203,8 +205,7 @@ class Classifier():
                 print "UHUH hit InvalidJsonResponseError"
                 time.sleep(NUMBER_OF_RETRIES)
                 continue
-            if (results['hits']['total'] > 0 and
-                    self._urls_match(comment, results['hits']['hits'])):
+            if (len(results) > 0 and self._urls_match(comment, results)):
                 break
             else:
                 time.sleep(SLEEP_TIME)
@@ -215,8 +216,7 @@ class Classifier():
             patch_number))
         for i in range(NUMBER_OF_RETRIES):
             results = self.es.search(query, size='80')
-            files = results['facets']['tag']['terms']
-            files = [x['term'] for x in files]
+            files = [x['term'] for x in results.terms]
             missing_files = [x for x in REQUIRED_FILES if x not in files]
             if len(missing_files) is 0:
                 break
@@ -232,8 +232,7 @@ class Classifier():
 
     def _urls_match(self, comment, results):
         for result in results:
-            fields = result['_source'].get('@fields', result['_source'])
-            url = fields['log_url']
+            url = result.log_url
             if RequiredFiles.prep_url(url) in comment:
                 return True
         return False

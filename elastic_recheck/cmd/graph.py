@@ -50,25 +50,21 @@ def main():
         results = classifier.hits_by_query(query['query'], size=3000)
         histograms = {}
         seen = set()
-        for hit in results['hits']['hits']:
-            uuid = hit['_source']['@fields']['build_uuid']
-            if type(uuid) == list:
-                uuid = uuid[0]
+        for hit in results:
+            uuid = hit.build_uuid
             key = '%s-%s' % (uuid, query['bug'])
             if key in seen:
                 continue
             seen.add(key)
 
-            ts = datetime.strptime(hit['_source']['@timestamp'],
+            ts = datetime.strptime(hit.timestamp,
                                    "%Y-%m-%dT%H:%M:%S.%fZ")
             # hour resolution
             ts = datetime(ts.year, ts.month, ts.day, ts.hour)
             # ms since epoch
             pos = int(((ts - epoch).total_seconds()) * 1000)
 
-            result = hit['_source']['@fields']['build_status']
-            if type(result) == list:
-                result = hit['_source']['@fields']['build_status'][0]
+            result = hit.build_status
 
             if result not in histograms:
                 histograms[result] = {}

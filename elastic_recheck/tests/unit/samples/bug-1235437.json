@@ -1,0 +1,752 @@
+{
+    "hits": {
+        "hits": [
+            {
+                "sort": [
+                    1382067955328
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "2"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Zd3b75139e6f74ad7b8e8562dcd216434"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/87/52287/2/gate/gate-tempest-devstack-vm-neutron-pg-isolated/df70dd4/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "52287"
+                        ], 
+                        "pid": [
+                            "572"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "df70dd4738f64601a42fecedfb40b6a3"
+                        ], 
+                        "received_at": [
+                            "2013-10-18T03:47:54.053Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-18T03:45:55.328Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-18 03:45:55.328 572 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-18 03:45:55.328 572 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-18 03:45:55.328 572 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-18 03:45:55.328 572 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-18 03:45:55.328 572 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-18 03:45:55.328 572 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 508, in delete_subnet\n2013-10-18 03:45:55.328 572 TRACE neutron.api.v2.resource     raise exc.SubnetInUse(subnet_id=id)\n2013-10-18 03:45:55.328 572 TRACE neutron.api.v2.resource SubnetInUse: Unable to complete operation on subnet dad03a67-2cbc-44c6-b36f-f0d610e74caf. One or more ports have an IP allocation from this subnet.\n2013-10-18 03:45:55.328 572 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "OnXw9-Y2SemyF8kJ6SZaww"
+            }, 
+            {
+                "sort": [
+                    1382022555576
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "4"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z6e8d978b24164b648f1a80bfe2096977"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/29/51029/4/check/check-tempest-devstack-vm-neutron-pg-isolated/fdde65b/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "51029"
+                        ], 
+                        "pid": [
+                            "32252"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "fdde65bb061f4d05982cf176a029ecf1"
+                        ], 
+                        "received_at": [
+                            "2013-10-17T15:11:21.064Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-17T15:09:15.576Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:38055/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-17 15:09:15.576 32252 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-17 15:09:15.576 32252 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-17 15:09:15.576 32252 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-17 15:09:15.576 32252 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-17 15:09:15.576 32252 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-17 15:09:15.576 32252 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 508, in delete_subnet\n2013-10-17 15:09:15.576 32252 TRACE neutron.api.v2.resource     raise exc.SubnetInUse(subnet_id=id)\n2013-10-17 15:09:15.576 32252 TRACE neutron.api.v2.resource SubnetInUse: Unable to complete operation on subnet 84fa54b9-29c8-47a6-b0d2-3dfd61054f2f. One or more ports have an IP allocation from this subnet.\n2013-10-17 15:09:15.576 32252 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "UtPvGIPnSA-KdVGMytIv6g"
+            }, 
+            {
+                "sort": [
+                    1381886192423
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "4"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z2086287ac3ae43c19272ca37468dadf0"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/78/49478/4/check/check-tempest-devstack-vm-neutron-pg/f3d226c/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "49478"
+                        ], 
+                        "pid": [
+                            "767"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg"
+                        ], 
+                        "build_uuid": [
+                            "f3d226c67da94f01b23c9a689ff4fff3"
+                        ], 
+                        "received_at": [
+                            "2013-10-16T01:20:37.144Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-16T01:16:32.423Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:48897/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-16 01:16:32.423 767 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-16 01:16:32.423 767 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-16 01:16:32.423 767 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-16 01:16:32.423 767 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-16 01:16:32.423 767 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-16 01:16:32.423 767 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 508, in delete_subnet\n2013-10-16 01:16:32.423 767 TRACE neutron.api.v2.resource     raise exc.SubnetInUse(subnet_id=id)\n2013-10-16 01:16:32.423 767 TRACE neutron.api.v2.resource SubnetInUse: Unable to complete operation on subnet 5ee13f15-0ed7-4541-9b6a-cae5015c7e43. One or more ports have an IP allocation from this subnet.\n2013-10-16 01:16:32.423 767 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.16", 
+                "_id": "JB1NaVLZTg6nccPli6AvNQ"
+            }, 
+            {
+                "sort": [
+                    1381537637618
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "2"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z613fb74de5f94f6b8babf8d78a950dd4"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/73/51273/2/gate/gate-tempest-devstack-vm-neutron-pg-isolated/add2914/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "51273"
+                        ], 
+                        "pid": [
+                            "1032"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "add2914e653644e187343e558136b61d"
+                        ], 
+                        "received_at": [
+                            "2013-10-12T00:29:20.907Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-12T00:27:17.618Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-12 00:27:17.618 1032 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-12 00:27:17.618 1032 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-12 00:27:17.618 1032 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-12 00:27:17.618 1032 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-12 00:27:17.618 1032 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-12 00:27:17.618 1032 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 508, in delete_subnet\n2013-10-12 00:27:17.618 1032 TRACE neutron.api.v2.resource     raise exc.SubnetInUse(subnet_id=id)\n2013-10-12 00:27:17.618 1032 TRACE neutron.api.v2.resource SubnetInUse: Unable to complete operation on subnet ae1d46a8-31aa-4d61-959f-3fc57792c59b. One or more ports have an IP allocation from this subnet.\n2013-10-12 00:27:17.618 1032 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.12", 
+                "_id": "vdUk2UWVRCehvnOV1R4d7w"
+            }, 
+            {
+                "sort": [
+                    1381245878239
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "1"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/milestone-proposed/Z20667e6c69f6436fb78628e2c8a6a60c"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/78/50378/1/check/check-tempest-devstack-vm-neutron-isolated/e8c77e0/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "50378"
+                        ], 
+                        "pid": [
+                            "345"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-isolated"
+                        ], 
+                        "build_uuid": [
+                            "e8c77e02769541dcac1a91b9d90802ec"
+                        ], 
+                        "received_at": [
+                            "2013-10-08T15:26:38.646Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-08T15:24:38.239Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:56153/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-08 15:24:38.239 345 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-08 15:24:38.239 345 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-08 15:24:38.239 345 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-08 15:24:38.239 345 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-08 15:24:38.239 345 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-08 15:24:38.239 345 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 467, in delete_subnet\n2013-10-08 15:24:38.239 345 TRACE neutron.api.v2.resource     super(Ml2Plugin, self).delete_subnet(context, id)\n2013-10-08 15:24:38.239 345 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/db/db_base_plugin_v2.py\", line 1266, in delete_subnet\n2013-10-08 15:24:38.239 345 TRACE neutron.api.v2.resource     raise q_exc.SubnetInUse(subnet_id=id)\n2013-10-08 15:24:38.239 345 TRACE neutron.api.v2.resource SubnetInUse: Unable to complete operation on subnet c8224921-c6f2-45c3-ad25-76379f52cf23. One or more ports have an IP allocation from this subnet.\n2013-10-08 15:24:38.239 345 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "B3Vv3AGgSse6uI7ZmOip_w"
+            }, 
+            {
+                "sort": [
+                    1381214595921
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "1"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z781930d416e74916ba097750db53e36b"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/04/50204/1/gate/gate-tempest-devstack-vm-neutron-pg-isolated/fed1115/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "50204"
+                        ], 
+                        "pid": [
+                            "31882"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "fed11150a0144e49bbe4bd261f269550"
+                        ], 
+                        "received_at": [
+                            "2013-10-08T06:45:14.497Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-08T06:43:15.921Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-08 06:43:15.921 31882 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-08 06:43:15.921 31882 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-08 06:43:15.921 31882 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-08 06:43:15.921 31882 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-08 06:43:15.921 31882 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-08 06:43:15.921 31882 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 467, in delete_subnet\n2013-10-08 06:43:15.921 31882 TRACE neutron.api.v2.resource     super(Ml2Plugin, self).delete_subnet(context, id)\n2013-10-08 06:43:15.921 31882 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/db/db_base_plugin_v2.py\", line 1266, in delete_subnet\n2013-10-08 06:43:15.921 31882 TRACE neutron.api.v2.resource     raise q_exc.SubnetInUse(subnet_id=id)\n2013-10-08 06:43:15.921 31882 TRACE neutron.api.v2.resource SubnetInUse: Unable to complete operation on subnet f3b4fd92-b184-40d7-843c-1fe398967e51. One or more ports have an IP allocation from this subnet.\n2013-10-08 06:43:15.921 31882 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.08", 
+                "_id": "k5xYZ1tCQvGvz4vu3tS1Qg"
+            }, 
+            {
+                "sort": [
+                    1381173934020
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "18"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Zfa9da7fe5afe4a3aa318822927d7a485"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/24/49424/18/check/check-tempest-devstack-vm-neutron-isolated/2dc54ed/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "49424"
+                        ], 
+                        "pid": [
+                            "2563"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-isolated"
+                        ], 
+                        "build_uuid": [
+                            "2dc54edeee01413982aeb91a9b7b7e5e"
+                        ], 
+                        "received_at": [
+                            "2013-10-07T19:28:20.034Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-07T19:25:34.020Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-07 19:25:34.020 2563 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-07 19:25:34.020 2563 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-07 19:25:34.020 2563 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-07 19:25:34.020 2563 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-07 19:25:34.020 2563 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-07 19:25:34.020 2563 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 467, in delete_subnet\n2013-10-07 19:25:34.020 2563 TRACE neutron.api.v2.resource     super(Ml2Plugin, self).delete_subnet(context, id)\n2013-10-07 19:25:34.020 2563 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/db/db_base_plugin_v2.py\", line 1266, in delete_subnet\n2013-10-07 19:25:34.020 2563 TRACE neutron.api.v2.resource     raise q_exc.SubnetInUse(subnet_id=id)\n2013-10-07 19:25:34.020 2563 TRACE neutron.api.v2.resource SubnetInUse: Unable to complete operation on subnet 8c01df8f-7134-482c-85f1-aaad0c4274d5. One or more ports have an IP allocation from this subnet.\n2013-10-07 19:25:34.020 2563 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.07", 
+                "_id": "ePQz3pH-TyCdtsShXBbf-A"
+            }, 
+            {
+                "sort": [
+                    1381113106305
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "7"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z55731ce087594d97b7e5eae85c0ed88b"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/99/48999/7/check/check-tempest-devstack-vm-neutron-pg-isolated/294eed8/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "48999"
+                        ], 
+                        "pid": [
+                            "31144"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-pg-isolated"
+                        ], 
+                        "build_uuid": [
+                            "294eed88619946948b89f0a228a8a26c"
+                        ], 
+                        "received_at": [
+                            "2013-10-07T02:33:05.061Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-07T02:31:46.305Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-07 02:31:46.305 31144 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-07 02:31:46.305 31144 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-07 02:31:46.305 31144 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-07 02:31:46.305 31144 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-07 02:31:46.305 31144 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-07 02:31:46.305 31144 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 467, in delete_subnet\n2013-10-07 02:31:46.305 31144 TRACE neutron.api.v2.resource     super(Ml2Plugin, self).delete_subnet(context, id)\n2013-10-07 02:31:46.305 31144 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/db/db_base_plugin_v2.py\", line 1266, in delete_subnet\n2013-10-07 02:31:46.305 31144 TRACE neutron.api.v2.resource     raise q_exc.SubnetInUse(subnet_id=id)\n2013-10-07 02:31:46.305 31144 TRACE neutron.api.v2.resource SubnetInUse: Unable to complete operation on subnet 5c0a9529-53e8-4cad-9787-e6aecbb57f8f. One or more ports have an IP allocation from this subnet.\n2013-10-07 02:31:46.305 31144 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.07", 
+                "_id": "7DUrGVa9Q3uENCvU1h_A4g"
+            }, 
+            {
+                "sort": [
+                    1381110973772
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "3"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z95bedbb1f39444c8b843d7e8b356b8a6"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/15/41615/3/check/check-tempest-devstack-vm-neutron-isolated/b730e16/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/python-neutronclient"
+                        ], 
+                        "build_change": [
+                            "41615"
+                        ], 
+                        "pid": [
+                            "5753"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-isolated"
+                        ], 
+                        "build_uuid": [
+                            "b730e169174c45db9fa71544786c8a20"
+                        ], 
+                        "received_at": [
+                            "2013-10-07T01:57:36.867Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-07T01:56:13.772Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:53290/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-07 01:56:13.772 5753 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-07 01:56:13.772 5753 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-07 01:56:13.772 5753 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-07 01:56:13.772 5753 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-07 01:56:13.772 5753 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-07 01:56:13.772 5753 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 467, in delete_subnet\n2013-10-07 01:56:13.772 5753 TRACE neutron.api.v2.resource     super(Ml2Plugin, self).delete_subnet(context, id)\n2013-10-07 01:56:13.772 5753 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/db/db_base_plugin_v2.py\", line 1266, in delete_subnet\n2013-10-07 01:56:13.772 5753 TRACE neutron.api.v2.resource     raise q_exc.SubnetInUse(subnet_id=id)\n2013-10-07 01:56:13.772 5753 TRACE neutron.api.v2.resource SubnetInUse: Unable to complete operation on subnet fb0a9068-7d7c-49b0-b148-cfda0d626f88. One or more ports have an IP allocation from this subnet.\n2013-10-07 01:56:13.772 5753 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.07", 
+                "_id": "w6ZZwz4lROyWRneWQaNghQ"
+            }, 
+            {
+                "sort": [
+                    1381081976836
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "3"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z2f69a352db104765bd75a7f825c79163"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/15/41615/3/check/check-tempest-devstack-vm-neutron-isolated/c2ee3da/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/python-neutronclient"
+                        ], 
+                        "build_change": [
+                            "41615"
+                        ], 
+                        "pid": [
+                            "4781"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "check-tempest-devstack-vm-neutron-isolated"
+                        ], 
+                        "build_uuid": [
+                            "c2ee3dabc28d4953a169be9b9aef7098"
+                        ], 
+                        "received_at": [
+                            "2013-10-06T17:54:11.545Z"
+                        ], 
+                        "build_queue": [
+                            "check"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-06T17:52:56.836Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:44866/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-06 17:52:56.836 4781 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-06 17:52:56.836 4781 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-06 17:52:56.836 4781 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-06 17:52:56.836 4781 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-06 17:52:56.836 4781 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-06 17:52:56.836 4781 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 467, in delete_subnet\n2013-10-06 17:52:56.836 4781 TRACE neutron.api.v2.resource     super(Ml2Plugin, self).delete_subnet(context, id)\n2013-10-06 17:52:56.836 4781 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/db/db_base_plugin_v2.py\", line 1266, in delete_subnet\n2013-10-06 17:52:56.836 4781 TRACE neutron.api.v2.resource     raise q_exc.SubnetInUse(subnet_id=id)\n2013-10-06 17:52:56.836 4781 TRACE neutron.api.v2.resource SubnetInUse: Unable to complete operation on subnet 4f2c8ee0-a9da-4827-bb45-150bd10d2b58. One or more ports have an IP allocation from this subnet.\n2013-10-06 17:52:56.836 4781 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.06", 
+                "_id": "heI5CSFnQaWzm__13vpnFA"
+            }, 
+            {
+                "sort": [
+                    1381021854698
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-q-svc.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "1"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z560f254189074bd98478065a6a278732"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/21/49921/1/gate/gate-tempest-devstack-vm-neutron-pg/9dab643/logs/screen-q-svc.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/neutron"
+                        ], 
+                        "build_change": [
+                            "49921"
+                        ], 
+                        "pid": [
+                            "32753"
+                        ], 
+                        "module": [
+                            "neutron.api.v2.resource"
+                        ], 
+                        "filename": [
+                            "logs/screen-q-svc.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-neutron-pg"
+                        ], 
+                        "build_uuid": [
+                            "9dab6433e49b4a988fb7e44fe156a19b"
+                        ], 
+                        "received_at": [
+                            "2013-10-06T01:14:58.062Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-06T01:10:54.698Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:56929/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[-] delete failed\n2013-10-06 01:10:54.698 32753 TRACE neutron.api.v2.resource Traceback (most recent call last):\n2013-10-06 01:10:54.698 32753 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/resource.py\", line 84, in resource\n2013-10-06 01:10:54.698 32753 TRACE neutron.api.v2.resource     result = method(request=request, **args)\n2013-10-06 01:10:54.698 32753 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/api/v2/base.py\", line 432, in delete\n2013-10-06 01:10:54.698 32753 TRACE neutron.api.v2.resource     obj_deleter(request.context, id, **kwargs)\n2013-10-06 01:10:54.698 32753 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/plugins/ml2/plugin.py\", line 467, in delete_subnet\n2013-10-06 01:10:54.698 32753 TRACE neutron.api.v2.resource     super(Ml2Plugin, self).delete_subnet(context, id)\n2013-10-06 01:10:54.698 32753 TRACE neutron.api.v2.resource   File \"/opt/stack/new/neutron/neutron/db/db_base_plugin_v2.py\", line 1266, in delete_subnet\n2013-10-06 01:10:54.698 32753 TRACE neutron.api.v2.resource     raise q_exc.SubnetInUse(subnet_id=id)\n2013-10-06 01:10:54.698 32753 TRACE neutron.api.v2.resource SubnetInUse: Unable to complete operation on subnet 9c4a3b3c-e8f0-44e6-a479-80e7ec683286. One or more ports have an IP allocation from this subnet.\n2013-10-06 01:10:54.698 32753 TRACE neutron.api.v2.resource ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.06", 
+                "_id": "x7yhkCY0Qcq9oedpyQdRtA"
+            }
+        ], 
+        "total": 11, 
+        "max_score": null
+    }, 
+    "_shards": {
+        "successful": 75, 
+        "failed": 0, 
+        "total": 75
+    }, 
+    "took": 49, 
+    "timed_out": false
+}

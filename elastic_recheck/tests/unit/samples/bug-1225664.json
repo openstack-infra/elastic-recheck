@@ -1,0 +1,82 @@
+{
+    "hits": {
+        "hits": [
+            {
+                "sort": [
+                    1382112389859
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "logs/screen-c-vol.txt", 
+                        "screen", 
+                        "oslofmt", 
+                        "multiline"
+                    ], 
+                    "@fields": {
+                        "build_status": [
+                            "FAILURE"
+                        ], 
+                        "build_patchset": [
+                            "3"
+                        ], 
+                        "build_ref": [
+                            "refs/zuul/master/Z63e996afd0d945d983b1f1367c365908"
+                        ], 
+                        "log_url": [
+                            "http://logs.openstack.org/95/52595/3/gate/gate-tempest-devstack-vm-postgres-full/0f0aead/logs/screen-c-vol.txt"
+                        ], 
+                        "loglevel": [
+                            "ERROR"
+                        ], 
+                        "project": [
+                            "openstack/ceilometer"
+                        ], 
+                        "build_change": [
+                            "52595"
+                        ], 
+                        "pid": [
+                            "22253"
+                        ], 
+                        "module": [
+                            "cinder.openstack.common.rpc.amqp"
+                        ], 
+                        "filename": [
+                            "logs/screen-c-vol.txt"
+                        ], 
+                        "build_name": [
+                            "gate-tempest-devstack-vm-postgres-full"
+                        ], 
+                        "build_uuid": [
+                            "0f0aeadb4225403d8e0175c7c90ee614"
+                        ], 
+                        "received_at": [
+                            "2013-10-18T16:16:22.912Z"
+                        ], 
+                        "build_queue": [
+                            "gate"
+                        ]
+                    }, 
+                    "@timestamp": "2013-10-18T16:06:29.859Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "[req-e3bbc5dc-7b1e-44e4-b13a-edc3e122c61d 62d68c41daaa4522b639305e6ad697a7 cc65765c31634474ba8014aef29d58e2] Exception during message handling\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp Traceback (most recent call last):\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp   File \"/opt/stack/new/cinder/cinder/openstack/common/rpc/amqp.py\", line 441, in _process_data\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp     **args)\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp   File \"/opt/stack/new/cinder/cinder/openstack/common/rpc/dispatcher.py\", line 148, in dispatch\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp     return getattr(proxyobj, method)(ctxt, **kwargs)\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp   File \"/opt/stack/new/cinder/cinder/utils.py\", line 809, in wrapper\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp     return func(self, *args, **kwargs)\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp   File \"/opt/stack/new/cinder/cinder/volume/manager.py\", line 425, in delete_snapshot\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp     {'status': 'error_deleting'})\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp   File \"/usr/lib/python2.7/contextlib.py\", line 24, in __exit__\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp     self.gen.next()\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp   File \"/opt/stack/new/cinder/cinder/volume/manager.py\", line 413, in delete_snapshot\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp     self.driver.delete_snapshot(snapshot_ref)\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp   File \"/opt/stack/new/cinder/cinder/volume/drivers/lvm.py\", line 268, in delete_snapshot\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp     self._delete_volume(snapshot, is_snapshot=True)\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp   File \"/opt/stack/new/cinder/cinder/volume/drivers/lvm.py\", line 140, in _delete_volume\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp     self.vg.delete(name)\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp   File \"/opt/stack/new/cinder/cinder/brick/local_dev/lvm.py\", line 432, in delete\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp     root_helper=self._root_helper, run_as_root=True)\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp   File \"/opt/stack/new/cinder/cinder/utils.py\", line 142, in execute\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp     return processutils.execute(*cmd, **kwargs)\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp   File \"/opt/stack/new/cinder/cinder/openstack/common/processutils.py\", line 173, in execute\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp     cmd=' '.join(cmd))\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp ProcessExecutionError: Unexpected error while running command.\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp Command: sudo cinder-rootwrap /etc/cinder/rootwrap.conf lvremove -f stack-volumes/_snapshot-8e782749-16c5-42a8-8e12-45d4ddc0c7ad\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp Exit code: 5\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp Stdout: ''\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp Stderr: '  LV stack-volumes/_snapshot-8e782749-16c5-42a8-8e12-45d4ddc0c7ad in use: not deactivating\\n  Unable to deactivate logical volume \"_snapshot-8e782749-16c5-42a8-8e12-45d4ddc0c7ad\"\\n'\n2013-10-18 16:06:29.859 22253 TRACE cinder.openstack.common.rpc.amqp ", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.18", 
+                "_id": "7VdTbQKkTQyXUXdQzhbq8g"
+            }
+        ], 
+        "total": 1, 
+        "max_score": null
+    }, 
+    "_shards": {
+        "successful": 75, 
+        "failed": 0, 
+        "total": 75
+    }, 
+    "took": 44, 
+    "timed_out": false
+}

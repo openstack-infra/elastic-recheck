@@ -1,0 +1,295 @@
+{
+    "hits": {
+        "hits": [
+            {
+                "sort": [
+                    1382026106601
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/release-0.3/Z86dfdff62de3427e8ad3093fadbb7a75", 
+                        "log_url": "http://logs.openstack.org/40/52440/2/check/gate-murano-conductor-python26/88042f4/console.html", 
+                        "project": "stackforge/murano-conductor", 
+                        "build_change": "52440", 
+                        "filename": "console.html", 
+                        "build_name": "gate-murano-conductor-python26", 
+                        "build_uuid": "88042f47318041159e73153718d9c68e", 
+                        "received_at": [
+                            "2013-10-17T16:08:46.270Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T16:08:26.601Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "ConnectionFailed: Connection to neutron failed: Maximum attempts reached", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "_K-K1VwuR0ytfyIKyXAQIA"
+            }, 
+            {
+                "sort": [
+                    1382026106559
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/release-0.3/Z86dfdff62de3427e8ad3093fadbb7a75", 
+                        "log_url": "http://logs.openstack.org/40/52440/2/check/gate-murano-conductor-python26/88042f4/console.html", 
+                        "project": "stackforge/murano-conductor", 
+                        "build_change": "52440", 
+                        "filename": "console.html", 
+                        "build_name": "gate-murano-conductor-python26", 
+                        "build_uuid": "88042f47318041159e73153718d9c68e", 
+                        "received_at": [
+                            "2013-10-17T16:08:46.243Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T16:08:26.559Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:42345/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "ConnectionFailed: Connection to neutron failed: Maximum attempts reached", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "gQ0_EqsURWCz7rJkpMK8zA"
+            }, 
+            {
+                "sort": [
+                    1382026091631
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/release-0.3/Z86dfdff62de3427e8ad3093fadbb7a75", 
+                        "log_url": "http://logs.openstack.org/40/52440/2/check/gate-murano-conductor-python27/28bb9d2/console.html", 
+                        "project": "stackforge/murano-conductor", 
+                        "build_change": "52440", 
+                        "filename": "console.html", 
+                        "build_name": "gate-murano-conductor-python27", 
+                        "build_uuid": "28bb9d2ed0224c65975c4fdec2a37636", 
+                        "received_at": [
+                            "2013-10-17T16:08:28.036Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T16:08:11.631Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "ConnectionFailed: Connection to neutron failed: Maximum attempts reached", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "PCSaEQOeTsaFSNrf7yT4xw"
+            }, 
+            {
+                "sort": [
+                    1382026091601
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "2", 
+                        "build_ref": "refs/zuul/release-0.3/Z86dfdff62de3427e8ad3093fadbb7a75", 
+                        "log_url": "http://logs.openstack.org/40/52440/2/check/gate-murano-conductor-python27/28bb9d2/console.html", 
+                        "project": "stackforge/murano-conductor", 
+                        "build_change": "52440", 
+                        "filename": "console.html", 
+                        "build_name": "gate-murano-conductor-python27", 
+                        "build_uuid": "28bb9d2ed0224c65975c4fdec2a37636", 
+                        "received_at": [
+                            "2013-10-17T16:08:27.981Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T16:08:11.601Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:34310/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "ConnectionFailed: Connection to neutron failed: Maximum attempts reached", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "mtJSsR6lTuy0QrAKdhkG_Q"
+            }, 
+            {
+                "sort": [
+                    1382025943214
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/release-0.3/Zbb257e0054b144d3af58f9d8aace7446", 
+                        "log_url": "http://logs.openstack.org/40/52440/1/check/gate-murano-conductor-python26/78b0048/console.html", 
+                        "project": "stackforge/murano-conductor", 
+                        "build_change": "52440", 
+                        "filename": "console.html", 
+                        "build_name": "gate-murano-conductor-python26", 
+                        "build_uuid": "78b004836e10481c8d31b123a4f3cc68", 
+                        "received_at": [
+                            "2013-10-17T16:07:18.825Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T16:05:43.214Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "ConnectionFailed: Connection to neutron failed: Maximum attempts reached", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "CjP7zRtbTyOCJ9D6egFGWQ"
+            }, 
+            {
+                "sort": [
+                    1382025943146
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/release-0.3/Zbb257e0054b144d3af58f9d8aace7446", 
+                        "log_url": "http://logs.openstack.org/40/52440/1/check/gate-murano-conductor-python26/78b0048/console.html", 
+                        "project": "stackforge/murano-conductor", 
+                        "build_change": "52440", 
+                        "filename": "console.html", 
+                        "build_name": "gate-murano-conductor-python26", 
+                        "build_uuid": "78b004836e10481c8d31b123a4f3cc68", 
+                        "received_at": [
+                            "2013-10-17T16:07:18.803Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T16:05:43.146Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "ConnectionFailed: Connection to neutron failed: Maximum attempts reached", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "bi493jkHTOm3DR8emRzQ-g"
+            }, 
+            {
+                "sort": [
+                    1382025937751
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/release-0.3/Zbb257e0054b144d3af58f9d8aace7446", 
+                        "log_url": "http://logs.openstack.org/40/52440/1/check/gate-murano-conductor-python27/3466434/console.html", 
+                        "project": "stackforge/murano-conductor", 
+                        "build_change": "52440", 
+                        "filename": "console.html", 
+                        "build_name": "gate-murano-conductor-python27", 
+                        "build_uuid": "34664344bb2345b0bed260d7d344d85c", 
+                        "received_at": [
+                            "2013-10-17T16:07:18.426Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T16:05:37.751Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "ConnectionFailed: Connection to neutron failed: Maximum attempts reached", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "JeZhPZgSQ2WtDCZQ--giTw"
+            }, 
+            {
+                "sort": [
+                    1382025937731
+                ], 
+                "_type": "jenkins", 
+                "_source": {
+                    "@tags": [
+                        "console.html"
+                    ], 
+                    "@fields": {
+                        "build_status": "FAILURE", 
+                        "build_patchset": "1", 
+                        "build_ref": "refs/zuul/release-0.3/Zbb257e0054b144d3af58f9d8aace7446", 
+                        "log_url": "http://logs.openstack.org/40/52440/1/check/gate-murano-conductor-python27/3466434/console.html", 
+                        "project": "stackforge/murano-conductor", 
+                        "build_change": "52440", 
+                        "filename": "console.html", 
+                        "build_name": "gate-murano-conductor-python27", 
+                        "build_uuid": "34664344bb2345b0bed260d7d344d85c", 
+                        "received_at": [
+                            "2013-10-17T16:07:18.407Z"
+                        ], 
+                        "build_queue": "check"
+                    }, 
+                    "@timestamp": "2013-10-17T16:05:37.731Z", 
+                    "@source_path": "/", 
+                    "@source": "tcp://127.0.0.1:50373/", 
+                    "@source_host": "127.0.0.1", 
+                    "@message": "ConnectionFailed: Connection to neutron failed: Maximum attempts reached", 
+                    "@type": "jenkins"
+                }, 
+                "_score": null, 
+                "_index": "logstash-2013.10.17", 
+                "_id": "gG1QpWklQCew7ADlP3YBJQ"
+            }
+        ], 
+        "total": 8, 
+        "max_score": null
+    }, 
+    "_shards": {
+        "successful": 75, 
+        "failed": 0, 
+        "total": 75
+    }, 
+    "took": 71, 
+    "timed_out": false
+}

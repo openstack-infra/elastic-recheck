@@ -31,16 +31,10 @@ def collect_metrics(classifier):
     for q in classifier.queries:
         results = classifier.hits_by_query(q['query'], size=3000)
         rate = {}
-        for x in results['hits']['hits']:
-            uuid = x['_source']['@fields']['build_uuid']
-            if type(uuid) == list:
-                uuid = uuid[0]
-            success = x['_source']['@fields']['build_status']
-            if type(success) == list:
-                success = success[0]
+        for hit in results:
+            uuid = hit.build_uuid
+            success = hit.build_status
 
-            # use of sets to ensure we aren't finding more than one
-            # fail per build
             if success not in rate:
                 rate[success] = set(uuid)
             else:
@@ -61,6 +55,7 @@ def collect_metrics(classifier):
 
 def print_metrics(data):
     print "Elastic recheck known issues"
+
     sorted_data = sorted(data.iteritems(),
                          key=lambda x: -x[1]['fails'])
     for d in sorted_data:

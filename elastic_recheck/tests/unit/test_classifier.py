@@ -15,6 +15,7 @@
 import yaml
 
 from elastic_recheck import elasticRecheck
+from elastic_recheck import results
 from elastic_recheck import tests
 
 
@@ -40,16 +41,21 @@ def _fake_search(query, size=None):
                'devstack-vm-full/f8965ee/console.html')
     hit_dict = {'_source': {'@fields': {'log_url': log_url}}}
     if 'magic query' in query['query']['query_string']['query']:
-        fake_result = {'hits': {'total': 2, 'hits': 2},
-                       'facets': {'tag': {'terms': file_list}}}
+        fake_result = results.ResultSet(
+            {'hits': {'total': 4, 'hits': [{}]},
+             'facets': {'tag': {'terms': file_list}}})
     else:
-        fake_result = {'hits': {'total': 2, 'hits': [hit_dict]},
-                       'facets': {'tag': {'terms': file_list}}}
+        fake_result = results.ResultSet(
+            {'hits': {'total': 2, 'hits': [hit_dict]},
+             'facets': {'tag': {'terms': file_list}}})
     return fake_result
 
 
 def _fake_urls_match(comment, results):
-    if results is 2:
+    # TODO(sdague): this is not a good fake url work around, however it will
+    # get us through the merge in of the new result sets. We'll eventually
+    # make this actual life like data.
+    if len(results) == 4:
         return True
     else:
         return False
