@@ -127,7 +127,7 @@ class Hit(object):
         at_attr = "@%s" % attr
         if attr in self._hit['_source']:
             result = first(self._hit['_source'][attr])
-        if at_attr in self._hit['_source']:
+        elif at_attr in self._hit['_source']:
             result = first(self._hit['_source'][at_attr])
         elif attr in self._hit['_source']['@fields']:
             result = first(self._hit['_source']['@fields'][attr])
