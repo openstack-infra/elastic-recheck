@@ -87,3 +87,7 @@
     (( @message:"NovaException: Unexpected vif_type=binding_failed")
     OR (message:"NovaException: Unexpected vif_type=binding_failed"))
     AND filename:"logs/screen-n-cpu.txt"
+- bug: 1242777
+  query: >
+    message:"'killed' while waiting for killed"
+    AND filename:"console.html"
