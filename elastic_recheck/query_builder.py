@@ -14,7 +14,7 @@
 
 """Query builder for pyelasticsearch
 
-A serious of utility methods to build the kinds of queries that are needed
+A set of utility methods to build the kinds of queries that are needed
 by elastic recheck to talk with elastic search.
 """
 
