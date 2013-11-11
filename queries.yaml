@@ -1,91 +1,72 @@
 - bug: 1226337
   query: >
-    ( @message:"NovaException: iSCSI device not found at"
-    OR message:"NovaException: iSCSI device not found at" )
+    message:"NovaException: iSCSI device not found at"
     AND filename:"logs/screen-n-cpu.txt"
 - bug: 1211915
   query: >
-    ( @message:"ConnectionFailed: Connection to neutron failed: Maximum attempts reached"
-    OR message:"ConnectionFailed: Connection to neutron failed: Maximum attempts reached" )
+    message:"ConnectionFailed: Connection to neutron failed: Maximum attempts reached"
     AND filename:"console.html"
 - bug: 1217734
   query: >
-    ( @message:"CalledProcessError: Command 'openssl' returned non-zero exit status"
-    OR message:"CalledProcessError: Command 'openssl' returned non-zero exit status" )
+    message:"CalledProcessError: Command 'openssl' returned non-zero exit status"
 - bug: 1191960
   query: >
-    (( @message:"Exit code: 5"
-    AND @message:" sudo cinder-rootwrap /etc/cinder/rootwrap.conf lvremove -f" )
-    OR ( message:"Exit code: 5"
-    AND message:" sudo cinder-rootwrap /etc/cinder/rootwrap.conf lvremove -f" ))
+    message:"Exit code: 5"
+    AND message:" sudo cinder-rootwrap /etc/cinder/rootwrap.conf lvremove -f"
     AND filename:"logs/screen-c-vol.txt"
 - bug: 1225664
   query: >
-    ( @message:"Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed."
-    OR message:"Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed." )
+    message:"Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed."
     AND filename:"console.html"
 - bug: 1218391
   query: >
-    ( @message:"Cannot 'createImage'"
-    OR message:"Cannot 'createImage'" )
+    message:"Cannot 'createImage'"
     AND filename:"console.html"
 - bug: 1230407
   query: >
-    ( @message:"Lock wait timeout exceeded; try restarting transaction"
-    OR message:"Lock wait timeout exceeded; try restarting transaction" )
+    message:"Lock wait timeout exceeded; try restarting transaction"
     AND filename:"logs/screen-q-svc.txt"
 - bug: 1224001
   query: >
-    ( @message:"tempest.scenario.test_network_basic_ops AssertionError: Timed out waiting for"
-    OR message:"tempest.scenario.test_network_basic_ops AssertionError: Timed out waiting for" )
+    message:"tempest.scenario.test_network_basic_ops AssertionError: Timed out waiting for"
     AND filename:"console.html"
 - bug: 1235486
   query: >
-    ( @message:"update or delete on table \"networks\" violates foreign key constraint"
-    OR message:"update or delete on table \"networks\" violates foreign key constraint" )
+    message:"update or delete on table \"networks\" violates foreign key constraint"
     AND filename:"logs/screen-q-svc.txt"
 - bug: 1232748
   query: >
-    ( @message:"OperationalError: (OperationalError) could not translate host name \"localhost\" to address"
-    OR message:"OperationalError: (OperationalError) could not translate host name \"localhost\" to address" )
+    message:"OperationalError: (OperationalError) could not translate host name \"localhost\" to address"
     AND filename:"logs/screen-n-api.txt"
 - bug: 1235435
   query: >
-    (( @message:"One or more ports have an IP allocation from this subnet"
-    AND @message:" SubnetInUse: Unable to complete operation on subnet" )
-    OR ( message:"One or more ports have an IP allocation from this subnet"
-    AND message:" SubnetInUse: Unable to complete operation on subnet" ))
+    message:"One or more ports have an IP allocation from this subnet"
+    AND message:" SubnetInUse: Unable to complete operation on subnet"
     AND filename:"logs/screen-q-svc.txt"
 - bug: 1235437
   query: >
-    ( @message:"failed to reach ACTIVE status within the required time (400 s). Current status: BUILD"
-    OR message:"failed to reach ACTIVE status within the required time (400 s). Current status: BUILD" )
+    message:"failed to reach ACTIVE status within the required time (400 s). Current status: BUILD"
     AND filename:"console.html"
 - bug: 1239637
   query: >
-    ( @message:"DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint"
-    OR message:"DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint" )
+    message:"DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint"
     AND filename:"logs/screen-q-svc.txt"
 - bug: 1239856
   query: >
-    (( @message:"tempest/services" AND @message:"/images_client.py" AND @message:"wait_for_image_status" )
-    OR (message:"tempest/services" AND message:"/images_client.py" AND message:"wait_for_image_status" ))
+    message:"tempest/services" AND message:"/images_client.py" AND message:"wait_for_image_status"
     AND filename:"console.html"
 - bug: 1240256
   query: >
-    ( @message:" 503"
-    OR message:" 503" )
+    message:" 503"
     AND filename:"logs/syslog.txt"
     AND syslog_program:"proxy-server"
 - bug: 1225024
   query: >
-    (( @message:"MismatchError: {u'service':" AND @message:"not in [{")
-    OR (message:"MismatchError: {u'service':" AND message:"not in [{"))
+    message:"MismatchError: {u'service':" AND message:"not in [{"
     AND filename:"console.html"
 - bug: 1244255
   query: >
-    (( @message:"NovaException: Unexpected vif_type=binding_failed")
-    OR (message:"NovaException: Unexpected vif_type=binding_failed"))
+    message:"NovaException: Unexpected vif_type=binding_failed"
     AND filename:"logs/screen-n-cpu.txt"
 - bug: 1242777
   query: >
