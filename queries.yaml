@@ -16,8 +16,9 @@
     AND filename:"logs/screen-c-vol.txt"
 - bug: 1225664
   query: >
-    message:"Details: Time Limit Exceeded! (400s)while waiting for active, but we got killed."
-    AND filename:"console.html"
+    message:"No space left on device"
+    AND filename:"logs/syslog.txt"
+    AND syslog_program:"object-server"
 - bug: 1218391
   query: >
     message:"Cannot 'createImage'"
@@ -68,7 +69,3 @@
   query: >
     message:"NovaException: Unexpected vif_type=binding_failed"
     AND filename:"logs/screen-n-cpu.txt"
-- bug: 1242777
-  query: >
-    message:"'killed' while waiting for killed"
-    AND filename:"console.html"
