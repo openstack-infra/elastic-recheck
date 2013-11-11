@@ -1,11 +1,3 @@
-- bug: 1226337
-  query: >
-    message:"NovaException: iSCSI device not found at"
-    AND filename:"logs/screen-n-cpu.txt"
-- bug: 1211915
-  query: >
-    message:"ConnectionFailed: Connection to neutron failed: Maximum attempts reached"
-    AND filename:"console.html"
 - bug: 1217734
   query: >
     message:"CalledProcessError: Command 'openssl' returned non-zero exit status"
@@ -23,10 +15,6 @@
   query: >
     message:"Cannot 'createImage'"
     AND filename:"console.html"
-- bug: 1230407
-  query: >
-    message:"Lock wait timeout exceeded; try restarting transaction"
-    AND filename:"logs/screen-q-svc.txt"
 - bug: 1224001
   query: >
     message:"tempest.scenario.test_network_basic_ops AssertionError: Timed out waiting for"
