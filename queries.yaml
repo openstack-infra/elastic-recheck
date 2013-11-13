@@ -57,3 +57,7 @@
   query: >
     message:"NovaException: Unexpected vif_type=binding_failed"
     AND filename:"logs/screen-n-cpu.txt"
+- bug: 1249065
+  query: >
+    message:"No nw_info cache associated with instance"
+    AND filename:"logs/screen-n-api.txt"
