@@ -85,9 +85,23 @@ class Stream(object):
 
     def leave_comment(self, project, commit, bugs=None):
         if bugs:
-            message = "I noticed tempest failed, I think you hit bug(s): "
             bug_urls = ['https://bugs.launchpad.net/bugs/%s' % x for x in bugs]
-            message += " and ".join(bug_urls)
+            message = """I noticed tempest failed, I think you hit bug(s):
+
+- %(bugs)s
+
+We don't automatically recheck or reverify, so please consider
+doing that manually if someone hasn't already. For a code review
+which is not yet approved, you can recheck by leaving a code
+review comment with just the text:
+
+    recheck bug %(bug)s
+
+For a code review which has been approved but failed to merge,
+you can reverify by leaving a comment like this:
+
+    reverify bug %(bug)s""" % {'bugs': "\n- ".join(bug_urls),
+                               'bug': bugs[0]}
         else:
             message = ("I noticed tempest failed, refer to: "
                        "https://wiki.openstack.org/wiki/"
