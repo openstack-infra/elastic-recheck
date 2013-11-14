@@ -58,3 +58,7 @@
   query: >
     message:"No nw_info cache associated with instance"
     AND filename:"logs/screen-n-api.txt"
+- bug: 1251448
+  query: >
+    message:" possible networks found, use a Network ID to be more specific. (HTTP 400)"
+    AND filename:"console.html"
