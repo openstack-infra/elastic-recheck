@@ -1,6 +1,3 @@
-- bug: 1217734
-  query: >
-    message:"CalledProcessError: Command 'openssl' returned non-zero exit status"
 - bug: 1191960
   query: >
     message:"Exit code: 5"
