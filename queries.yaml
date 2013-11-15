@@ -62,3 +62,7 @@
   query: >
     message:" possible networks found, use a Network ID to be more specific. (HTTP 400)"
     AND filename:"console.html"
+- bug: 1251784
+  query: >
+    message:"Connection to neutron failed: Maximum attempts reached"
+    AND filename:"logs/screen-n-cpu.txt"
