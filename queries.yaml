@@ -70,3 +70,8 @@
   query: >
     message:"assertionerror: console output was empty"
     AND filename:"console.html"
+- bug: 1251512
+  query: >
+    message:"test_get_console_output"
+    AND message:"raise MismatchError(matchee, matcher, mismatch, verbose)"
+    AND filename:"console.html"
