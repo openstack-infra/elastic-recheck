@@ -75,3 +75,7 @@
     message:"test_get_console_output"
     AND message:"raise MismatchError(matchee, matcher, mismatch, verbose)"
     AND filename:"console.html"
+- bug: 1252514
+  query: >
+    message:"Got error from Swift: put_object"
+    AND filename:"logs/screen-g-api.txt"
