@@ -15,8 +15,13 @@
 #    under the License.
 
 import argparse
+import os
+
+from launchpadlib import launchpad
 
 import elastic_recheck.elasticRecheck as er
+
+LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
 
 
 def get_options():
@@ -55,14 +60,29 @@ def collect_metrics(classifier):
 
 def print_metrics(data):
     print "Elastic recheck known issues"
+    print
 
     sorted_data = sorted(data.iteritems(),
                          key=lambda x: -x[1]['fails'])
     for d in sorted_data:
-        print "Bug: %s => %s" % (d[0], d[1]['query'].rstrip())
+        print "Bug: https://bugs.launchpad.net/bugs/%s => %s" % (d[0], d[1]['query'].rstrip())
+        get_launchpad_bug(d[0])
+        print "Hits"
         for s in d[1]['hits'].keys():
             print "  %s: %s" % (s, len(d[1]['hits'][s]))
         print
+
+
+def get_launchpad_bug(bug):
+    lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
+                                               'production',
+                                               LPCACHEDIR)
+    lp_bug = lp.bugs[bug]
+    print "Title: %s" % lp_bug.title
+    targets = map(lambda x: (x.bug_target_name, x.status), lp_bug.bug_tasks)
+    print "Project: Status"
+    for target, status in targets:
+        print "  %s: %s" % (target, status)
 
 
 def main():
