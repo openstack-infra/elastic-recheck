@@ -62,6 +62,10 @@
   query: >
     message:"No nw_info cache associated with instance"
     AND filename:"logs/screen-n-api.txt"
+- bug: 1250168
+  query: >
+    message:"Details: Timed out waiting for thing"
+    AND build_name:gate-tempest-devstack-vm-neutron-large-ops
 - bug: 1251448
   query: >
     message:" possible networks found, use a Network ID to be more specific. (HTTP 400)"
