@@ -43,8 +43,9 @@
     AND filename:"logs/screen-q-svc.txt"
 - bug: 1239856
   query: >
-    message:"tempest/services" AND message:"/images_client.py" AND message:"wait_for_image_status"
-    AND filename:"console.html"
+    message:" Registry client request"
+    AND message:"raised ClientConnectionError"
+    AND filename:"logs/screen-g-api.txt"
 - bug: 1240256
   query: >
     message:" 503"
