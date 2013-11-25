@@ -88,3 +88,7 @@
   query: >
     message:"Got error from Swift: put_object"
     AND filename:"logs/screen-g-api.txt"
+- bug: 1177134
+  query: >
+    message:"[ERROR] /opt/stack/old/devstack/exercises/bundle.sh:61 Image ami-00000001 not available within 15 seconds"
+    AND filename:"console.html"
