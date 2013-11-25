@@ -92,3 +92,8 @@
   query: >
     message:"[ERROR] /opt/stack/old/devstack/exercises/bundle.sh:61 Image ami-00000001 not available within 15 seconds"
     AND filename:"console.html"
+- bug: 1253896
+  query: >
+    message:"SSHTimeout: Connection to the"
+    AND message:"via SSH timed out."
+    AND filename:"console.html"
