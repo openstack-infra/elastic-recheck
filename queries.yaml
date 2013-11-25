@@ -3,6 +3,10 @@
     message:"Exit code: 5"
     AND message:" sudo cinder-rootwrap /etc/cinder/rootwrap.conf lvremove -f"
     AND filename:"logs/screen-c-vol.txt"
+- bug: 1210483
+  query: >
+    message:"self.assertTrue(len(addresses) >= 1)"
+    AND filename:"console.html"
 - bug: 1225664
   query: >
     message:"No space left on device"
