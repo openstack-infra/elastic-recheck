@@ -97,3 +97,7 @@
     message:"SSHTimeout: Connection to the"
     AND message:"via SSH timed out."
     AND filename:"console.html"
+- bug: 1254872
+  query: >
+    message:"libvirtError: Timed out during operation: cannot acquire state change lock"
+    AND filename:"logs/screen-n-cpu.txt"
