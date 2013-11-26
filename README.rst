@@ -13,6 +13,18 @@ When a tempest job failure is detected, by monitoring gerrit (using gerritlib), 
 
 Eventually this can be tied into the rechecker tool and launchpad
 
+
+queries.yaml
+------------
+
+All queries are stored in a yaml file called: queries.yaml
+
+Guidelines for queries.yaml
+
+- After a bug is resolved and has no more hits in elasticsearch, it should be removed
+- Queries should get as close as possible to fingerprinting the root cause
+- Queries should not return any hits for successful jobs, this is a sign the query isn't specific enough
+
 Future Work
 ------------
 - Move config files into a separate directory
