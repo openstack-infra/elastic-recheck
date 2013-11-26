@@ -24,19 +24,11 @@
   query: >
     message:"update or delete on table \"networks\" violates foreign key constraint"
     AND filename:"logs/screen-q-svc.txt"
-- bug: 1232748
-  query: >
-    message:"OperationalError: (OperationalError) could not translate host name \"localhost\" to address"
-    AND filename:"logs/screen-n-api.txt"
 - bug: 1235435
   query: >
     message:"One or more ports have an IP allocation from this subnet"
     AND message:" SubnetInUse: Unable to complete operation on subnet"
     AND filename:"logs/screen-q-svc.txt"
-- bug: 1235437
-  query: >
-    message:"failed to reach ACTIVE status within the required time (400 s). Current status: BUILD"
-    AND filename:"console.html"
 - bug: 1239637
   query: >
     message:"DBError: (IntegrityError) null value in column \"network_id\" violates not-null constraint"
