@@ -1,0 +1,3 @@
+query: >
+  message:"Connection to neutron failed: Maximum attempts reached"
+  AND filename:"logs/screen-n-cpu.txt"

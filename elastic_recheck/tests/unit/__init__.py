@@ -12,8 +12,8 @@
 
 import fixtures
 import json
-import yaml
 
+from elastic_recheck import loader
 import elastic_recheck.tests
 
 
@@ -36,7 +36,7 @@ class FakeES(object):
     queries.yaml file, and grabbing the results we'd find for known bugs.
     """
     def __init__(self, url):
-        self._yaml = yaml.load(open('elastic_recheck/tests/unit/queries.yaml').read())
+        self._yaml = loader.load('elastic_recheck/tests/unit/queries')
         self._queries = {}
         for item in self._yaml:
             self._queries[item['query'].rstrip()] = item['bug']

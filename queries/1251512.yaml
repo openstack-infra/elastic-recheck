@@ -1,0 +1,4 @@
+query: >
+  message:"test_get_console_output"
+  AND message:"raise MismatchError(matchee, matcher, mismatch, verbose)"
+  AND filename:"console.html"

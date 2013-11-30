@@ -1,0 +1,3 @@
+query: >
+  message:"self.assertTrue(len(addresses) >= 1)"
+  AND filename:"console.html"

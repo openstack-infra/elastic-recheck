@@ -14,16 +14,25 @@ When a tempest job failure is detected, by monitoring gerrit (using gerritlib), 
 Eventually this can be tied into the rechecker tool and launchpad
 
 
-queries.yaml
+queries/
 ------------
 
-All queries are stored in a yaml file called: queries.yaml
+All queries are stored in separate yaml files in a queries directory
+at the top of the elastic_recheck code base. The format of these files
+is ######.yaml (where ###### is the bug number), the yaml should have
+a ``query`` keyword which is the query text for elastic search.
 
-Guidelines for queries.yaml
+Guidelines for good queries
 
-- After a bug is resolved and has no more hits in elasticsearch, it should be removed
+- After a bug is resolved and has no more hits in elasticsearch, we
+  should flag it with a resolved_at keyword. This will let us keep
+  some memory of past bugs, and see if they come back. (Note: this is
+  a forward looking statement, sorting out resolved_at will come in
+  the future)
 - Queries should get as close as possible to fingerprinting the root cause
-- Queries should not return any hits for successful jobs, this is a sign the query isn't specific enough
+- Queries should not return any hits for successful jobs, this is a
+  sign the query isn't specific enough
+
 
 Future Work
 ------------
@@ -34,6 +43,7 @@ Future Work
 - Split out queries repo
 - Expand gating testing
 - Cleanup and document code better
+- Sort out resolved_at stamping to remove active bugs
 - Move away from polling ElasticSearch to discover if its ready or not
 - Add nightly job to propose a patch to remove bug queries that return no hits -- Bug hasn't been seen in 2 weeks and must be closed
 

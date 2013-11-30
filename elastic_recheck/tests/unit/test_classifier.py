@@ -12,14 +12,13 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import yaml
-
 from elastic_recheck import elasticRecheck
+from elastic_recheck import loader
 from elastic_recheck import results
 from elastic_recheck import tests
 
 
-def fake_queries(filehandle):
+def fake_queries(*args):
     return [
         {'query': '@message:"fake query" AND @fields.filename:"fake"\n',
          'bug': 1226337},
@@ -73,7 +72,7 @@ class TestClassifier(tests.TestCase):
 
     def setUp(self):
         super(TestClassifier, self).setUp()
-        self.stubs.Set(yaml, 'load', fake_queries)
+        self.stubs.Set(loader, 'load', fake_queries)
         self.classifier = elasticRecheck.Classifier('queries.yaml')
 
     def test_is_ready(self):

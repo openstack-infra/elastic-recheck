@@ -1,0 +1,3 @@
+query: >
+  message:"Lock wait timeout exceeded; try restarting transaction"
+  AND filename:"logs/screen-q-svc.txt"

@@ -1,0 +1,3 @@
+query: >
+  message:"MismatchError: {u''service'':" AND message:"not in [{"
+  AND filename:"console.html"

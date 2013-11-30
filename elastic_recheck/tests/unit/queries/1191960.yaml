@@ -1,0 +1,4 @@
+query: >
+  message:"Exit code: 5"
+  AND message:" sudo cinder-rootwrap /etc/cinder/rootwrap.conf lvremove -f"
+  AND filename:"logs/screen-c-vol.txt"

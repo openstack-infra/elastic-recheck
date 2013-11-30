@@ -1,0 +1,3 @@
+query: >
+  message:"NovaException: Unexpected vif_type=binding_failed"
+  AND filename:"logs/screen-n-cpu.txt"

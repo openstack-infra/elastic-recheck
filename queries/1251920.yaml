@@ -1,0 +1,3 @@
+query: >
+  message:"assertionerror: console output was empty"
+  AND filename:"console.html"

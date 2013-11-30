@@ -24,8 +24,8 @@ import logging
 import os
 import sys
 import time
-import yaml
 
+import elastic_recheck.loader as loader
 import elastic_recheck.query_builder as qb
 from elastic_recheck import results
 
@@ -120,10 +120,10 @@ class Classifier():
 
     queries = None
 
-    def __init__(self, queries):
+    def __init__(self, queries_dir):
         self.es = results.SearchEngine(self.ES_URL)
-        self.queries = yaml.load(open(queries).read())
-        self.queries_filename = queries
+        self.queries_dir = queries_dir
+        self.queries = loader.load(self.queries_dir)
 
     def hits_by_query(self, query, facet=None, size=100):
         es_query = qb.generic(query, facet=facet)
@@ -133,7 +133,7 @@ class Classifier():
         """Returns either empty list or list with matched bugs."""
         self.log.debug("Entering classify")
         #Reload each time
-        self.queries = yaml.load(open(self.queries_filename).read())
+        self.queries = loader.load(self.queries_dir)
         #Wait till Elastic search is ready
         self.log.debug("checking if ElasticSearch is ready")
         if not self._is_ready(change_number, patch_number, comment):

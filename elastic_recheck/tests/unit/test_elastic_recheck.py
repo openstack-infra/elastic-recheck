@@ -26,8 +26,8 @@ class TestElasticRecheck(unit.UnitTestCase):
 
     def test_hits_by_query(self):
         c = er.Classifier("queries.yaml")
-        q = ('''( @message:"Cannot 'createImage'" OR message:"'''
-             '''Cannot 'createImage'" ) AND filename:"console.html"''')
+        q = ('''message:"Cannot ''createImage''"'''
+             ''' AND filename:"console.html"''')
         results = c.hits_by_query(q)
         self.assertEqual(len(results), 20)
         self.assertEqual(results.took, 46)

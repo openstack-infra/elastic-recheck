@@ -1,0 +1,3 @@
+query: >
+  message:"NovaException: iSCSI device not found at"
+  AND filename:"logs/screen-n-cpu.txt"

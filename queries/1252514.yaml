@@ -1,0 +1,3 @@
+query: >
+  message:"Got error from Swift: put_object"
+  AND filename:"logs/screen-g-api.txt"

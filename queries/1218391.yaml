@@ -1,0 +1,3 @@
+query: >
+  message:"Cannot ''createImage''"
+  AND filename:"console.html"

@@ -1,0 +1,3 @@
+query: >
+  message:"update or delete on table \"networks\" violates foreign key constraint"
+  AND filename:"logs/screen-q-svc.txt"

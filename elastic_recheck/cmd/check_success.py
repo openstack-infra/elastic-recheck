@@ -25,9 +25,10 @@ LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
 
 
 def get_options():
-    parser = argparse.ArgumentParser(description='Edit hiera yaml.')
-    parser.add_argument('--file', '-f', help="Queries file",
-                        default="queries.yaml")
+    parser = argparse.ArgumentParser(
+        description='Query for existing recheck bugs.')
+    parser.add_argument('--dir', '-d', help="Queries Directory",
+                        default="queries")
     return parser.parse_args()
 
 
@@ -87,7 +88,7 @@ def get_launchpad_bug(bug):
 
 def main():
     opts = get_options()
-    classifier = er.Classifier(opts.file)
+    classifier = er.Classifier(opts.dir)
     data = collect_metrics(classifier)
     print_metrics(data)
 
