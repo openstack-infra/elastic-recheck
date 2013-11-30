@@ -185,17 +185,21 @@ def _main(config):
 
     channel_config = ChannelConfig(yaml.load(open(fp)))
 
-    bot = RecheckWatchBot(channel_config.channels,
-                          config.get('ircbot', 'nick'),
-                          config.get('ircbot', 'pass'),
-                          config.get('ircbot', 'server'),
-                          config.getint('ircbot', 'port'),
-                          config.get('ircbot', 'server_password'))
-    recheck = RecheckWatch(bot, channel_config,
-                           config.get('gerrit', 'user'),
-                           config.get('gerrit', 'query_file'),
-                           config.get('gerrit', 'host', 'review.openstack.org'),
-                           config.get('gerrit', 'key'))
+    bot = RecheckWatchBot(
+        channel_config.channels,
+        config.get('ircbot', 'nick'),
+        config.get('ircbot', 'pass'),
+        config.get('ircbot', 'server'),
+        config.getint('ircbot', 'port'),
+        config.get('ircbot', 'server_password'))
+
+    recheck = RecheckWatch(
+        bot,
+        channel_config,
+        config.get('gerrit', 'user'),
+        config.get('gerrit', 'query_file'),
+        config.get('gerrit', 'host', 'review.openstack.org'),
+        config.get('gerrit', 'key'))
 
     recheck.start()
     bot.start()

@@ -66,7 +66,8 @@ def print_metrics(data):
     sorted_data = sorted(data.iteritems(),
                          key=lambda x: -x[1]['fails'])
     for d in sorted_data:
-        print "Bug: https://bugs.launchpad.net/bugs/%s => %s" % (d[0], d[1]['query'].rstrip())
+        print("Bug: https://bugs.launchpad.net/bugs/%s => %s"
+              % (d[0], d[1]['query'].rstrip()))
         get_launchpad_bug(d[0])
         print "Hits"
         for s in d[1]['hits'].keys():

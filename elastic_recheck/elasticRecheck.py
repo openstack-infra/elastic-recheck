@@ -57,6 +57,9 @@ class Stream(object):
         if thread:
             self.gerrit.startWatching()
 
+    def _is_unit_test(self, line):
+        return "FAILURE" in line and ("python2" in line or "pep8" in line)
+
     def get_failed_tempest(self):
         self.log.debug("entering get_failed_tempest")
         while True:
@@ -70,7 +73,7 @@ class Stream(object):
                 self.log.debug("potential failed_tempest")
                 found = False
                 for line in event['comment'].split('\n'):
-                    if "FAILURE" in line and ("python2" in line or "pep8" in line):
+                    if self._is_unit_test(line):
                         # Unit Test Failure
                         found = False
                         break
@@ -137,13 +140,16 @@ class Classifier():
         #Wait till Elastic search is ready
         self.log.debug("checking if ElasticSearch is ready")
         if not self._is_ready(change_number, patch_number, comment):
-            self.log.error("something went wrong, ElasticSearch is still not ready, "
-                    "giving up and trying next failure")
+            self.log.error(
+                "something went wrong, ElasticSearch is still not ready, "
+                "giving up and trying next failure")
             return None
         self.log.debug("ElasticSearch is ready, starting to classify")
         bug_matches = []
         for x in self.queries:
-            self.log.debug("Looking for bug: https://bugs.launchpad.net/bugs/%s" % x['bug'])
+            self.log.debug(
+                "Looking for bug: https://bugs.launchpad.net/bugs/%s"
+                % x['bug'])
             query = qb.single_patch(x['query'], change_number, patch_number)
             results = self.es.search(query, size='10')
             if self._urls_match(comment, results):
@@ -160,7 +166,8 @@ class Classifier():
                 results = self.es.search(query, size='10')
             except pyelasticsearch.exceptions.InvalidJsonResponseError:
                 # If ElasticSearch returns an error code, sleep and retry
-                #TODO(jogo): if this works pull out search into a helper function that  does this.
+                # TODO(jogo): if this works pull out search into a helper
+                # function that  does this.
                 print "UHUH hit InvalidJsonResponseError"
                 time.sleep(NUMBER_OF_RETRIES)
                 continue
@@ -170,7 +177,10 @@ class Classifier():
                 time.sleep(SLEEP_TIME)
         if i == NUMBER_OF_RETRIES - 1:
             return False
-        self.log.debug("Found hits for change_number: %s, patch_number: %s" % (change_number, patch_number))
+        self.log.debug(
+            "Found hits for change_number: %s, patch_number: %s"
+            % (change_number, patch_number))
+
         query = qb.files_ready(change_number, patch_number)
         for i in range(NUMBER_OF_RETRIES):
             results = self.es.search(query, size='80')
@@ -182,7 +192,9 @@ class Classifier():
                 time.sleep(SLEEP_TIME)
         if i == NUMBER_OF_RETRIES - 1:
             return False
-        self.log.debug("All files present for change_number: %s, patch_number: %s" % (change_number, patch_number))
+        self.log.debug(
+            "All files present for change_number: %s, patch_number: %s"
+            % (change_number, patch_number))
         # Just because one file is parsed doesn't mean all are, so wait a
         # bit
         time.sleep(10)
@@ -249,7 +261,8 @@ def main():
             print "unable to classify failure"
         else:
             for bug_number in bug_numbers:
-                print "Found bug: https://bugs.launchpad.net/bugs/%s" % bug_number
+                print("Found bug: https://bugs.launchpad.net/bugs/%s"
+                      % bug_number)
 
 if __name__ == "__main__":
     main()

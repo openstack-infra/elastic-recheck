@@ -20,16 +20,22 @@ from elastic_recheck import tests
 
 class TestRequiredFiles(tests.TestCase):
     def test_url(self):
-        url = elasticRecheck.RequiredFiles.prep_url('http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44/console.html')
-        self.assertEqual(url,
-                         'http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44')
+        url = elasticRecheck.RequiredFiles.prep_url(
+            'http://logs.openstack.org/13/46613/2/check/'
+            'gate-tempest-devstack-vm-full/864bf44/console.html')
+        self.assertEqual(
+            url,
+            'http://logs.openstack.org/13/46613/2/check/'
+            'gate-tempest-devstack-vm-full/864bf44')
 
     def _fake_urlopen(self, url):
         pass
 
     def test_files_at_url_pass(self):
         self.stubs.Set(urllib2, 'urlopen', self._fake_urlopen)
-        result = elasticRecheck.RequiredFiles.files_at_url('http://logs.openstack.org/13/46613/2/check/gate-tempest-devstack-vm-full/864bf44')
+        result = elasticRecheck.RequiredFiles.files_at_url(
+            'http://logs.openstack.org/13/46613/2/check/'
+            'gate-tempest-devstack-vm-full/864bf44')
         self.assertTrue(result)
 
     def _invalid_url_open(self, url):
@@ -37,5 +43,9 @@ class TestRequiredFiles(tests.TestCase):
 
     def test_files_at_url_fail(self):
         self.stubs.Set(urllib2, 'urlopen', self._invalid_url_open)
-        self.assertFalse(elasticRecheck.RequiredFiles.files_at_url('http://logs.openstack.org/02/44502/7/check/gate-tempest-devstack-vm-neutron/4f386e5'))
-        self.assertFalse(elasticRecheck.RequiredFiles.files_at_url('http://logs.openstack.org/45/47445/3/check/gate-tempest-devstack-vm-full/0e43e09/'))
+        self.assertFalse(elasticRecheck.RequiredFiles.files_at_url(
+            'http://logs.openstack.org/02/44502/7/check/'
+            'gate-tempest-devstack-vm-neutron/4f386e5'))
+        self.assertFalse(elasticRecheck.RequiredFiles.files_at_url(
+            'http://logs.openstack.org/45/47445/3/check/'
+            'gate-tempest-devstack-vm-full/0e43e09/'))
