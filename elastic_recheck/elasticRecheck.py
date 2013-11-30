@@ -57,27 +57,41 @@ class Stream(object):
         if thread:
             self.gerrit.startWatching()
 
-    def _is_unit_test(self, line):
-        return "FAILURE" in line and ("python2" in line or "pep8" in line)
+    def _is_jenkins_failure(self, event):
+        """Is this comment a jenkins failure comment."""
+        if event.get('type', '') != 'comment-added':
+            return False
+
+        username = event['author'].get('username', '')
+        if (username != 'jenkins'):
+            return False
+
+        return ("Build failed.  For information on how to proceed" in
+                event['comment'])
+
+    def _failed_unit_tests(self, line):
+        """Did we fail unit tests? If so not a valid failure."""
+        fail = ("FAILURE" in line and ("python2" in line or "pep8" in line))
+        if fail:
+            self.log.debug("Failed unit tests, skipping this result")
+        return fail
+
+    def _valid_failure(self, line):
+        """Is this the kind of failure we track."""
+        return "FAILURE" in line and "tempest-devstack" in line
 
     def get_failed_tempest(self):
         self.log.debug("entering get_failed_tempest")
         while True:
             event = self.gerrit.getEvent()
-            if event.get('type', '') != 'comment-added':
-                continue
-            username = event['author'].get('username', '')
-            if (username == 'jenkins' and
-                    "Build failed.  For information on how to proceed" in
-                    event['comment']):
+            if self._is_jenkins_failure(event):
                 self.log.debug("potential failed_tempest")
                 found = False
                 for line in event['comment'].split('\n'):
-                    if self._is_unit_test(line):
-                        # Unit Test Failure
+                    if self._failed_unit_tests(line):
                         found = False
                         break
-                    if "FAILURE" in line and "tempest-devstack" in line:
+                    if self._valid_failure(line):
                         url = [x for x in line.split() if "http" in x][0]
                         if RequiredFiles.files_at_url(url):
                             self.log.debug("All file present")
