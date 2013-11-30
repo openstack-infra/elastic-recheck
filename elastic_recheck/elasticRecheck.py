@@ -33,14 +33,14 @@ logging.basicConfig()
 
 
 REQUIRED_FILES = [
-        'console.html',
-        'logs/screen-n-api.txt',
-        'logs/screen-n-cpu.txt',
-        'logs/screen-n-sch.txt',
-        'logs/screen-c-api.txt',
-        'logs/screen-c-vol.txt',
-        'logs/syslog.txt',
-        ]
+    'console.html',
+    'logs/screen-n-api.txt',
+    'logs/screen-n-cpu.txt',
+    'logs/screen-n-sch.txt',
+    'logs/screen-c-api.txt',
+    'logs/screen-c-vol.txt',
+    'logs/syslog.txt',
+]
 
 
 class Stream(object):

@@ -42,8 +42,9 @@ class TestQueries(tests.TestCase):
         for x in self.classifier.queries:
             print("Looking for bug: https://bugs.launchpad.net/bugs/%s"
                   % x['bug'])
-            self.assertTrue((self._is_valid_ElasticSearch_query(x) or
-                self._is_valid_launchpad_bug(x['bug'])),
+            self.assertTrue(
+                (self._is_valid_ElasticSearch_query(x) or
+                 self._is_valid_launchpad_bug(x['bug'])),
                 ("Something is wrong with bug %s" % x['bug']))
 
     def _is_valid_ElasticSearch_query(self, x):

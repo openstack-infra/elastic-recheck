@@ -77,16 +77,22 @@ class TestClassifier(tests.TestCase):
 
     def test_is_ready(self):
         self.stubs.Set(self.classifier.es, 'search', _fake_search)
-        result = self.classifier._is_ready('49282', '3', 'BLAH http://logs.'
-            'openstack.org/57/51057/1/gate/gate-tempest-devstack-vm-full'
-            '/f8965ee')
+        result = self.classifier._is_ready(
+            '49282',
+            '3',
+            'BLAH http://logs.openstack.org/57/51057/1/gate/'
+            'gate-tempest-devstack-vm-full/f8965ee'
+        )
         self.assertTrue(result)
 
     def test_classify(self):
         self.stubs.Set(self.classifier.es, 'search', _fake_search)
         self.stubs.Set(self.classifier, '_urls_match', _fake_urls_match)
         self.stubs.Set(self.classifier, '_is_ready', _fake_is_ready)
-        bug_numbers = self.classifier.classify('47463', '3',
+        bug_numbers = self.classifier.classify(
+            '47463',
+            '3',
             ' blah http://logs.openstack.org/63/47463/3/gate/gate-tempest'
-            '-devstack-vm-postgres-full/99bb8f6')
+            '-devstack-vm-postgres-full/99bb8f6'
+        )
         self.assertEqual(bug_numbers, [1234567])
