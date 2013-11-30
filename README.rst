@@ -9,7 +9,9 @@ elastic-recheck
 
 Idea
 ----
-When a tempest job failure is detected, by monitoring gerrit (using gerritlib), a collection of logstash queries will be run on the failed job to detect what the bug was.
+When a tempest job failure is detected, by monitoring gerrit (using
+gerritlib), a collection of logstash queries will be run on the failed
+job to detect what the bug was.
 
 Eventually this can be tied into the rechecker tool and launchpad
 
@@ -33,19 +35,24 @@ Guidelines for good queries
 - Queries should not return any hits for successful jobs, this is a
   sign the query isn't specific enough
 
+In order to support rapidly added queries, it's considered socially
+acceptable to +A changes that only add 1 new bug query, and to even
+self approve those changes by core reviewers.
+
 
 Future Work
 ------------
 - Move config files into a separate directory
 - Make unit tests robust
-- Merge both binaries
 - Add debug mode flag
-- Split out queries repo
 - Expand gating testing
 - Cleanup and document code better
 - Sort out resolved_at stamping to remove active bugs
 - Move away from polling ElasticSearch to discover if its ready or not
-- Add nightly job to propose a patch to remove bug queries that return no hits -- Bug hasn't been seen in 2 weeks and must be closed
+- Add nightly job to propose a patch to remove bug queries that return
+  no hits -- Bug hasn't been seen in 2 weeks and must be closed
+- implement resolved_at in loader
+
 
 Main Dependencies
 ------------------
