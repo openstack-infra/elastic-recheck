@@ -1,3 +1,3 @@
 query: >
   message:"Details: Timed out waiting for thing"
-  AND build_name:gate-tempest-devstack-vm-neutron-large-ops
+  AND build_name:gate-tempest-dsvm-neutron-large-ops
