@@ -20,6 +20,7 @@ import os
 from launchpadlib import launchpad
 
 import elastic_recheck.elasticRecheck as er
+import elastic_recheck.results as er_results
 
 LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
 
@@ -35,24 +36,17 @@ def get_options():
 def collect_metrics(classifier):
     data = {}
     for q in classifier.queries:
-        results = classifier.hits_by_query(q['query'], size=3000)
-        rate = {}
-        for hit in results:
-            uuid = hit.build_uuid
-            success = hit.build_status
-
-            if success not in rate:
-                rate[success] = set(uuid)
-            else:
-                rate[success].add(uuid)
+        results = classifier.hits_by_query(q['query'], size=30000)
+        facets = er_results.FacetSet()
+        facets.detect_facets(results, ["build_status", "build_uuid"])
 
         num_fails = 0
-        if "FAILURE" in rate:
-            num_fails = len(rate["FAILURE"])
+        if "FAILURE" in facets:
+            num_fails = len(facets["FAILURE"])
 
         data[q['bug']] = {
             'fails': num_fails,
-            'hits': rate,
+            'hits': facets,
             'query': q['query']
             }
 
