@@ -78,7 +78,7 @@ class Stream(object):
 
     def _valid_failure(self, line):
         """Is this the kind of failure we track."""
-        return "FAILURE" in line and "tempest-devstack" in line
+        return "FAILURE" in line and "tempest" in line
 
     def get_failed_tempest(self):
         self.log.debug("entering get_failed_tempest")
