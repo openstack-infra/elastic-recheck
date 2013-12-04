@@ -1,0 +1,3 @@
+query: >
+  message:"Quota exceeded for instances: Requested 1, but already used 10 of 10 instances"
+  AND filename:"console.html"
