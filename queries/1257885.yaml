@@ -1,4 +1,3 @@
 query: >
-  message:"FAIL: tempest.scenario.test_dashboard_basic_ops.
-  TestDashboardBasicOps.test_basic_scenario[dashboard]"
+  message:"FAIL: tempest.scenario.test_dashboard_basic_ops.TestDashboardBasicOps.test_basic_scenario[dashboard]"
   AND filename:"console.html"
