@@ -1,4 +1,4 @@
-# All Rights Reserved.
+# Copyright Samsung Electronics 2013. All Rights Reserved.
 #
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
 #    not use this file except in compliance with the License. You may obtain
@@ -14,7 +14,11 @@
 
 """Elastic search wrapper to make handling results easier."""
 
+import pprint
 import pyelasticsearch
+
+
+pp = pprint.PrettyPrinter()
 
 
 class SearchEngine(object):
@@ -40,7 +44,7 @@ class SearchEngine(object):
         return ResultSet(results)
 
 
-class ResultSet(object):
+class ResultSet(list):
     """An easy iterator object for handling elasticsearch results.
 
     pyelasticsearch returns very complex result structures, and manipulating
@@ -62,17 +66,16 @@ class ResultSet(object):
     (pyes goes way overboard with nesting, which is fine in the general
     case, but in the elastic_recheck case is just added complexity).
     """
-    def __init__(self, results):
+    def __init__(self, results={}):
         self._results = results
-        self._hits = self._parse_hits(results['hits'])
+        if 'hits' in results:
+            self._parse_hits(results['hits'])
 
     def _parse_hits(self, hits):
-        _hits = []
         # why, oh why elastic search
         hits = hits['hits']
         for hit in hits:
-            _hits.append(Hit(hit))
-        return _hits
+            list.append(self, Hit(hit))
 
     def __getattr__(self, attr):
         """Magic __getattr__, flattens the attributes namespace.
@@ -85,15 +88,6 @@ class ResultSet(object):
                 return self._results['facets']['tag'][attr]
         if attr in self._results:
             return self._results[attr]
-
-    def __iter__(self):
-        return iter(self._hits)
-
-    def __getitem__(self, key):
-        return self._hits[key]
-
-    def __len__(self):
-        return self._results['hits']['total']
 
 
 class Hit(object):
@@ -134,5 +128,5 @@ class Hit(object):
 
         return result
 
-    def __str__(self):
-        return "%s" % self._hit
+    def __repr__(self):
+        return pp.pformat(self._hit)
