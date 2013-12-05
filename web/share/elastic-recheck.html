@@ -83,6 +83,18 @@ $("#graph-container").append($(new Image()).graphite({
       stats.zuul.pipeline.check.job.check-grenade-dsvm.FAILURE,\
       sum(stats.zuul.pipeline.check.job.check-grenade-dsvm.{SUCCESS,FAILURE})\
       ),'5hours'), 'check-grenade-dsvm'),'800080')",
+    "color(alias(movingAverage(asPercent(\
+      stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.FAILURE,\
+      sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.{SUCCESS,FAILURE})\
+      ),'5hours'), 'gate-tempest-dsvm-large-ops'),'00F0F0')",
+    "color(alias(movingAverage(asPercent(\
+      stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.FAILURE,\
+      sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.{SUCCESS,FAILURE})\
+      ),'5hours'), 'gate-tempest-dsvm-neutron-large-ops'),'E080FF')",
+    "color(alias(movingAverage(asPercent(\
+      stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.FAILURE,\
+      sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.{SUCCESS,FAILURE})\
+      ),'5hours'), 'gate-tempest-dsvm-postgres-full'),'ED9121')",
     ],
     title: "Gate Failure Rates"
 }));
