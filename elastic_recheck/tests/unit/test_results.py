@@ -75,3 +75,15 @@ class TestBasicParsing(tests.TestCase):
         self.assertEqual(len(facets.keys()), 2)
         self.assertEqual(len(facets['FAILURE'].keys()), 12)
         self.assertEqual(len(facets['SUCCESS'].keys()), 3)
+
+    def test_facet_histogram(self):
+        data = load_sample(1226337)
+        result_set = results.ResultSet(data)
+        facets = results.FacetSet()
+        facets.detect_facets(result_set,
+                             ["timestamp", "build_status", "build_uuid"])
+        self.assertEqual(len(facets.keys()), 14)
+        print facets[1382104800000].keys()
+        self.assertEqual(facets[1382104800000].keys(), ["FAILURE"])
+        self.assertEqual(len(facets[1382104800000]["FAILURE"]), 2)
+        self.assertEqual(facets[1382101200000].keys(), ["FAILURE"])
