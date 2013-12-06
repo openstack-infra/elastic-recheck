@@ -14,6 +14,7 @@
 
 """Elastic search wrapper to make handling results easier."""
 
+import copy
 import pprint
 import pyelasticsearch
 
@@ -90,12 +91,49 @@ class ResultSet(list):
             return self._results[attr]
 
 
+class FacetSet(dict):
+    """A dictionary like collection for creating faceted ResultSets.
+
+    Elastic Search doesn't support nested facets, which are incredibly
+    useful for things like faceting by build_status then by build_uuid.
+    This is a client side implementation that processes a ResultSet
+    with an ordered list of facets, and turns it into a data structure
+    which is FacetSet -> FacetSet ... -> ResultSet (arbitrary nesting
+    of FaceSets with ResultSet as the leaves.
+
+    Treat this basically like a dictionary (which it inherits from).
+    """
+
+    def detect_facets(self, results, facets):
+        if len(facets) > 0:
+            facet = facets.pop(0)
+            for hit in results:
+                attr = hit[facet]
+                if attr not in self:
+                    dict.setdefault(self, attr, ResultSet())
+                    self[attr].append(hit)
+                else:
+                    self[attr].append(hit)
+
+            # if we still have more facets to go, recurse down
+            if len(facets) > 0:
+                newkeys = {}
+                for key in self:
+                    fs = FacetSet()
+                    fs.detect_facets(self[key], copy.deepcopy(facets))
+                    newkeys[key] = fs
+                self.update(newkeys)
+
+
 class Hit(object):
     def __init__(self, hit):
         self._hit = hit
 
     def index(self):
         return self._hit['_index']
+
+    def __getitem__(self, key):
+        return self.__getattr__(key)
 
     def __getattr__(self, attr):
         """flatten out our attr space into a few key types

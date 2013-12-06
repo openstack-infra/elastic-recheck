@@ -45,3 +45,33 @@ class TestBasicParsing(tests.TestCase):
 
         for result in result_set:
             self.assertEqual(result.build_status, "FAILURE")
+
+    def test_facet_one_level(self):
+        data = load_sample(1218391)
+        result_set = results.ResultSet(data)
+        facets = results.FacetSet()
+        facets.detect_facets(result_set, ["build_uuid"])
+        self.assertEqual(len(facets.keys()), 20)
+
+        facets = results.FacetSet()
+        facets.detect_facets(result_set, ["build_status"])
+        self.assertEqual(facets.keys(), ['FAILURE'])
+
+        data = load_sample(1226337)
+        result_set = results.ResultSet(data)
+        facets = results.FacetSet()
+        facets.detect_facets(result_set, ["build_status"])
+        self.assertEqual(len(facets.keys()), 2)
+        self.assertIn('FAILURE', facets.keys())
+        self.assertIn('SUCCESS', facets.keys())
+        self.assertEqual(len(facets['FAILURE']), 202)
+        self.assertEqual(len(facets['SUCCESS']), 27)
+
+    def test_facet_multi_level(self):
+        data = load_sample(1226337)
+        result_set = results.ResultSet(data)
+        facets = results.FacetSet()
+        facets.detect_facets(result_set, ["build_status", "build_uuid"])
+        self.assertEqual(len(facets.keys()), 2)
+        self.assertEqual(len(facets['FAILURE'].keys()), 12)
+        self.assertEqual(len(facets['SUCCESS'].keys()), 3)
