@@ -30,6 +30,9 @@ def get_options():
         description='Query for existing recheck bugs.')
     parser.add_argument('--dir', '-d', help="Queries Directory",
                         default="queries")
+    parser.add_argument('--lp', '-l', help="Query Launchpad",
+                        type=bool,
+                        default=False)
     return parser.parse_args()
 
 
@@ -53,7 +56,7 @@ def collect_metrics(classifier):
     return data
 
 
-def print_metrics(data):
+def print_metrics(data, with_lp=False):
     print "Elastic recheck known issues"
     print
 
@@ -62,7 +65,8 @@ def print_metrics(data):
     for d in sorted_data:
         print("Bug: https://bugs.launchpad.net/bugs/%s => %s"
               % (d[0], d[1]['query'].rstrip()))
-        get_launchpad_bug(d[0])
+        if with_lp:
+            get_launchpad_bug(d[0])
         print "Hits"
         for s in d[1]['hits'].keys():
             print "  %s: %s" % (s, len(d[1]['hits'][s]))
@@ -85,7 +89,7 @@ def main():
     opts = get_options()
     classifier = er.Classifier(opts.dir)
     data = collect_metrics(classifier)
-    print_metrics(data)
+    print_metrics(data, with_lp=opts.lp)
 
 
 if __name__ == "__main__":
