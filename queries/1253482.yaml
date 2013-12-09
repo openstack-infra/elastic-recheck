@@ -1,0 +1,3 @@
+query: >
+  message:"keystone-all serve Failed to start the admin server"
+  AND filename:"logs/screen-key.txt"
