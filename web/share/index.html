@@ -70,6 +70,8 @@ $("#graph-container").append($(new Image()).graphite({
     height: 400,
     bgcolor: 'ffffff',
     fgcolor: '000000',
+    yMax: 100,
+    yMin: 0,
     target: [
     "color(alias(movingAverage(asPercent(\
       stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.FAILURE,\
