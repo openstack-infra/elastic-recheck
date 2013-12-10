@@ -20,6 +20,9 @@ from datetime import datetime
 import json
 
 import elastic_recheck.elasticRecheck as er
+from elastic_recheck import results as er_results
+
+STEP = 3600000
 
 
 def main():
@@ -33,7 +36,13 @@ def main():
     classifier = er.Classifier(args.queries)
 
     buglist = []
+
     epoch = datetime.utcfromtimestamp(0)
+    ts = datetime.now()
+    ts = datetime(ts.year, ts.month, ts.day, ts.hour)
+    # ms since epoch
+    now = int(((ts - epoch).total_seconds()) * 1000)
+    start = now - (7 * 24 * STEP)
 
     for query in classifier.queries:
         urlq = dict(search=query['query'],
@@ -48,54 +57,18 @@ def main():
                    data=[])
         buglist.append(bug)
         results = classifier.hits_by_query(query['query'], size=3000)
-        histograms = {}
-        seen = set()
-        for hit in results:
-            uuid = hit.build_uuid
-            key = '%s-%s' % (uuid, query['bug'])
-            if key in seen:
-                continue
-            seen.add(key)
+        facets = er_results.FacetSet()
+        facets.detect_facets(results,
+                             ["build_status", "timestamp", "build_uuid"])
 
-            ts = datetime.strptime(hit.timestamp,
-                                   "%Y-%m-%dT%H:%M:%S.%fZ")
-            # hour resolution
-            ts = datetime(ts.year, ts.month, ts.day, ts.hour)
-            # ms since epoch
-            pos = int(((ts - epoch).total_seconds()) * 1000)
-
-            result = hit.build_status
-
-            if result not in histograms:
-                histograms[result] = {}
-            hist = histograms[result]
-
-            if pos not in hist:
-                hist[pos] = 0
-            hist[pos] += 1
-
-        ts = datetime.now()
-        ts = datetime(ts.year, ts.month, ts.day, ts.hour)
-        # ms since epoch
-        now = int(((ts - epoch).total_seconds()) * 1000)
-
-        for name, hist in histograms.items():
-            d = dict(label=name,
-                     data=[])
-            positions = hist.keys()
-            positions.sort()
-            last = None
-            for pos in positions:
-                if last is not None:
-                    if last + 3600000 < pos:
-                        for i in range(last + 3600000, pos, 3600000):
-                            d['data'].append([i, 0])
-                d['data'].append([pos, hist[pos]])
-                last = pos
-            if last + 3600000 < now:
-                for i in range(last + 3600000, now, 3600000):
-                    d['data'].append([i, 0])
-            bug['data'].append(d)
+        for status in facets.keys():
+            data = []
+            for ts in range(start, now, STEP):
+                if ts in facets[status]:
+                    data.append([ts, len(facets[status][ts])])
+                else:
+                    data.append([ts, 0])
+            bug["data"].append(dict(label=status, data=data))
 
     out = open(args.output, 'w')
     out.write(json.dumps(buglist))

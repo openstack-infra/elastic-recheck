@@ -15,6 +15,7 @@
 """Elastic search wrapper to make handling results easier."""
 
 import copy
+from datetime import datetime
 import pprint
 import pyelasticsearch
 
@@ -103,12 +104,24 @@ class FacetSet(dict):
 
     Treat this basically like a dictionary (which it inherits from).
     """
+    def _histogram(self, data, facet):
+        """A preprocessor for data should we want to bucket it."""
+        if facet == "timestamp":
+            ts = datetime.strptime(data, "%Y-%m-%dT%H:%M:%S.%fZ")
+            # hour resolution
+            ts = datetime(ts.year, ts.month, ts.day, ts.hour)
+            # ms since epoch
+            epoch = datetime.utcfromtimestamp(0)
+            pos = int(((ts - epoch).total_seconds()) * 1000)
+            return pos
+        else:
+            return data
 
     def detect_facets(self, results, facets):
         if len(facets) > 0:
             facet = facets.pop(0)
             for hit in results:
-                attr = hit[facet]
+                attr = self._histogram(hit[facet], facet)
                 if attr not in self:
                     dict.setdefault(self, attr, ResultSet())
                     self[attr].append(hit)
