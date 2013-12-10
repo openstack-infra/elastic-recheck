@@ -42,7 +42,7 @@ def main():
     ts = datetime(ts.year, ts.month, ts.day, ts.hour)
     # ms since epoch
     now = int(((ts - epoch).total_seconds()) * 1000)
-    start = now - (7 * 24 * STEP)
+    start = now - (14 * 24 * STEP)
 
     for query in classifier.queries:
         urlq = dict(search=query['query'],
@@ -54,9 +54,17 @@ def main():
         bug = dict(number=query['bug'],
                    query=query['query'],
                    logstash_query=logstash_query,
+                   fails=0,
                    data=[])
         buglist.append(bug)
         results = classifier.hits_by_query(query['query'], size=3000)
+
+        facets_for_fail = er_results.FacetSet()
+        facets_for_fail.detect_facets(results,
+                                      ["build_status", "build_uuid"])
+        if "FAILURE" in facets_for_fail:
+            bug['fails'] = len(facets_for_fail['FAILURE'])
+
         facets = er_results.FacetSet()
         facets.detect_facets(results,
                              ["build_status", "timestamp", "build_uuid"])
@@ -69,6 +77,8 @@ def main():
                 else:
                     data.append([ts, 0])
             bug["data"].append(dict(label=status, data=data))
+
+    buglist = sorted(buglist, key=lambda bug: -bug['fails'])
 
     out = open(args.output, 'w')
     out.write(json.dumps(buglist))
