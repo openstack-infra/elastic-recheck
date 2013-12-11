@@ -4,7 +4,7 @@ elastic-recheck
 
 "Classify tempest-devstack failures using ElasticSearch"
 
-* Free software: Apache license
+* Open Source Software: Apache license
 * Documentation: http://docs.openstack.org/developer/elastic-recheck
 
 Idea
@@ -17,7 +17,7 @@ Eventually this can be tied into the rechecker tool and launchpad
 
 
 queries/
-------------
+--------
 
 All queries are stored in separate yaml files in a queries directory
 at the top of the elastic_recheck code base. The format of these files
@@ -40,8 +40,30 @@ acceptable to +A changes that only add 1 new bug query, and to even
 self approve those changes by core reviewers.
 
 
+Adding Bug Signatures
+---------------------
+
+Most transient bugs seen in gate are not bugs in tempest associated
+with a specific tempest test failure, but rather some sort of issue
+further down the stack that can cause many tempest tests to fail.
+
+#. Given a transient bug that is seen during the gate, go through the
+   logs (logs.openstack.org) and try to find a log that is associated
+   with the failure. The closer to the root cause the better.
+#. Go to logstash.openstack.org and create an elastic search query to
+   find the log message from step 1. To see the possible fields to
+   search on click on an entry. Lucene query syntax is available at
+   http://lucene.apache.org/core/4_0_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description
+#. Add a comment to the bug with the query you identified and a link to
+   the logstash url for that query search.
+#. Add the query to ``elastic-recheck/queries/BUGNUMBER.yaml`` and push
+   the patch up for review.
+   https://git.openstack.org/cgit/openstack-infra/elastic-recheck/tree/queries
+
+
 Future Work
 ------------
+
 - Move config files into a separate directory
 - Make unit tests robust
 - Add debug mode flag
