@@ -86,9 +86,9 @@ $("#graph-container").append($(new Image()).graphite({
       sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.{SUCCESS,FAILURE})\
       ),'5hours'), 'gate-tempest-dsvm-full'),'00FF00')",
     "color(alias(movingAverage(asPercent(\
-      stats.zuul.pipeline.check.job.check-grenade-dsvm.FAILURE,\
-      sum(stats.zuul.pipeline.check.job.check-grenade-dsvm.{SUCCESS,FAILURE})\
-      ),'5hours'), 'check-grenade-dsvm'),'800080')",
+      stats.zuul.pipeline.gate.job.gate-grenade-dsvm.FAILURE,\
+      sum(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.{SUCCESS,FAILURE})\
+      ),'5hours'), 'gate-grenade-dsvm'),'800080')",
     "color(alias(movingAverage(asPercent(\
       stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.FAILURE,\
       sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.{SUCCESS,FAILURE})\
