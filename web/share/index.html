@@ -77,17 +77,40 @@ $("#graph-container").append($(new Image()).graphite({
     yMax: 100,
     yMin: 0,
     target: [
-        graphite_moving_avg("gate-tempest-dsvm-neutron", "00c868"),
-        graphite_moving_avg("gate-tempest-dsvm-full","00FF00"),
-        graphite_moving_avg("gate-grenade-dsvm","800080"),
-        graphite_moving_avg("gate-tempest-dsvm-large-ops","00F0F0"),
-        graphite_moving_avg("gate-tempest-dsvm-neutron-large-ops","E080FF"),
-        graphite_moving_avg("gate-tempest-dsvm-postgres-full","ED9121")
+        graphite_moving_avg("gate-tempest-dsvm-neutron", "purple"),
+        graphite_moving_avg("gate-tempest-dsvm-full","orange"),
+        graphite_moving_avg("gate-grenade-dsvm","brown"),
+        graphite_moving_avg("gate-tempest-dsvm-large-ops","blue"),
+        graphite_moving_avg("gate-tempest-dsvm-neutron-large-ops","aqua"),
+        graphite_moving_avg("gate-tempest-dsvm-postgres-full","magenta")
     ],
     title: "Gate Failure Rates"
 }));
       </script>
     </div>
+    <div class="container" id="graph-container">
+      <script type="text/javascript">
+$("#graph-container").append($(new Image()).graphite({
+    from: "-36hours",
+    url: "http://graphite.openstack.org/render/",
+    width: 600,
+    height: 200,
+    bgcolor: 'ffffff',
+    fgcolor: '000000',
+    hideGrid: true,
+    target: [
+        graphite_hit_count("gate-tempest-dsvm-neutron", "purple"),
+        graphite_hit_count("gate-tempest-dsvm-full","orange"),
+        graphite_hit_count("gate-grenade-dsvm","brown"),
+        graphite_hit_count("gate-tempest-dsvm-large-ops","blue"),
+        graphite_hit_count("gate-tempest-dsvm-neutron-large-ops","aqua"),
+        graphite_hit_count("gate-tempest-dsvm-postgres-full","magenta")
+    ],
+    title: "Gate Hit Count"
+}));
+      </script>
+    </div>
+
 
     <div id="main-container" class="container">
     </div>
