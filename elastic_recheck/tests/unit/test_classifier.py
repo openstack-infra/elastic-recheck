@@ -18,14 +18,19 @@ from elastic_recheck import results
 from elastic_recheck import tests
 
 
-def fake_queries(*args):
-    return [
+def fake_queries(directory='queries', skip_resolved=True):
+    queries = [
         {'query': '@message:"fake query" AND @fields.filename:"fake"\n',
          'bug': 1226337},
         {'query': 'magic query',
          'bug': 1234567},
         {'query': '@message:"fake_query3" AND @fields.filename:"fake"\n',
          'bug': 1235437}]
+    if not skip_resolved:
+        queries.append({'query': 'magic query',
+                        'bug': 1252514,
+                        'resolved_at': 'Tue Dec 10 12:08:42 EST 2013'})
+    return queries
 
 
 def _fake_search(query, size=None):
@@ -96,3 +101,16 @@ class TestClassifier(tests.TestCase):
             '-devstack-vm-postgres-full/99bb8f6'
         )
         self.assertEqual(bug_numbers, [1234567])
+
+    def test_classify_without_skipping_resolved_bugs(self):
+        self.stubs.Set(self.classifier.es, 'search', _fake_search)
+        self.stubs.Set(self.classifier, '_urls_match', _fake_urls_match)
+        self.stubs.Set(self.classifier, '_is_ready', _fake_is_ready)
+        bug_numbers = self.classifier.classify(
+            '47463',
+            '3',
+            ' blah http://logs.openstack.org/63/47463/3/gate/gate-tempest'
+            '-devstack-vm-postgres-full/99bb8f6',
+            False
+        )
+        self.assertEqual(bug_numbers, [1234567, 1252514])

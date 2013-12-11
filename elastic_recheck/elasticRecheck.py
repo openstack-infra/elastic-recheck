@@ -146,11 +146,12 @@ class Classifier():
         es_query = qb.generic(query, facet=facet)
         return self.es.search(es_query, size=size)
 
-    def classify(self, change_number, patch_number, comment):
+    def classify(self, change_number, patch_number, comment,
+                 skip_resolved=True):
         """Returns either empty list or list with matched bugs."""
         self.log.debug("Entering classify")
         #Reload each time
-        self.queries = loader.load(self.queries_dir)
+        self.queries = loader.load(self.queries_dir, skip_resolved)
         #Wait till Elastic search is ready
         self.log.debug("checking if ElasticSearch is ready")
         if not self._is_ready(change_number, patch_number, comment):

@@ -18,11 +18,14 @@ A set of utility methods to load queries for elastic recheck.
 """
 
 import glob
+import logging
 import os.path
 import yaml
 
+LOG = logging.getLogger('recheckwatchbot')
 
-def load(directory='queries'):
+
+def load(directory='queries', skip_resolved=True):
     """Load queries from a set of yaml files in a directory."""
     bugs = glob.glob("%s/*.yaml" % directory)
     data = []
@@ -30,5 +33,9 @@ def load(directory='queries'):
         bugnum = os.path.basename(fname).rstrip('.yaml')
         query = yaml.load(open(fname).read())
         query['bug'] = bugnum
-        data.append(query)
+        if skip_resolved and 'resolved_at' in query:
+            LOG.debug('Skipping Bug : %s as it was resolved at %s'
+                      % (query['bug'], query['resolved_at']))
+        else:
+            data.append(query)
     return data
