@@ -12,6 +12,15 @@
 // License for the specific language governing permissions and limitations
 // under the License.
 
+function graphite_moving_avg(job, color) {
+    var time = '5hours';
+    var graph = "color(alias(movingAverage(asPercent(";
+    graph += "stats.zuul.pipeline.gate.job." + job + ".FAILURE,";
+    graph += "sum(stats.zuul.pipeline.gate.job." + job + ".{SUCCESS,FAILURE})";
+    graph += "),'" + time + "'), '" + job + "'),'" + color + "')";
+    return graph;
+}
+
 function update() {
     $.getJSON('http://status.openstack.org/elastic-recheck/data/graph.json', function(data) {
 	var seen = [];

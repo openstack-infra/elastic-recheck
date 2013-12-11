@@ -77,30 +77,12 @@ $("#graph-container").append($(new Image()).graphite({
     yMax: 100,
     yMin: 0,
     target: [
-    "color(alias(movingAverage(asPercent(\
-      stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.FAILURE,\
-      sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron.{SUCCESS,FAILURE})\
-      ),'5hours'), 'gate-tempest-dsvm-neutron'),'00c868')",
-    "color(alias(movingAverage(asPercent(\
-      stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.FAILURE,\
-      sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-full.{SUCCESS,FAILURE})\
-      ),'5hours'), 'gate-tempest-dsvm-full'),'00FF00')",
-    "color(alias(movingAverage(asPercent(\
-      stats.zuul.pipeline.gate.job.gate-grenade-dsvm.FAILURE,\
-      sum(stats.zuul.pipeline.gate.job.gate-grenade-dsvm.{SUCCESS,FAILURE})\
-      ),'5hours'), 'gate-grenade-dsvm'),'800080')",
-    "color(alias(movingAverage(asPercent(\
-      stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.FAILURE,\
-      sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-large-ops.{SUCCESS,FAILURE})\
-      ),'5hours'), 'gate-tempest-dsvm-large-ops'),'00F0F0')",
-    "color(alias(movingAverage(asPercent(\
-      stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.FAILURE,\
-      sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-neutron-large-ops.{SUCCESS,FAILURE})\
-      ),'5hours'), 'gate-tempest-dsvm-neutron-large-ops'),'E080FF')",
-    "color(alias(movingAverage(asPercent(\
-      stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.FAILURE,\
-      sum(stats.zuul.pipeline.gate.job.gate-tempest-dsvm-postgres-full.{SUCCESS,FAILURE})\
-      ),'5hours'), 'gate-tempest-dsvm-postgres-full'),'ED9121')",
+        graphite_moving_avg("gate-tempest-dsvm-neutron", "00c868"),
+        graphite_moving_avg("gate-tempest-dsvm-full","00FF00"),
+        graphite_moving_avg("gate-grenade-dsvm","800080"),
+        graphite_moving_avg("gate-tempest-dsvm-large-ops","00F0F0"),
+        graphite_moving_avg("gate-tempest-dsvm-neutron-large-ops","E080FF"),
+        graphite_moving_avg("gate-tempest-dsvm-postgres-full","ED9121")
     ],
     title: "Gate Failure Rates"
 }));
