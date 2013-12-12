@@ -1,0 +1,3 @@
+query: >
+  message:"Failure uploading bundle bundle.img to testbucket"
+  AND filename:"console.html"
