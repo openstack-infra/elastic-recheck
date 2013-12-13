@@ -1,0 +1,5 @@
+query: >
+  message:"java.io.IOException"
+  AND message:"Remote call on"
+  AND message:"failed"
+  AND filename:"console.html"
