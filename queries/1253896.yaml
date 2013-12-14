@@ -1,4 +1,3 @@
 query: >
-  message:"SSHTimeout: Connection to the" AND message:"via SSH timed
-  out."
+  message:"SSHTimeout: Connection to the" AND message:"via SSH timed out."
   AND filename:"console.html"
