@@ -1,3 +1,2 @@
 query: >
   message:"keystoneclient.middleware.auth_token ValueError: No JSON object could be decoded"
-  AND filename:"logs/screen-n-api.txt"
