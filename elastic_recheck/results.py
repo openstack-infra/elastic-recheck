@@ -15,8 +15,10 @@
 """Elastic search wrapper to make handling results easier."""
 
 import copy
-from datetime import datetime
+import datetime
 import pprint
+import time
+
 import pyelasticsearch
 
 
@@ -104,20 +106,21 @@ class FacetSet(dict):
 
     Treat this basically like a dictionary (which it inherits from).
     """
-    def _histogram(self, data, facet):
+    def _histogram(self, data, facet, res=3600):
         """A preprocessor for data should we want to bucket it."""
         if facet == "timestamp":
-            ts = datetime.strptime(data, "%Y-%m-%dT%H:%M:%S.%fZ")
-            # hour resolution
-            ts = datetime(ts.year, ts.month, ts.day, ts.hour)
+            ts = datetime.datetime.strptime(data, "%Y-%m-%dT%H:%M:%S.%fZ")
+            tsepoch = int(time.mktime(ts.timetuple()))
+            # take the floor based on resolution
+            ts -= datetime.timedelta(seconds=(tsepoch % res))
             # ms since epoch
-            epoch = datetime.utcfromtimestamp(0)
+            epoch = datetime.datetime.utcfromtimestamp(0)
             pos = int(((ts - epoch).total_seconds()) * 1000)
             return pos
         else:
             return data
 
-    def detect_facets(self, results, facets):
+    def detect_facets(self, results, facets, res=3600):
         if len(facets) > 0:
             facet = facets.pop(0)
             for hit in results:
@@ -133,7 +136,7 @@ class FacetSet(dict):
                 newkeys = {}
                 for key in self:
                     fs = FacetSet()
-                    fs.detect_facets(self[key], copy.deepcopy(facets))
+                    fs.detect_facets(self[key], copy.deepcopy(facets), res=res)
                     newkeys[key] = fs
                 self.update(newkeys)
 
