@@ -1,0 +1,3 @@
+query: >
+  message:"Current status: HARD_REBOOT"
+  AND filename:"console.html"
