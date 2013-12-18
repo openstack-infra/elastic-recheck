@@ -112,7 +112,9 @@ class FacetSet(dict):
             ts = datetime.datetime.strptime(data, "%Y-%m-%dT%H:%M:%S.%fZ")
             tsepoch = int(time.mktime(ts.timetuple()))
             # take the floor based on resolution
-            ts -= datetime.timedelta(seconds=(tsepoch % res))
+            ts -= datetime.timedelta(
+                seconds=(tsepoch % res),
+                microseconds=ts.microsecond)
             # ms since epoch
             epoch = datetime.datetime.utcfromtimestamp(0)
             pos = int(((ts - epoch).total_seconds()) * 1000)
