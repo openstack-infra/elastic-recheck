@@ -1,0 +1,3 @@
+query: >
+  message:"socket.error: [Errno 111] Connection refused"
+  AND filename:"logs/screen-s-container.txt"
