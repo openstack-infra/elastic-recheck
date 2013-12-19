@@ -1,0 +1,4 @@
+query: >
+  message:"Unexpected error occurred serving API: Stack heat-tempest-"
+  AND message:"already has an action (DELETE) in progress."
+  AND filename:"logs/screen-h-api.txt"
