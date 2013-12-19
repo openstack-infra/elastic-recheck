@@ -21,6 +21,15 @@ function graphite_moving_avg(job, color) {
     return graph;
 }
 
+function graphite_hit_count(job, color) {
+    var time = '5hours';
+    var graph = "color(alias(hitcount(";
+    graph += "sum(stats.zuul.pipeline.gate.job." + job + ".{SUCCESS,FAILURE})";
+    graph += ",'" + time + "'), '" + job + "'),'" + color + "')";
+    return graph;
+}
+
+
 function update() {
     $.getJSON('http://status.openstack.org/elastic-recheck/data/graph.json', function(data) {
 	var seen = [];
