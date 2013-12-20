@@ -1,0 +1,4 @@
+query: >
+  message:"nova.api.openstack Timeout: Timeout while waiting on RPC response - topic: \""
+  AND message:", RPC method: \"get_console_output\""
+  AND filename:"logs/screen-n-api.txt"
