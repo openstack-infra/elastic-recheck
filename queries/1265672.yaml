@@ -1,0 +1,3 @@
+query: >
+  message:"Invalid input received: Invalid input received: Availability zone"
+  AND filename:"console.html"
