@@ -1,3 +1,4 @@
 query: >
   message:"Failure uploading bundle bundle.img to testbucket"
   AND filename:"console.html"
+resolved_at: "Mon Jan  6 13:20:28 PST 2014"
