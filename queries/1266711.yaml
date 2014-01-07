@@ -1,0 +1,4 @@
+query: >
+  message:"AttributeError: virConnect instance has no attribute 'registerCloseCallback'"
+  AND project:"openstack/nova"
+  AND filename:console.html
