@@ -1,3 +1,4 @@
 query: >
   message:"BadRequest: Unable to find security_group with name 'secgroup_general--tempest-"
   AND filename:"console.html"
+resolved_at: "Mon Jan  6 13:20:28 PST 2014"
