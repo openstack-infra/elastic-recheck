@@ -1,6 +1,4 @@
 query: >
   message:"Build timed out (after" AND
-  message:"minutes). Marking the build as failed." AND (
-  build_name:check-tempest-* OR build_name:gate-tempest-* OR
-  build_name:check-grenade-* OR build_name:gate-grenade-*) AND
+  message:"minutes). Marking the build as failed." AND
   filename:"console.html"
