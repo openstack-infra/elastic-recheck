@@ -144,8 +144,7 @@ class RecheckWatch(threading.Thread):
             change_id = "%s,%s" % (change, rev)
             project = event['change']['project']
             try:
-                bug_numbers = classifier.classify(change, rev,
-                                                  event['comment'])
+                bug_numbers = classifier.classify(change, rev)
                 if not bug_numbers:
                     self._read(event)
                 else:

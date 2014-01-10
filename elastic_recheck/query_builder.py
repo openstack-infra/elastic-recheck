@@ -59,7 +59,7 @@ def generic(raw_query, facet=None):
     return query
 
 
-def result_ready(review=None, patch=None):
+def result_ready(review=None, patch=None, name=None):
     """A query to determine if we have a failure for a particular patch.
 
     This is looking for a particular FAILURE line in the console log, which
@@ -70,8 +70,9 @@ def result_ready(review=None, patch=None):
                    'OR message:"[SCP] Copying console log") '
                    'AND build_status:"FAILURE" '
                    'AND build_change:"%s" '
-                   'AND build_patchset:"%s"' %
-                   (review, patch))
+                   'AND build_patchset:"%s" '
+                   'AND build_name:"%s"' %
+                   (review, patch, name))
 
 
 def files_ready(review, patch):
