@@ -37,14 +37,13 @@ openstack-qa:
      - negative
 """
 
-
+import argparse
 import ConfigParser
 import daemon
 import irc.bot
 import logging
 import logging.config
 import os
-import sys
 import threading
 import time
 import yaml
@@ -95,7 +94,8 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
 
 
 class RecheckWatch(threading.Thread):
-    def __init__(self, ircbot, channel_config, username, queries, host, key):
+    def __init__(self, ircbot, channel_config, username,
+                 queries, host, key, commenting=True):
         threading.Thread.__init__(self)
         self.ircbot = ircbot
         self.channel_config = channel_config
@@ -104,6 +104,7 @@ class RecheckWatch(threading.Thread):
         self.queries = queries
         self.host = host
         self.connected = False
+        self.commenting = commenting
         self.key = key
 
     def new_error(self, channel, data):
@@ -150,7 +151,8 @@ class RecheckWatch(threading.Thread):
                 else:
                     event['bug_numbers'] = bug_numbers
                     self._read(event)
-                    stream.leave_comment(project, change_id, bug_numbers)
+                    if self.commenting:
+                        stream.leave_comment(project, change_id, bug_numbers)
             except Exception:
                 self.log.exception("Uncaught exception processing event.")
 
@@ -171,7 +173,22 @@ class ChannelConfig(object):
                 self.events[event] = event_set
 
 
-def _main(config):
+def get_options():
+    parser = argparse.ArgumentParser(
+        description="IRC bot for elastic recheck bug reporting")
+    parser.add_argument('-f', '--foreground',
+                        default=False,
+                        action='store_true',
+                        help="Run in foreground")
+    parser.add_argument('-n', '--nocomment',
+                        default=False,
+                        action='store_true',
+                        help="Don't comment in gerrit. Useful in testing.")
+    parser.add_argument('conffile', nargs=1, help="Configuration file")
+    return parser.parse_args()
+
+
+def _main(args, config):
     setup_logging(config)
 
     fp = config.get('ircbot', 'channel_config')
@@ -198,31 +215,31 @@ def _main(config):
         config.get('gerrit', 'user'),
         config.get('gerrit', 'query_file'),
         config.get('gerrit', 'host', 'review.openstack.org'),
-        config.get('gerrit', 'key'))
+        config.get('gerrit', 'key'),
+        not args.nocomment
+    )
 
     recheck.start()
     bot.start()
 
 
 def main():
-    if len(sys.argv) < 2:
-        print "Usage: %s CONFIGFILE" % sys.argv[0]
-        sys.exit(1)
+    args = get_options()
 
     config = ConfigParser.ConfigParser({'server_password': None})
-    config.read(sys.argv[1])
+    config.read(args.conffile)
 
     if config.has_option('ircbot', 'pidfile'):
         pid_fn = os.path.expanduser(config.get('ircbot', 'pidfile'))
     else:
         pid_fn = '/var/run/elastic-recheck/elastic-recheck.pid'
 
-    if '-d' in sys.argv:
-        _main(config)
+    if args.foreground:
+        _main(args, config)
     else:
         pid = pid_file_module.TimeoutPIDLockFile(pid_fn, 10)
         with daemon.DaemonContext(pidfile=pid):
-            _main(config)
+            _main(args, config)
 
 
 def setup_logging(config):
