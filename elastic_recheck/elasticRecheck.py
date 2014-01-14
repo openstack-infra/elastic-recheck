@@ -30,7 +30,7 @@ import elastic_recheck.loader as loader
 import elastic_recheck.query_builder as qb
 from elastic_recheck import results
 
-logging.basicConfig()
+LOG = logging.getLogger("recheckwatchbot")
 
 ES_URL = "http://logstash.openstack.org/elasticsearch"
 
@@ -57,9 +57,6 @@ class Stream(object):
 
     Monitors gerrit stream looking for tempest-devstack failures.
     """
-
-    log = logging.getLogger("recheckwatchbot")
-
     def __init__(self, user, host, key, thread=True):
         port = 29418
         self.gerrit = gerritlib.gerrit.Gerrit(host, user, port, key)
@@ -71,14 +68,20 @@ class Stream(object):
     def parse_jenkins_failure(event):
         """Is this comment a jenkins failure comment."""
         if event.get('type', '') != 'comment-added':
+            LOG.debug("Skipping event type %s" % event.get('type', ''))
             return False
 
         username = event['author'].get('username', '')
         if (username != 'jenkins'):
+            LOG.debug("Skipping comment from %s" %
+                      event['author'].get('username', ''))
             return False
 
         if not ("Build failed.  For information on how to proceed" in
                 event['comment']):
+            change = event['change']['number']
+            rev = event['patchSet']['number']
+            LOG.debug("Skipping passing job %s,%s" % (change, rev))
             return False
 
         failed_tests = {}
@@ -94,8 +97,8 @@ class Stream(object):
         if len(r) == 0:
             raise ResultNotReady()
         else:
-            self.log.debug("Console ready for %s %s,%s" %
-                           (name, change, patch))
+            LOG.debug("Console ready for %s %s,%s" %
+                      (name, change, patch))
 
     def _has_required_files(self, change, patch, name):
         query = qb.files_ready(change, patch)
@@ -124,26 +127,26 @@ class Stream(object):
                 break
 
             except ResultNotReady:
-                self.log.debug("Console logs not ready for %s %s,%s" %
-                               (job_name, change_number, patch_number))
+                LOG.debug("Console logs not ready for %s %s,%s" %
+                          (job_name, change_number, patch_number))
                 time.sleep(SLEEP_TIME)
                 continue
             except pyelasticsearch.exceptions.InvalidJsonResponseError:
                 # If ElasticSearch returns an error code, sleep and retry
                 # TODO(jogo): if this works pull out search into a helper
                 # function that  does this.
-                self.log.exception(
+                LOG.exception(
                     "Elastic Search not responding on attempt %d" % i)
                 time.sleep(NUMBER_OF_RETRIES)
                 continue
 
         if i == NUMBER_OF_RETRIES - 1:
             elapsed = datetime.datetime.now() - started_at
-            self.log.warn("Console logs not available after %ss for %s %s,%s" %
-                          (elapsed, job_name, change_number, patch_number))
+            LOG.warn("Console logs not available after %ss for %s %s,%s" %
+                     (elapsed, job_name, change_number, patch_number))
             return False
 
-        self.log.debug(
+        LOG.debug(
             "Found hits for change_number: %s, patch_number: %s"
             % (change_number, patch_number))
 
@@ -152,7 +155,7 @@ class Stream(object):
                 for job_name in job_fails:
                     self._has_required_files(
                         change_number, patch_number, job_name)
-                self.log.info(
+                LOG.info(
                     "All files present for change_number: %s, patch_number: %s"
                     % (change_number, patch_number))
                 time.sleep(10)
@@ -162,12 +165,12 @@ class Stream(object):
 
         # if we get to the end, we're broken
         elapsed = datetime.datetime.now() - started_at
-        self.log.warn("Required files not ready after %ss for %s %d,%d" %
-                      (elapsed, job_name, change_number, patch_number))
+        LOG.warn("Required files not ready after %ss for %s %d,%d" %
+                 (elapsed, job_name, change_number, patch_number))
         return False
 
     def get_failed_tempest(self):
-        self.log.debug("entering get_failed_tempest")
+        LOG.debug("entering get_failed_tempest")
         while True:
             event = self.gerrit.getEvent()
 
@@ -182,8 +185,8 @@ class Stream(object):
 
             change = event['change']['number']
             rev = event['patchSet']['number']
-            self.log.info("Looking for failures in %s,%s on %s" %
-                          (change, rev, ", ".join(failed_jobs)))
+            LOG.info("Looking for failures in %s,%s on %s" %
+                     (change, rev, ", ".join(failed_jobs)))
             if self._does_es_have_data(change, rev, failed_jobs):
                 return event
 
@@ -219,8 +222,6 @@ class Classifier():
     Given a change and revision, query logstash with a list of known queries
     that are mapped to specific bugs.
     """
-    log = logging.getLogger("recheckwatchbot")
-
     queries = None
 
     def __init__(self, queries_dir):
@@ -234,12 +235,12 @@ class Classifier():
 
     def classify(self, change_number, patch_number, skip_resolved=True):
         """Returns either empty list or list with matched bugs."""
-        self.log.debug("Entering classify")
+        LOG.debug("Entering classify")
         #Reload each time
         self.queries = loader.load(self.queries_dir, skip_resolved)
         bug_matches = []
         for x in self.queries:
-            self.log.debug(
+            LOG.debug(
                 "Looking for bug: https://bugs.launchpad.net/bugs/%s"
                 % x['bug'])
             query = qb.single_patch(x['query'], change_number, patch_number)

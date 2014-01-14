@@ -49,7 +49,6 @@ import yaml
 
 import irc.bot
 
-
 try:
     import daemon.pidlockfile
     pid_file_module = daemon.pidlockfile
@@ -58,6 +57,8 @@ except Exception:
     # instead it depends on lockfile-0.9.1
     import daemon.pidfile
     pid_file_module = daemon.pidfile
+
+LOG = logging.getLogger('recheckwatchbot')
 
 
 class RecheckWatchBot(irc.bot.SingleServerIRCBot):
@@ -68,29 +69,28 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
         self.channel_list = channels
         self.nickname = nickname
         self.password = password
-        self.log = logging.getLogger('recheckwatchbot')
 
     def on_nicknameinuse(self, c, e):
-        self.log.info('Nick previously in use, recovering.')
+        LOG.info('Nick previously in use, recovering.')
         c.nick(c.get_nickname() + "_")
         c.privmsg("nickserv", "identify %s " % self.password)
         c.privmsg("nickserv", "ghost %s %s" % (self.nickname, self.password))
         c.privmsg("nickserv", "release %s %s" % (self.nickname, self.password))
         time.sleep(1)
         c.nick(self.nickname)
-        self.log.info('Nick previously in use, recovered.')
+        LOG.info('Nick previously in use, recovered.')
 
     def on_welcome(self, c, e):
-        self.log.info('Identifying with IRC server.')
+        LOG.info('Identifying with IRC server.')
         c.privmsg("nickserv", "identify %s " % self.password)
-        self.log.info('Identified with IRC server.')
+        LOG.info('Identified with IRC server.')
         for channel in self.channel_list:
             c.join(channel)
-            self.log.info('Joined channel %s' % channel)
+            LOG.info('Joined channel %s' % channel)
             time.sleep(0.5)
 
     def send(self, channel, msg):
-        self.log.info('Sending "%s" to %s' % (msg, channel))
+        LOG.info('Sending "%s" to %s' % (msg, channel))
         self.connection.privmsg(channel, msg)
         time.sleep(0.5)
 
@@ -101,7 +101,6 @@ class RecheckWatch(threading.Thread):
         super(RecheckWatch, self).__init__()
         self.ircbot = ircbot
         self.channel_config = channel_config
-        self.log = logging.getLogger('recheckwatchbot')
         self.username = username
         self.queries = queries
         self.host = host
@@ -113,7 +112,7 @@ class RecheckWatch(threading.Thread):
         msg = '%s change: %s failed tempest with an unrecognized error' % (
             data['change']['project'],
             data['change']['url'])
-        self.log.info('Compiled Message %s: %s' % (channel, msg))
+        LOG.info('Compiled Message %s: %s' % (channel, msg))
         self.ircbot.send(channel, msg)
 
     def error_found(self, channel, data):
@@ -123,7 +122,7 @@ class RecheckWatch(threading.Thread):
         bug_urls = ['https://bugs.launchpad.net/bugs/%s' % x for x
                     in data['bug_numbers']]
         msg += ' and '.join(bug_urls)
-        self.log.info('Compiled Message %s: %s' % (channel, msg))
+        LOG.info('Compiled Message %s: %s' % (channel, msg))
         self.ircbot.send(channel, msg)
 
     def _read(self, data):
@@ -156,7 +155,7 @@ class RecheckWatch(threading.Thread):
                     if self.commenting:
                         stream.leave_comment(project, change_id, bug_numbers)
             except Exception:
-                self.log.exception("Uncaught exception processing event.")
+                LOG.exception("Uncaught exception processing event.")
 
 
 class ChannelConfig(object):
