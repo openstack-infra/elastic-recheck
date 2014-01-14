@@ -125,9 +125,15 @@ class RecheckWatch(threading.Thread):
         LOG.info('Compiled Message %s: %s' % (channel, msg))
         self.ircbot.send(channel, msg)
 
-    def _read(self, data):
+    def print_msg(self, channel, msg):
+        self.ircbot.send(channel, msg)
+
+    def _read(self, data={}, msg=""):
         for channel in self.channel_config.channels:
-            if data.get('bug_numbers'):
+            if msg:
+                if channel in self.channel_config.events['negative']:
+                    self.print_msg(channel, msg)
+            elif data.get('bug_numbers'):
                 if channel in self.channel_config.events['positive']:
                     self.error_found(channel, data)
             else:
@@ -140,20 +146,24 @@ class RecheckWatch(threading.Thread):
         classifier = er.Classifier(self.queries)
         stream = er.Stream(self.username, self.host, self.key)
         while True:
-            event = stream.get_failed_tempest()
-            change = event['change']['number']
-            rev = event['patchSet']['number']
-            change_id = "%s,%s" % (change, rev)
-            project = event['change']['project']
             try:
+                event = stream.get_failed_tempest()
+                change = event['change']['number']
+                rev = event['patchSet']['number']
+                change_id = "%s,%s" % (change, rev)
+                project = event['change']['project']
+
                 bug_numbers = classifier.classify(change, rev)
                 if not bug_numbers:
                     self._read(event)
                 else:
                     event['bug_numbers'] = bug_numbers
-                    self._read(event)
+                    self._read(data=event)
                     if self.commenting:
                         stream.leave_comment(project, change_id, bug_numbers)
+            except er.ResultTimedOut as e:
+                LOG.warn(e.msg)
+                self._read(msg=e.msg)
             except Exception:
                 LOG.exception("Uncaught exception processing event.")
 

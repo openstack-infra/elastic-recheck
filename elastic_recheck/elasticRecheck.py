@@ -48,8 +48,19 @@ def required_files(job):
     return files
 
 
-class ResultNotReady(Exception):
-    pass
+class ConsoleNotReady(Exception):
+    def __init__(self, msg):
+        self.msg = msg
+
+
+class FilesNotReady(Exception):
+    def __init__(self, msg):
+        self.msg = msg
+
+
+class ResultTimedOut(Exception):
+    def __init__(self, msg):
+        self.msg = msg
 
 
 class Stream(object):
@@ -95,7 +106,9 @@ class Stream(object):
         query = qb.result_ready(change, patch, name)
         r = self.es.search(query, size='10')
         if len(r) == 0:
-            raise ResultNotReady()
+            msg = ("Console logs not ready for %s %s,%s" %
+                   (name, change, patch))
+            raise ConsoleNotReady(msg)
         else:
             LOG.debug("Console ready for %s %s,%s" %
                       (name, change, patch))
@@ -107,7 +120,9 @@ class Stream(object):
         required = required_files(name)
         missing_files = [x for x in required if x not in files]
         if len(missing_files) != 0:
-            raise ResultNotReady()
+            msg = ("%s missing for %s %s,%s" % (
+                change, patch, name, missing_files))
+            raise FilesNotReady(msg)
 
     def _is_openstack_project(self, event):
         return "tempest-dsvm-full" in event["comment"]
@@ -126,9 +141,8 @@ class Stream(object):
                         change_number, patch_number, job_name)
                 break
 
-            except ResultNotReady:
-                LOG.debug("Console logs not ready for %s %s,%s" %
-                          (job_name, change_number, patch_number))
+            except ConsoleNotReady as e:
+                LOG.debug(e.msg)
                 time.sleep(SLEEP_TIME)
                 continue
             except pyelasticsearch.exceptions.InvalidJsonResponseError:
@@ -142,9 +156,9 @@ class Stream(object):
 
         if i == NUMBER_OF_RETRIES - 1:
             elapsed = datetime.datetime.now() - started_at
-            LOG.warn("Console logs not available after %ss for %s %s,%s" %
-                     (elapsed, job_name, change_number, patch_number))
-            return False
+            msg = ("Console logs not available after %ss for %s %s,%s" %
+                   (elapsed, job_name, change_number, patch_number))
+            raise ResultTimedOut(msg)
 
         LOG.debug(
             "Found hits for change_number: %s, patch_number: %s"
@@ -160,14 +174,14 @@ class Stream(object):
                     % (change_number, patch_number))
                 time.sleep(10)
                 return True
-            except ResultNotReady:
+            except FilesNotReady:
                 time.sleep(SLEEP_TIME)
 
         # if we get to the end, we're broken
         elapsed = datetime.datetime.now() - started_at
-        LOG.warn("Required files not ready after %ss for %s %d,%d" %
-                 (elapsed, job_name, change_number, patch_number))
-        return False
+        msg = ("Required files not ready after %ss for %s %d,%d" %
+               (elapsed, job_name, change_number, patch_number))
+        raise ResultTimedOut(msg)
 
     def get_failed_tempest(self):
         LOG.debug("entering get_failed_tempest")
