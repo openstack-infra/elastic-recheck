@@ -19,6 +19,7 @@ import gerritlib.gerrit
 import pyelasticsearch
 
 import ConfigParser
+import datetime
 import logging
 import os
 import re
@@ -92,6 +93,9 @@ class Stream(object):
         r = self.es.search(query, size='10')
         if len(r) == 0:
             raise ResultNotReady()
+        else:
+            self.log.debug("Console ready for %s %s,%s" %
+                           (name, change, patch))
 
     def _has_required_files(self, change, patch, name):
         query = qb.files_ready(change, patch)
@@ -109,6 +113,7 @@ class Stream(object):
         """Wait till ElasticSearch is ready, but return False if timeout."""
         NUMBER_OF_RETRIES = 20
         SLEEP_TIME = 40
+        started_at = datetime.datetime.now()
         # this checks that we've got the console log uploaded, need to retry
         # in case ES goes bonkers on cold data, which it does some times.
         for i in range(NUMBER_OF_RETRIES):
@@ -119,6 +124,8 @@ class Stream(object):
                 break
 
             except ResultNotReady:
+                self.log.debug("Console logs not ready for %s %s,%s" %
+                               (job_name, change_number, patch_number))
                 time.sleep(SLEEP_TIME)
                 continue
             except pyelasticsearch.exceptions.InvalidJsonResponseError:
@@ -131,6 +138,9 @@ class Stream(object):
                 continue
 
         if i == NUMBER_OF_RETRIES - 1:
+            elapsed = datetime.datetime.now() - started_at
+            self.log.warn("Console logs not available after %ss for %s %s,%s" %
+                          (elapsed, job_name, change_number, patch_number))
             return False
 
         self.log.debug(
@@ -142,7 +152,7 @@ class Stream(object):
                 for job_name in job_fails:
                     self._has_required_files(
                         change_number, patch_number, job_name)
-                self.log.debug(
+                self.log.info(
                     "All files present for change_number: %s, patch_number: %s"
                     % (change_number, patch_number))
                 time.sleep(10)
@@ -151,12 +161,16 @@ class Stream(object):
                 time.sleep(SLEEP_TIME)
 
         # if we get to the end, we're broken
+        elapsed = datetime.datetime.now() - started_at
+        self.log.warn("Required files not ready after %ss for %s %d,%d" %
+                      (elapsed, job_name, change_number, patch_number))
         return False
 
     def get_failed_tempest(self):
         self.log.debug("entering get_failed_tempest")
         while True:
             event = self.gerrit.getEvent()
+
             failed_jobs = Stream.parse_jenkins_failure(event)
             if not failed_jobs:
                 # nothing to see here, lets try the next event
@@ -168,6 +182,8 @@ class Stream(object):
 
             change = event['change']['number']
             rev = event['patchSet']['number']
+            self.log.info("Looking for failures in %s,%s on %s" %
+                          (change, rev, ", ".join(failed_jobs)))
             if self._does_es_have_data(change, rev, failed_jobs):
                 return event
 

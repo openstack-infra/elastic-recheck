@@ -245,6 +245,21 @@ def main():
 
 
 def setup_logging(config):
+    """Turn down dependent library log levels so they aren't noise."""
+    FORMAT = '%(asctime)s  %(levelname)-8s [%(name)-15s] %(message)s'
+    DATEFMT = '%Y-%m-%d %H:%M:%S'
+    # set 3rd party library logging levels to sanity points
+    loglevels = {
+        "irc.client": logging.INFO,
+        "gerrit.GerritWatcher": logging.INFO,
+        "paramiko.transport": logging.INFO,
+        "pyelasticsearch": logging.INFO,
+        "requests.packages.urllib3.connectionpool": logging.WARN
+    }
+    for module in loglevels:
+        log = logging.getLogger(module)
+        log.setLevel(loglevels[module])
+
     if config.has_option('ircbot', 'log_config'):
         log_config = config.get('ircbot', 'log_config')
         fp = os.path.expanduser(log_config)
@@ -252,7 +267,11 @@ def setup_logging(config):
             raise Exception("Unable to read logging config file at %s" % fp)
         logging.config.fileConfig(fp)
     else:
-        logging.basicConfig(level=logging.DEBUG)
+        logging.basicConfig(
+            level=logging.DEBUG,
+            format=FORMAT,
+            datefmt=DATEFMT
+        )
 
 
 if __name__ == "__main__":
