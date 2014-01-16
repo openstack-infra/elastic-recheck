@@ -22,6 +22,7 @@ import urllib2
 import ConfigParser
 import logging
 import os
+import re
 import sys
 import time
 
@@ -57,7 +58,8 @@ class Stream(object):
         if thread:
             self.gerrit.startWatching()
 
-    def _is_jenkins_failure(self, event):
+    @staticmethod
+    def parse_jenkins_failure(event):
         """Is this comment a jenkins failure comment."""
         if event.get('type', '') != 'comment-added':
             return False
@@ -66,8 +68,16 @@ class Stream(object):
         if (username != 'jenkins'):
             return False
 
-        return ("Build failed.  For information on how to proceed" in
-                event['comment'])
+        if not ("Build failed.  For information on how to proceed" in
+                event['comment']):
+            return False
+
+        failed_tests = {}
+        for line in event['comment'].split("\n"):
+            m = re.search("- ([\w-]+)\s*(http://\S+)\s*:\s*FAILURE", line)
+            if m:
+                failed_tests[m.group(1)] = m.group(2)
+        return failed_tests
 
     def _failed_unit_tests(self, line):
         """Did we fail unit tests? If so not a valid failure."""
@@ -84,21 +94,25 @@ class Stream(object):
         self.log.debug("entering get_failed_tempest")
         while True:
             event = self.gerrit.getEvent()
-            if self._is_jenkins_failure(event):
-                self.log.debug("potential failed_tempest")
-                found = False
-                for line in event['comment'].split('\n'):
-                    if self._failed_unit_tests(line):
-                        found = False
-                        break
-                    if self._valid_failure(line):
-                        url = [x for x in line.split() if "http" in x][0]
-                        if RequiredFiles.files_at_url(url):
-                            self.log.debug("All file present")
-                            found = True
-                if found:
-                    return event
+            failed_jobs = Stream.parse_jenkin_failure(event)
+            if not failed_jobs:
+                # nothing to see here, lets try the next event
                 continue
+
+            self.log.debug("potential failed_tempest")
+            found = False
+            for line in event['comment'].split('\n'):
+                if self._failed_unit_tests(line):
+                    found = False
+                    break
+                if self._valid_failure(line):
+                    url = [x for x in line.split() if "http" in x][0]
+                    if RequiredFiles.files_at_url(url):
+                        self.log.debug("All file present")
+                        found = True
+            if found:
+                return event
+            continue
 
     def leave_comment(self, project, commit, bugs=None):
         if bugs:
