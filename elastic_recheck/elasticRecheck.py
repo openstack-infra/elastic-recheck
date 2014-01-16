@@ -102,6 +102,9 @@ class Stream(object):
         if len(missing_files) != 0:
             raise ResultNotReady()
 
+    def _is_openstack_project(self, event):
+        return "tempest-dsvm-full" in event["comment"]
+
     def _does_es_have_data(self, change_number, patch_number, job_fails):
         """Wait till ElasticSearch is ready, but return False if timeout."""
         NUMBER_OF_RETRIES = 20
@@ -157,6 +160,10 @@ class Stream(object):
             failed_jobs = Stream.parse_jenkins_failure(event)
             if not failed_jobs:
                 # nothing to see here, lets try the next event
+                continue
+
+            # bail if it's not an openstack project
+            if not self._is_openstack_project(event):
                 continue
 
             change = event['change']['number']
