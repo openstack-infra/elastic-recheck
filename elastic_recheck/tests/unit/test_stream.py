@@ -14,26 +14,50 @@
 
 import json
 
+import fixtures
+import mock
+
 from elastic_recheck import elasticRecheck
 from elastic_recheck import tests
+import elastic_recheck.tests.unit.fake_gerrit as fg
 
 
 class TestStream(tests.TestCase):
 
     def setUp(self):
         super(TestStream, self).setUp()
-        with open("elastic_recheck/tests/unit/jenkins/events.json") as f:
-            j = json.load(f)
-            self.events = j['events']
+        self.useFixture(fixtures.MonkeyPatch(
+            'gerritlib.gerrit.Gerrit',
+            fg.Gerrit))
 
-    def test_gerrit_parsing_none(self):
-        self.assertFalse(
-            elasticRecheck.Stream.parse_jenkins_failure(self.events[1]))
-        self.assertFalse(
-            elasticRecheck.Stream.parse_jenkins_failure(self.events[2]))
+    def test_gerrit_stream(self):
+        """Tests that we can use our mock gerrit to process events."""
+        with mock.patch.object(
+                elasticRecheck.Stream, '_does_es_have_data') as mock_data:
+            mock_data.return_value = True
+            stream = elasticRecheck.Stream("", "", "")
+
+            # there are currently 10 events in the stream, 3 are
+            # failures
+            for i in xrange(3):
+                event = stream.get_failed_tempest()
+                self.assertEqual(event['author']['username'], 'jenkins')
+                self.assertIn('Build failed', event['comment'])
+            self.assertRaises(
+                fg.GerritDone,
+                stream.get_failed_tempest)
 
     def test_gerrit_parsing(self):
-        jobs = elasticRecheck.Stream.parse_jenkins_failure(self.events[0])
+        with open("elastic_recheck/tests/unit/jenkins/events.json") as f:
+            j = json.load(f)
+            events = j['events']
+
+        self.assertFalse(
+            elasticRecheck.Stream.parse_jenkins_failure(events[1]))
+        self.assertFalse(
+            elasticRecheck.Stream.parse_jenkins_failure(events[2]))
+
+        jobs = elasticRecheck.Stream.parse_jenkins_failure(events[0])
         self.assertIn('check-requirements-integration-dsvm', jobs)
         self.assertIn('check-tempest-dsvm-full', jobs)
         self.assertIn('check-tempest-dsvm-postgres-full', jobs)

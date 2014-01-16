@@ -17,7 +17,6 @@
 
 import gerritlib.gerrit
 import pyelasticsearch
-import urllib2
 
 import ConfigParser
 import logging
@@ -32,16 +31,24 @@ from elastic_recheck import results
 
 logging.basicConfig()
 
+ES_URL = "http://logstash.openstack.org/elasticsearch"
 
-REQUIRED_FILES = [
-    'console.html',
-    'logs/screen-n-api.txt',
-    'logs/screen-n-cpu.txt',
-    'logs/screen-n-sch.txt',
-    'logs/screen-c-api.txt',
-    'logs/screen-c-vol.txt',
-    'logs/syslog.txt',
-]
+
+def required_files(job):
+    files = ['console.html']
+    if re.match("tempest-dsvm", job):
+        files.extend([
+            'logs/screen-n-api.txt',
+            'logs/screen-n-cpu.txt',
+            'logs/screen-n-sch.txt',
+            'logs/screen-c-api.txt',
+            'logs/screen-c-vol.txt',
+            'logs/syslog.txt'])
+    return files
+
+
+class ResultNotReady(Exception):
+    pass
 
 
 class Stream(object):
@@ -55,6 +62,7 @@ class Stream(object):
     def __init__(self, user, host, key, thread=True):
         port = 29418
         self.gerrit = gerritlib.gerrit.Gerrit(host, user, port, key)
+        self.es = results.SearchEngine(ES_URL)
         if thread:
             self.gerrit.startWatching()
 
@@ -79,40 +87,82 @@ class Stream(object):
                 failed_tests[m.group(1)] = m.group(2)
         return failed_tests
 
-    def _failed_unit_tests(self, line):
-        """Did we fail unit tests? If so not a valid failure."""
-        fail = ("FAILURE" in line and ("python2" in line or "pep8" in line))
-        if fail:
-            self.log.debug("Failed unit tests, skipping this result")
-        return fail
+    def _job_console_uploaded(self, change, patch, name):
+        query = qb.result_ready(change, patch, name)
+        r = self.es.search(query, size='10')
+        if len(r) == 0:
+            raise ResultNotReady()
 
-    def _valid_failure(self, line):
-        """Is this the kind of failure we track."""
-        return "FAILURE" in line and "tempest" in line
+    def _has_required_files(self, change, patch, name):
+        query = qb.files_ready(change, patch)
+        r = self.es.search(query, size='80')
+        files = [x['term'] for x in r.terms]
+        required = required_files(name)
+        missing_files = [x for x in required if x not in files]
+        if len(missing_files) != 0:
+            raise ResultNotReady()
+
+    def _does_es_have_data(self, change_number, patch_number, job_fails):
+        """Wait till ElasticSearch is ready, but return False if timeout."""
+        NUMBER_OF_RETRIES = 20
+        SLEEP_TIME = 40
+        # this checks that we've got the console log uploaded, need to retry
+        # in case ES goes bonkers on cold data, which it does some times.
+        for i in range(NUMBER_OF_RETRIES):
+            try:
+                for job_name in job_fails:
+                    self._job_console_uploaded(
+                        change_number, patch_number, job_name)
+                break
+
+            except ResultNotReady:
+                time.sleep(SLEEP_TIME)
+                continue
+            except pyelasticsearch.exceptions.InvalidJsonResponseError:
+                # If ElasticSearch returns an error code, sleep and retry
+                # TODO(jogo): if this works pull out search into a helper
+                # function that  does this.
+                self.log.exception(
+                    "Elastic Search not responding on attempt %d" % i)
+                time.sleep(NUMBER_OF_RETRIES)
+                continue
+
+        if i == NUMBER_OF_RETRIES - 1:
+            return False
+
+        self.log.debug(
+            "Found hits for change_number: %s, patch_number: %s"
+            % (change_number, patch_number))
+
+        for i in range(NUMBER_OF_RETRIES):
+            try:
+                for job_name in job_fails:
+                    self._has_required_files(
+                        change_number, patch_number, job_name)
+                self.log.debug(
+                    "All files present for change_number: %s, patch_number: %s"
+                    % (change_number, patch_number))
+                time.sleep(10)
+                return True
+            except ResultNotReady:
+                time.sleep(SLEEP_TIME)
+
+        # if we get to the end, we're broken
+        return False
 
     def get_failed_tempest(self):
         self.log.debug("entering get_failed_tempest")
         while True:
             event = self.gerrit.getEvent()
-            failed_jobs = Stream.parse_jenkin_failure(event)
+            failed_jobs = Stream.parse_jenkins_failure(event)
             if not failed_jobs:
                 # nothing to see here, lets try the next event
                 continue
 
-            self.log.debug("potential failed_tempest")
-            found = False
-            for line in event['comment'].split('\n'):
-                if self._failed_unit_tests(line):
-                    found = False
-                    break
-                if self._valid_failure(line):
-                    url = [x for x in line.split() if "http" in x][0]
-                    if RequiredFiles.files_at_url(url):
-                        self.log.debug("All file present")
-                        found = True
-            if found:
+            change = event['change']['number']
+            rev = event['patchSet']['number']
+            if self._does_es_have_data(change, rev, failed_jobs):
                 return event
-            continue
 
     def leave_comment(self, project, commit, bugs=None):
         if bugs:
@@ -147,12 +197,11 @@ class Classifier():
     that are mapped to specific bugs.
     """
     log = logging.getLogger("recheckwatchbot")
-    ES_URL = "http://logstash.openstack.org/elasticsearch"
 
     queries = None
 
     def __init__(self, queries_dir):
-        self.es = results.SearchEngine(self.ES_URL)
+        self.es = results.SearchEngine(ES_URL)
         self.queries_dir = queries_dir
         self.queries = loader.load(self.queries_dir)
 
@@ -160,20 +209,11 @@ class Classifier():
         es_query = qb.generic(query, facet=facet)
         return self.es.search(es_query, size=size)
 
-    def classify(self, change_number, patch_number, comment,
-                 skip_resolved=True):
+    def classify(self, change_number, patch_number, skip_resolved=True):
         """Returns either empty list or list with matched bugs."""
         self.log.debug("Entering classify")
         #Reload each time
         self.queries = loader.load(self.queries_dir, skip_resolved)
-        #Wait till Elastic search is ready
-        self.log.debug("checking if ElasticSearch is ready")
-        if not self._is_ready(change_number, patch_number, comment):
-            self.log.error(
-                "something went wrong, ElasticSearch is still not ready, "
-                "giving up and trying next failure")
-            return None
-        self.log.debug("ElasticSearch is ready, starting to classify")
         bug_matches = []
         for x in self.queries:
             self.log.debug(
@@ -181,88 +221,9 @@ class Classifier():
                 % x['bug'])
             query = qb.single_patch(x['query'], change_number, patch_number)
             results = self.es.search(query, size='10')
-            if self._urls_match(comment, results):
+            if len(results) > 0:
                 bug_matches.append(x['bug'])
         return bug_matches
-
-    def _is_ready(self, change_number, patch_number, comment):
-        """Wait till ElasticSearch is ready, but return False if timeout."""
-        NUMBER_OF_RETRIES = 20
-        SLEEP_TIME = 40
-        query = qb.result_ready(change_number, patch_number)
-        for i in range(NUMBER_OF_RETRIES):
-            try:
-                results = self.es.search(query, size='10')
-            except pyelasticsearch.exceptions.InvalidJsonResponseError:
-                # If ElasticSearch returns an error code, sleep and retry
-                # TODO(jogo): if this works pull out search into a helper
-                # function that  does this.
-                print "UHUH hit InvalidJsonResponseError"
-                time.sleep(NUMBER_OF_RETRIES)
-                continue
-            if (len(results) > 0 and self._urls_match(comment, results)):
-                break
-            else:
-                time.sleep(SLEEP_TIME)
-        if i == NUMBER_OF_RETRIES - 1:
-            return False
-        self.log.debug(
-            "Found hits for change_number: %s, patch_number: %s"
-            % (change_number, patch_number))
-
-        query = qb.files_ready(change_number, patch_number)
-        for i in range(NUMBER_OF_RETRIES):
-            results = self.es.search(query, size='80')
-            files = [x['term'] for x in results.terms]
-            missing_files = [x for x in REQUIRED_FILES if x not in files]
-            if len(missing_files) is 0:
-                break
-            else:
-                time.sleep(SLEEP_TIME)
-        if i == NUMBER_OF_RETRIES - 1:
-            return False
-        self.log.debug(
-            "All files present for change_number: %s, patch_number: %s"
-            % (change_number, patch_number))
-        # Just because one file is parsed doesn't mean all are, so wait a
-        # bit
-        time.sleep(10)
-        return True
-
-    def _urls_match(self, comment, results):
-        for result in results:
-            url = result.log_url
-            if RequiredFiles.prep_url(url) in comment:
-                return True
-        return False
-
-
-class RequiredFiles(object):
-
-    log = logging.getLogger("recheckwatchbot")
-
-    @staticmethod
-    def prep_url(url):
-        if isinstance(url, list):
-            # The url is sometimes a list of one value
-            url = url[0]
-        if "/logs/" in url:
-            return '/'.join(url.split('/')[:-2])
-        return '/'.join(url.split('/')[:-1])
-
-    @staticmethod
-    def files_at_url(url):
-        for f in REQUIRED_FILES:
-            try:
-                urllib2.urlopen(url + '/' + f)
-            except urllib2.HTTPError:
-                try:
-                    urllib2.urlopen(url + '/' + f + '.gz')
-                except urllib2.HTTPError:
-                    # File does not exist at URL
-                    RequiredFiles.log.debug("missing file %s" % f)
-                    return False
-        return True
 
 
 def main():
@@ -285,7 +246,7 @@ def main():
         rev = event['patchSet']['number']
         print "======================="
         print "https://review.openstack.org/#/c/%(change)s/%(rev)s" % locals()
-        bug_numbers = classifier.classify(change, rev, event['comment'])
+        bug_numbers = classifier.classify(change, rev)
         if not bug_numbers:
             print "unable to classify failure"
         else:
