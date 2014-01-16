@@ -40,13 +40,15 @@ openstack-qa:
 import argparse
 import ConfigParser
 import daemon
-import irc.bot
 import logging
 import logging.config
 import os
 import threading
 import time
 import yaml
+
+import irc.bot
+
 
 try:
     import daemon.pidlockfile
@@ -61,8 +63,8 @@ except Exception:
 class RecheckWatchBot(irc.bot.SingleServerIRCBot):
     def __init__(self, channels, nickname, password, server, port=6667,
                  server_password=None):
-        irc.bot.SingleServerIRCBot.__init__(
-            self, [(server, port, server_password)], nickname, nickname)
+        super(RecheckWatchBot, self).__init__(
+            [(server, port, server_password)], nickname, nickname)
         self.channel_list = channels
         self.nickname = nickname
         self.password = password
@@ -96,7 +98,7 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
 class RecheckWatch(threading.Thread):
     def __init__(self, ircbot, channel_config, username,
                  queries, host, key, commenting=True):
-        threading.Thread.__init__(self)
+        super(RecheckWatch, self).__init__()
         self.ircbot = ircbot
         self.channel_config = channel_config
         self.log = logging.getLogger('recheckwatchbot')
