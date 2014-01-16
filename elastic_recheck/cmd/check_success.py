@@ -16,15 +16,18 @@
 
 import argparse
 import collections
+import logging
 import operator
 import os
 import re
+import time
 
 from launchpadlib import launchpad
 
 import elastic_recheck.elasticRecheck as er
 import elastic_recheck.results as er_results
 
+LOG = logging.getLogger('recheckwatchbot')
 LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
 
 
@@ -165,7 +168,10 @@ def _failure_percentage(hits, fails):
 def collect_metrics(classifier, fails):
     data = {}
     for q in classifier.queries:
+        start = time.time()
         results = classifier.hits_by_query(q['query'], size=30000)
+        LOG.debug("Took %d seconds to run (uncached) query for bug %s" %
+                  (time.time() - start, q['bug']))
         hits = _status_count(results)
         data[q['bug']] = {
             'fails': _failure_count(hits),
