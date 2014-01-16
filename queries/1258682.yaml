@@ -1,4 +1,7 @@
 query: >
-  message:"Build timed out (after" AND
-  message:"minutes). Marking the build as failed." AND
-  filename:"console.html"
+  ((message:"Build timed out (after" AND
+    message:"minutes). Marking the build as failed.")
+   OR
+   (message:"./safe-devstack-vm-gate-wrap.sh: line" AND
+    message:"Killed timeout -s 9 ${DEVSTACK_GATE_TIMEOUT}m $BASE/new/devstack-gate/devstack-vm-gate.sh"))
+  AND filename:"console.html"
