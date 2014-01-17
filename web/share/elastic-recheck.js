@@ -41,7 +41,8 @@ function update() {
 	    if (!div.length) {
 		div = $('<div/>', {'id': id, 'class': 'bug-container'});
 		div.appendTo($('#main-container'));
-		$('<h2/>', {text: 'Bug ' + bug['number']}).appendTo(div);
+		$('<h2/>', {text: 'Bug ' + bug['number'] + " - " + bug['bug_data']['name']}).appendTo(div);
+                $('<h3/>', {text: 'Projects: ' + bug['bug_data']['affects']}).appendTo(div);
 		$('<div/>', {'class': 'graph'}).appendTo(div);
 		$('<a/>', {
 		    href: 'http://logstash.openstack.org/#'+bug['logstash_query'],
