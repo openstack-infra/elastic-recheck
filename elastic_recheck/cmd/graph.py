@@ -18,11 +18,29 @@ import argparse
 import base64
 from datetime import datetime
 import json
+import os
+
+from launchpadlib import launchpad
 
 import elastic_recheck.elasticRecheck as er
 from elastic_recheck import results as er_results
 
 STEP = 3600000
+
+LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
+
+
+def get_launchpad_bug(bug):
+    lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
+                                               'production',
+                                               LPCACHEDIR)
+    lp_bug = lp.bugs[bug]
+    bugdata = {'name': lp_bug.title}
+    projects = ", ".join(map(lambda x: "(%s - %s)" %
+                             (x.bug_target_name, x.status),
+                             lp_bug.bug_tasks))
+    bugdata['affects'] = projects
+    return bugdata
 
 
 def main():
@@ -51,9 +69,11 @@ def main():
                     timeframe="604800",
                     graphmode="count")
         logstash_query = base64.urlsafe_b64encode(json.dumps(urlq))
+        bug_data = get_launchpad_bug(query['bug'])
         bug = dict(number=query['bug'],
                    query=query['query'],
                    logstash_query=logstash_query,
+                   bug_data=bug_data,
                    fails=0,
                    data=[])
         buglist.append(bug)
