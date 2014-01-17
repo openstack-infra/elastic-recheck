@@ -112,8 +112,7 @@ class RecheckWatch(threading.Thread):
         msg = '%s change: %s failed tempest with an unrecognized error' % (
             data['change']['project'],
             data['change']['url'])
-        LOG.info('Compiled Message %s: %s' % (channel, msg))
-        self.ircbot.send(channel, msg)
+        self.print_msg(channel, msg)
 
     def error_found(self, channel, data):
         msg = ('%s change: %s failed tempest because of: ' % (
@@ -122,11 +121,12 @@ class RecheckWatch(threading.Thread):
         bug_urls = ['https://bugs.launchpad.net/bugs/%s' % x for x
                     in data['bug_numbers']]
         msg += ' and '.join(bug_urls)
-        LOG.info('Compiled Message %s: %s' % (channel, msg))
-        self.ircbot.send(channel, msg)
+        self.print_msg(channel, msg)
 
     def print_msg(self, channel, msg):
-        self.ircbot.send(channel, msg)
+        LOG.info('Compiled Message %s: %s' % (channel, msg))
+        if self.ircbot:
+            self.ircbot.send(channel, msg)
 
     def _read(self, data={}, msg=""):
         for channel in self.channel_config.channels:
@@ -195,6 +195,10 @@ def get_options():
                         default=False,
                         action='store_true',
                         help="Don't comment in gerrit. Useful in testing.")
+    parser.add_argument('--noirc',
+                        default=False,
+                        action='store_true',
+                        help="Don't comment in irc. Useful in testing.")
     parser.add_argument('conffile', nargs=1, help="Configuration file")
     return parser.parse_args()
 
@@ -212,13 +216,16 @@ def _main(args, config):
 
     channel_config = ChannelConfig(yaml.load(open(fp)))
 
-    bot = RecheckWatchBot(
-        channel_config.channels,
-        config.get('ircbot', 'nick'),
-        config.get('ircbot', 'pass'),
-        config.get('ircbot', 'server'),
-        config.getint('ircbot', 'port'),
-        config.get('ircbot', 'server_password'))
+    if not args.noirc:
+        bot = RecheckWatchBot(
+            channel_config.channels,
+            config.get('ircbot', 'nick'),
+            config.get('ircbot', 'pass'),
+            config.get('ircbot', 'server'),
+            config.getint('ircbot', 'port'),
+            config.get('ircbot', 'server_password'))
+    else:
+        bot = None
 
     recheck = RecheckWatch(
         bot,
@@ -231,7 +238,8 @@ def _main(args, config):
     )
 
     recheck.start()
-    bot.start()
+    if not args.noirc:
+        bot.start()
 
 
 def main():
