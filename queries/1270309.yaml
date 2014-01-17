@@ -1,0 +1,3 @@
+query: >
+    message:"java.lang.InterruptedException"
+    AND filename:"console.html"
