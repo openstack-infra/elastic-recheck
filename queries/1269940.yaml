@@ -1,0 +1,3 @@
+query: >
+  message:"[EnvInject] - [ERROR] - SEVERE ERROR occurs:"
+  AND filename:"console.html"
