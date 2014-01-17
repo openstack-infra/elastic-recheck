@@ -145,7 +145,9 @@ class RecheckWatch(threading.Thread):
             try:
                 event = stream.get_failed_tempest()
 
-                event.bugs = classifier.classify(event.change, event.rev)
+                for short_build_uuid in event.short_build_uuids:
+                    event.bugs |= set(classifier.classify(
+                        event.change, event.rev, short_build_uuid))
                 if not event.bugs:
                     self._read(event)
                 else:

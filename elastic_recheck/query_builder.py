@@ -59,7 +59,7 @@ def generic(raw_query, facet=None):
     return query
 
 
-def result_ready(review=None, patch=None, name=None):
+def result_ready(review=None, patch=None, name=None, short_build_uuid=None):
     """A query to determine if we have a failure for a particular patch.
 
     This is looking for a particular FAILURE line in the console log, which
@@ -70,11 +70,12 @@ def result_ready(review=None, patch=None, name=None):
                    'AND build_status:"FAILURE" '
                    'AND build_change:"%s" '
                    'AND build_patchset:"%s" '
-                   'AND build_name:"%s"' %
-                   (review, patch, name))
+                   'AND build_name:"%s"'
+                   'AND build_uuid:%s*' %
+                   (review, patch, name, short_build_uuid))
 
 
-def files_ready(review, patch):
+def files_ready(review, patch, name, short_build_uuid):
     """A facetted query to ensure all the required files exist.
 
     When changes are uploaded to elastic search there is a delay in
@@ -84,11 +85,14 @@ def files_ready(review, patch):
     """
     return generic('build_status:"FAILURE" '
                    'AND build_change:"%s" '
-                   'AND build_patchset:"%s"' % (review, patch),
+                   'AND build_patchset:"%s"'
+                   'AND build_name:"%s"'
+                   'AND build_uuid:%s*' %
+                   (review, patch, name, short_build_uuid),
                    facet='filename')
 
 
-def single_patch(query, review, patch):
+def single_patch(query, review, patch, short_build_uuid):
     """A query for a single patch (review + revision).
 
     This is used to narrow down a particular kind of failure found in a
@@ -96,5 +100,6 @@ def single_patch(query, review, patch):
     """
     return generic('%s '
                    'AND build_change:"%s" '
-                   'AND build_patchset:"%s"' %
-                   (query, review, patch))
+                   'AND build_patchset:"%s"'
+                   'AND build_uuid:%s*' %
+                   (query, review, patch, short_build_uuid))
