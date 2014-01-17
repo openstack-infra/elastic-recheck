@@ -1,2 +1,3 @@
 query: >
-  message:"at hudson.Launcher\$RemoteLauncher.launch\(Launcher.java\:864\)"
+  message:"java.io.InterruptedIOException" AND filename:"console.html" 
+  AND message:"hudson.Launcher$RemoteLauncher.launch"
