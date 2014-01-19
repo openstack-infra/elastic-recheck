@@ -1,0 +1,3 @@
+query: >
+  message:"Error: iSCSI device not found at /dev/disk/by-path/ip-127.0.0.1:3260-iscsi-iqn.2010-10.org.openstack:volume-"
+  AND filename:"logs/screen-n-cpu.txt"
