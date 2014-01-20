@@ -159,7 +159,7 @@ class Hit(object):
         new style ES has
           _source[attr] for a flat space
         old style ES has
-          _source['@attr'] for things like @message, @timestamp
+          _source['@attr'] for things like message, @timestamp
         and
          _source['@fields'][attr] for things like build_name, build_status
 
