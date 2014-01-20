@@ -59,7 +59,7 @@ def generic(raw_query, facet=None):
     return query
 
 
-def result_ready(review=None, patch=None, name=None, short_build_uuid=None):
+def result_ready(review, patch, name, short_build_uuid):
     """A query to determine if we have a failure for a particular patch.
 
     This is looking for a particular FAILURE line in the console log, which
