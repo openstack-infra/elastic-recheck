@@ -1,0 +1,4 @@
+query: >
+  message:"TRACE nova.api.openstack"
+  AND message:"InstanceNotFound: Instance"
+  AND filename:"logs/screen-n-api.txt"
