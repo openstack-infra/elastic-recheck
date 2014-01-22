@@ -25,7 +25,8 @@ Overall Categorization Rate: {{ rate }}
 <h2>{{ job[0] }} : {{ job[1] }} Uncategorized Fails</h2>
 <ul>
   {% for url in urls[job[0]] %}
-<li><a href="{{ url }}">{{ url }}</a></li>
+
+  <li>{{url['timestamp']}}: <a href="{{ url['log'] }}">{{ url['log'] }}</a></li>
   {% endfor %}
 </ul>
 {% endfor %}

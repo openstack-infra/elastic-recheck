@@ -18,6 +18,7 @@ import argparse
 import collections
 import operator
 import re
+import time
 
 import jinja2
 
@@ -66,8 +67,13 @@ def all_fails(classifier):
             # gate. Would be nice if there was a zuul attr for this in es.
             if re.search("(^openstack/|devstack|grenade)", result.project):
                 name = result.build_name
+                timestamp = time.strptime(result.timestamp,
+                                          "%Y-%m-%dT%H:%M:%S.%fZ")
                 log = result.log_url.split("console.html")[0]
-                all_fails["%s.%s" % (build, name)] = log
+                all_fails["%s.%s" % (build, name)] = {
+                    'log': log,
+                    'timestamp': timestamp
+                   }
     return all_fails
 
 
@@ -106,6 +112,15 @@ def classifying_rate(fails, data, engine):
             bad_jobs[job] += 1
             bad_job_urls[job].append(fails[f])
 
+    for job in bad_job_urls:
+        # sort by timestamp.
+        bad_job_urls[job] = sorted(bad_job_urls[job],
+                                   key=lambda v: v['timestamp'], reverse=True)
+        # Convert timestamp into string
+        for url in bad_job_urls[job]:
+            url['timestamp'] = time.strftime(
+                "%Y-%m-%dT%H:%M",
+                url['timestamp'])
     classifying_rate = ((float(count) / float(total)) * 100.0)
     sort = sorted(
         bad_jobs.iteritems(),
