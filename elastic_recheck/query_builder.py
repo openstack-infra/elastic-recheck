@@ -66,8 +66,7 @@ def result_ready(review=None, patch=None, name=None):
     lets us know that we've got results waiting that we need to process.
     """
     return generic('filename:"console.html" AND '
-                   '(@message:"[SCP] Copying console log" '
-                   'OR message:"[SCP] Copying console log") '
+                   'message:"[SCP] Copying console log" '
                    'AND build_status:"FAILURE" '
                    'AND build_change:"%s" '
                    'AND build_patchset:"%s" '
