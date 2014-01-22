@@ -75,6 +75,7 @@ def main():
                    logstash_query=logstash_query,
                    bug_data=bug_data,
                    fails=0,
+                   fails24=0,
                    data=[])
         buglist.append(bug)
         results = classifier.hits_by_query(query['query'], size=3000)
@@ -89,7 +90,6 @@ def main():
         facets.detect_facets(results,
                              ["build_status", "timestamp", "build_uuid"])
 
-        bug['fails24'] = 0
         for status in facets.keys():
             data = []
             for ts in range(start, now, STEP):
