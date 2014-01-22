@@ -43,7 +43,10 @@ function update() {
 		div.appendTo($('#main-container'));
 		$('<h2/>', {text: 'Bug ' + bug['number'] + " - " + bug['bug_data']['name']}).appendTo(div);
                 $('<h3/>', {
-                    text: 'Last 24 hr hits: ' + bug['bug_data']['fails24'] + ' &nbsp; projects: ' + bug['bug_data']['affects']
+                    text: bug['fails24'] + ' fails in 24hrs / ' + bug['fails'] + ' fails in 7 days'
+                }).appendTo(div);
+                $('<h3/>', {
+                    text: 'Projects: ' + bug['bug_data']['affects']
                 }).appendTo(div);
 		$('<div/>', {'class': 'graph'}).appendTo(div);
 		$('<a/>', {
