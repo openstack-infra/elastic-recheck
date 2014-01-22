@@ -1,0 +1,4 @@
+query: >
+  message:"test_different_fname_concurrency"
+  AND build_name:gate-nova-python2*
+  AND filename:"console.html"
