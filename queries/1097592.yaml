@@ -1,0 +1,3 @@
+query: >
+  message:"Unable to lock the administration directory (/var/lib/dpkg/), is another process using it"
+  AND filename:"console.html"
