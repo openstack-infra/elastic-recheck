@@ -89,16 +89,26 @@ def main():
         facets.detect_facets(results,
                              ["build_status", "timestamp", "build_uuid"])
 
+        bug['fails24'] = 0
         for status in facets.keys():
             data = []
             for ts in range(start, now, STEP):
                 if ts in facets[status]:
-                    data.append([ts, len(facets[status][ts])])
+                    fails = len(facets[status][ts])
+                    data.append([ts, fails])
+                    # get the last 24 hr count as well, can't wait to have
+                    # the pandas code and able to do it that way
+                    if ts > (now - (24 * STEP)):
+                        bug['fails24'] += fails
                 else:
                     data.append([ts, 0])
             bug["data"].append(dict(label=status, data=data))
 
-    buglist = sorted(buglist, key=lambda bug: -bug['fails'])
+    # the sort order is a little odd, but basically sort by failures in
+    # the last 24 hours, then with all failures for ones that we haven't
+    # seen in the last 24 hours.
+    buglist = sorted(buglist,
+                     key=lambda bug: -(bug['fails24'] * 100000 + bug['fails']))
 
     out = open(args.output, 'w')
     out.write(json.dumps(buglist))
