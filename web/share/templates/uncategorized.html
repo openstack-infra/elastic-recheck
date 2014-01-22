@@ -16,13 +16,13 @@
 </div>
 <div class="jobs">
 <h1>Unclassified failed jobs</h1>
-Overall Categorization Rate: {{ rate }}
+Overall Categorization Rate: {{ rate['overall'] }}%
 
 
 {% for job in jobs %}
 <a name="{{job[0]}}"></a>
 <a href="#top"><i>back to top</i></a>
-<h2>{{ job[0] }} : {{ job[1] }} Uncategorized Fails</h2>
+<h2>{{ job[0] }} : {{ job[1] }} Uncategorized Fails. {{rate[job[0]]}}% Classification Rate ({{total_job_failures[job[0]]}} Total Fails)</h2>
 <ul>
   {% for url in urls[job[0]] %}
 
