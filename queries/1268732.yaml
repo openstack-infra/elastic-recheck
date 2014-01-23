@@ -1,0 +1,3 @@
+query: >
+  message:"Looks like the node went offline during the build."
+  AND filename:"console.html"
