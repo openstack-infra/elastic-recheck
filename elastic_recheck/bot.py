@@ -123,17 +123,18 @@ class RecheckWatch(threading.Thread):
         if self.ircbot:
             self.ircbot.send(channel, msg)
 
-    def _read(self, event, msg=""):
+    def _read(self, event=None, msg=""):
         for channel in self.channel_config.channels:
             if msg:
                 if channel in self.channel_config.events['negative']:
                     self.print_msg(channel, msg)
-            elif event.bugs:
-                if channel in self.channel_config.events['positive']:
-                    self.error_found(channel, event)
-            else:
-                if channel in self.channel_config.events['negative']:
-                    self.new_error(channel, event)
+            elif event:
+                if event.bugs:
+                    if channel in self.channel_config.events['positive']:
+                        self.error_found(channel, event)
+                else:
+                    if channel in self.channel_config.events['negative']:
+                        self.new_error(channel, event)
 
     def run(self):
         # Import here because it needs to happen after daemonization
