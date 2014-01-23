@@ -63,6 +63,27 @@ class ResultTimedOut(Exception):
         self.msg = msg
 
 
+class FailEvent(object):
+    change = None
+    rev = None
+    project = None
+    url = None
+    bugs = []
+
+    def __init__(self, event):
+        self.change = event['change']['number']
+        self.rev = event['patchSet']['number']
+        self.project = event['change']['project']
+        self.url = event['change']['url']
+
+    def name(self):
+        return "%s,%s" % (self.change, self.rev)
+
+    def bug_urls(self):
+        urls = ['https://bugs.launchpad.net/bugs/%s' % x for x in self.bugs]
+        return ' and '.join(urls)
+
+
 class Stream(object):
     """Gerrit Stream.
 
@@ -197,12 +218,11 @@ class Stream(object):
             if not self._is_openstack_project(event):
                 continue
 
-            change = event['change']['number']
-            rev = event['patchSet']['number']
+            fevent = FailEvent(event)
             LOG.info("Looking for failures in %s,%s on %s" %
-                     (change, rev, ", ".join(failed_jobs)))
-            if self._does_es_have_data(change, rev, failed_jobs):
-                return event
+                     (fevent.change, fevent.rev, ", ".join(failed_jobs)))
+            if self._does_es_have_data(fevent.change, fevent.rev, failed_jobs):
+                return fevent
 
     def leave_comment(self, project, commit, bugs=None):
         if bugs:

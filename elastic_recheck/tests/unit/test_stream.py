@@ -39,10 +39,27 @@ class TestStream(tests.TestCase):
 
             # there are currently 10 events in the stream, 3 are
             # failures
-            for i in xrange(3):
-                event = stream.get_failed_tempest()
-                self.assertEqual(event['author']['username'], 'jenkins')
-                self.assertIn('Build failed', event['comment'])
+            event = stream.get_failed_tempest()
+            self.assertEqual(event.change, "64749")
+            self.assertEqual(event.rev, "6")
+            self.assertEqual(event.project, "openstack/keystone")
+            self.assertEqual(event.name(), "64749,6")
+            self.assertEqual(event.url, "https://review.openstack.org/64749")
+
+            event = stream.get_failed_tempest()
+            self.assertEqual(event.change, "63078")
+            self.assertEqual(event.rev, "19")
+            self.assertEqual(event.project, "openstack/horizon")
+            self.assertEqual(event.name(), "63078,19")
+            self.assertEqual(event.url, "https://review.openstack.org/63078")
+
+            event = stream.get_failed_tempest()
+            self.assertEqual(event.change, "65361")
+            self.assertEqual(event.rev, "2")
+            self.assertEqual(event.project, "openstack/requirements")
+            self.assertEqual(event.name(), "65361,2")
+            self.assertEqual(event.url, "https://review.openstack.org/65361")
+
             self.assertRaises(
                 fg.GerritDone,
                 stream.get_failed_tempest)

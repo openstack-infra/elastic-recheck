@@ -108,19 +108,14 @@ class RecheckWatch(threading.Thread):
         self.commenting = commenting
         self.key = key
 
-    def new_error(self, channel, data):
-        msg = '%s change: %s failed tempest with an unrecognized error' % (
-            data['change']['project'],
-            data['change']['url'])
+    def new_error(self, channel, event):
+        msg = '%s change: %s failed with an unrecognized error' % (
+            event.project, event.url)
         self.print_msg(channel, msg)
 
-    def error_found(self, channel, data):
-        msg = ('%s change: %s failed tempest because of: ' % (
-            data['change']['project'],
-            data['change']['url']))
-        bug_urls = ['https://bugs.launchpad.net/bugs/%s' % x for x
-                    in data['bug_numbers']]
-        msg += ' and '.join(bug_urls)
+    def error_found(self, channel, event):
+        msg = ('%s change: %s failed tempest because of: %s' % (
+            event.project, event.url, event.bug_urls()))
         self.print_msg(channel, msg)
 
     def print_msg(self, channel, msg):
@@ -128,17 +123,17 @@ class RecheckWatch(threading.Thread):
         if self.ircbot:
             self.ircbot.send(channel, msg)
 
-    def _read(self, data={}, msg=""):
+    def _read(self, event, msg=""):
         for channel in self.channel_config.channels:
             if msg:
                 if channel in self.channel_config.events['negative']:
                     self.print_msg(channel, msg)
-            elif data.get('bug_numbers'):
+            elif event.bugs:
                 if channel in self.channel_config.events['positive']:
-                    self.error_found(channel, data)
+                    self.error_found(channel, event)
             else:
                 if channel in self.channel_config.events['negative']:
-                    self.new_error(channel, data)
+                    self.new_error(channel, event)
 
     def run(self):
         # Import here because it needs to happen after daemonization
@@ -148,19 +143,17 @@ class RecheckWatch(threading.Thread):
         while True:
             try:
                 event = stream.get_failed_tempest()
-                change = event['change']['number']
-                rev = event['patchSet']['number']
-                change_id = "%s,%s" % (change, rev)
-                project = event['change']['project']
 
-                bug_numbers = classifier.classify(change, rev)
-                if not bug_numbers:
+                event.bugs = classifier.classify(event.change, event.rev)
+                if not event.bugs:
                     self._read(event)
                 else:
-                    event['bug_numbers'] = bug_numbers
-                    self._read(data=event)
+                    self._read(event)
                     if self.commenting:
-                        stream.leave_comment(project, change_id, bug_numbers)
+                        stream.leave_comment(
+                            event.project,
+                            event.name(),
+                            event.bugs)
             except er.ResultTimedOut as e:
                 LOG.warn(e.msg)
                 self._read(msg=e.msg)
