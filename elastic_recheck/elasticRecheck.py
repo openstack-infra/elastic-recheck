@@ -48,6 +48,11 @@ def required_files(job):
     return files
 
 
+def format_timedelta(td):
+    """Format a timedelta value on seconds boundary."""
+    return "%d:%2.2d" % (td.seconds / 60, td.seconds % 60)
+
+
 class ConsoleNotReady(Exception):
     def __init__(self, msg):
         self.msg = msg
@@ -188,7 +193,7 @@ class Stream(object):
                 continue
 
         if i == NUMBER_OF_RETRIES - 1:
-            elapsed = datetime.datetime.now() - started_at
+            elapsed = format_timedelta(datetime.datetime.now() - started_at)
             msg = ("Console logs not available after %ss for %s %s,%s,%s" %
                    (elapsed, job_name, change_number, patch_number,
                        job_fails[job_name]['short_build_uuid']))
@@ -213,7 +218,7 @@ class Stream(object):
                 time.sleep(SLEEP_TIME)
 
         # if we get to the end, we're broken
-        elapsed = datetime.datetime.now() - started_at
+        elapsed = format_timedelta(datetime.datetime.now() - started_at)
         msg = ("Required files not ready after %ss for %s %d,%d,%s" %
                (elapsed, job_name, change_number, patch_number,
                    job_fails[job_name]['short_build_uuid']))
