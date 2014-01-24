@@ -1,3 +1,3 @@
 query: >
-  message:"git.openstack.org: Temporary failure in name resolution"
+  message:"Temporary failure in name resolution"
   AND filename:"console.html"
