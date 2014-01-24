@@ -1,0 +1,4 @@
+query: >
+  message:"[ERROR]"
+  AND message:"No suitable rootwrap found."
+  AND filename:"console.html"
