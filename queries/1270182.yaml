@@ -1,0 +1,3 @@
+query: >
+  message:"FAIL: neutron.tests.unit.test_provider_configuration.ParseServiceProviderConfigurationTestCase.test_parse_service_provider_opt_not_allowed_raises'"
+  AND filename:"console.html"
