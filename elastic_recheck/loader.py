@@ -33,9 +33,6 @@ def load(directory='queries', skip_resolved=True):
         bugnum = os.path.basename(fname).rstrip('.yaml')
         query = yaml.load(open(fname).read())
         query['bug'] = bugnum
-        if skip_resolved and 'resolved_at' in query:
-            LOG.debug('Skipping Bug : %s as it was resolved at %s'
-                      % (query['bug'], query['resolved_at']))
-        else:
+        if not (skip_resolved and 'resolved_at' in query):
             data.append(query)
     return data
