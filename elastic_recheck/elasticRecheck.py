@@ -68,13 +68,20 @@ class FailEvent(object):
     rev = None
     project = None
     url = None
-    bugs = []
+    bugs = set([])
+    short_build_uuids = []
+    comment = None
 
     def __init__(self, event):
         self.change = event['change']['number']
         self.rev = event['patchSet']['number']
         self.project = event['change']['project']
         self.url = event['change']['url']
+        self.comment = event["comment"]
+        self.bugs = set([])
+
+    def is_openstack_project(self):
+        return "tempest-dsvm-full" in self.comment
 
     def name(self):
         return "%s,%s" % (self.change, self.rev)
@@ -120,22 +127,26 @@ class Stream(object):
         for line in event['comment'].split("\n"):
             m = re.search("- ([\w-]+)\s*(http://\S+)\s*:\s*FAILURE", line)
             if m:
-                failed_tests[m.group(1)] = m.group(2)
+                # The last 7 characters of the URL are the first 7 digits
+                # of the build_uuid.
+                failed_tests[m.group(1)] = {'url': m.group(2),
+                                            'short_build_uuid':
+                                            m.group(2)[-7:]}
         return failed_tests
 
-    def _job_console_uploaded(self, change, patch, name):
-        query = qb.result_ready(change, patch, name)
+    def _job_console_uploaded(self, change, patch, name, short_build_uuid):
+        query = qb.result_ready(change, patch, name, short_build_uuid)
         r = self.es.search(query, size='10')
         if len(r) == 0:
-            msg = ("Console logs not ready for %s %s,%s" %
-                   (name, change, patch))
+            msg = ("Console logs not ready for %s %s,%s,%s" %
+                   (name, change, patch, short_build_uuid))
             raise ConsoleNotReady(msg)
         else:
-            LOG.debug("Console ready for %s %s,%s" %
-                      (name, change, patch))
+            LOG.debug("Console ready for %s %s,%s,%s" %
+                      (name, change, patch, short_build_uuid))
 
-    def _has_required_files(self, change, patch, name):
-        query = qb.files_ready(change, patch)
+    def _has_required_files(self, change, patch, name, short_build_uuid):
+        query = qb.files_ready(change, patch, name, short_build_uuid)
         r = self.es.search(query, size='80')
         files = [x['term'] for x in r.terms]
         required = required_files(name)
@@ -144,9 +155,6 @@ class Stream(object):
             msg = ("%s missing for %s %s,%s" % (
                 change, patch, name, missing_files))
             raise FilesNotReady(msg)
-
-    def _is_openstack_project(self, event):
-        return "tempest-dsvm-full" in event["comment"]
 
     def _does_es_have_data(self, change_number, patch_number, job_fails):
         """Wait till ElasticSearch is ready, but return False if timeout."""
@@ -158,8 +166,12 @@ class Stream(object):
         for i in range(NUMBER_OF_RETRIES):
             try:
                 for job_name in job_fails:
+                    #TODO(jogo) if there are three failed jobs and only the
+                    #last one isn't ready we don't need to keep rechecking
+                    # the first two
                     self._job_console_uploaded(
-                        change_number, patch_number, job_name)
+                        change_number, patch_number, job_name,
+                        job_fails[job_name]['short_build_uuid'])
                 break
 
             except ConsoleNotReady as e:
@@ -177,8 +189,9 @@ class Stream(object):
 
         if i == NUMBER_OF_RETRIES - 1:
             elapsed = datetime.datetime.now() - started_at
-            msg = ("Console logs not available after %ss for %s %s,%s" %
-                   (elapsed, job_name, change_number, patch_number))
+            msg = ("Console logs not available after %ss for %s %s,%s,%s" %
+                   (elapsed, job_name, change_number, patch_number,
+                       job_fails[job_name]['short_build_uuid']))
             raise ResultTimedOut(msg)
 
         LOG.debug(
@@ -189,7 +202,8 @@ class Stream(object):
             try:
                 for job_name in job_fails:
                     self._has_required_files(
-                        change_number, patch_number, job_name)
+                        change_number, patch_number, job_name,
+                        job_fails[job_name]['short_build_uuid'])
                 LOG.info(
                     "All files present for change_number: %s, patch_number: %s"
                     % (change_number, patch_number))
@@ -200,8 +214,9 @@ class Stream(object):
 
         # if we get to the end, we're broken
         elapsed = datetime.datetime.now() - started_at
-        msg = ("Required files not ready after %ss for %s %d,%d" %
-               (elapsed, job_name, change_number, patch_number))
+        msg = ("Required files not ready after %ss for %s %d,%d,%s" %
+               (elapsed, job_name, change_number, patch_number,
+                   job_fails[job_name]['short_build_uuid']))
         raise ResultTimedOut(msg)
 
     def get_failed_tempest(self):
@@ -214,13 +229,16 @@ class Stream(object):
                 # nothing to see here, lets try the next event
                 continue
 
+            fevent = FailEvent(event)
+
             # bail if it's not an openstack project
-            if not self._is_openstack_project(event):
+            if not fevent.is_openstack_project():
                 continue
 
-            fevent = FailEvent(event)
             LOG.info("Looking for failures in %s,%s on %s" %
                      (fevent.change, fevent.rev, ", ".join(failed_jobs)))
+            fevent.short_build_uuids = [
+                v['short_build_uuid'] for v in failed_jobs.values()]
             if self._does_es_have_data(fevent.change, fevent.rev, failed_jobs):
                 return fevent
 
@@ -267,7 +285,8 @@ class Classifier():
         es_query = qb.generic(query, facet=facet)
         return self.es.search(es_query, size=size)
 
-    def classify(self, change_number, patch_number, skip_resolved=True):
+    def classify(self, change_number, patch_number, short_build_uuid,
+                 skip_resolved=True):
         """Returns either empty list or list with matched bugs."""
         LOG.debug("Entering classify")
         #Reload each time
@@ -277,7 +296,8 @@ class Classifier():
             LOG.debug(
                 "Looking for bug: https://bugs.launchpad.net/bugs/%s"
                 % x['bug'])
-            query = qb.single_patch(x['query'], change_number, patch_number)
+            query = qb.single_patch(x['query'], change_number, patch_number,
+                                    short_build_uuid)
             results = self.es.search(query, size='10')
             if len(results) > 0:
                 bug_matches.append(x['bug'])
@@ -304,7 +324,11 @@ def main():
         rev = event['patchSet']['number']
         print "======================="
         print "https://review.openstack.org/#/c/%(change)s/%(rev)s" % locals()
-        bug_numbers = classifier.classify(change, rev)
+        bug_numbers = []
+        for short_build_uuid in event.short_build_uuids:
+            bug_numbers = bug_numbers + classifier.classify(
+                change, rev, short_build_uuid)
+        bug_numbers = set(bug_numbers)
         if not bug_numbers:
             print "unable to classify failure"
         else:

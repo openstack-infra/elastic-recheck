@@ -45,6 +45,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/keystone")
             self.assertEqual(event.name(), "64749,6")
             self.assertEqual(event.url, "https://review.openstack.org/64749")
+            self.assertEqual(event.short_build_uuids, ["5dd41fe", "d3fd328"])
 
             event = stream.get_failed_tempest()
             self.assertEqual(event.change, "63078")
@@ -52,6 +53,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/horizon")
             self.assertEqual(event.name(), "63078,19")
             self.assertEqual(event.url, "https://review.openstack.org/63078")
+            self.assertEqual(event.short_build_uuids, ["ab07162"])
 
             event = stream.get_failed_tempest()
             self.assertEqual(event.change, "65361")
@@ -59,6 +61,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/requirements")
             self.assertEqual(event.name(), "65361,2")
             self.assertEqual(event.url, "https://review.openstack.org/65361")
+            self.assertEqual(event.short_build_uuids, ["8209fb4"])
 
             self.assertRaises(
                 fg.GerritDone,
@@ -81,8 +84,9 @@ class TestStream(tests.TestCase):
         self.assertIn('check-tempest-dsvm-neutron', jobs)
 
         self.assertEqual(jobs['check-requirements-integration-dsvm'],
-                         "http://logs.openstack.org/31/64831/1/check/"
-                         "check-requirements-integration-dsvm/135d0b4")
+                         {'url': "http://logs.openstack.org/31/64831/1/check/"
+                          "check-requirements-integration-dsvm/135d0b4",
+                          'short_build_uuid': '135d0b4'})
 
         self.assertNotIn('gate-requirements-pep8', jobs)
         self.assertNotIn('gate-requirements-python27', jobs)
