@@ -102,13 +102,15 @@ def classifying_rate(fails, data, engine):
 
     total = len(found_fails.keys())
     bad_jobs = collections.defaultdict(int)
+    total_job_failures = collections.defaultdict(int)
     bad_job_urls = collections.defaultdict(list)
     count = 0
     for f in fails:
+        build, job = f.split('.', 1)
+        total_job_failures[job] += 1
         if found_fails[f] is True:
             count += 1
         else:
-            build, job = f.split('.', 1)
             bad_jobs[job] += 1
             bad_job_urls[job].append(fails[f])
 
@@ -121,7 +123,17 @@ def classifying_rate(fails, data, engine):
             url['timestamp'] = time.strftime(
                 "%Y-%m-%dT%H:%M",
                 url['timestamp'])
-    classifying_rate = ((float(count) / float(total)) * 100.0)
+
+    classifying_rate = collections.defaultdict(int)
+    classifying_rate['overall'] = ((float(count) / float(total)) * 100.0)
+    for job in bad_jobs:
+        if bad_jobs[job] == 0 and total_job_failures[job] == 0:
+            classifying_rate[job] = 0
+        else:
+            classifying_rate[job] = (
+                100.0 -
+                (float(bad_jobs[job]) / float(total_job_failures[job]))
+                * 100.0)
     sort = sorted(
         bad_jobs.iteritems(),
         key=operator.itemgetter(1),
@@ -130,6 +142,7 @@ def classifying_rate(fails, data, engine):
     tvars = {
         "rate": classifying_rate,
         "jobs": sort,
+        "total_job_failures": total_job_failures,
         "urls": bad_job_urls
     }
     return engine.render(tvars)
