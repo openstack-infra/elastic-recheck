@@ -1,0 +1,4 @@
+query: >
+  message:"already exists in volume group"
+  AND message:"sudo cinder-rootwrap /etc/cinder/rootwrap.conf lvcreate -n "
+  AND filename:"console.html"
