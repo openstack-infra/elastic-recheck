@@ -125,12 +125,13 @@ def classifying_rate(fails, data, engine):
                 url['timestamp'])
 
     classifying_rate = collections.defaultdict(int)
-    classifying_rate['overall'] = ((float(count) / float(total)) * 100.0)
+    classifying_rate['overall'] = "%.1f" % (
+        (float(count) / float(total)) * 100.0)
     for job in bad_jobs:
         if bad_jobs[job] == 0 and total_job_failures[job] == 0:
             classifying_rate[job] = 0
         else:
-            classifying_rate[job] = (
+            classifying_rate[job] = "%.1f" % (
                 100.0 -
                 (float(bad_jobs[job]) / float(total_job_failures[job]))
                 * 100.0)
