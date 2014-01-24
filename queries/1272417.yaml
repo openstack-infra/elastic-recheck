@@ -1,0 +1,4 @@
+query: >
+  message:"Cannot fetch index base URL"
+  AND message:"openstack"
+  AND filename:"console.html"
