@@ -1,0 +1,5 @@
+query: >
+  project:"openstack/swift"
+  AND build_name:*-swift-python*
+  AND message:"FAIL: test_connection_pool_timeout"
+  AND filename:"console.html"
