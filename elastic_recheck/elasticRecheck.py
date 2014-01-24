@@ -76,13 +76,16 @@ class FailEvent(object):
     bugs = set([])
     short_build_uuids = []
     comment = None
+    failed_jobs = {}
 
-    def __init__(self, event):
+    def __init__(self, event, failed_jobs):
         self.change = event['change']['number']
         self.rev = event['patchSet']['number']
         self.project = event['change']['project']
         self.url = event['change']['url']
         self.comment = event["comment"]
+        #TODO(jogo) make FailEvent generate the jobs
+        self.failed_jobs = failed_jobs
         self.bugs = set([])
 
     def is_openstack_project(self):
@@ -94,6 +97,13 @@ class FailEvent(object):
     def bug_urls(self):
         urls = ['https://bugs.launchpad.net/bugs/%s' % x for x in self.bugs]
         return ' and '.join(urls)
+
+    def queue(self):
+        # Assume one queue per gerrit event
+        if len(self.failed_jobs) == 0:
+            return None
+        return self.failed_jobs[
+            self.failed_jobs.keys()[0]]['url'].split('/')[6]
 
 
 class Stream(object):
@@ -234,7 +244,7 @@ class Stream(object):
                 # nothing to see here, lets try the next event
                 continue
 
-            fevent = FailEvent(event)
+            fevent = FailEvent(event, failed_jobs)
 
             # bail if it's not an openstack project
             if not fevent.is_openstack_project():

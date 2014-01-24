@@ -115,13 +115,19 @@ class RecheckWatch(threading.Thread):
                                                         LPCACHEDIR)
 
     def new_error(self, channel, event):
-        msg = '%s change: %s failed with an unrecognized error' % (
-            event.project, event.url)
+        msg = ('%s change: %s failed %s in the %s queue with an unrecognized '
+               'error' % (event.project,
+                          event.url,
+                          ', '.join(event.failed_jobs),
+                          event.queue()))
         self.print_msg(channel, msg)
 
     def error_found(self, channel, event):
-        msg = ('%s change: %s failed tempest because of: %s' % (
-            event.project, event.url, event.bug_urls()))
+        msg = ('%s change: %s failed %s because of: %s' % (
+            event.project,
+            event.url,
+            ", ".join(event.failed_jobs),
+            event.bug_urls()))
         display = False
         for project in self._get_bug_projects(event.bugs):
             if channel in self.channel_config.projects['all']:
