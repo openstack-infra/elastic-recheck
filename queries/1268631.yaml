@@ -1,0 +1,4 @@
+query: >
+  build_name:*-horizon-python*
+  AND message:"UnknownMethodCallError('management_url')"
+  AND filename:"console.html"
