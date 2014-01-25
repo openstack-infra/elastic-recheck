@@ -1,3 +1,5 @@
 query: >
-  message:"[ERROR] /opt/stack/new/devstack/lib/neutron"
-  AND message:"[Fail] Couldn't ping server"
+  message:"[Fail] Couldn't ping server"
+  AND (message:"[ERROR] /opt/stack/old/devstack/lib/neutron"
+    OR message:"[ERROR] /opt/stack/new/devstack/lib/neutron")
+  AND filename:"console.html"
