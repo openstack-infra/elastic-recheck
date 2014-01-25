@@ -135,6 +135,8 @@ class RecheckWatch(threading.Thread):
                 else:
                     if channel in self.channel_config.events['negative']:
                         self.new_error(channel, event)
+            else:
+                raise Exception('No event or msg specified')
 
     def run(self):
         # Import here because it needs to happen after daemonization
