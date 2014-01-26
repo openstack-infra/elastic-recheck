@@ -33,7 +33,7 @@ class TestGerritComment(testtools.TestCase):
         self.gerrit = gerritlib.gerrit.Gerrit(host, self.user, port)
 
     def test_bug_found(self):
-        bug_numbers = ['1223158']
+        bug_numbers = set(['1223158'])
         project = 'gtest-org/test'
         commit_id = '434,1'
         commit = '434'
@@ -47,10 +47,10 @@ class TestGerritComment(testtools.TestCase):
             comment.get('message'))
 
     def test_bugs_found(self):
-        bug_numbers = ['1223158', '424242']
+        bug_numbers = set(['1223158', '424242'])
         project = 'gtest-org/test'
-        commit_id = '434,1'
-        commit = '434'
+        commit_id = '781,1'
+        commit = '781'
         self.stream.leave_comment(project, commit_id, bug_numbers)
         result = self.gerrit.query(commit, comments=True)
         comments = result.get('comments')

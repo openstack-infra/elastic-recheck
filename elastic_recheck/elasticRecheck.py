@@ -265,7 +265,7 @@ For a code review which has been approved but failed to merge,
 you can reverify by leaving a comment like this:
 
     reverify bug %(bug)s""" % {'bugs': "\n- ".join(bug_urls),
-                               'bug': bugs[0]}
+                               'bug': list(bugs)[0]}
         else:
             message = ("I noticed tempest failed, refer to: "
                        "https://wiki.openstack.org/wiki/"
