@@ -42,7 +42,9 @@ class TestGerritComment(testtools.TestCase):
         comments = result.get('comments')
         comment = comments[-1]
         self.assertIn(
-            "I noticed tempest failed, I think you hit bug "
+            "I noticed tempest failed, I think you hit bug(s):",
+            comment.get('message'))
+        self.assertIn(
             "https://bugs.launchpad.net/bugs/1223158",
             comment.get('message'))
 
@@ -56,20 +58,11 @@ class TestGerritComment(testtools.TestCase):
         comments = result.get('comments')
         comment = comments[-1]
         self.assertIn(
-            "I noticed tempest failed, I think you hit bug "
-            "https://bugs.launchpad.net/bugs/1223158 and "
-            "https://bugs.launchpad.net/bugs/424242 and",
+            "I noticed tempest failed, I think you hit bug(s):",
             comment.get('message'))
-
-    def test_bug_not_found(self):
-        project = 'gtest-org/test'
-        commit_id = '434,1'
-        commit = '434'
-        self.stream.leave_comment(project, commit_id)
-        result = self.gerrit.query(commit, comments=True)
-        comments = result.get('comments')
-        comment = comments[-1]
         self.assertIn(
-            "https://wiki.openstack.org/wiki/"
-            "GerritJenkinsGithub#Test_Failures",
+            "https://bugs.launchpad.net/bugs/1223158",
+            comment.get('message'))
+        self.assertIn(
+            "https://bugs.launchpad.net/bugs/424242",
             comment.get('message'))
