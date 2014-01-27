@@ -48,6 +48,9 @@ import time
 import yaml
 
 import irc.bot
+from launchpadlib import launchpad
+
+LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
 
 try:
     import daemon.pidlockfile
@@ -107,6 +110,9 @@ class RecheckWatch(threading.Thread):
         self.connected = False
         self.commenting = commenting
         self.key = key
+        self.lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
+                                                        'production',
+                                                        LPCACHEDIR)
 
     def new_error(self, channel, event):
         msg = '%s change: %s failed with an unrecognized error' % (
@@ -116,12 +122,35 @@ class RecheckWatch(threading.Thread):
     def error_found(self, channel, event):
         msg = ('%s change: %s failed tempest because of: %s' % (
             event.project, event.url, event.bug_urls()))
-        self.print_msg(channel, msg)
+        display = False
+        for project in self._get_bug_projects(event.bugs):
+            if channel in self.channel_config.projects['all']:
+                display = True
+                break
+            elif project in self.channel_config.projects:
+                if channel in self.channel_config.projects[project]:
+                    display = True
+                    break
+        if display:
+            self.print_msg(channel, msg)
+        else:
+            LOG.info("Didn't leave a message on channel %s for %s because the "
+                     "bug doesn't target an appropriate project" % (
+                     channel, event.url))
 
     def print_msg(self, channel, msg):
         LOG.info('Compiled Message %s: %s' % (channel, msg))
         if self.ircbot:
             self.ircbot.send(channel, msg)
+
+    def _get_bug_projects(self, bug_numbers):
+        projects = []
+        for bug in bug_numbers:
+            lp_bug = self.lp.bugs[bug]
+            project = map(lambda x: (x.bug_target_name), lp_bug.bug_tasks)
+            for p in project:
+                projects.append(p)
+        return set(projects)
 
     def _read(self, event=None, msg=""):
         for channel in self.channel_config.channels:
@@ -180,6 +209,12 @@ class ChannelConfig(object):
                 event_set = self.events.get(event, set())
                 event_set.add(channel)
                 self.events[event] = event_set
+        self.projects = {}
+        for channel, val in self.data.iteritems():
+            for project in val['projects']:
+                project_set = self.projects.get(project, set())
+                project_set.add(channel)
+                self.projects[project] = project_set
 
 
 def get_options():
