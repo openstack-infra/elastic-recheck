@@ -1,4 +1,3 @@
 query: >
     message:"Details: Timed out waiting for thing" AND
-    message:"to become" AND 
-    (message:"ACTIVE" OR message:"in-use" OR message:"available")
+    message:"to become ACTIVE"
