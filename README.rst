@@ -5,7 +5,6 @@ elastic-recheck
 "Use ElasticSearch to classify OpenStack gate failures"
 
 * Open Source Software: Apache license
-* Documentation: http://docs.openstack.org/developer/elastic-recheck
 
 Idea
 ----
