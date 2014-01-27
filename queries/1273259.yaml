@@ -1,0 +1,4 @@
+query: >
+  message:"delete_port() got an unexpected keyword argument 'l3_port_check'"
+  AND filename:"console.html"
+  AND (build_name:"gate-neutron-python26" OR build_name:"gate-neutron-python27")
