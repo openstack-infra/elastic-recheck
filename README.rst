@@ -55,6 +55,10 @@ further down the stack that can cause many tempest tests to fail.
 #. Given a transient bug that is seen during the gate, go through the
    logs (logs.openstack.org) and try to find a log that is associated
    with the failure. The closer to the root cause the better.
+
+   Note that queries can only be written against INFO level and higher log
+   messages. This is by design to not overwhelm the search cluster.
+
 #. Go to logstash.openstack.org and create an elastic search query to
    find the log message from step 1. To see the possible fields to
    search on click on an entry. Lucene query syntax is available at
