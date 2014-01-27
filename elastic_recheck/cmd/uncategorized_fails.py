@@ -73,7 +73,7 @@ def all_fails(classifier):
                 all_fails["%s.%s" % (build, name)] = {
                     'log': log,
                     'timestamp': timestamp
-                   }
+                }
     return all_fails
 
 
@@ -100,12 +100,13 @@ def classifying_rate(fails, data, engine):
         for job in bug['failed_jobs']:
             found_fails[job] = True
 
-    total = len(found_fails.keys())
     bad_jobs = collections.defaultdict(int)
     total_job_failures = collections.defaultdict(int)
     bad_job_urls = collections.defaultdict(list)
     count = 0
+    total = 0
     for f in fails:
+        total += 1
         build, job = f.split('.', 1)
         total_job_failures[job] += 1
         if found_fails[f] is True:
@@ -142,6 +143,9 @@ def classifying_rate(fails, data, engine):
 
     tvars = {
         "rate": classifying_rate,
+        "count": count,
+        "total": total,
+        "uncounted": total - count,
         "jobs": sort,
         "total_job_failures": total_job_failures,
         "urls": bad_job_urls
