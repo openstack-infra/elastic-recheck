@@ -1,3 +1,4 @@
 query: >
-  message:"Unable to lock the administration directory (/var/lib/dpkg/), is another process using it"
+  (message:"Unable to lock the administration directory (/var/lib/dpkg/), is another process using it"
+   OR message:"dpkg: error: dpkg status database is locked by another process")
   AND filename:"console.html"
