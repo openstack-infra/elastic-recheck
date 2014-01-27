@@ -1,0 +1,3 @@
+query: >
+  message:"site-packages/stevedore/extension.py"
+  AND filename:"console.html"
