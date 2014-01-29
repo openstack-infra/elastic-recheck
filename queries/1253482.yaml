@@ -1,3 +1,3 @@
 query: >
-  message:"keystone-all serve Failed to start the admin server"
-  AND filename:"logs/screen-key.txt"
+  message:(+"[ERROR]" +"devstack/lib/keystone" +"keystone did not start")
+  AND filename:console.html
