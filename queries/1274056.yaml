@@ -1,3 +1,4 @@
 query: >
-  message:"ImportError: cannot import name all"
+  (message:"ImportError: cannot import name all"
+   OR message:"error: option --slowest not recognized")
   AND filename:"console.html"
