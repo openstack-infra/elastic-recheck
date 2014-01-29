@@ -98,7 +98,7 @@ def main():
                     data.append([ts, fails])
                     # get the last 24 hr count as well, can't wait to have
                     # the pandas code and able to do it that way
-                    if ts > (now - (24 * STEP)):
+                    if status == "FAILURE" and ts > (now - (24 * STEP)):
                         bug['fails24'] += fails
                 else:
                     data.append([ts, 0])
