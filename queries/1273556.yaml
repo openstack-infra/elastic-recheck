@@ -1,0 +1,2 @@
+query: >
+  message:"OSError: [Errno 13] Permission denied: '/opt/stack/data/nova/instances/_base"
