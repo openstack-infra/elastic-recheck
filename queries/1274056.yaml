@@ -1,0 +1,3 @@
+query: >
+  message:"ImportError: cannot import name all"
+  AND filename:"console.html"
