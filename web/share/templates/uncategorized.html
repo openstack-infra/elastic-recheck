@@ -20,6 +20,9 @@ Overall Categorization Rate: {{ rate['overall'] }}%
 <p>
   Total: {{ total }} - Found: {{ count }} = Unclassifed: {{ uncounted }}
 </p>
+<p>
+  Generated at: {{ generated_at }}%
+</p>
 {% for job in jobs %}
 <a name="{{job[0]}}"></a>
 <a href="#top"><i>back to top</i></a>
