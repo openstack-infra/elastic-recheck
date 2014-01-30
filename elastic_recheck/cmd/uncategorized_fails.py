@@ -16,6 +16,7 @@
 
 import argparse
 import collections
+import datetime
 import operator
 import re
 import time
@@ -148,7 +149,8 @@ def classifying_rate(fails, data, engine):
         "uncounted": total - count,
         "jobs": sort,
         "total_job_failures": total_job_failures,
-        "urls": bad_job_urls
+        "urls": bad_job_urls,
+        "generated_at": datetime.datetime.utcnow().strftime("%Y-%m-%dT%H:%M")
     }
     return engine.render(tvars)
 
