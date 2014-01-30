@@ -115,12 +115,16 @@ class RecheckWatch(threading.Thread):
                                                         LPCACHEDIR)
 
     def new_error(self, channel, event):
-        msg = ('%s change: %s failed %s in the %s queue with an unrecognized '
-               'error' % (event.project,
-                          event.url,
-                          ', '.join(event.failed_jobs),
-                          event.queue()))
-        self.print_msg(channel, msg)
+        # only on gate fails
+        queue = event.queue()
+        if queue == "gate":
+            msg = ('%s change: %s failed %s in the %s queue with'
+                   ' an unrecognized error' %
+                   (event.project,
+                    event.url,
+                    ', '.join(event.failed_jobs),
+                    queue))
+            self.print_msg(channel, msg)
 
     def error_found(self, channel, event):
         msg = ('%s change: %s failed %s because of: %s' % (
