@@ -59,6 +59,13 @@ def generic(raw_query, facet=None):
     return query
 
 
+def single_queue(query, queue, facet=None):
+    """A query for a single queue."""
+    return generic('%s '
+                   'AND build_queue:"%s" ' %
+                   (query, queue), facet=facet)
+
+
 def result_ready(review, patch, name, short_build_uuid):
     """A query to determine if we have a failure for a particular patch.
 
