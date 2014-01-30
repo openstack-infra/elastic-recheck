@@ -31,7 +31,7 @@ function graphite_hit_count(job, color) {
 
 
 function update() {
-    $.getJSON('http://status.openstack.org/elastic-recheck/data/graph.json', function(data) {
+    $.getJSON(data_url, function(data) {
 	var seen = [];
 	$.each(data, function(i, bug) {
 	    var id = 'bug-'+bug['number'];
