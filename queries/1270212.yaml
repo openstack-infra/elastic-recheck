@@ -1,0 +1,3 @@
+query: >
+  message:"KeyError: 'svc_type'"
+  AND filename:console.html AND project:"openstack/neutron"
