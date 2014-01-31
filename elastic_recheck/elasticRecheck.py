@@ -1,5 +1,3 @@
-#!/usr/bin/env python
-
 # All Rights Reserved.
 #
 #    Licensed under the Apache License, Version 2.0 (the "License"); you may
@@ -18,12 +16,9 @@
 import gerritlib.gerrit
 import pyelasticsearch
 
-import ConfigParser
 import datetime
 import logging
-import os
 import re
-import sys
 import time
 
 import elastic_recheck.loader as loader
@@ -324,39 +319,3 @@ class Classifier():
             if len(results) > 0:
                 bug_matches.append(x['bug'])
         return bug_matches
-
-
-def main():
-    config = ConfigParser.ConfigParser()
-    if len(sys.argv) is 2:
-        config_path = sys.argv[1]
-    else:
-        config_path = 'elasticRecheck.conf'
-    config.read(config_path)
-    user = config.get('gerrit', 'user', 'jogo')
-    host = config.get('gerrit', 'host', 'review.openstack.org')
-    queries = config.get('gerrit', 'query_file', 'queries.yaml')
-    queries = os.path.expanduser(queries)
-    key = config.get('gerrit', 'key')
-    classifier = Classifier(queries)
-    stream = Stream(user, host, key)
-    while True:
-        event = stream.get_failed_tempest()
-        change = event['change']['number']
-        rev = event['patchSet']['number']
-        print "======================="
-        print "https://review.openstack.org/#/c/%(change)s/%(rev)s" % locals()
-        bug_numbers = []
-        for short_build_uuid in event.short_build_uuids:
-            bug_numbers = bug_numbers + classifier.classify(
-                change, rev, short_build_uuid)
-        bug_numbers = set(bug_numbers)
-        if not bug_numbers:
-            print "unable to classify failure"
-        else:
-            for bug_number in bug_numbers:
-                print("Found bug: https://bugs.launchpad.net/bugs/%s"
-                      % bug_number)
-
-if __name__ == "__main__":
-    main()
