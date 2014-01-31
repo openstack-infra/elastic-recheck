@@ -296,8 +296,11 @@ class Classifier():
         self.queries_dir = queries_dir
         self.queries = loader.load(self.queries_dir)
 
-    def hits_by_query(self, query, facet=None, size=100):
-        es_query = qb.generic(query, facet=facet)
+    def hits_by_query(self, query, queue=None, facet=None, size=100):
+        if queue:
+            es_query = qb.single_queue(query, queue, facet=facet)
+        else:
+            es_query = qb.generic(query, facet=facet)
         return self.es.search(es_query, size=size)
 
     def classify(self, change_number, patch_number, short_build_uuid,

@@ -49,6 +49,8 @@ def main():
                         help='path to query file')
     parser.add_argument('-o', dest='output',
                         help='output filename')
+    parser.add_argument('-q', dest='queue',
+                        help='limit results to a specific query')
     args = parser.parse_args()
 
     classifier = er.Classifier(args.queries)
@@ -63,6 +65,9 @@ def main():
     start = now - (14 * 24 * STEP)
 
     for query in classifier.queries:
+        if args.queue:
+            query['query'] = query['query'] + ('AND build_queue:"%s"' %
+                                               args.queue)
         urlq = dict(search=query['query'],
                     fields=[],
                     offset=0,
@@ -78,7 +83,9 @@ def main():
                    fails24=0,
                    data=[])
         buglist.append(bug)
-        results = classifier.hits_by_query(query['query'], size=3000)
+        results = classifier.hits_by_query(query['query'],
+                                           args.queue,
+                                           size=3000)
 
         facets_for_fail = er_results.FacetSet()
         facets_for_fail.detect_facets(results,
