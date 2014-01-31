@@ -316,9 +316,6 @@ def setup_logging(config):
         "pyelasticsearch": logging.INFO,
         "requests.packages.urllib3.connectionpool": logging.WARN
     }
-    for module in loglevels:
-        log = logging.getLogger(module)
-        log.setLevel(loglevels[module])
 
     if config.has_option('ircbot', 'log_config'):
         log_config = config.get('ircbot', 'log_config')
@@ -332,6 +329,9 @@ def setup_logging(config):
             format=FORMAT,
             datefmt=DATEFMT
         )
+        for module in loglevels:
+            log = logging.getLogger(module)
+            log.setLevel(loglevels[module])
 
 
 if __name__ == "__main__":
