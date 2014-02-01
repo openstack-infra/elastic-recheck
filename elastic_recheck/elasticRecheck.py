@@ -63,15 +63,39 @@ class ResultTimedOut(Exception):
         self.msg = msg
 
 
+class FailJob(object):
+    """A single failed job.
+
+    A job is a zuul job.
+    """
+    bugs = []
+    short_build_uuid = None
+    url = None
+    name = None
+
+    def __init__(self, name, url):
+        self.name = name
+        self.url = url
+        # The last 7 characters of the URL are the first 7 digits
+        # of the build_uuid.
+        self.short_build_uuid = url[-7:]
+
+    def __str__(self):
+        return self.name
+
+
 class FailEvent(object):
+    """A FailEvent consists of one or more FailJobs.
+
+    An event is a gerrit event.
+    """
     change = None
     rev = None
     project = None
     url = None
-    bugs = set([])
     short_build_uuids = []
     comment = None
-    failed_jobs = {}
+    failed_jobs = []
 
     def __init__(self, event, failed_jobs):
         self.change = event['change']['number']
@@ -81,7 +105,6 @@ class FailEvent(object):
         self.comment = event["comment"]
         #TODO(jogo) make FailEvent generate the jobs
         self.failed_jobs = failed_jobs
-        self.bugs = set([])
 
     def is_openstack_project(self):
         return "tempest-dsvm-full" in self.comment
@@ -90,15 +113,31 @@ class FailEvent(object):
         return "%s,%s" % (self.change, self.rev)
 
     def bug_urls(self):
-        urls = ['https://bugs.launchpad.net/bugs/%s' % x for x in self.bugs]
-        return ' and '.join(urls)
+        if not self.get_all_bugs():
+            return None
+        urls = ['https://bugs.launchpad.net/bugs/%s' % x for
+                x in self.get_all_bugs()]
+        return urls
 
     def queue(self):
         # Assume one queue per gerrit event
         if len(self.failed_jobs) == 0:
             return None
-        return self.failed_jobs[
-            self.failed_jobs.keys()[0]]['url'].split('/')[6]
+        return self.failed_jobs[0].url.split('/')[6]
+
+    def short_build_uuids(self):
+        return [job.short_build_uuid for job in self.failed_jobs]
+
+    def failed_job_names(self):
+        return [job.name for job in self.failed_jobs]
+
+    def get_all_bugs(self):
+        bugs = set([])
+        for job in self.failed_jobs:
+            bugs |= set(job.bugs)
+        if len(bugs) is 0:
+            return None
+        return list(bugs)
 
 
 class Stream(object):
@@ -133,15 +172,11 @@ class Stream(object):
             LOG.debug("Skipping passing job %s,%s" % (change, rev))
             return False
 
-        failed_tests = {}
+        failed_tests = []
         for line in event['comment'].split("\n"):
             m = re.search("- ([\w-]+)\s*(http://\S+)\s*:\s*FAILURE", line)
             if m:
-                # The last 7 characters of the URL are the first 7 digits
-                # of the build_uuid.
-                failed_tests[m.group(1)] = {'url': m.group(2),
-                                            'short_build_uuid':
-                                            m.group(2)[-7:]}
+                failed_tests.append(FailJob(m.group(1), m.group(2)))
         return failed_tests
 
     def _job_console_uploaded(self, change, patch, name, short_build_uuid):
@@ -166,7 +201,7 @@ class Stream(object):
                 change, patch, name, missing_files))
             raise FilesNotReady(msg)
 
-    def _does_es_have_data(self, change_number, patch_number, job_fails):
+    def _does_es_have_data(self, event):
         """Wait till ElasticSearch is ready, but return False if timeout."""
         NUMBER_OF_RETRIES = 20
         SLEEP_TIME = 40
@@ -175,13 +210,13 @@ class Stream(object):
         # in case ES goes bonkers on cold data, which it does some times.
         for i in range(NUMBER_OF_RETRIES):
             try:
-                for job_name in job_fails:
+                for job in event.failed_jobs:
                     #TODO(jogo) if there are three failed jobs and only the
                     #last one isn't ready we don't need to keep rechecking
                     # the first two
                     self._job_console_uploaded(
-                        change_number, patch_number, job_name,
-                        job_fails[job_name]['short_build_uuid'])
+                        event.change, event.rev, job.name,
+                        job.short_build_uuid)
                 break
 
             except ConsoleNotReady as e:
@@ -200,23 +235,23 @@ class Stream(object):
         if i == NUMBER_OF_RETRIES - 1:
             elapsed = format_timedelta(datetime.datetime.now() - started_at)
             msg = ("Console logs not available after %ss for %s %s,%s,%s" %
-                   (elapsed, job_name, change_number, patch_number,
-                       job_fails[job_name]['short_build_uuid']))
+                   (elapsed, job.name, event.change, event.rev,
+                       job.short_build_uuid))
             raise ResultTimedOut(msg)
 
         LOG.debug(
             "Found hits for change_number: %s, patch_number: %s"
-            % (change_number, patch_number))
+            % (event.change, event.rev))
 
         for i in range(NUMBER_OF_RETRIES):
             try:
-                for job_name in job_fails:
+                for job in event.failed_jobs:
                     self._has_required_files(
-                        change_number, patch_number, job_name,
-                        job_fails[job_name]['short_build_uuid'])
+                        event.change, event.rev, job.name,
+                        job.short_build_uuid)
                 LOG.info(
                     "All files present for change_number: %s, patch_number: %s"
-                    % (change_number, patch_number))
+                    % (event.change, event.rev))
                 time.sleep(10)
                 return True
             except FilesNotReady:
@@ -225,8 +260,8 @@ class Stream(object):
         # if we get to the end, we're broken
         elapsed = format_timedelta(datetime.datetime.now() - started_at)
         msg = ("Required files not ready after %ss for %s %d,%d,%s" %
-               (elapsed, job_name, change_number, patch_number,
-                   job_fails[job_name]['short_build_uuid']))
+               (elapsed, job.name, event.change, event.rev,
+                   job.short_build_uuid))
         raise ResultTimedOut(msg)
 
     def get_failed_tempest(self):
@@ -246,16 +281,13 @@ class Stream(object):
                 continue
 
             LOG.info("Looking for failures in %s,%s on %s" %
-                     (fevent.change, fevent.rev, ", ".join(failed_jobs)))
-            fevent.short_build_uuids = [
-                v['short_build_uuid'] for v in failed_jobs.values()]
-            if self._does_es_have_data(fevent.change, fevent.rev, failed_jobs):
+                     (fevent.change, fevent.rev,
+                      ", ".join(fevent.failed_job_names())))
+            if self._does_es_have_data(fevent):
                 return fevent
 
     def leave_comment(self, event, debug=False):
-        if event.bugs:
-            bug_urls = ['https://bugs.launchpad.net/bugs/%s' % x
-                        for x in event.bugs]
+        if event.get_all_bugs():
             message = """I noticed tempest failed, I think you hit bug(s):
 
 - %(bugs)s
@@ -265,8 +297,8 @@ doing that manually if someone hasn't already. For a code review
 which is not yet approved, you can recheck by leaving a code
 review comment with just the text:
 
-    recheck bug %(bug)s""" % {'bugs': "\n- ".join(bug_urls),
-                              'bug': list(event.bugs)[0]}
+    recheck bug %(bug)s""" % {'bugs': "\n- ".join(event.bug_urls()),
+                              'bug': list(event.get_all_bugs())[0]}
         else:
             message = ("I noticed tempest failed, refer to: "
                        "https://wiki.openstack.org/wiki/"

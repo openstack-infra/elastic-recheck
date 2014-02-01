@@ -45,7 +45,15 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/keystone")
             self.assertEqual(event.name(), "64749,6")
             self.assertEqual(event.url, "https://review.openstack.org/64749")
-            self.assertEqual(event.short_build_uuids, ["5dd41fe", "d3fd328"])
+            self.assertEqual(sorted(event.short_build_uuids()),
+                             ["5dd41fe", "d3fd328"])
+            self.assertTrue(event.is_openstack_project())
+            self.assertEqual(event.queue(), "check")
+            self.assertEqual(event.bug_urls(), None)
+            self.assertEqual(sorted(event.failed_job_names()),
+                             ['gate-keystone-python26',
+                              'gate-keystone-python27'])
+            self.assertEqual(event.get_all_bugs(), None)
 
             event = stream.get_failed_tempest()
             self.assertEqual(event.change, "63078")
@@ -53,7 +61,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/horizon")
             self.assertEqual(event.name(), "63078,19")
             self.assertEqual(event.url, "https://review.openstack.org/63078")
-            self.assertEqual(event.short_build_uuids, ["ab07162"])
+            self.assertEqual(event.short_build_uuids(), ["ab07162"])
 
             event = stream.get_failed_tempest()
             self.assertEqual(event.change, "65361")
@@ -61,7 +69,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/requirements")
             self.assertEqual(event.name(), "65361,2")
             self.assertEqual(event.url, "https://review.openstack.org/65361")
-            self.assertEqual(event.short_build_uuids, ["8209fb4"])
+            self.assertEqual(event.short_build_uuids(), ["8209fb4"])
 
             self.assertRaises(
                 fg.GerritDone,
@@ -78,20 +86,25 @@ class TestStream(tests.TestCase):
             elasticRecheck.Stream.parse_jenkins_failure(events[2]))
 
         jobs = elasticRecheck.Stream.parse_jenkins_failure(events[0])
-        self.assertIn('check-requirements-integration-dsvm', jobs)
-        self.assertIn('check-tempest-dsvm-full', jobs)
-        self.assertIn('check-tempest-dsvm-postgres-full', jobs)
-        self.assertIn('check-tempest-dsvm-neutron', jobs)
+        job_names = [x.name for x in jobs]
+        self.assertIn('check-requirements-integration-dsvm', job_names)
+        self.assertIn('check-tempest-dsvm-full', job_names)
+        self.assertIn('check-tempest-dsvm-postgres-full', job_names)
+        self.assertIn('check-tempest-dsvm-neutron', job_names)
 
-        self.assertEqual(jobs['check-requirements-integration-dsvm'],
-                         {'url': "http://logs.openstack.org/31/64831/1/check/"
-                          "check-requirements-integration-dsvm/135d0b4",
-                          'short_build_uuid': '135d0b4'})
+        for job in jobs:
+            if job.name == 'check-requirements-integration-dsvm':
+                break
+        self.assertEqual(job.name, 'check-requirements-integration-dsvm')
+        self.assertEqual(job.url,
+                         ("http://logs.openstack.org/31/64831/1/check/"
+                          "check-requirements-integration-dsvm/135d0b4"))
+        self.assertEqual(job.short_build_uuid, '135d0b4')
 
-        self.assertNotIn('gate-requirements-pep8', jobs)
-        self.assertNotIn('gate-requirements-python27', jobs)
-        self.assertNotIn('gate-requirements-pypy', jobs)
-        self.assertNotIn('gate-tempest-dsvm-large-ops', jobs)
-        self.assertNotIn('gate-tempest-dsvm-neutron-large-ops', jobs)
-        self.assertNotIn('check-grenade-dsvm', jobs)
-        self.assertNotIn('check-swift-dsvm-functional', jobs)
+        self.assertNotIn('gate-requirements-pep8', job_names)
+        self.assertNotIn('gate-requirements-python27', job_names)
+        self.assertNotIn('gate-requirements-pypy', job_names)
+        self.assertNotIn('gate-tempest-dsvm-large-ops', job_names)
+        self.assertNotIn('gate-tempest-dsvm-neutron-large-ops', job_names)
+        self.assertNotIn('check-grenade-dsvm', job_names)
+        self.assertNotIn('check-swift-dsvm-functional', job_names)

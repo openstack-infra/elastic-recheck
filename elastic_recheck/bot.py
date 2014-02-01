@@ -122,7 +122,7 @@ class RecheckWatch(threading.Thread):
                    ' an unrecognized error' %
                    (event.project,
                     event.url,
-                    ', '.join(event.failed_jobs),
+                    ', '.join(event.failed_job_names()),
                     queue))
             self.print_msg(channel, msg)
 
@@ -130,10 +130,10 @@ class RecheckWatch(threading.Thread):
         msg = ('%s change: %s failed %s because of: %s' % (
             event.project,
             event.url,
-            ", ".join(event.failed_jobs),
-            event.bug_urls()))
+            ", ".join(event.failed_job_names()),
+            "and ".join(event.bug_urls())))
         display = False
-        for project in self._get_bug_projects(event.bugs):
+        for project in self._get_bug_projects(event.get_all_bugs()):
             if channel in self.channel_config.projects['all']:
                 display = True
                 break
@@ -168,7 +168,7 @@ class RecheckWatch(threading.Thread):
                 if channel in self.channel_config.events['negative']:
                     self.print_msg(channel, msg)
             elif event:
-                if event.bugs:
+                if event.get_all_bugs():
                     if channel in self.channel_config.events['positive']:
                         self.error_found(channel, event)
                 else:
@@ -186,10 +186,10 @@ class RecheckWatch(threading.Thread):
             try:
                 event = stream.get_failed_tempest()
 
-                for short_build_uuid in event.short_build_uuids:
-                    event.bugs |= set(classifier.classify(
-                        event.change, event.rev, short_build_uuid))
-                if not event.bugs:
+                for job in event.failed_jobs:
+                    job.bugs = set(classifier.classify(
+                        event.change, event.rev, job.short_build_uuid))
+                if not event.get_all_bugs():
                     self._read(event)
                 else:
                     self._read(event)
