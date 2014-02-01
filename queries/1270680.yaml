@@ -2,4 +2,4 @@ query: >
   message:"TRACE nova.api.openstack"
   AND message:"InstanceNotFound: Instance"
   AND message:"v3/pci.py"
-  AND filename:"logs/screen-n-api.txt"
+  AND filename:logs*screen-n-api.txt
