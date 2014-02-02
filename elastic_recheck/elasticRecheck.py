@@ -265,13 +265,8 @@ doing that manually if someone hasn't already. For a code review
 which is not yet approved, you can recheck by leaving a code
 review comment with just the text:
 
-    recheck bug %(bug)s
-
-For a code review which has been approved but failed to merge,
-you can reverify by leaving a comment like this:
-
-    reverify bug %(bug)s""" % {'bugs': "\n- ".join(bug_urls),
-                               'bug': list(event.bugs)[0]}
+    recheck bug %(bug)s""" % {'bugs': "\n- ".join(bug_urls),
+                              'bug': list(event.bugs)[0]}
         else:
             message = ("I noticed tempest failed, refer to: "
                        "https://wiki.openstack.org/wiki/"
