@@ -1,2 +1,2 @@
 query: >
-  message:"because vif doesn't exist" AND filename:"logs/screen-n-net.txt"
+  message:"because vif doesn't exist" AND filename:logs*screen-n-net.txt

@@ -1,5 +1,5 @@
 query: >
   message:"DBError: (IntegrityError) null value in column \"network_id\"
   violates not-null constraint"
-  AND filename:"logs/screen-q-svc.txt"
+  AND filename:logs*screen-q-svc.txt
 resolved_at: "Tue Dec 10 12:08:42 EST 2013"

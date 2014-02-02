@@ -1,5 +1,5 @@
 query: >
   message:"nova.api.openstack Timeout: Timeout while waiting on RPC response - topic: \""
   AND message:", RPC method: \"get_console_output\""
-  AND filename:"logs/screen-n-api.txt"
+  AND filename:logs*screen-n-api.txt
 resolved_at: "Sun Jan 19 18:36:37 PST 2014"

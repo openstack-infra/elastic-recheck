@@ -1,5 +1,5 @@
 query: >
-  filename:"logs/screen-n-cpu.txt"
+  filename:logs*screen-n-cpu.txt
   AND message:"OSError: [Errno 13] Permission denied: '/opt/stack/data/nova/instances/_base"
   AND loglevel:"ERROR"
   AND module:"nova.compute.manager"
