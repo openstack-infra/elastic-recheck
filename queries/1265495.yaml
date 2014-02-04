@@ -1,0 +1,3 @@
+query: >
+  filename:"console.html" AND
+  message:"raise SSHException(\'Error reading SSH protocol banner\' + str(x))"
