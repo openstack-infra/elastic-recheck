@@ -112,12 +112,40 @@ class FailEvent(object):
     def name(self):
         return "%s,%s" % (self.change, self.rev)
 
-    def bug_urls(self):
-        if not self.get_all_bugs():
+    def bug_urls(self, bugs=None):
+        if bugs is None:
+            bugs = self.get_all_bugs()
+        if not bugs:
             return None
         urls = ['https://bugs.launchpad.net/bugs/%s' % x for
-                x in self.get_all_bugs()]
+                x in bugs]
         return urls
+
+    def bug_urls_map(self):
+        """Produce map of which jobs failed due to which bugs."""
+        if not self.get_all_bugs():
+            return None
+        bug_map = {}
+        for job in self.failed_jobs:
+            if len(job.bugs) is 0:
+                bug_map[job.name] = None
+            else:
+                bug_map[job.name] = ', '.join(self.bug_urls(job.bugs))
+        bug_list = []
+        for job in bug_map:
+            if bug_map[job] is None:
+                bug_list.append("%s: unrecognized error" % job)
+            else:
+                bug_list.append("%s: %s" % (job, bug_map[job]))
+        return bug_list
+
+    def is_fully_classified(self):
+        if self.get_all_bugs() is None:
+            return True
+        for job in self.failed_jobs:
+            if len(job.bugs) is 0:
+                return False
+        return True
 
     def queue(self):
         # Assume one queue per gerrit event
@@ -288,19 +316,23 @@ class Stream(object):
 
     def leave_comment(self, event, debug=False):
         if event.get_all_bugs():
-            message = """I noticed tempest failed, I think you hit bug(s):
+            message = """I noticed jenkins failed, I think you hit bug(s):
 
 - %(bugs)s
-
+""" % {'bugs': "\n- ".join(event.bug_urls_map())}
+            if event.is_fully_classified():
+                message += """
 We don't automatically recheck or reverify, so please consider
 doing that manually if someone hasn't already. For a code review
 which is not yet approved, you can recheck by leaving a code
 review comment with just the text:
 
-    recheck bug %(bug)s""" % {'bugs': "\n- ".join(event.bug_urls()),
-                              'bug': list(event.get_all_bugs())[0]}
+    recheck bug %(bug)s""" % {'bug': list(event.get_all_bugs())[0]}
+            else:
+                message += """
+You have some unrecognized errors."""
         else:
-            message = ("I noticed tempest failed, refer to: "
+            message = ("I noticed jenkins failed, refer to: "
                        "https://wiki.openstack.org/wiki/"
                        "GerritJenkinsGithub#Test_Failures")
         LOG.debug("Compiled comment for commit %s:\n%s" %

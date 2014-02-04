@@ -50,10 +50,12 @@ class TestStream(tests.TestCase):
             self.assertTrue(event.is_openstack_project())
             self.assertEqual(event.queue(), "check")
             self.assertEqual(event.bug_urls(), None)
+            self.assertEqual(event.bug_urls_map(), None)
             self.assertEqual(sorted(event.failed_job_names()),
                              ['gate-keystone-python26',
                               'gate-keystone-python27'])
             self.assertEqual(event.get_all_bugs(), None)
+            self.assertTrue(event.is_fully_classified())
 
             event = stream.get_failed_tempest()
             self.assertEqual(event.change, "63078")
@@ -108,3 +110,35 @@ class TestStream(tests.TestCase):
         self.assertNotIn('gate-tempest-dsvm-neutron-large-ops', job_names)
         self.assertNotIn('check-grenade-dsvm', job_names)
         self.assertNotIn('check-swift-dsvm-functional', job_names)
+
+    def test_event(self):
+        with mock.patch.object(
+                elasticRecheck.Stream, '_does_es_have_data') as mock_data:
+            mock_data.return_value = True
+            stream = elasticRecheck.Stream("", "", "")
+
+            event = stream.get_failed_tempest()
+            # Add bugs
+            for job in event.failed_jobs:
+                if job.name == 'gate-keystone-python26':
+                    job.bugs = ['123456']
+            self.assertEqual(event.change, "64749")
+            self.assertEqual(event.rev, "6")
+            self.assertEqual(event.project, "openstack/keystone")
+            self.assertEqual(event.name(), "64749,6")
+            self.assertEqual(event.url, "https://review.openstack.org/64749")
+            self.assertEqual(sorted(event.short_build_uuids()),
+                             ["5dd41fe", "d3fd328"])
+            self.assertTrue(event.is_openstack_project())
+            self.assertEqual(event.queue(), "check")
+            self.assertEqual(event.bug_urls(),
+                             ['https://bugs.launchpad.net/bugs/123456'])
+            self.assertEqual(event.bug_urls_map(),
+                             ['gate-keystone-python27: unrecognized error',
+                              'gate-keystone-python26: '
+                              'https://bugs.launchpad.net/bugs/123456'])
+            self.assertEqual(sorted(event.failed_job_names()),
+                             ['gate-keystone-python26',
+                              'gate-keystone-python27'])
+            self.assertEqual(event.get_all_bugs(), ['123456'])
+            self.assertFalse(event.is_fully_classified())
