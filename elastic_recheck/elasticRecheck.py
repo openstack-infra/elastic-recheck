@@ -257,9 +257,10 @@ class Stream(object):
             if self._does_es_have_data(fevent.change, fevent.rev, failed_jobs):
                 return fevent
 
-    def leave_comment(self, project, commit, bugs=None):
-        if bugs:
-            bug_urls = ['https://bugs.launchpad.net/bugs/%s' % x for x in bugs]
+    def leave_comment(self, event, debug=False):
+        if event.bugs:
+            bug_urls = ['https://bugs.launchpad.net/bugs/%s' % x
+                        for x in event.bugs]
             message = """I noticed tempest failed, I think you hit bug(s):
 
 - %(bugs)s
@@ -275,12 +276,15 @@ For a code review which has been approved but failed to merge,
 you can reverify by leaving a comment like this:
 
     reverify bug %(bug)s""" % {'bugs': "\n- ".join(bug_urls),
-                               'bug': list(bugs)[0]}
+                               'bug': list(event.bugs)[0]}
         else:
             message = ("I noticed tempest failed, refer to: "
                        "https://wiki.openstack.org/wiki/"
                        "GerritJenkinsGithub#Test_Failures")
-        self.gerrit.review(project, commit, message)
+        LOG.debug("Compiled comment for commit %s:\n%s" %
+                  (event.name(), message))
+        if not debug:
+            self.gerrit.review(event.project, event.name(), message)
 
 
 class Classifier():

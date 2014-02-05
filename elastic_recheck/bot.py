@@ -193,11 +193,9 @@ class RecheckWatch(threading.Thread):
                     self._read(event)
                 else:
                     self._read(event)
-                    if self.commenting:
-                        stream.leave_comment(
-                            event.project,
-                            event.name(),
-                            event.bugs)
+                    stream.leave_comment(
+                        event,
+                        debug=not self.commenting)
             except er.ResultTimedOut as e:
                 LOG.warn(e.msg)
                 self._read(msg=e.msg)
