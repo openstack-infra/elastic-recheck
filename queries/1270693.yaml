@@ -1,3 +1,4 @@
 query: >
   message:"AssertionError: _last_vol_usage_poll was not properly updated"
   AND filename:"console.html"
+resolved_at: "Fri Feb  7 17:06:16 PST 2014"

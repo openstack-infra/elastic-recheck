@@ -3,3 +3,4 @@ query: >
   AND message:"InstanceNotFound: Instance"
   AND message:"v3/pci.py"
   AND filename:logs*screen-n-api.txt
+resolved_at: "Fri Feb  7 17:06:16 PST 2014"
