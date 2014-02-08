@@ -1,3 +1,4 @@
 query: >
   message:"FAIL: nova.tests.db.test_sqlite.TestSqlite.test_big_int_mapping"
   AND filename:"console.html"
+resolved_at: "Fri Feb  7 17:06:16 PST 2014"
