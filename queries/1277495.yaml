@@ -1,0 +1,3 @@
+query: >
+  message:"'py33/lib/python3.3/encodings/ascii.py"
+  AND filename:"console.html"
