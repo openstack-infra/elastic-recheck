@@ -1,3 +1,4 @@
 query: >
     message:"java.lang.InterruptedException"
     AND filename:"console.html"
+suppress-graph: true
