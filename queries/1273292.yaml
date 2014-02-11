@@ -1,4 +1,5 @@
 query: >
     message:"Details: Timed out waiting for thing" AND
     message:"to become" AND
-    (message:"in-use" OR message:"available")
+    (message:"in-use" OR message:"available") AND
+    filename:console.html
