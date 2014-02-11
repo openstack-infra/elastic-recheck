@@ -68,6 +68,8 @@ def main():
         if args.queue:
             query['query'] = query['query'] + ('AND build_queue:"%s"' %
                                                args.queue)
+        if query.get('suppress-graph'):
+            continue
         urlq = dict(search=query['query'],
                     fields=[],
                     offset=0,
