@@ -1,0 +1,3 @@
+query: >
+  message:"bound method S3Connection.get_bucket of S3Connection"
+  AND filename:"console.html"
