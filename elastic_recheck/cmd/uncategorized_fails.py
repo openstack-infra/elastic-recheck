@@ -68,8 +68,15 @@ def all_fails(classifier):
             # gate. Would be nice if there was a zuul attr for this in es.
             if re.search("(^openstack/|devstack|grenade)", result.project):
                 name = result.build_name
-                timestamp = time.strptime(result.timestamp,
-                                          "%Y-%m-%dT%H:%M:%S.%fZ")
+                if "+00:00" in result.timestamp:
+                    # Newer ES adds timezone into the timestamp, and it will
+                    # always be +00:00
+                    timestamp = time.strptime(result.timestamp,
+                                              "%Y-%m-%dT%H:%M:%S.%f+00:00")
+                else:
+                    timestamp = time.strptime(result.timestamp,
+                                              "%Y-%m-%dT%H:%M:%S.%fZ")
+
                 log = result.log_url.split("console.html")[0]
                 all_fails["%s.%s" % (build, name)] = {
                     'log': log,
