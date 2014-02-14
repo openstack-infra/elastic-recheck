@@ -1,0 +1,4 @@
+query: >
+  filename:"console.html"
+  AND message:"mount: wrong fs type, bad option, bad superblock on /dev/loop1,"
+  AND build_name:*-grenade-dsvm-neutron
