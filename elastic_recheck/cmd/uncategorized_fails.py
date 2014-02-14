@@ -19,8 +19,8 @@ import collections
 import datetime
 import operator
 import re
-import time
 
+import dateutil.parser as dp
 import jinja2
 
 import elastic_recheck.elasticRecheck as er
@@ -68,15 +68,7 @@ def all_fails(classifier):
             # gate. Would be nice if there was a zuul attr for this in es.
             if re.search("(^openstack/|devstack|grenade)", result.project):
                 name = result.build_name
-                if "+00:00" in result.timestamp:
-                    # Newer ES adds timezone into the timestamp, and it will
-                    # always be +00:00
-                    timestamp = time.strptime(result.timestamp,
-                                              "%Y-%m-%dT%H:%M:%S.%f+00:00")
-                else:
-                    timestamp = time.strptime(result.timestamp,
-                                              "%Y-%m-%dT%H:%M:%S.%fZ")
-
+                timestamp = dp.parse(result.timestamp)
                 log = result.log_url.split("console.html")[0]
                 all_fails["%s.%s" % (build, name)] = {
                     'log': log,
@@ -129,9 +121,8 @@ def classifying_rate(fails, data, engine):
                                    key=lambda v: v['timestamp'], reverse=True)
         # Convert timestamp into string
         for url in bad_job_urls[job]:
-            url['timestamp'] = time.strftime(
-                "%Y-%m-%dT%H:%M",
-                url['timestamp'])
+            url['timestamp'] = url['timestamp'].strftime(
+                "%Y-%m-%dT%H:%M")
 
     classifying_rate = collections.defaultdict(int)
     classifying_rate['overall'] = "%.1f" % (

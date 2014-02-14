@@ -14,12 +14,14 @@
 
 """Elastic search wrapper to make handling results easier."""
 
+import calendar
 import copy
 import datetime
 import pprint
-import time
 
+import dateutil.parser as dp
 import pyelasticsearch
+import pytz
 
 
 pp = pprint.PrettyPrinter()
@@ -109,19 +111,14 @@ class FacetSet(dict):
     def _histogram(self, data, facet, res=3600):
         """A preprocessor for data should we want to bucket it."""
         if facet == "timestamp":
-            if "+00:00" in data:
-                ts = datetime.datetime.strptime(data,
-                                                "%Y-%m-%dT%H:%M:%S.%f+00:00")
-            else:
-                ts = datetime.datetime.strptime(data, "%Y-%m-%dT%H:%M:%S.%fZ")
-
-            tsepoch = int(time.mktime(ts.timetuple()))
+            ts = dp.parse(data)
+            tsepoch = int(calendar.timegm(ts.timetuple()))
             # take the floor based on resolution
             ts -= datetime.timedelta(
                 seconds=(tsepoch % res),
                 microseconds=ts.microsecond)
             # ms since epoch
-            epoch = datetime.datetime.utcfromtimestamp(0)
+            epoch = datetime.datetime.fromtimestamp(0, pytz.UTC)
             pos = int(((ts - epoch).total_seconds()) * 1000)
             return pos
         else:
