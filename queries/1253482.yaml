@@ -1,3 +1,4 @@
 query: >
-  message:(+"[ERROR]" +"devstack/lib/keystone" +"keystone did not start")
-  AND filename:console.html
+  loglevel:"CRITICAL"
+  AND message:"Address already in use"
+  AND filename:logs*screen-key.txt
