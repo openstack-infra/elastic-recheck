@@ -2,3 +2,4 @@ query: >
   (message:"ImportError: cannot import name all"
    OR message:"error: option --slowest not recognized")
   AND filename:"console.html"
+resolved_at: "Thu Feb 13 17:06:53 PST 2014"

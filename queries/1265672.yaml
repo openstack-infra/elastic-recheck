@@ -1,3 +1,4 @@
 query: >
   message:"Invalid input received: Invalid input received: Availability zone"
   AND filename:"console.html"
+resolved_at: "Thu Feb 13 17:06:53 PST 2014"

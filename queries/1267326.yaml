@@ -2,3 +2,4 @@ query: >
   message:"Unexpected number of images for"
   AND message:"test_create_backup; was the oldest backup not yet deleted? Image list:"
   AND filename:"console.html"
+resolved_at: "Thu Feb 13 17:06:53 PST 2014"

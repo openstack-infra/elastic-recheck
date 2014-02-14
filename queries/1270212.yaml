@@ -1,3 +1,4 @@
 query: >
   message:"KeyError: 'svc_type'"
   AND filename:console.html AND project:"openstack/neutron"
+resolved_at: "Thu Feb 13 17:06:53 PST 2014"
