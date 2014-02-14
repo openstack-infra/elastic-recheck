@@ -1,0 +1,4 @@
+query: >
+  message:"Backend storage for image"
+  AND message:"disconnected after writing only"
+  AND filename:"logs/screen-g-api.txt"
