@@ -30,6 +30,17 @@ class TestLoadQueries(tests.TestCase):
             self.assertIsNotNone(q['bug'])
             self.assertIsNotNone(q['query'])
 
+    def test_grenade_compat(self):
+        # grenade logs are in logs/new/ and logs/old, while devstack is in
+        # logs/. To make sure queries will work with both, one should use
+        # filename:logs*screen... (no quotes)
+        queries = loader.load("queries")
+
+        for q in queries:
+            # Use assertTrue because you can specify a custom message
+            self.assertTrue("filename:\"logs/screen-" not in q['query'],
+                            msg=("for bug %s" % q['bug']))
+
     def test_load_queries_all(self):
         queries = loader.load("queries", skip_resolved=False)
 
