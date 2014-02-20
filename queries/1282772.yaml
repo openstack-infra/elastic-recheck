@@ -1,0 +1,3 @@
+query: >
+    message:"Remove dead screens with 'screen -wipe'."
+    AND filename:"console.html"
