@@ -1,0 +1,3 @@
+query: >
+    message:"wrong fs type, bad option, bad superblock on /dev/loop2" AND
+    filename:"console.html"
