@@ -1,0 +1,3 @@
+query: >
+  message:"fatal: The remote end hung up unexpectedly"
+  AND filename:"console.html"
