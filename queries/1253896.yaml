@@ -1,3 +1,4 @@
 query: >
   message:"SSHTimeout: Connection to the" AND message:"via SSH timed out."
-  AND filename:"console.html"
+  AND filename:"console.html" AND
+  NOT build_name:"check-tempest-dsvm-neutron-heat-slow"
