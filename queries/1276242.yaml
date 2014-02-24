@@ -1,0 +1,4 @@
+query: >
+  message:"Requirement.parse('six>=1.5.2'))"
+  AND message:"openstackclient.shell Exception raised"
+  AND filename:console.html
