@@ -1,5 +1,0 @@
-query: >
-  message:"[ERROR] /opt/stack/old/devstack/exercises/bundle.sh:61
-  Image ami-00000001 not available within 15 seconds"
-  AND filename:"console.html"
-resolved_at: "Sun Jan 19 18:36:37 PST 2014"

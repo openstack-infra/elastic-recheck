@@ -1,5 +1,0 @@
-query: >
-  message:"test_get_console_output"
-  AND message:"raise MismatchError(matchee, matcher, mismatch, verbose)"
-  AND filename:"console.html"
-resolved_at: "Tue Dec 10 12:08:42 EST 2013"

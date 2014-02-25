@@ -1,4 +1,0 @@
-query: >
-  message:"Deadlock found when trying to get lock"
-  AND filename:logs*screen-n-api.txt
-resolved_at: "Mon Jan  6 13:20:28 PST 2014"

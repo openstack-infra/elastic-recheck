@@ -25,7 +25,7 @@ import yaml
 LOG = logging.getLogger('recheckwatchbot')
 
 
-def load(directory='queries', skip_resolved=True):
+def load(directory='queries'):
     """Load queries from a set of yaml files in a directory."""
     bugs = glob.glob("%s/*.yaml" % directory)
     data = []
@@ -33,6 +33,5 @@ def load(directory='queries', skip_resolved=True):
         bugnum = os.path.basename(fname).rstrip('.yaml')
         query = yaml.load(open(fname).read())
         query['bug'] = bugnum
-        if not (skip_resolved and 'resolved_at' in query):
-            data.append(query)
+        data.append(query)
     return data

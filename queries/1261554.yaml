@@ -1,3 +1,0 @@
-query: >
-  message:"keystoneclient.middleware.auth_token ValueError: No JSON object could be decoded"
-resolved_at: "Mon Jan  6 13:20:28 PST 2014"

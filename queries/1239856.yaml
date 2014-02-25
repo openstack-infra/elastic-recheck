@@ -1,4 +1,0 @@
-query: >
-  message:" Registry client request" AND message:"raised ClientConnectionError"
-  AND filename:logs*screen-g-api.txt
-resolved_at: "Mon Jan  6 13:20:28 PST 2014"

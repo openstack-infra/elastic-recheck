@@ -40,13 +40,3 @@ class TestLoadQueries(tests.TestCase):
             # Use assertTrue because you can specify a custom message
             self.assertTrue("filename:\"logs/screen-" not in q['query'],
                             msg=("for bug %s" % q['bug']))
-
-    def test_load_queries_all(self):
-        queries = loader.load("queries", skip_resolved=False)
-
-        # Note(sdague): the current number of queries, if you delete a file
-        # you will need to change this
-        self.assertGreater(len(queries), 59)
-        for q in queries:
-            self.assertIsNotNone(q['bug'])
-            self.assertIsNotNone(q['query'])

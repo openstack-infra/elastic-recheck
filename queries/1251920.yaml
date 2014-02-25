@@ -1,4 +1,0 @@
-query: >
-  message:"assertionerror: console output was empty"
-  AND filename:"console.html"
-resolved_at: "Tue Dec 10 12:08:42 EST 2013"
