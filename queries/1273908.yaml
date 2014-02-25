@@ -1,0 +1,5 @@
+query: >
+  message:"Server" AND
+  message:"failed to reach RESCUE status and task state \"None\" within the required time" AND
+  message:"Current status: ACTIVE. Current task state: rescuing." AND
+  filename:"console.html"
