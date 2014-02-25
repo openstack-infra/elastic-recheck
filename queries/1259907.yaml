@@ -1,4 +1,0 @@
-query: >
-  message:"Failed to upload testbucket/bundle.img.manifest.xml"
-  AND filename:"console.html"
-resolved_at: "Mon Jan  6 13:20:28 PST 2014"

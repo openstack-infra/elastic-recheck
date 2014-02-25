@@ -1,5 +1,0 @@
-query: >
-  build_name:*-horizon-python*
-  AND message:"UnknownMethodCallError('management_url')"
-  AND filename:"console.html"
-resolved_at: "Fri Feb  7 17:06:16 PST 2014"

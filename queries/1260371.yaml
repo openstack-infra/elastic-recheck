@@ -1,4 +1,0 @@
-query: >
-  message:"urlopen error _ssl.c:489: The handshake operation timed out"
-  AND filename:"console.html"
-resolved_at: "Sun Jan 19 18:36:37 PST 2014"

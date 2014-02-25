@@ -1,4 +1,0 @@
-query: >
-  message:"NovaException: Unexpected vif_type=binding_failed"
-  AND filename:logs*screen-n-cpu.txt
-resolved_at: "Thu Feb 13 17:06:53 PST 2014"

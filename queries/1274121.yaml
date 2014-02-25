@@ -1,5 +1,0 @@
-query: >
-  message:"instance_id" AND
-  message:"could not be found as device id on any ports"
-  AND filename:logs*screen-n-api.txt
-resolved_at: "Thu Feb 13 17:06:53 PST 2014"
