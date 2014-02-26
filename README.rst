@@ -32,9 +32,6 @@ a ``query`` keyword which is the query text for elastic search.
 
 Guidelines for good queries
 
-- After a bug is resolved and has no more hits in elasticsearch, we
-  should flag it with a resolved_at keyword. This will let us keep
-  some memory of past bugs, and see if they come back.
 - Queries should get as close as possible to fingerprinting the root cause
 - Queries should not return any hits for successful jobs, this is a
   sign the query isn't specific enough
