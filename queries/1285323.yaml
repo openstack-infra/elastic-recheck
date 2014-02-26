@@ -1,0 +1,3 @@
+query: >
+    message:"+ echo \'The following services are still running:"
+    AND filename:"console.html"
