@@ -1,3 +1,5 @@
+# do not delete this bug even if you don't see the hits
+# in ER, as it remains an unfixed issue.
 query: >
   loglevel:"CRITICAL"
   AND message:"Address already in use"
