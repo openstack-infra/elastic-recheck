@@ -1,0 +1,3 @@
+query: >
+  message:"Invalid input received: Availability zone"
+  AND filename:logs*screen-n-api.txt
