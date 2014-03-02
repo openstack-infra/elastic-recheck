@@ -1,4 +1,4 @@
 query: >
   message:"WARNING: The following packages cannot be authenticated"
   AND (filename:console.html
-  OR filename:logs/devstacklog.txt)
+  OR filename:"logs/devstacklog.txt")
