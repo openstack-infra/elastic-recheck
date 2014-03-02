@@ -1,3 +1,4 @@
+six
 python-dateutil>=2.0
 pytz
 pyelasticsearch
