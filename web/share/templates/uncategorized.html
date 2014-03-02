@@ -11,6 +11,42 @@
      padding-top: 1em;
   }
 </style>
+<script type="text/javascript">
+    function filter_log_age(ev, days) {
+        ev.preventDefault();
+        var generated = $('#generated-date').text();
+        var gen_date = Date.parse(generated);
+        $( "li.log-link" ).each(function() {
+            if (! $( this ).hasClass("dated") ) {
+                var timestamp = $( this ).text().substr(0,16);
+                var item_date = Date.parse(timestamp);
+                var date_delta = (gen_date - item_date) / 86400000;
+                $( this ).addClass("dated");
+                $( this ).attr("age", date_delta);
+            }
+            if ($( this ).attr("age") > days ) {
+                $( this ).hide();
+            } else {
+                $( this ).show();
+            }
+        });
+    }
+
+    $(function() {
+        $("#24hours").click(function(e) {
+          filter_log_age(e, 1);
+        });
+        $("#2days").click(function(e) {
+          filter_log_age(e, 2);
+        });
+        $("#1week").click(function(e) {
+          filter_log_age(e, 7);
+        });
+        $("#2weeks").click(function(e) {
+          filter_log_age(e, 14);
+        });
+    });
+</script>
 <div class="container">
   <ul class="nav nav-tabs">
     <li><a href="../index.html">All Pipelines</a></li>
@@ -33,7 +69,11 @@ Overall Categorization Rate: {{ rate['overall'] }}%
   Total: {{ total }} - Found: {{ count }} = Unclassifed: {{ uncounted }}
 </p>
 <p>
-  Generated at: {{ generated_at }}
+  Generated at: <span id="generated-date">{{ generated_at }}</span>
+  (View: <a id="24hours" href="#">24 hours</a>,
+         <a id="2days" href="#">2 days</a>,
+         <a id="1week" href="#">1 week</a>,
+         <a id="2weeks" href="#">2 weeks</a>)
 </p>
 {% for job in jobs %}
 <a name="{{job[0]}}"></a>
@@ -42,7 +82,7 @@ Overall Categorization Rate: {{ rate['overall'] }}%
 <ul>
   {% for url in urls[job[0]] %}
 
-  <li>{{url['timestamp']}}: <a href="{{ url['log'] }}">{{ url['log'] }}</a></li>
+  <li class="log-link">{{url['timestamp']}}: <a href="{{ url['log'] }}">{{ url['log'] }}</a></li>
   {% endfor %}
 </ul>
 {% endfor %}
