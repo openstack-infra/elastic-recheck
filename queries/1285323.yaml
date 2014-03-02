@@ -1,3 +1,6 @@
 query: >
-    message:"+ echo \'The following services are still running:"
+    ((message:"+ echo \'The following services are still running:")
+    OR
+    (message:"Error: Service" AND message:"is not running"))
     AND filename:"console.html"
+    AND NOT build_name:"check-grenade-dsvm-partial-ncpu"
