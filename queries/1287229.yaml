@@ -1,0 +1,4 @@
+query: >
+  message:"ImportError: No module named ibm_db_sa"
+  AND (filename:console.html
+  OR filename:"logs/devstacklog.txt")
