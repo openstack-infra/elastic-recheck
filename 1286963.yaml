@@ -1,0 +1,3 @@
+query: >
+  message:"fatal: Unable to look up git.openstack.org"
+  AND filename:console.html
