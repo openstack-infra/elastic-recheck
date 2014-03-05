@@ -60,12 +60,6 @@ further down the stack that can cause many tempest tests to fail.
    search on click on an entry. Lucene query syntax is available at
    http://lucene.apache.org/core/4_0_0/queryparser/org/apache/lucene/queryparser/classic/package-summary.html#package_description
 
-   Note that wildcard analysis is disabled by default in ElasticSearch so
-   while a query in logstash might work with wildcards, it will not work in
-   elastic-recheck. See the ElasticSearch documentation for more information
-   on wildcard analysis:
-   http://www.elasticsearch.org/guide/en/elasticsearch/reference/current/query-dsl-query-string-query.html#_wildcards
-
 #. Add a comment to the bug with the query you identified and a link to
    the logstash url for that query search.
 #. Add the query to ``elastic-recheck/queries/BUGNUMBER.yaml`` and push
