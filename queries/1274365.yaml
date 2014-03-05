@@ -1,5 +1,0 @@
-query: >
-  message:"glance/tests/unit/v2/test_tasks_resource.py"
-  AND message:"test_index_with_sort_key"
-  AND filename:"console.html"
-  AND project:"openstack/glance"

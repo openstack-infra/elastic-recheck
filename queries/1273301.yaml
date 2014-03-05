@@ -1,4 +1,0 @@
-query: >
-  message:"Message objects do not support str() because they may contain non-ascii characters. Please use unicode() or translate() instead."
-  AND filename:"console.html"
-  AND (build_name:"gate-neutron-python26" OR build_name:"gate-neutron-python27")

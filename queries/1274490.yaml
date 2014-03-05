@@ -1,5 +1,0 @@
-query: >
-    message:"KeyError: 'ephemeral_key_uuid'" AND
-    project:"openstack/ceilometer" AND
-    filename:"console.html"
-
