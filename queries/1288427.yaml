@@ -1,0 +1,3 @@
+query: >
+  message:"Only a single head is supported. The script directory has multiple heads (due to branching), which must be resolved by manually editing the revision files to form a linear sequence. Run `alembic branches` to see the divergence(s)."
+  AND filename:"logs/devstacklog.txt"
