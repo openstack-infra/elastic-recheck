@@ -25,8 +25,6 @@ import elastic_recheck.loader as loader
 import elastic_recheck.query_builder as qb
 from elastic_recheck import results
 
-LOG = logging.getLogger("recheckwatchbot")
-
 ES_URL = "http://logstash.openstack.org/elasticsearch"
 
 
@@ -184,6 +182,9 @@ class Stream(object):
 
     Monitors gerrit stream looking for tempest-devstack failures.
     """
+
+    log = logging.getLogger("recheckwatchbot")
+
     def __init__(self, user, host, key, thread=True):
         port = 29418
         self.gerrit = gerritlib.gerrit.Gerrit(host, user, port, key)
@@ -195,20 +196,14 @@ class Stream(object):
     def parse_jenkins_failure(event):
         """Is this comment a jenkins failure comment."""
         if event.get('type', '') != 'comment-added':
-            LOG.debug("Skipping event type %s" % event.get('type', ''))
             return False
 
         username = event['author'].get('username', '')
         if (username != 'jenkins'):
-            LOG.debug("Skipping comment from %s" %
-                      event['author'].get('username', ''))
             return False
 
         if not ("Build failed.  For information on how to proceed" in
                 event['comment']):
-            change = event['change']['number']
-            rev = event['patchSet']['number']
-            LOG.debug("Skipping passing job %s,%s" % (change, rev))
             return False
 
         failed_tests = []
@@ -226,8 +221,8 @@ class Stream(object):
                    (name, change, patch, short_build_uuid))
             raise ConsoleNotReady(msg)
         else:
-            LOG.debug("Console ready for %s %s,%s,%s" %
-                      (name, change, patch, short_build_uuid))
+            self.log.debug("Console ready for %s %s,%s,%s" %
+                           (name, change, patch, short_build_uuid))
 
     def _has_required_files(self, change, patch, name, short_build_uuid):
         query = qb.files_ready(change, patch, name, short_build_uuid)
@@ -259,14 +254,14 @@ class Stream(object):
                 break
 
             except ConsoleNotReady as e:
-                LOG.debug(e.msg)
+                self.log.debug(e.msg)
                 time.sleep(SLEEP_TIME)
                 continue
             except pyelasticsearch.exceptions.InvalidJsonResponseError:
                 # If ElasticSearch returns an error code, sleep and retry
                 # TODO(jogo): if this works pull out search into a helper
                 # function that  does this.
-                LOG.exception(
+                self.log.exception(
                     "Elastic Search not responding on attempt %d" % i)
                 time.sleep(NUMBER_OF_RETRIES)
                 continue
@@ -278,7 +273,7 @@ class Stream(object):
                        job.short_build_uuid))
             raise ResultTimedOut(msg)
 
-        LOG.debug(
+        self.log.debug(
             "Found hits for change_number: %s, patch_number: %s"
             % (event.change, event.rev))
 
@@ -288,7 +283,7 @@ class Stream(object):
                     self._has_required_files(
                         event.change, event.rev, job.name,
                         job.short_build_uuid)
-                LOG.info(
+                self.log.info(
                     "All files present for change_number: %s, patch_number: %s"
                     % (event.change, event.rev))
                 time.sleep(10)
@@ -304,7 +299,7 @@ class Stream(object):
         raise ResultTimedOut(msg)
 
     def get_failed_tempest(self):
-        LOG.debug("entering get_failed_tempest")
+        self.log.debug("entering get_failed_tempest")
         while True:
             event = self.gerrit.getEvent()
 
@@ -319,9 +314,9 @@ class Stream(object):
             if not fevent.is_openstack_project():
                 continue
 
-            LOG.info("Looking for failures in %s,%s on %s" %
-                     (fevent.change, fevent.rev,
-                      ", ".join(fevent.failed_job_names())))
+            self.log.info("Looking for failures in %s,%s on %s" %
+                          (fevent.change, fevent.rev,
+                          ", ".join(fevent.failed_job_names())))
             if self._does_es_have_data(fevent):
                 return fevent
 
@@ -346,8 +341,8 @@ You have some unrecognized errors."""
             message = ("I noticed jenkins failed, refer to: "
                        "https://wiki.openstack.org/wiki/"
                        "GerritJenkinsGithub#Test_Failures")
-        LOG.debug("Compiled comment for commit %s:\n%s" %
-                  (event.name(), message))
+        self.log.debug("Compiled comment for commit %s:\n%s" %
+                       (event.name(), message))
         if not debug:
             self.gerrit.review(event.project, event.name(), message)
 
@@ -358,6 +353,8 @@ class Classifier():
     Given a change and revision, query logstash with a list of known queries
     that are mapped to specific bugs.
     """
+    log = logging.getLogger("recheckwatchbot")
+
     queries = None
 
     def __init__(self, queries_dir):
@@ -375,12 +372,12 @@ class Classifier():
     def classify(self, change_number, patch_number, short_build_uuid,
                  skip_resolved=True):
         """Returns either empty list or list with matched bugs."""
-        LOG.debug("Entering classify")
+        self.log.debug("Entering classify")
         #Reload each time
         self.queries = loader.load(self.queries_dir, skip_resolved)
         bug_matches = []
         for x in self.queries:
-            LOG.debug(
+            self.log.debug(
                 "Looking for bug: https://bugs.launchpad.net/bugs/%s"
                 % x['bug'])
             query = qb.single_patch(x['query'], change_number, patch_number,
