@@ -27,7 +27,6 @@ from launchpadlib import launchpad
 import elastic_recheck.elasticRecheck as er
 import elastic_recheck.results as er_results
 
-LOG = logging.getLogger('recheckwatchbot')
 LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
 
 
@@ -170,7 +169,8 @@ def collect_metrics(classifier, fails):
     for q in classifier.queries:
         start = time.time()
         results = classifier.hits_by_query(q['query'], size=30000)
-        LOG.debug("Took %d seconds to run (uncached) query for bug %s" %
+        log = logging.getLogger('recheckwatchbot')
+        log.debug("Took %d seconds to run (uncached) query for bug %s" %
                   (time.time() - start, q['bug']))
         hits = _status_count(results)
         data[q['bug']] = {

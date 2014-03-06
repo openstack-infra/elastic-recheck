@@ -18,11 +18,8 @@ A set of utility methods to load queries for elastic recheck.
 """
 
 import glob
-import logging
 import os.path
 import yaml
-
-LOG = logging.getLogger('recheckwatchbot')
 
 
 def load(directory='queries'):

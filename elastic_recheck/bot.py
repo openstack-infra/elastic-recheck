@@ -52,6 +52,7 @@ from launchpadlib import launchpad
 
 LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
 
+
 try:
     import daemon.pidlockfile
     pid_file_module = daemon.pidlockfile
@@ -60,8 +61,6 @@ except Exception:
     # instead it depends on lockfile-0.9.1
     import daemon.pidfile
     pid_file_module = daemon.pidfile
-
-LOG = logging.getLogger('recheckwatchbot')
 
 
 class RecheckWatchBot(irc.bot.SingleServerIRCBot):
@@ -72,28 +71,29 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
         self.channel_list = channels
         self.nickname = nickname
         self.password = password
+        self.log = logging.getLogger('recheckwatchbot')
 
     def on_nicknameinuse(self, c, e):
-        LOG.info('Nick previously in use, recovering.')
+        self.log.info('Nick previously in use, recovering.')
         c.nick(c.get_nickname() + "_")
         c.privmsg("nickserv", "identify %s " % self.password)
         c.privmsg("nickserv", "ghost %s %s" % (self.nickname, self.password))
         c.privmsg("nickserv", "release %s %s" % (self.nickname, self.password))
         time.sleep(1)
         c.nick(self.nickname)
-        LOG.info('Nick previously in use, recovered.')
+        self.log.info('Nick previously in use, recovered.')
 
     def on_welcome(self, c, e):
-        LOG.info('Identifying with IRC server.')
+        self.log.info('Identifying with IRC server.')
         c.privmsg("nickserv", "identify %s " % self.password)
-        LOG.info('Identified with IRC server.')
+        self.log.info('Identified with IRC server.')
         for channel in self.channel_list:
             c.join(channel)
-            LOG.info('Joined channel %s' % channel)
+            self.log.info('Joined channel %s' % channel)
             time.sleep(0.5)
 
     def send(self, channel, msg):
-        LOG.info('Sending "%s" to %s' % (msg, channel))
+        self.log.info('Sending "%s" to %s' % (msg, channel))
         self.connection.privmsg(channel, msg)
         time.sleep(0.5)
 
@@ -104,6 +104,7 @@ class RecheckWatch(threading.Thread):
         super(RecheckWatch, self).__init__()
         self.ircbot = ircbot
         self.channel_config = channel_config
+        self.log = logging.getLogger('recheckwatchbot')
         self.username = username
         self.queries = queries
         self.host = host
@@ -144,12 +145,12 @@ class RecheckWatch(threading.Thread):
         if display:
             self.print_msg(channel, msg)
         else:
-            LOG.info("Didn't leave a message on channel %s for %s because the "
-                     "bug doesn't target an appropriate project" % (
-                     channel, event.url))
+            self.log.info("Didn't leave a message on channel %s for %s because"
+                          " the bug doesn't target an appropriate project" % (
+                              channel, event.url))
 
     def print_msg(self, channel, msg):
-        LOG.info('Compiled Message %s: %s' % (channel, msg))
+        self.log.info('Compiled Message %s: %s' % (channel, msg))
         if self.ircbot:
             self.ircbot.send(channel, msg)
 
@@ -197,10 +198,10 @@ class RecheckWatch(threading.Thread):
                         event,
                         debug=not self.commenting)
             except er.ResultTimedOut as e:
-                LOG.warn(e.msg)
+                self.log.warn(e.msg)
                 self._read(msg=e.msg)
             except Exception:
-                LOG.exception("Uncaught exception processing event.")
+                self.log.exception("Uncaught exception processing event.")
 
 
 class ChannelConfig(object):
