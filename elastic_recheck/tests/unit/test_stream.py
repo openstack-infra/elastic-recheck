@@ -40,8 +40,8 @@ class TestStream(tests.TestCase):
             # there are currently 10 events in the stream, 3 are
             # failures
             event = stream.get_failed_tempest()
-            self.assertEqual(event.change, "64749")
-            self.assertEqual(event.rev, "6")
+            self.assertEqual(event.change, 64749)
+            self.assertEqual(event.rev, 6)
             self.assertEqual(event.project, "openstack/keystone")
             self.assertEqual(event.name(), "64749,6")
             self.assertEqual(event.url, "https://review.openstack.org/64749")
@@ -58,16 +58,16 @@ class TestStream(tests.TestCase):
             self.assertTrue(event.is_fully_classified())
 
             event = stream.get_failed_tempest()
-            self.assertEqual(event.change, "63078")
-            self.assertEqual(event.rev, "19")
+            self.assertEqual(event.change, 63078)
+            self.assertEqual(event.rev, 19)
             self.assertEqual(event.project, "openstack/horizon")
             self.assertEqual(event.name(), "63078,19")
             self.assertEqual(event.url, "https://review.openstack.org/63078")
             self.assertEqual(event.short_build_uuids(), ["ab07162"])
 
             event = stream.get_failed_tempest()
-            self.assertEqual(event.change, "65361")
-            self.assertEqual(event.rev, "2")
+            self.assertEqual(event.change, 65361)
+            self.assertEqual(event.rev, 2)
             self.assertEqual(event.project, "openstack/requirements")
             self.assertEqual(event.name(), "65361,2")
             self.assertEqual(event.url, "https://review.openstack.org/65361")
@@ -122,8 +122,8 @@ class TestStream(tests.TestCase):
             for job in event.failed_jobs:
                 if job.name == 'gate-keystone-python26':
                     job.bugs = ['123456']
-            self.assertEqual(event.change, "64749")
-            self.assertEqual(event.rev, "6")
+            self.assertEqual(event.change, 64749)
+            self.assertEqual(event.rev, 6)
             self.assertEqual(event.project, "openstack/keystone")
             self.assertEqual(event.name(), "64749,6")
             self.assertEqual(event.url, "https://review.openstack.org/64749")

@@ -58,18 +58,15 @@ def format_timedelta(td):
 
 
 class ConsoleNotReady(Exception):
-    def __init__(self, msg):
-        self.msg = msg
+    pass
 
 
 class FilesNotReady(Exception):
-    def __init__(self, msg):
-        self.msg = msg
+    pass
 
 
 class ResultTimedOut(Exception):
-    def __init__(self, msg):
-        self.msg = msg
+    pass
 
 
 class FailJob(object):
@@ -107,8 +104,8 @@ class FailEvent(object):
     failed_jobs = []
 
     def __init__(self, event, failed_jobs):
-        self.change = event['change']['number']
-        self.rev = event['patchSet']['number']
+        self.change = int(event['change']['number'])
+        self.rev = int(event['patchSet']['number'])
         self.project = event['change']['project']
         self.url = event['change']['url']
         self.comment = event["comment"]
@@ -119,7 +116,7 @@ class FailEvent(object):
         return "tempest-dsvm-full" in self.comment
 
     def name(self):
-        return "%s,%s" % (self.change, self.rev)
+        return "%d,%d" % (self.change, self.rev)
 
     def bug_urls(self, bugs=None):
         if bugs is None:
@@ -231,8 +228,8 @@ class Stream(object):
         required = required_files(name)
         missing_files = [x for x in required if x not in files]
         if len(missing_files) != 0:
-            msg = ("%s missing for %s %s,%s" % (
-                change, patch, name, missing_files))
+            msg = ("%s missing for %s %s,%s,%s" % (
+                missing_files, name, change, patch, short_build_uuid))
             raise FilesNotReady(msg)
 
     def _does_es_have_data(self, event):
@@ -254,7 +251,7 @@ class Stream(object):
                 break
 
             except ConsoleNotReady as e:
-                self.log.debug(e.msg)
+                self.log.debug(e)
                 time.sleep(SLEEP_TIME)
                 continue
             except pyelasticsearch.exceptions.InvalidJsonResponseError:
@@ -268,13 +265,13 @@ class Stream(object):
 
         if i == NUMBER_OF_RETRIES - 1:
             elapsed = format_timedelta(datetime.datetime.now() - started_at)
-            msg = ("Console logs not available after %ss for %s %s,%s,%s" %
+            msg = ("Console logs not available after %ss for %s %d,%d,%s" %
                    (elapsed, job.name, event.change, event.rev,
                        job.short_build_uuid))
             raise ResultTimedOut(msg)
 
         self.log.debug(
-            "Found hits for change_number: %s, patch_number: %s"
+            "Found hits for change_number: %d, patch_number: %d"
             % (event.change, event.rev))
 
         for i in range(NUMBER_OF_RETRIES):
@@ -284,11 +281,12 @@ class Stream(object):
                         event.change, event.rev, job.name,
                         job.short_build_uuid)
                 self.log.info(
-                    "All files present for change_number: %s, patch_number: %s"
+                    "All files present for change_number: %d, patch_number: %d"
                     % (event.change, event.rev))
                 time.sleep(10)
                 return True
-            except FilesNotReady:
+            except FilesNotReady as e:
+                self.log.info(e)
                 time.sleep(SLEEP_TIME)
 
         # if we get to the end, we're broken
@@ -314,7 +312,7 @@ class Stream(object):
             if not fevent.is_openstack_project():
                 continue
 
-            self.log.info("Looking for failures in %s,%s on %s" %
+            self.log.info("Looking for failures in %d,%d on %s" %
                           (fevent.change, fevent.rev,
                           ", ".join(fevent.failed_job_names())))
             if self._does_es_have_data(fevent):
@@ -369,12 +367,11 @@ class Classifier():
             es_query = qb.generic(query, facet=facet)
         return self.es.search(es_query, size=size)
 
-    def classify(self, change_number, patch_number, short_build_uuid,
-                 skip_resolved=True):
+    def classify(self, change_number, patch_number, short_build_uuid):
         """Returns either empty list or list with matched bugs."""
         self.log.debug("Entering classify")
         #Reload each time
-        self.queries = loader.load(self.queries_dir, skip_resolved)
+        self.queries = loader.load(self.queries_dir)
         bug_matches = []
         for x in self.queries:
             self.log.debug(
