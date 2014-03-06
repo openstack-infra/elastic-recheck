@@ -39,16 +39,16 @@ def required_files(job):
             'logs/screen-c-api.txt',
             'logs/screen-c-vol.txt',
             'logs/syslog.txt'])
-    # we could probably add more neutron files
-    # but currently only q-svc is used in queries
-    if re.match("neutron", job):
-        files.extend([
-            'logs/screen-q-svc.txt',
-            ])
-    else:
-        files.extend([
-            'logs/screen-n-net.txt',
-            ])
+        # we could probably add more neutron files
+        # but currently only q-svc is used in queries
+        if re.match("neutron", job):
+            files.extend([
+                'logs/screen-q-svc.txt',
+                ])
+        else:
+            files.extend([
+                'logs/screen-n-net.txt',
+                ])
     return files
 
 
