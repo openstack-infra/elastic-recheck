@@ -119,6 +119,18 @@ class RecheckWatch(threading.Thread):
                                                         'production',
                                                         LPCACHEDIR)
 
+    def display(self, channel, event):
+        display = False
+        for project in self._get_bug_projects(event.get_all_bugs()):
+            if channel in self.channel_config.projects['all']:
+                display = True
+                break
+            elif project in self.channel_config.projects:
+                if channel in self.channel_config.projects[project]:
+                    display = True
+                    break
+        return display
+
     def new_error(self, channel, event):
         # only on gate fails
         queue = event.queue()
@@ -132,21 +144,11 @@ class RecheckWatch(threading.Thread):
             self.print_msg(channel, msg)
 
     def error_found(self, channel, event):
-        msg = ('%s change: %s failed %s because of: %s' % (
+        msg = ('%s change: %s failed because of: %s' % (
             event.project,
             event.url,
-            ", ".join(event.failed_job_names()),
-            " and ".join(event.bug_urls())))
-        display = False
-        for project in self._get_bug_projects(event.get_all_bugs()):
-            if channel in self.channel_config.projects['all']:
-                display = True
-                break
-            elif project in self.channel_config.projects:
-                if channel in self.channel_config.projects[project]:
-                    display = True
-                    break
-        if display:
+            ", ".join(event.bug_urls_map())))
+        if self.display(channel, event):
             self.print_msg(channel, msg)
         else:
             self.log.info("Didn't leave a message on channel %s for %s because"
