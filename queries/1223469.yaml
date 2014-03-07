@@ -1,3 +1,0 @@
-query: >
-  message:"Failed to update iscsi target"
-  AND filename:logs*screen-c-vol.txt
