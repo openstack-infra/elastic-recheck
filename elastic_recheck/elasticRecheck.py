@@ -335,6 +335,8 @@ review comment with just the text:
             else:
                 message += """
 You have some unrecognized errors."""
+            message += """
+For bug details see: http://status.openstack.org/elastic-recheck/"""
         else:
             message = ("I noticed jenkins failed, refer to: "
                        "https://wiki.openstack.org/wiki/"
