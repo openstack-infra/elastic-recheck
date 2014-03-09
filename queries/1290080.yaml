@@ -1,0 +1,4 @@
+query: >
+  message:"echo \'Not found" AND
+  message:"cirros-0.3.1-x86_64-uec.tar.gz" AND
+  filename:"console.html"
