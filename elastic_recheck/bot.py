@@ -198,8 +198,8 @@ class RecheckWatch(threading.Thread):
                         event,
                         debug=not self.commenting)
             except er.ResultTimedOut as e:
-                self.log.warn(e.msg)
-                self._read(msg=e.msg)
+                self.log.warning(e.message)
+                self._read(msg=e.message)
             except Exception:
                 self.log.exception("Uncaught exception processing event.")
 
