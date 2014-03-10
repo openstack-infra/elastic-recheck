@@ -260,10 +260,9 @@ class Stream(object):
                 # function that  does this.
                 self.log.exception(
                     "Elastic Search not responding on attempt %d" % i)
-                time.sleep(NUMBER_OF_RETRIES)
+                time.sleep(SLEEP_TIME)
                 continue
-
-        if i == NUMBER_OF_RETRIES - 1:
+        else:
             elapsed = format_timedelta(datetime.datetime.now() - started_at)
             msg = ("Console logs not available after %ss for %s %d,%d,%s" %
                    (elapsed, job.name, event.change, event.rev,
