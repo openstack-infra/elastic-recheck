@@ -1,0 +1,3 @@
+query: >
+  message:"FAIL: glance.tests.unit.v2.test_registry_api.TestRegistryRPC.test_get_index_sort_status_desc"
+  AND filename:console.html
