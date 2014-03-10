@@ -43,6 +43,7 @@ import daemon
 import logging
 import logging.config
 import os
+import textwrap
 import threading
 import time
 import yaml
@@ -94,8 +95,11 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
 
     def send(self, channel, msg):
         self.log.info('Sending "%s" to %s' % (msg, channel))
-        self.connection.privmsg(channel, msg)
-        time.sleep(0.5)
+        # Cheap way to attempt to send fewer than 512 bytes at a time.
+        # TODO(clarkb) calculate actual irc overhead and split properly.
+        for chunk in textwrap.wrap(msg, 400):
+            self.connection.privmsg(channel, chunk)
+            time.sleep(0.5)
 
 
 class RecheckWatch(threading.Thread):
