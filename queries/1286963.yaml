@@ -1,3 +1,5 @@
+# Note, there is no filename here intentionally, because
+# this ends up in a lot of different files.
 query: >
-  message:"fatal: Unable to look up git.openstack.org"
-  AND filename:console.html
+  message:"fatal: Unable to look up"
+  OR message:"error: Couldn't resolve host"
