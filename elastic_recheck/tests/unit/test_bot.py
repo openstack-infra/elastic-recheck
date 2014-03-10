@@ -16,30 +16,29 @@ import ConfigParser
 import unittest
 import yaml
 
+import mock
+
 from elastic_recheck import bot
 
 
 # NOTE(mtreinish) Using unittest here because testtools TestCase.assertRaises
 # doesn't support using it as a context manager
 class TestBot(unittest.TestCase):
-
     def setUp(self):
         super(TestBot, self).setUp()
         self.fake_config = ConfigParser.ConfigParser({'server_password': None})
         self._set_fake_config()
         self.channel_config = bot.ChannelConfig(yaml.load(
             open('recheckwatchbot.yaml')))
-        self.recheck_watch = bot.RecheckWatch(None, self.channel_config,
-                                              self.fake_config.get('gerrit',
-                                                                   'user'),
-                                              self.fake_config.get(
-                                                  'gerrit',
-                                                  'query_file'),
-                                              self.fake_config.get('gerrit',
-                                                                   'host'),
-                                              self.fake_config.get('gerrit',
-                                                                   'key'),
-                                              False)
+        with mock.patch('launchpadlib.launchpad.Launchpad'):
+            self.recheck_watch = bot.RecheckWatch(
+                None,
+                self.channel_config,
+                self.fake_config.get('gerrit', 'user'),
+                self.fake_config.get('gerrit', 'query_file'),
+                self.fake_config.get('gerrit', 'host'),
+                self.fake_config.get('gerrit', 'key'),
+                False)
 
     def _set_fake_config(self):
         self.fake_config.add_section('ircbot')
