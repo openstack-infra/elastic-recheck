@@ -1,4 +1,4 @@
 query: >
   message:"Timed out during operation: cannot acquire state
   change lock"
-  AND filename:logs*libvirtd.txt
+  AND filename:logs*screen-n-cpu.txt
