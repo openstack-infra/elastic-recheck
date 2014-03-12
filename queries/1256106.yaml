@@ -1,4 +1,0 @@
-query: >
-  message:"DELETE FROM ml2_port_bindings WHERE ml2_port_bindings.port_id"
-  AND message:"TransactionRollbackError"
-  AND filename:logs*screen-q-svc.txt

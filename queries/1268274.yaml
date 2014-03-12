@@ -1,2 +1,0 @@
-query: >
-  message:"return server.networks[network_name][0]" AND filename:"console.html"
