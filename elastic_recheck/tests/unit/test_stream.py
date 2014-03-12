@@ -40,6 +40,24 @@ class TestStream(tests.TestCase):
             # there are currently 10 events in the stream, 3 are
             # failures
             event = stream.get_failed_tempest()
+            self.assertEqual(event.change, 64750)
+            self.assertEqual(event.rev, 6)
+            self.assertEqual(event.project, "openstack/keystone")
+            self.assertEqual(event.name(), "64750,6")
+            self.assertEqual(event.url, "https://review.openstack.org/64750")
+            self.assertEqual(sorted(event.short_build_uuids()),
+                             ["5dd41fe", "d3fd328"])
+            self.assertTrue(event.is_openstack_project())
+            self.assertEqual(event.queue(), "gate")
+            self.assertEqual(event.bug_urls(), None)
+            self.assertEqual(event.bug_urls_map(), None)
+            self.assertEqual(sorted(event.failed_job_names()),
+                             ['gate-keystone-python26',
+                              'gate-keystone-python27'])
+            self.assertEqual(event.get_all_bugs(), None)
+            self.assertTrue(event.is_fully_classified())
+
+            event = stream.get_failed_tempest()
             self.assertEqual(event.change, 64749)
             self.assertEqual(event.rev, 6)
             self.assertEqual(event.project, "openstack/keystone")
@@ -122,6 +140,32 @@ class TestStream(tests.TestCase):
             for job in event.failed_jobs:
                 if job.name == 'gate-keystone-python26':
                     job.bugs = ['123456']
+            self.assertEqual(event.change, 64750)
+            self.assertEqual(event.rev, 6)
+            self.assertEqual(event.project, "openstack/keystone")
+            self.assertEqual(event.name(), "64750,6")
+            self.assertEqual(event.url, "https://review.openstack.org/64750")
+            self.assertEqual(sorted(event.short_build_uuids()),
+                             ["5dd41fe", "d3fd328"])
+            self.assertTrue(event.is_openstack_project())
+            self.assertEqual(event.queue(), "gate")
+            self.assertEqual(event.bug_urls(),
+                             ['https://bugs.launchpad.net/bugs/123456'])
+            self.assertEqual(event.bug_urls_map(),
+                             ['gate-keystone-python27: unrecognized error',
+                              'gate-keystone-python26: '
+                              'https://bugs.launchpad.net/bugs/123456'])
+            self.assertEqual(sorted(event.failed_job_names()),
+                             ['gate-keystone-python26',
+                              'gate-keystone-python27'])
+            self.assertEqual(event.get_all_bugs(), ['123456'])
+            self.assertFalse(event.is_fully_classified())
+
+            event = stream.get_failed_tempest()
+            # Add bugs
+            for job in event.failed_jobs:
+                if job.name == 'gate-keystone-python26':
+                    job.bugs = ['123456']
             self.assertEqual(event.change, 64749)
             self.assertEqual(event.rev, 6)
             self.assertEqual(event.project, "openstack/keystone")
@@ -134,11 +178,10 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.bug_urls(),
                              ['https://bugs.launchpad.net/bugs/123456'])
             self.assertEqual(event.bug_urls_map(),
-                             ['gate-keystone-python27: unrecognized error',
-                              'gate-keystone-python26: '
+                             ['gate-keystone-python26: '
                               'https://bugs.launchpad.net/bugs/123456'])
             self.assertEqual(sorted(event.failed_job_names()),
                              ['gate-keystone-python26',
                               'gate-keystone-python27'])
             self.assertEqual(event.get_all_bugs(), ['123456'])
-            self.assertFalse(event.is_fully_classified())
+            self.assertTrue(event.is_fully_classified())

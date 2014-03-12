@@ -240,6 +240,46 @@
     }
   },
   {
+    "comment": "Build failed.  For information on how to proceed, see https:\/\/wiki.openstack.org\/wiki\/GerritJenkinsGit#Test_Failures\n\n- gate-keystone-pep8 http:\/\/logs.openstack.org\/49\/64750\/6\/gate\/gate-keystone-pep8\/16e0b97 : SUCCESS in 2m 25s\n- gate-keystone-docs http:\/\/docs-draft.openstack.org\/49\/64750\/6\/gate\/gate-keystone-docs\/77c8f7a\/doc\/build\/html\/ : SUCCESS in 5m 25s\n- gate-keystone-python26 http:\/\/logs.openstack.org\/49\/64750\/6\/gate\/gate-keystone-python26\/d3fd328 : FAILURE in 18m 04s\n- gate-keystone-python27 http:\/\/logs.openstack.org\/49\/64750\/6\/gate\/gate-keystone-python27\/5dd41fe : FAILURE in 10m 01s\n- gate-tempest-dsvm-full http:\/\/logs.openstack.org\/49\/64750\/6\/gate\/gate-tempest-dsvm-full\/fce905d : SUCCESS in 46m 00s\n- gate-tempest-dsvm-postgres-full http:\/\/logs.openstack.org\/49\/64750\/6\/gate\/gate-tempest-dsvm-postgres-full\/e5cd968 : SUCCESS in 53m 30s\n- gate-tempest-dsvm-neutron http:\/\/logs.openstack.org\/49\/64750\/6\/gate\/gate-tempest-dsvm-neutron\/0673b30 : SUCCESS in 37m 25s\n- gate-tempest-dsvm-large-ops http:\/\/logs.openstack.org\/49\/64750\/6\/gate\/gate-tempest-dsvm-large-ops\/bdc661a : SUCCESS in 13m 21s\n- gate-tempest-dsvm-neutron-large-ops http:\/\/logs.openstack.org\/49\/64750\/6\/gate\/gate-tempest-dsvm-neutron-large-ops\/991887c : SUCCESS in 12m 28s\n- gate-grenade-dsvm http:\/\/logs.openstack.org\/49\/64750\/6\/gate\/gate-grenade-dsvm\/d098069 : SUCCESS in 31m 05s\n- gate-swift-dsvm-functional http:\/\/logs.openstack.org\/49\/64750\/6\/gate\/gate-swift-dsvm-functional\/2f9377b : SUCCESS in 11m 56s\n",
+    "author": {
+      "username": "jenkins",
+      "name": "Jenkins"
+    },
+    "approvals": [
+      {
+        "type": "VRIF",
+        "description": "Verified",
+        "value": "-1"
+      }
+    ],
+    "patchSet": {
+      "createdOn": 1389378289,
+      "ref": "refs\/changes\/49\/64750\/6",
+      "number": "6",
+      "uploader": {
+        "username": "blk-u",
+        "name": "Brant Knudson",
+        "email": "bknudson@us.ibm.com"
+      },
+      "revision": "06b14616cb2a11514b0c151cc213c1ab5cea324b"
+    },
+    "type": "comment-added",
+    "change": {
+      "topic": "bug\/1265108",
+      "url": "https:\/\/review.openstack.org\/64750",
+      "number": "64750",
+      "project": "openstack\/keystone",
+      "branch": "master",
+      "owner": {
+        "username": "blk-u",
+        "name": "Brant Knudson",
+        "email": "bknudson@us.ibm.com"
+      },
+      "id": "I890a1c798d7f4a8a345404cd7754708ab0d36651",
+      "subject": "Enhance auth tests for non-default default_domain_id"
+    }
+  },
+  {
     "comment": "Build succeeded.\n\n- gate-neutron-pep8 http:\/\/logs.openstack.org\/02\/65902\/3\/check\/gate-neutron-pep8\/0ef123c : SUCCESS in 2m 13s\n- gate-neutron-docs http:\/\/docs-draft.openstack.org\/02\/65902\/3\/check\/gate-neutron-docs\/4a7a2ce\/doc\/build\/html\/ : SUCCESS in 1m 43s\n- gate-neutron-python26 http:\/\/logs.openstack.org\/02\/65902\/3\/check\/gate-neutron-python26\/d3e596e : SUCCESS in 43m 38s\n- gate-neutron-python27 http:\/\/logs.openstack.org\/02\/65902\/3\/check\/gate-neutron-python27\/525acec : SUCCESS in 27m 10s\n- check-tempest-dsvm-neutron http:\/\/logs.openstack.org\/02\/65902\/3\/check\/check-tempest-dsvm-neutron\/469682a : SUCCESS in 35m 59s\n- check-tempest-dsvm-neutron-pg http:\/\/logs.openstack.org\/02\/65902\/3\/check\/check-tempest-dsvm-neutron-pg\/91e8f4f : SUCCESS in 37m 11s\n- check-tempest-dsvm-neutron-isolated http:\/\/logs.openstack.org\/02\/65902\/3\/check\/check-tempest-dsvm-neutron-isolated\/90021b9 : SUCCESS in 41m 27s\n- check-tempest-dsvm-neutron-pg-isolated http:\/\/logs.openstack.org\/02\/65902\/3\/check\/check-tempest-dsvm-neutron-pg-isolated\/7bc809a : SUCCESS in 45m 35s\n- gate-tempest-dsvm-neutron-large-ops http:\/\/logs.openstack.org\/02\/65902\/3\/check\/gate-tempest-dsvm-neutron-large-ops\/aea24f9 : SUCCESS in 15m 01s\n- check-grenade-dsvm-neutron http:\/\/logs.openstack.org\/02\/65902\/3\/check\/check-grenade-dsvm-neutron\/59354b6 : FAILURE in 20m 16s (non-voting)\n- check-devstack-dsvm-neutron http:\/\/logs.openstack.org\/02\/65902\/3\/check\/check-devstack-dsvm-neutron\/d347313 : FAILURE in 17m 10s (non-voting)\n",
     "author": {
       "username": "jenkins",
