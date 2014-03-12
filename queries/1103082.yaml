@@ -1,3 +1,0 @@
-query: >
-  message:"You are already running a stack.sh session."
-  AND filename:"console.html"
