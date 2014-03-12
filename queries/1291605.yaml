@@ -1,0 +1,4 @@
+query: >
+  message:"FAIL: nova.tests.api.openstack.compute.plugins.v3.test_servers.ServersControllerCreateTest.test_create_instance_with_networks_disabled" AND
+  filename:"console.html" AND
+  (build_name:"gate-nova-python27" OR build_name:"gate-nova-python26")
