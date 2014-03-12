@@ -1,0 +1,4 @@
+query: >
+  message:"UnexpectedTaskStateError: Unexpected task state: expecting [None] but the actual state is powering-off" AND
+  filename:"console.html" AND
+  (build_name:"gate-nova-python27" OR build_name:"gate-nova-python26")
