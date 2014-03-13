@@ -136,7 +136,7 @@ class RecheckWatch(threading.Thread):
             event.project,
             event.url,
             ", ".join(event.failed_job_names()),
-            "and ".join(event.bug_urls())))
+            " and ".join(event.bug_urls())))
         display = False
         for project in self._get_bug_projects(event.get_all_bugs()):
             if channel in self.channel_config.projects['all']:
