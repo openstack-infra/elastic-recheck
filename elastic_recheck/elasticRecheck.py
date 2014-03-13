@@ -134,7 +134,9 @@ class FailEvent(object):
         bug_map = {}
         for job in self.failed_jobs:
             if len(job.bugs) is 0:
-                bug_map[job.name] = None
+                # we only care about fails with missing bugs in the gate
+                if self.queue() == "gate":
+                    bug_map[job.name] = None
             else:
                 bug_map[job.name] = ', '.join(self.bug_urls(job.bugs))
         bug_list = []
@@ -147,6 +149,10 @@ class FailEvent(object):
 
     def is_fully_classified(self):
         if self.get_all_bugs() is None:
+            return True
+        # we consider anything that's not in the gate queue
+        # fully classified, because errors are expected
+        if self.queue() != "gate":
             return True
         for job in self.failed_jobs:
             if len(job.bugs) is 0:
