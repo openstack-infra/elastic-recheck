@@ -1,0 +1,4 @@
+query: >
+  message:"(OperationalError) (1205, 'Lock wait timeout exceeded; try restarting transaction')"
+  AND NOT message:"Traceback (most recent call last"
+  AND tags:"screen-q-svc.txt"
