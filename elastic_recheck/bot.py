@@ -120,16 +120,14 @@ class RecheckWatch(threading.Thread):
                                                         LPCACHEDIR)
 
     def new_error(self, channel, event):
-        # only on gate fails
         queue = event.queue()
-        if queue == "gate":
-            msg = ('%s change: %s failed %s in the %s queue with'
-                   ' an unrecognized error' %
-                   (event.project,
-                    event.url,
-                    ', '.join(event.failed_job_names()),
-                    queue))
-            self.print_msg(channel, msg)
+        msg = ('%s change: %s failed %s in the %s queue with'
+               ' an unrecognized error' %
+               (event.project,
+                event.url,
+                ', '.join(event.failed_job_names()),
+                queue))
+        self.print_msg(channel, msg)
 
     def error_found(self, channel, event):
         msg = ('%s change: %s failed %s because of: %s' % (
@@ -173,12 +171,14 @@ class RecheckWatch(threading.Thread):
                 if channel in self.channel_config.events['negative']:
                     self.print_msg(channel, msg)
             elif event:
-                if event.get_all_bugs():
-                    if channel in self.channel_config.events['positive']:
-                        self.error_found(channel, event)
-                else:
-                    if channel in self.channel_config.events['negative']:
-                        self.new_error(channel, event)
+                # only display events on gate queue, others are just spam
+                if event.queue() == "gate":
+                    if event.get_all_bugs():
+                        if channel in self.channel_config.events['positive']:
+                            self.error_found(channel, event)
+                    else:
+                        if channel in self.channel_config.events['negative']:
+                            self.new_error(channel, event)
             else:
                 raise Exception('No event or msg specified')
 
