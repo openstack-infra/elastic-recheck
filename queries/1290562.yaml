@@ -1,0 +1,3 @@
+query: >
+  message:"error: option --single-version-externally-managed not recognized"
+  AND tags:"console"
