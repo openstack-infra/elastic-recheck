@@ -1,3 +1,0 @@
-query: >
-    message:"Dropping user packet because connection is dead" AND
-    filename:"console.html"
