@@ -1,5 +1,4 @@
 query: >
   message:"java.io.InterruptedIOException"
-  AND message:"hudson.Launcher$RemoteLauncher.launch"
   AND filename:console.html
 suppress-graph: true
