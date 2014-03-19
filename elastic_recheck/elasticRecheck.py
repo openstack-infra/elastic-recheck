@@ -138,7 +138,7 @@ class FailEvent(object):
                 if self.queue() == "gate":
                     bug_map[job.name] = None
             else:
-                bug_map[job.name] = ', '.join(self.bug_urls(job.bugs))
+                bug_map[job.name] = ' '.join(self.bug_urls(job.bugs))
         bug_list = []
         for job in bug_map:
             if bug_map[job] is None:
