@@ -66,7 +66,7 @@ def main():
 
     for query in classifier.queries:
         if args.queue:
-            query['query'] = query['query'] + ('AND build_queue:"%s"' %
+            query['query'] = query['query'] + (' AND build_queue:"%s"' %
                                                args.queue)
         if query.get('suppress-graph'):
             continue
