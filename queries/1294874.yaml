@@ -1,0 +1,3 @@
+query: >
+  message:"Sub-process \/usr\/bin\/dpkg returned an error code"
+  AND filename:"logs/devstacklog.txt"
