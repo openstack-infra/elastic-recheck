@@ -1,0 +1,3 @@
+query: >
+  message:"cgroup\: No space left on device"
+  AND filename:logs*screen-n-sch.txt
