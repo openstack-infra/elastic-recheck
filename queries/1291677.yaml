@@ -1,0 +1,4 @@
+query: >
+  message:"PortNotFound: Port"
+  AND message:"is not attached"
+  AND filename:logs*screen-n-cpu.txt
