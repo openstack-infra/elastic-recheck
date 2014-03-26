@@ -1,0 +1,3 @@
+query: >
+  message:"heat.engine.resource WaitConditionTimeout: 0 of 1 received" AND
+  filename:logs*screen-h-eng.txt
