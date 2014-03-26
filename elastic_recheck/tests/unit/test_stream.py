@@ -45,7 +45,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/keystone")
             self.assertEqual(event.name(), "64750,6")
             self.assertEqual(event.url, "https://review.openstack.org/64750")
-            self.assertEqual(sorted(event.short_build_uuids()),
+            self.assertEqual(sorted(event.build_short_uuids()),
                              ["5dd41fe", "d3fd328"])
             self.assertTrue(event.is_openstack_project())
             self.assertEqual(event.queue(), "gate")
@@ -63,7 +63,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/keystone")
             self.assertEqual(event.name(), "64749,6")
             self.assertEqual(event.url, "https://review.openstack.org/64749")
-            self.assertEqual(sorted(event.short_build_uuids()),
+            self.assertEqual(sorted(event.build_short_uuids()),
                              ["5dd41fe", "d3fd328"])
             self.assertTrue(event.is_openstack_project())
             self.assertEqual(event.queue(), "check")
@@ -81,7 +81,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/horizon")
             self.assertEqual(event.name(), "63078,19")
             self.assertEqual(event.url, "https://review.openstack.org/63078")
-            self.assertEqual(event.short_build_uuids(), ["ab07162"])
+            self.assertEqual(event.build_short_uuids(), ["ab07162"])
 
             event = stream.get_failed_tempest()
             self.assertEqual(event.change, 65361)
@@ -89,7 +89,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/requirements")
             self.assertEqual(event.name(), "65361,2")
             self.assertEqual(event.url, "https://review.openstack.org/65361")
-            self.assertEqual(event.short_build_uuids(), ["8209fb4"])
+            self.assertEqual(event.build_short_uuids(), ["8209fb4"])
 
             self.assertRaises(
                 fg.GerritDone,
@@ -119,7 +119,7 @@ class TestStream(tests.TestCase):
         self.assertEqual(job.url,
                          ("http://logs.openstack.org/31/64831/1/check/"
                           "check-requirements-integration-dsvm/135d0b4"))
-        self.assertEqual(job.short_build_uuid, '135d0b4')
+        self.assertEqual(job.build_short_uuid, '135d0b4')
 
         self.assertNotIn('gate-requirements-pep8', job_names)
         self.assertNotIn('gate-requirements-python27', job_names)
@@ -145,7 +145,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/keystone")
             self.assertEqual(event.name(), "64750,6")
             self.assertEqual(event.url, "https://review.openstack.org/64750")
-            self.assertEqual(sorted(event.short_build_uuids()),
+            self.assertEqual(sorted(event.build_short_uuids()),
                              ["5dd41fe", "d3fd328"])
             self.assertTrue(event.is_openstack_project())
             self.assertEqual(event.queue(), "gate")
@@ -171,7 +171,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.project, "openstack/keystone")
             self.assertEqual(event.name(), "64749,6")
             self.assertEqual(event.url, "https://review.openstack.org/64749")
-            self.assertEqual(sorted(event.short_build_uuids()),
+            self.assertEqual(sorted(event.build_short_uuids()),
                              ["5dd41fe", "d3fd328"])
             self.assertTrue(event.is_openstack_project())
             self.assertEqual(event.queue(), "check")

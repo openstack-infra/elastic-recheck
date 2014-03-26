@@ -66,7 +66,7 @@ def single_queue(query, queue, facet=None):
                    (query, queue), facet=facet)
 
 
-def result_ready(review, patch, name, short_build_uuid):
+def result_ready(review, patch, name, build_short_uuid):
     """A query to determine if we have a failure for a particular patch.
 
     This is looking for a particular FAILURE line in the console log, which
@@ -78,11 +78,11 @@ def result_ready(review, patch, name, short_build_uuid):
                    'AND build_change:"%s" '
                    'AND build_patchset:"%s" '
                    'AND build_name:"%s"'
-                   'AND build_uuid:%s*' %
-                   (review, patch, name, short_build_uuid))
+                   'AND build_short_uuid:%s' %
+                   (review, patch, name, build_short_uuid))
 
 
-def files_ready(review, patch, name, short_build_uuid):
+def files_ready(review, patch, name, build_short_uuid):
     """A facetted query to ensure all the required files exist.
 
     When changes are uploaded to elastic search there is a delay in
@@ -94,12 +94,12 @@ def files_ready(review, patch, name, short_build_uuid):
                    'AND build_change:"%s" '
                    'AND build_patchset:"%s"'
                    'AND build_name:"%s"'
-                   'AND build_uuid:%s*' %
-                   (review, patch, name, short_build_uuid),
+                   'AND build_short_uuid:%s' %
+                   (review, patch, name, build_short_uuid),
                    facet='filename')
 
 
-def single_patch(query, review, patch, short_build_uuid):
+def single_patch(query, review, patch, build_short_uuid):
     """A query for a single patch (review + revision).
 
     This is used to narrow down a particular kind of failure found in a
@@ -108,5 +108,5 @@ def single_patch(query, review, patch, short_build_uuid):
     return generic('%s '
                    'AND build_change:"%s" '
                    'AND build_patchset:"%s"'
-                   'AND build_uuid:%s*' %
-                   (query, review, patch, short_build_uuid))
+                   'AND build_short_uuid:%s' %
+                   (query, review, patch, build_short_uuid))

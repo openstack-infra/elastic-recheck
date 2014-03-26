@@ -75,7 +75,7 @@ class FailJob(object):
     A job is a zuul job.
     """
     bugs = []
-    short_build_uuid = None
+    build_short_uuid = None
     url = None
     name = None
 
@@ -84,7 +84,7 @@ class FailJob(object):
         self.url = url
         # The last 7 characters of the URL are the first 7 digits
         # of the build_uuid.
-        self.short_build_uuid = url[-7:]
+        self.build_short_uuid = url[-7:]
 
     def __str__(self):
         return self.name
@@ -99,7 +99,7 @@ class FailEvent(object):
     rev = None
     project = None
     url = None
-    short_build_uuids = []
+    build_short_uuids = []
     comment = None
     failed_jobs = []
 
@@ -165,8 +165,8 @@ class FailEvent(object):
             return None
         return self.failed_jobs[0].url.split('/')[6]
 
-    def short_build_uuids(self):
-        return [job.short_build_uuid for job in self.failed_jobs]
+    def build_short_uuids(self):
+        return [job.build_short_uuid for job in self.failed_jobs]
 
     def failed_job_names(self):
         return [job.name for job in self.failed_jobs]
@@ -216,26 +216,26 @@ class Stream(object):
                 failed_tests.append(FailJob(m.group(1), m.group(2)))
         return failed_tests
 
-    def _job_console_uploaded(self, change, patch, name, short_build_uuid):
-        query = qb.result_ready(change, patch, name, short_build_uuid)
+    def _job_console_uploaded(self, change, patch, name, build_short_uuid):
+        query = qb.result_ready(change, patch, name, build_short_uuid)
         r = self.es.search(query, size='10')
         if len(r) == 0:
             msg = ("Console logs not ready for %s %s,%s,%s" %
-                   (name, change, patch, short_build_uuid))
+                   (name, change, patch, build_short_uuid))
             raise ConsoleNotReady(msg)
         else:
             self.log.debug("Console ready for %s %s,%s,%s" %
-                           (name, change, patch, short_build_uuid))
+                           (name, change, patch, build_short_uuid))
 
-    def _has_required_files(self, change, patch, name, short_build_uuid):
-        query = qb.files_ready(change, patch, name, short_build_uuid)
+    def _has_required_files(self, change, patch, name, build_short_uuid):
+        query = qb.files_ready(change, patch, name, build_short_uuid)
         r = self.es.search(query, size='80')
         files = [x['term'] for x in r.terms]
         required = required_files(name)
         missing_files = [x for x in required if x not in files]
         if len(missing_files) != 0:
             msg = ("%s missing for %s %s,%s,%s" % (
-                missing_files, name, change, patch, short_build_uuid))
+                missing_files, name, change, patch, build_short_uuid))
             raise FilesNotReady(msg)
 
     def _does_es_have_data(self, event):
@@ -253,7 +253,7 @@ class Stream(object):
                     # the first two
                     self._job_console_uploaded(
                         event.change, event.rev, job.name,
-                        job.short_build_uuid)
+                        job.build_short_uuid)
                 break
 
             except ConsoleNotReady as e:
@@ -272,7 +272,7 @@ class Stream(object):
             elapsed = format_timedelta(datetime.datetime.now() - started_at)
             msg = ("Console logs not available after %ss for %s %d,%d,%s" %
                    (elapsed, job.name, event.change, event.rev,
-                       job.short_build_uuid))
+                       job.build_short_uuid))
             raise ResultTimedOut(msg)
 
         self.log.debug(
@@ -284,7 +284,7 @@ class Stream(object):
                 for job in event.failed_jobs:
                     self._has_required_files(
                         event.change, event.rev, job.name,
-                        job.short_build_uuid)
+                        job.build_short_uuid)
                 self.log.info(
                     "All files present for change_number: %d, patch_number: %d"
                     % (event.change, event.rev))
@@ -298,7 +298,7 @@ class Stream(object):
         elapsed = format_timedelta(datetime.datetime.now() - started_at)
         msg = ("Required files not ready after %ss for %s %d,%d,%s" %
                (elapsed, job.name, event.change, event.rev,
-                   job.short_build_uuid))
+                   job.build_short_uuid))
         raise ResultTimedOut(msg)
 
     def get_failed_tempest(self):
@@ -374,7 +374,7 @@ class Classifier():
             es_query = qb.generic(query, facet=facet)
         return self.es.search(es_query, size=size)
 
-    def classify(self, change_number, patch_number, short_build_uuid):
+    def classify(self, change_number, patch_number, build_short_uuid):
         """Returns either empty list or list with matched bugs."""
         self.log.debug("Entering classify")
         #Reload each time
@@ -385,7 +385,7 @@ class Classifier():
                 "Looking for bug: https://bugs.launchpad.net/bugs/%s"
                 % x['bug'])
             query = qb.single_patch(x['query'], change_number, patch_number,
-                                    short_build_uuid)
+                                    build_short_uuid)
             results = self.es.search(query, size='10')
             if len(results) > 0:
                 bug_matches.append(x['bug'])

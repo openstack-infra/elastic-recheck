@@ -195,7 +195,7 @@ class RecheckWatch(threading.Thread):
 
                 for job in event.failed_jobs:
                     job.bugs = set(classifier.classify(
-                        event.change, event.rev, job.short_build_uuid))
+                        event.change, event.rev, job.build_short_uuid))
                 if not event.get_all_bugs():
                     self._read(event)
                 else:
