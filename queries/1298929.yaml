@@ -1,0 +1,3 @@
+query: >
+  message:"SSL peer certificate or SSH remote key was not OK"
+  AND tags:console
