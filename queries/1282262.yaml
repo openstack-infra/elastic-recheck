@@ -1,4 +1,4 @@
 query: >
   message:"Permission denied:"
   AND message:"/opt/stack/"
-  AND tags:"console.html"
+  AND tags:"console"
