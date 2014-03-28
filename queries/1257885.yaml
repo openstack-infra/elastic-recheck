@@ -2,4 +2,4 @@ query: >
   message:"FAIL: tempest.scenario.test_dashboard_basic_ops.TestDashboardBasicOps.test_basic_scenario[dashboard]"
   AND NOT build_name:*savanna*
   AND NOT build_name:*sahara*
-  AND filename:"console.html"
+  AND tags:"console.html"

@@ -1,3 +1,3 @@
 query: >
   message:"nova.compute.manager Timeout: Timeout while waiting on RPC response - topic: \"network\", RPC method: \"allocate_for_instance\""
-  AND filename:logs*screen-n-cpu.txt
+  AND tags:"screen-n-cpu.txt"

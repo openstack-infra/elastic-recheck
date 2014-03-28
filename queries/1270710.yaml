@@ -1,3 +1,3 @@
 query: >
-  filename:"console.html"
+  tags:"console.html"
   AND message:"download.py\", line 495"

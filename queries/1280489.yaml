@@ -3,3 +3,4 @@ query: >
   AND message:"neutron_nsx_network_mappings"
   AND project:"openstack/neutron"
   AND build_name:*neutron-python2*
+  AND tags:"console.html"

@@ -1,4 +1,4 @@
 query: >
     message:"Looks like the node went offline during the build"
     AND message:"slave.log \(No such file or directory\)"
-    AND filename:"console.html"
+    AND tags:"console.html"

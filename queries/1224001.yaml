@@ -1,4 +1,4 @@
 query: >
   message:"tempest.scenario.test_network_basic_ops AssertionError:
   Timed out waiting for"
-  AND filename:"console.html"
+  AND tags:"console.html"

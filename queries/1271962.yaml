@@ -2,4 +2,4 @@ query: >
   project:"openstack/swift"
   AND build_name:*-swift-python*
   AND message:"FAIL: test_node_write_timeout"
-  AND filename:"console.html"
+  AND tags:"console.html"

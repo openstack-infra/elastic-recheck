@@ -2,4 +2,4 @@ query: >
     message:"Details: Timed out waiting for thing" AND
     message:"to become" AND
     (message:"in-use" OR message:"available") AND
-    filename:console.html
+    tags:"console.html"

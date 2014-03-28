@@ -1,4 +1,4 @@
 query: >
   message:"Details: Timed out waiting for thing"
   AND build_name:gate-tempest-dsvm-neutron-large-ops
-  AND filename:console.html
+  AND tags:"console.html"

@@ -3,4 +3,4 @@
 query: >
   loglevel:"CRITICAL"
   AND message:"Address already in use"
-  AND filename:logs*screen-key.txt
+  AND tags:"screen-key.txt"

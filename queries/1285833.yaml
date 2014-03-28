@@ -1,4 +1,4 @@
 query: >
   message:"CertificateConfigError: Unable to load certificate. Ensure your system is configured properly."
-  AND NOT filename:logs*screen-n-api.txt
-  AND filename:logs*screen-*-api.txt
+  AND NOT tags:"screen-n-api.txt"
+  AND tags:screen-*-api.txt

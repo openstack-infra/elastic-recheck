@@ -1,4 +1,4 @@
 query: >
   message:"[EnvInject] - [ERROR] - SEVERE ERROR occurs:"
-  AND filename:"console.html"
+  AND tags:"console.html"
 suppress-graph: true

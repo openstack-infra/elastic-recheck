@@ -1,4 +1,4 @@
 query: >
   message:" File \"tempest/api/object_storage/test_account_quotas_negative.py\""
   AND message:" in test_upload_large_object"
-  AND filename:"console.html"
+  AND tags:"console.html"

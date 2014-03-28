@@ -1,4 +1,4 @@
 query: >
   message:"FAIL: cinder.tests.api.contrib.test_admin_actions.AdminActionsTest.test_force_delete_snapshot"
-  AND filename:"console.html"
-  AND  build_name:("gate-cinder-python27" OR "gate-cinder-python26")
+  AND tags:"console.html"
+  AND build_name:("gate-cinder-python27" OR "gate-cinder-python26")

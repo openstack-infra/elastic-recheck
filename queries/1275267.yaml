@@ -1,4 +1,4 @@
 query: >
   message:"NovaException: Error mounting /opt/stack/data/nova/instances/"
   AND message:"/disk with libguestfs"
-  AND filename: "logs/screen-n-cpu.txt"
+  AND tags: "screen-n-cpu.txt"

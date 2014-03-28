@@ -1,4 +1,4 @@
 query: >
   message:"ERROR: InterpreterNotFound: python2.6"
-  AND filename:"console.html"
+  AND tags:"console.html"
   AND build_name:*python26

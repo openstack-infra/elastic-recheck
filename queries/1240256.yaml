@@ -1,4 +1,4 @@
 query: >
   message:"HTTP/1.0 503"
-  AND filename:"logs/syslog.txt"
+  AND tags:"syslog.txt"
   AND syslog_program:"proxy-server"

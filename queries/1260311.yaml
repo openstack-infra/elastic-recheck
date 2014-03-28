@@ -1,4 +1,4 @@
 query: >
   message:"java.io.InterruptedIOException"
-  AND filename:console.html
+  AND tags:"console.html"
 suppress-graph: true

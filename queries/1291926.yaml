@@ -2,4 +2,4 @@ query: >
   ((message:"gigabytes_volume-type--" AND message:"-1") OR
   (message:"got an unexpected keyword argument 'gigabytes_volume-type"))
   AND
-  filename: "console.html"
+  tags:"console.html"

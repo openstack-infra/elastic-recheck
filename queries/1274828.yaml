@@ -1,4 +1,4 @@
 query: >
   message:"ERROR with Account server 127\.0\.0\.1\:6012\/sdb1" AND
   message:"Connection refused" AND
-  filename:"logs/syslog.txt"
+  tags:"syslog.txt"
