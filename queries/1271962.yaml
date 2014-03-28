@@ -1,5 +1,5 @@
 query: >
   project:"openstack/swift"
-  AND build_name:*-swift-python*
+  AND (build_name:"gate-swift-python26" OR build_name:"gate-swift-python27")
   AND message:"FAIL: test_node_write_timeout"
   AND tags:"console.html"
