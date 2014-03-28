@@ -1,0 +1,3 @@
+query: >
+  message:"couldn't connect to host"
+  AND tags:console
