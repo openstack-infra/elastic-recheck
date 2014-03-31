@@ -1,3 +1,0 @@
-query: >
-  message:"Cannot ''createImage''"
-  AND tags:"console.html"

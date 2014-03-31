@@ -1,3 +1,0 @@
-query: >
-  message:"self.assertIn((subnet_id, server_ip, mac_addr), port_detail_list)"
-  AND tags:"console"

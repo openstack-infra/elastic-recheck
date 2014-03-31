@@ -1,3 +1,0 @@
-query: >
-  message:"FAIL\: tempest.api.network.admin.test_l3_agent_scheduler.L3AgentSchedulerTestXML.test_add_list_remove_router_on_l3_agent"
-  AND tags:"console.html"

@@ -1,3 +1,0 @@
-query: >
-  message:"java.io.IOException: remote file operation failed"
-  AND tags:"console.html"

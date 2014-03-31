@@ -1,3 +1,0 @@
-query: >
-  message:"FAIL: neutron.tests.unit.services.loadbalancer.drivers.radware.test_plugin_driver.TestLoadBalancerPlugin.test_create_vip"
-  AND tags:"console.html"

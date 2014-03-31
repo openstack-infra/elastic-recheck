@@ -1,5 +1,0 @@
-query: >
-  project:"openstack/swift"
-  AND build_name:*-swift-python*
-  AND message:"FAIL: test_ratelimit_max_rate_multiple_acc"
-  AND tags:"console.html"

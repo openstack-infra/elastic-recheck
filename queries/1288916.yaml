@@ -1,4 +1,0 @@
-query: >
-  message:"(OperationalError) (1050, \"Table \'__tmp__test__tmp__mode\' already exists\")" AND
-  build_name:*oslo-incubator-python2* AND
-  tags:"console.html"

@@ -1,5 +1,0 @@
-query: >
-  message:"[Fail] Couldn't ping server"
-  AND (message:"[ERROR] /opt/stack/old/devstack/lib/neutron"
-    OR message:"[ERROR] /opt/stack/new/devstack/lib/neutron")
-  AND tags:"console"

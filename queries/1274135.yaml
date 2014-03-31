@@ -1,3 +1,0 @@
-query: >
-  message:"tox.ConfigError: ConfigError: substitution key 'posargs' not found"
-  AND tags:"console.html"

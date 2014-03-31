@@ -1,4 +1,0 @@
-query: >
-  message:"savanna-dashboard/info/refs not found"
-  AND message: "fatal\: https://git.openstack.org/openstack"
-  AND tags:"devstack-gate-setup-workspace-new.txt"

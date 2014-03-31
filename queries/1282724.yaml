@@ -1,3 +1,0 @@
-query: >
-  message:"559 Failure creating SWIFT_TENANT_TEST1"
-  AND tags:"console"

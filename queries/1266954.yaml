@@ -1,3 +1,0 @@
-query: >
-  message:" MismatchError: {u'binary': u'neutron-dhcp-agent'"
-  AND tags:"console"

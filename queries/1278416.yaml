@@ -1,4 +1,0 @@
-query: >
-  message:"remove_iscsi_target"
-  AND message:"os.unlink"
-  AND tags:"screen-c-vol.txt"

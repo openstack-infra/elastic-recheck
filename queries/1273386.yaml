@@ -1,3 +1,0 @@
-query: >
-    message:"kernel BUG at /build/buildd/linux-3.2.0/fs/buffer.c:2917" AND
-    tags:"syslog.txt"
