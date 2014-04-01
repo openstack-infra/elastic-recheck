@@ -1,0 +1,4 @@
+query: >
+  message:"Permission denied: '/var/lib/neutron'"
+  AND tags:console
+  AND (build_name:"gate-neutron-python26" OR build_name:"gate-neutron-python27")
