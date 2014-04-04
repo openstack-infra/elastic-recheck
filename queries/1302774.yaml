@@ -1,0 +1,3 @@
+query: >
+  message:"DiskNotFound: No disk at"
+  AND tags:screen-n-cpu.txt
