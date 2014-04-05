@@ -1,0 +1,5 @@
+query: >
+  message:"DB error resource with id"
+  AND tags:"screen-h-eng.txt"
+  AND (build_name:"check-tempest-dsvm-neutron-heat-slow" OR build_name:"gate-tempest-dsvm-neutron-heat-slow")
+  AND loglevel: "ERROR"
