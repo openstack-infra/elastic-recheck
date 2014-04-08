@@ -1,0 +1,3 @@
+query: >-
+  message: "qemu-img: error"
+  tags:screen-n-cpu.txt
