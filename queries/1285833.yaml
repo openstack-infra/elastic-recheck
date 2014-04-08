@@ -1,4 +1,3 @@
 query: >
-  message:"CertificateConfigError: Unable to load certificate. Ensure your system is configured properly."
-  AND NOT tags:"screen-n-api.txt"
-  AND tags:screen-*-api.txt
+  message:"CMS Verify output: Error opening certificate file /var/cache/heat/signing_cert.pem" AND
+  tags:screen-h-api.txt
