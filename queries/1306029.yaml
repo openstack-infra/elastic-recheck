@@ -1,0 +1,4 @@
+query: >
+  message:"Stack" AND
+  message:"failed to reach DELETE_COMPLETE status within the required time" AND
+  tags:console
