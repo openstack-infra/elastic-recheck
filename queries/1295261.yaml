@@ -1,4 +1,0 @@
-query: >
-  message:"AssertionError: invalid event issued_before time"
-  AND tags:"console.html"
-  AND project:"openstack/keystone"
