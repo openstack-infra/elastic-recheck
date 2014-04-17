@@ -1,3 +1,8 @@
 query: >
-  message:"couldn't connect to host"
-  AND tags:console
+  tags:console
+  AND NOT build_queue:check-tripleo
+  AND
+  (message:"couldn't connect to host"
+  OR
+  (message:"0 0 0 0 0 0 0 0 --:--:--  0:00:10 --:--:-- 0"
+  AND NOT message:"100 434k 100 434k"))
