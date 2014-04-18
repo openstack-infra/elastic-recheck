@@ -1,0 +1,3 @@
+query: >
+  message:"UnsupportedVersion: Endpoint does not support RPC version 2.37" AND
+  tags:screen-n-cpu.txt
