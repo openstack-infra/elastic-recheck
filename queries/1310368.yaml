@@ -1,0 +1,5 @@
+query: >
+  message:"'oslo.sphinx' is not a global requirement but it should be,something went wrong" AND
+  project:"openstack/tempest" AND
+  build_branch:"stable/havana" AND
+  tags:console
