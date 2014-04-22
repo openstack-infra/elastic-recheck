@@ -1,0 +1,3 @@
+query: >
+  message:"WARNING: devstack run took > 15 minutes"
+  AND tags:console.html
