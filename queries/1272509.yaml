@@ -1,5 +1,0 @@
-query: >
-  project:"openstack/swift"
-  AND (build_name:"gate-swift-python26" OR build_name:"gate-swift-python27")
-  AND message:"FAIL: test_node_read_timeout_retry"
-  AND tags:"console.html"
