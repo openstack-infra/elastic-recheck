@@ -117,7 +117,8 @@ class RecheckWatch(threading.Thread):
         self.key = key
         self.lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
                                                         'production',
-                                                        LPCACHEDIR)
+                                                        LPCACHEDIR,
+                                                        timeout=60)
 
     def display(self, channel, event):
         display = False
