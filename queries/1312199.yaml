@@ -1,0 +1,4 @@
+query: >
+  message:"MP-BIOS bug"
+  AND tags:"console"
+
