@@ -1,0 +1,4 @@
+query: >
+  message:"Invalid input received: Invalid volume: Volume status must
+  be available or error, but current status is: attaching"
+  AND tags:console
