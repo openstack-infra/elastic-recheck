@@ -1,0 +1,7 @@
+query: >-
+  message:"(OperationalError) (1205, 'Lock wait timeout exceeded; try restarting transaction')" AND NOT
+  message:"Traceback (most recent call last" AND
+  tags:"screen-q-svc.txt" AND
+  (message:"DELETE FROM securitygroupportbindings" OR
+   message:"UPDATE ports SET admin_state_up" OR
+   (message:"SELECT" AND message:"FOR UPDATE"))
