@@ -1,0 +1,4 @@
+query: >
+  (message:"awaiting response... 403 Forbidden" OR
+  message:"Unable to establish SSL connection.")
+  AND tags:"console"
