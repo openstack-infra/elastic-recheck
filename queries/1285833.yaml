@@ -1,3 +1,0 @@
-query: >
-  message:"CMS Verify output: Error opening certificate file /var/cache/heat/signing_cert.pem" AND
-  tags:screen-h-api.txt

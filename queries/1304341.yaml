@@ -1,3 +1,0 @@
-query: >
-  message:"MismatchError: 401 not in (200, 201, 202, 203, 204, 205, 206)"
-  AND tags:console

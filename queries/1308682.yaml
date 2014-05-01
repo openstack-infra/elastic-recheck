@@ -1,3 +1,0 @@
-query: >
-  message:"actual    = {u'random1': u'OS::Heat::RandomString', u'random2': u'OS::Heat::RandomString'}"
-  AND tags:console
