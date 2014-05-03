@@ -1,0 +1,3 @@
+query: >
+  message:"Caught error\: This result object does not return rows. It has been closed automatically." AND
+  tags:screen-n-api.txt
