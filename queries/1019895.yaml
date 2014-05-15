@@ -1,4 +1,0 @@
-query: >
-  message:"ERROR: Network commands are not supported when using the Neutron API.  Use python-neutronclient instead." AND
-  tags:console AND
-  (build_name:"gate-nova-python27" OR build_name:"gate-nova-python26")

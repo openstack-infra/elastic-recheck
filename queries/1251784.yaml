@@ -1,3 +1,0 @@
-query: >
-  message:"Connection to neutron failed: Maximum attempts reached" AND
-  tags:screen-n-cpu.txt

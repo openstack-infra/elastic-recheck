@@ -1,5 +1,0 @@
-query: >
-    message:"MismatchError\: u'PENDING_CREATE' != 'ACTIVE'"
-    AND (build_name:"gate-neutron-python27"
-    OR build_name:"gate-neutron-python26")
-    AND tags:"console"
