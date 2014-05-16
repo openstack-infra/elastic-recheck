@@ -1,4 +1,0 @@
-query: >
-  message:"Table 'neutron_ml2.meteringlabels' doesn't exist"
-  AND (build_name:"check-grenade-dsvm-neutron" OR build_name:"gate-grenade-dsvm-neutron" OR build_name:"check-grenade-dsvm-neutron-icehouse")
-  AND tags:console
