@@ -1,0 +1,2 @@
+query: >
+  message:"CertificateConfigError: Unable to load certificate. Ensure your system is configured properly."
