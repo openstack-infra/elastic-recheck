@@ -1,0 +1,4 @@
+query: >
+    message:"ResourceClosedError: This result object does not return rows."
+    AND message:"_get_user_quota_usages"
+    AND tags:"screen-n-api.txt"
