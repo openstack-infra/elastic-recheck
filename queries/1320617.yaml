@@ -1,0 +1,5 @@
+query: >
+  message:"Image"
+  AND message:"failed to reach ACTIVE status within the required time"
+  AND message:"Current status\: SAVING."
+  AND tags:console
