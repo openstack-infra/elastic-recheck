@@ -1,0 +1,4 @@
+query: >
+  message:"Network object has changed; please make sure the version has been bumped, and then update this hash" AND
+  (build_name:gate-nova-python26 OR build_name:gate-nova-python27) AND
+  tags:console
