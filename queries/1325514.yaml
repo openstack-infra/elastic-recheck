@@ -1,0 +1,3 @@
+query: >-
+  message:"TypeError: 'unicode' does not have the buffer"
+  AND tags:console
