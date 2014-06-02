@@ -205,6 +205,8 @@ class Stream(object):
 
         failed_tests = []
         for line in event['comment'].split("\n"):
+            if " (non-voting)" in line:
+                continue
             m = re.search("- ([\w-]+)\s*(http://\S+)\s*:\s*FAILURE", line)
             if m:
                 failed_tests.append(FailJob(m.group(1), m.group(2)))
