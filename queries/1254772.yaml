@@ -1,4 +1,0 @@
-query: >
-  (message:"Volume test_attach" OR message:"Volume test_detach")
-  AND message:"failed to reach available status within the required time"
-  AND tags:"console.html"

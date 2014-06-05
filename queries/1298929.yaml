@@ -1,4 +1,0 @@
-query: >
-  (message:"SSL peer certificate or SSH remote key was not OK"
-  OR message:"hostname 'pypi.python.org' doesn't match either of")
-  AND tags:"console"

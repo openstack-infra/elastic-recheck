@@ -1,3 +1,0 @@
-query: >
-  message:"FAIL: tempest.scenario.test_load_balancer_basic.TestLoadBalancerBasic.test_load_balancer_basic"
-  AND tags:"console"

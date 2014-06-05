@@ -1,3 +1,0 @@
-query: >
-  message:"IOError: ('http protocol error', 0, 'got a bad status line', None)"
-  AND tags:console
