@@ -1,0 +1,4 @@
+query: >
+  message:"UnexpectedDeletingTaskStateError: Unexpected task state: expecting"
+  AND message:"u'rebuilding'"
+  AND tags:screen-n-cpu.txt
