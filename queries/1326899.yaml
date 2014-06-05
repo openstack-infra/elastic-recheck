@@ -1,0 +1,5 @@
+query: >-
+  message:"FAIL\: glance.tests.unit.v1.test_api.TestGlanceAPI.test_add_copy_from_image_authorized_upload_image_authorized" AND
+  tags:"console" AND
+  project:"openstack/glance" AND
+  build_queue:"gate"
