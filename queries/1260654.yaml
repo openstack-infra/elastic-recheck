@@ -3,3 +3,4 @@ query: >
   AND message:"Remote call on"
   AND message:"failed"
   AND tags:"console.html"
+suppress-graph: true
