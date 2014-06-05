@@ -1,3 +1,0 @@
-query: >
-  message:"E: There are problems and -y was used without --force-yes" AND
-  tags:console
