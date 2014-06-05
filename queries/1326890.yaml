@@ -1,0 +1,5 @@
+query: >-
+  message:"cinder.conf.sample is not up to date" AND
+  tags:"console" AND
+  project:"openstack/cinder" AND
+  build_queue:"gate"
