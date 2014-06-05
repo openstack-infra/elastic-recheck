@@ -1,0 +1,6 @@
+query: >-
+  message:"F841 local variable" AND
+  message:"is assigned to but never used" AND
+  tags:"console" AND
+  build_queue:"gate" AND
+  build_name:"gate-nova-pep8"
