@@ -1,0 +1,4 @@
+query: >
+    tags:"screen-n-sch.txt" AND
+    message:"return host_manager.HostState" AND
+    message:"TypeError: __init__() takes at most 4 arguments"
