@@ -1,0 +1,5 @@
+query: >-
+  message:"FAIL\: tests.api.v2.test_acl_scenarios.TestAPIACL.test_authenticated(sqlite)" AND
+  tags:"console" AND
+  project:"openstack/ceilometer" AND
+  build_queue:"gate"
