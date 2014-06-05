@@ -1,0 +1,4 @@
+query: >-
+  message:"Download error on" AND
+  message:"Some packages may not be found!" AND
+  tags:console
