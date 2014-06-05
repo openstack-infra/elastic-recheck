@@ -1,0 +1,5 @@
+query: >
+  message:"IndexError\: pop from empty list" AND
+  tags:"console" AND
+  build_branch:"stable/icehouse" AND
+  project:"openstack/oslo.messaging"
