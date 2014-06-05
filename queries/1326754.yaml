@@ -1,0 +1,3 @@
+query: >
+  message:"E: Unable to locate package ubuntu-cloud-keyring" AND
+  tags:"console"
