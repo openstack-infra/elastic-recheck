@@ -1,6 +1,6 @@
 query: >
   tags:console
-  AND NOT build_queue:check-tripleo
+  AND NOT (build_queue:check-tripleo OR build_queue:experimental-tripleo)
   AND
   (message:"couldn't connect to host"
   OR
