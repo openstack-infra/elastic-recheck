@@ -1,0 +1,5 @@
+query: >
+  message:"PolicyNotAuthorized\: Policy doesn\'t allow example\:get_http to be performed" AND
+  tags:"console" AND (
+  build_name:"gate-nova-python27" OR
+  build_name:"gate-nova-python26")
