@@ -1,0 +1,5 @@
+query: >-
+  message:"FAIL\: tests.test_notification.TestRealNotification.test_notification_service" AND
+  tags:"console" AND
+  project:"openstack/ceilometer" AND
+  build_queue:"gate"
