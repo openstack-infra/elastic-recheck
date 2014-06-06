@@ -1,4 +1,4 @@
 # the first few encoded bytes of get-pip
 query: >-
   message:"UEsDBBQAAAAIAHeDxEQMVWtseQwAAOokAAAPAAAAcGlwL19faW5pdF9fLnB5pRprb+M28rt/BTdp"
-  tags:console
+  AND tags:console
