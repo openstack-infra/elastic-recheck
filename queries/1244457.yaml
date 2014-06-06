@@ -1,0 +1,2 @@
+query: >-
+  message:"ServiceCatalogException" AND tags:"horizon_error.txt"
