@@ -1,4 +1,4 @@
 query: >-
-  message:"self._check_content_of_written_file(ssh_client, text)" AND
-  tags:"console"
-
+  message:"SSHTimeout: Connection to the" AND
+  message:"via SSH timed out." AND
+  tags:"tempest.txt"
