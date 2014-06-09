@@ -1,5 +1,0 @@
-query: >
-  message:"No such file or directory"
-  AND message:"libvirt.xml"
-  AND tags:"screen-n-cpu.txt"
-  AND message:"Exception during message handling"
