@@ -1,6 +1,3 @@
 query: >
   message:"Network filter not found"
-  AND message:"libvirt"
   AND tags:"screen-n-cpu.txt"
-  AND module:"nova.compute.manager"
-
