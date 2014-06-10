@@ -1,4 +1,3 @@
 query: >
-    tags:"screen-n-sch.txt" AND
-    message:"return host_manager.HostState" AND
-    message:"TypeError: __init__() takes at most 4 arguments"
+    (tags:"screen-n-sch.txt" OR tags:"console") AND
+    message:"return host_manager.HostState(host, node, capabilities, service)"
