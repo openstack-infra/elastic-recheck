@@ -1,4 +1,4 @@
 query: >
   message:"E: Unable to fetch some archives, maybe run apt-get update or try with --fix-missing?"
-  AND NOT build_name:check-tripleo*
+  AND NOT (build_queue:check-tripleo OR build_queue:experimental-tripleo)
   AND tags:"console"
