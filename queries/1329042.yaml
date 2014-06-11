@@ -1,0 +1,7 @@
+query: >
+  message:"Server: scenario-server" AND
+  message:"failed to get to expected status" AND
+  message:"In ERROR state" AND
+  build_name:"gate-tempest-dsvm-large-ops" AND
+  tags:"console" AND
+  build_branch:"stable/havana"
