@@ -1,0 +1,3 @@
+query: >-
+  message:"InvalidRequestError\: This session is in 'committed' state\; no further SQL can be emitted within this transaction." AND
+  tags:"screen-h-eng.txt"
