@@ -1,0 +1,3 @@
+query: >
+  message:"self.assertEqual(reservation_1.id, reservation_1a.id)"
+  AND tags:"console.html"
