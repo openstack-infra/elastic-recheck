@@ -1,0 +1,4 @@
+query: >
+  message:"Stderr: \'ERROR:  database \"openstack_citest\" is being accessed by other users\\nDETAIL:  There are 1 other session(s) using the database.\\n\'"
+  AND project:"openstack/nova"
+  AND tags:"console"
