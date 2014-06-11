@@ -1,0 +1,3 @@
+query: >-
+  message:"ceilometer-api did not start"
+  AND tags:console
