@@ -1,0 +1,4 @@
+query: >
+  message:"_create_remote_image" AND
+  message:"BadRequest" AND
+  tags:"tempest.txt"
