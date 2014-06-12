@@ -32,7 +32,7 @@ class SearchEngine(object):
     def __init__(self, url):
         self._url = url
 
-    def search(self, query, size=1000):
+    def search(self, query, size=1000, recent=False):
         """Search an elasticsearch server.
 
         `query` parameter is the complicated query structure that
@@ -43,10 +43,26 @@ class SearchEngine(object):
         For certain classes of queries (like faceted ones), this can actually
         be set very low, as it won't impact the facet counts.
 
+        `recent` search only most recent indexe(s), assuming this is basically
+        a real time query that you only care about the last hour of time.
+        Using recent dramatically reduces the load on the ES cluster.
+
         The returned result is a ResultSet query.
+
         """
         es = pyelasticsearch.ElasticSearch(self._url)
-        results = es.search(query, size=size)
+        args = {'size': size}
+        if recent:
+            # today's index
+            datefmt = 'logstash-%Y.%m.%d'
+            now = datetime.datetime.utcnow()
+            lasthr = now - datetime.timedelta(hours=1)
+            indexes = [now.strftime(datefmt)]
+            if (lasthr.strftime(datefmt) != now.strftime(datefmt)):
+                indexes.append(lasthr.strftime(datefmt))
+            args['index'] = indexes
+
+        results = es.search(query, **args)
         return ResultSet(results)
 
 

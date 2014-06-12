@@ -212,7 +212,7 @@ class Stream(object):
 
     def _job_console_uploaded(self, change, patch, name, build_short_uuid):
         query = qb.result_ready(change, patch, name, build_short_uuid)
-        r = self.es.search(query, size='10')
+        r = self.es.search(query, size='10', recent=True)
         if len(r) == 0:
             msg = ("Console logs not ready for %s %s,%s,%s" %
                    (name, change, patch, build_short_uuid))
@@ -223,7 +223,7 @@ class Stream(object):
 
     def _has_required_files(self, change, patch, name, build_short_uuid):
         query = qb.files_ready(change, patch, name, build_short_uuid)
-        r = self.es.search(query, size='80')
+        r = self.es.search(query, size='80', recent=True)
         files = [x['term'] for x in r.terms]
         required = required_files(name)
         missing_files = [x for x in required if x not in files]
@@ -368,7 +368,8 @@ class Classifier():
             es_query = qb.generic(query, facet=facet)
         return self.es.search(es_query, size=size)
 
-    def classify(self, change_number, patch_number, build_short_uuid):
+    def classify(self, change_number, patch_number,
+                 build_short_uuid, recent=False):
         """Returns either empty list or list with matched bugs."""
         self.log.debug("Entering classify")
         #Reload each time
@@ -380,7 +381,7 @@ class Classifier():
                 % x['bug'])
             query = qb.single_patch(x['query'], change_number, patch_number,
                                     build_short_uuid)
-            results = self.es.search(query, size='10')
+            results = self.es.search(query, size='10', recent=recent)
             if len(results) > 0:
                 bug_matches.append(x['bug'])
         return bug_matches
