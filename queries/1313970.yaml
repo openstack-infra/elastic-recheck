@@ -1,3 +1,0 @@
-query: >-
-  message:"in test_volume_list_details_with_multiple_params" AND
-  tags:console

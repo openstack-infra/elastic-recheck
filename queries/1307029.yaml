@@ -1,3 +1,0 @@
-query: >
-  message:"FAIL: tempest.scenario.test_network_advanced_server_ops.TestNetworkAdvancedServerOps.test_server_connectivity_resize" AND
-  tags:console

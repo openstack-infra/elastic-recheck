@@ -1,3 +1,0 @@
-query: >
-  message:"Failure uploading file to container ex-swift"
-  AND tags:"console"

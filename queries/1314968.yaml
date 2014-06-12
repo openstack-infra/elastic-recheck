@@ -1,3 +1,0 @@
-query: >
-  message:"HTTP error 404 while getting <a href=\'http://pysendfile.googlecode.com/files/pysendfile-2.0.0.tar.gz\'>http://pysendfile.googlecode.com/files/pysendfile-2.0.0.tar.gz</a> (from -f)"
-  AND tags:"console"

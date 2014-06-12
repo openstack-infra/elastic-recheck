@@ -1,4 +1,0 @@
-query: >
-        tags:"console"
-        AND message:"http://127.0.0.1:35357/v3/OS-SIMPLE-CERT/ca"
-        AND message:"404 GET"
