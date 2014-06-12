@@ -113,7 +113,8 @@ class FailEvent(object):
         self.failed_jobs = failed_jobs
 
     def is_openstack_project(self):
-        return "tempest-dsvm-full" in self.comment
+        return ("tempest-dsvm-full" in self.comment or
+                "gate-tempest-dsvm-virtual-ironic" in self.comment)
 
     def name(self):
         return "%d,%d" % (self.change, self.rev)
