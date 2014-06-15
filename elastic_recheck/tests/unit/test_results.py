@@ -12,7 +12,11 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import datetime
 import json
+
+import mock
+import pyelasticsearch
 
 from elastic_recheck import results
 from elastic_recheck import tests
@@ -87,3 +91,68 @@ class TestBasicParsing(tests.TestCase):
         self.assertEqual(facets[1382104800000].keys(), ["FAILURE"])
         self.assertEqual(len(facets[1382104800000]["FAILURE"]), 2)
         self.assertEqual(facets[1382101200000].keys(), ["FAILURE"])
+
+
+# NOTE(mriedem): We can't mock built-ins so we have to override utcnow().
+class MockDatetimeToday(datetime.datetime):
+
+    def __init__(self, *args):
+        super(MockDatetimeToday, self).__init__(*args)
+
+    @classmethod
+    def utcnow(cls):
+        # One hour and one second into today.
+        return datetime.datetime.strptime('2014-06-12T01:00:01',
+                                          '%Y-%m-%dT%H:%M:%S')
+
+
+class MockDatetimeYesterday(datetime.datetime):
+
+    def __init__(self, *args):
+        super(MockDatetimeYesterday, self).__init__(*args)
+
+    @classmethod
+    def utcnow(cls):
+        # 59 minutes and 59 seconds into today.
+        return datetime.datetime.strptime('2014-06-12T00:59:59',
+                                          '%Y-%m-%dT%H:%M:%S')
+
+
+@mock.patch.object(pyelasticsearch.ElasticSearch, 'search', return_value={})
+class TestSearchEngine(tests.TestCase):
+    """Tests that the elastic search API is called correctly.
+    """
+
+    def setUp(self):
+        super(TestSearchEngine, self).setUp()
+        self.engine = results.SearchEngine('fake-url')
+        self.query = 'message:"foo" AND tags:"console"'
+
+    def test_search_not_recent(self, search_mock):
+        # Tests a basic search with recent=False.
+        result_set = self.engine.search(self.query, size=10)
+        self.assertEqual(0, len(result_set))
+        search_mock.assert_called_once_with(self.query, size=10)
+
+    def _test_search_recent(self, search_mock, datetime_mock,
+                            expected_indexes):
+        datetime.datetime = datetime_mock
+        result_set = self.engine.search(self.query, size=10, recent=True)
+        self.assertEqual(0, len(result_set))
+        search_mock.assert_called_once_with(
+            self.query, size=10, index=expected_indexes)
+
+    def test_search_recent_current_index_only(self, search_mock):
+        # The search index comparison goes back one hour and cuts off by day,
+        # so test that we're one hour and one second into today so we only have
+        # one index in the search call.
+        self._test_search_recent(search_mock, MockDatetimeToday,
+                                 expected_indexes=['logstash-2014.06.12'])
+
+    def test_search_recent_multiple_indexes(self, search_mock):
+        # The search index comparison goes back one hour and cuts off by day,
+        # so test that we're 59 minutes and 59 seconds into today so that we
+        # have an index for today and yesterday in the search call.
+        self._test_search_recent(search_mock, MockDatetimeYesterday,
+                                 expected_indexes=['logstash-2014.06.12',
+                                                   'logstash-2014.06.11'])
