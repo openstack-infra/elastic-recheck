@@ -1,4 +1,4 @@
 query: >
     message:"Details: Timed out waiting for thing" AND
     message:"to become ACTIVE" AND
-    tags:"console.html"
+    tags:"console"

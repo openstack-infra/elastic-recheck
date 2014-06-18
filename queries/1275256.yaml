@@ -2,4 +2,4 @@ query: >
   message:"Details: Server"
   AND message:"failed to reach SHELVED_OFFLOADED status and task state \"None\" within the required time"
   AND message:"Current status: SHELVED. Current task state: None."
-  AND tags:"console.html"
+  AND tags:"console"

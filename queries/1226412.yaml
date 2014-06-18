@@ -2,4 +2,4 @@ query: >
   message:"Server"
   AND message:"failed to reach PAUSED status and task state \"None\" within the required time"
   AND message:"Current status: ACTIVE."
-  AND tags:"console.html"
+  AND tags:"console"
