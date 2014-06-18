@@ -1,4 +1,4 @@
 query: >
   message:"Expected running services not running:"
   AND NOT message:"q-fwaas"
-  AND tags:"console.html"
+  AND tags:"console"
