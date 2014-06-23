@@ -1,4 +1,4 @@
 query: >-
-  message:"FAIL: nova.tests.api.ec2.test_cloud.CloudTestCase.test_associate_disassociate_address" AND
-  tags:"console" AND
-  project:"openstack/nova"
+  (message:"FAIL: nova.tests.api.ec2.test_cloud.CloudTestCase.test_associate_disassociate_address" OR (
+  message:"Floating ip" AND message:"is not associated with instance")) AND
+  tags:"console"
