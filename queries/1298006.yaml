@@ -1,0 +1,3 @@
+query: >-
+  message:"fatal: unable to connect to git.openstack.org"
+  AND tags:console
