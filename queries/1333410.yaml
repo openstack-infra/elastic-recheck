@@ -1,4 +1,10 @@
 query: >-
-  (message:"FAIL: nova.tests.api.ec2.test_cloud.CloudTestCase.test_associate_disassociate_address" OR (
-  message:"Floating ip" AND message:"is not associated with instance")) AND
+  (
+  message:"FAIL: nova.tests.api.ec2.test_cloud.CloudTestCase.test_associate_disassociate_address"
+  OR
+  (message:"Floating ip" AND message:"is not associated with instance")
+  OR
+  (message:"Conflict: Pool " AND message:"is still in use")
+  )
+  AND
   tags:"console"
