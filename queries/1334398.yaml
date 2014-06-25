@@ -1,0 +1,5 @@
+query: >-
+  message:"_snapshot_instance" AND
+  message:"raise libvirtError ('virDomainBlockJobAbort() failed'" AND
+  message:"libvirtError: Unable to read from monitor: Connection reset by peer" AND
+  tags:"screen-n-cpu.txt"
