@@ -1,5 +1,0 @@
-query: >-
-  message:"FAIL\: barbican.tests.test_order.TestOrder.test_create_order" AND
-  tags:"console" AND
-  project:"openstack/heat" AND
-  build_queue:"gate"

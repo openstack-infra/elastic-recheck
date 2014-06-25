@@ -1,7 +1,0 @@
-query: >-
-  message:"TypeError: expecting a bytes object, got unicode" AND
-  tags:"console" AND
-  build_queue:"gate" AND (
-  build_name:"gate-glance-python26" OR
-  build_name:"gate-neutron-python26" OR
-  build_name:"gate-ceilometer-python26")
