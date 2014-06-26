@@ -1,0 +1,6 @@
+query: >-
+  message:"/opt/stack/new/pbr/tools/integration.sh" AND
+  message:"/home/jenkins/mirror_package_list.txt: No such file or directory" AND
+  tags:"console" AND (
+  build_name:"gate-requirements-integration-dsvm" OR
+  build_name:"check-requirements-integration-dsvm")
