@@ -51,10 +51,10 @@ Guidelines for good queries:
   tempest and devstack logs.
 
 - Avoid the use of wildcards in queries since they can put an undue burden on
-  the query engine. A common case where wildcards would be useful are in
-  querying against a specific set of build_name fields, e.g. gate-nova-python26
-  and gate-nova-python27. Rather than use build_name:gate-nova-python*, list
-  the jobs with an OR, e.g.:
+  the query engine. A common case where wildcards are used and shouldn't be are
+  in querying against a specific set of build_name fields,
+  e.g. gate-nova-python26 and gate-nova-python27.
+  Rather than use build_name:gate-nova-python*, list the jobs with an OR, e.g.:
 
   ::
 
