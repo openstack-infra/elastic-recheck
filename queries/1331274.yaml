@@ -1,4 +1,8 @@
 query: >
+  (
   (message:"Expected running services not running:"
-  OR message: "Too many retries, giving up")
+  AND NOT message:"q-fwaas")
+  OR
+  message: "Too many retries, giving up"
+  )
   AND tags:"grenade.sh.txt"
