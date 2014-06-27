@@ -1,3 +1,0 @@
-query: >
-    (tags:"screen-n-sch.txt" OR tags:"console") AND
-    message:"return host_manager.HostState(host, node, capabilities, service)"

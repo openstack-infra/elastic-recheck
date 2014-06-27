@@ -1,4 +1,0 @@
-query: >
-  message:"MismatchError"
-  AND message:"Number of servers 3 is wrong in"
-  AND tags:"console"

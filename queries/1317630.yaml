@@ -1,3 +1,0 @@
-query: >
-    message:"timed out \(after 30 minutes\). Marking the build as failed."
-    AND build_name:"gate-horizon-selenium"
