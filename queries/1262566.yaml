@@ -1,4 +1,0 @@
-query: >
-  message:"Security group"
-  AND message:"not found"
-  AND tags:console

@@ -1,4 +1,0 @@
-query: >
-    tags:"screen-n-api.txt" AND
-    message:"HTTP exception thrown: marker" AND
-    message:"not found"
