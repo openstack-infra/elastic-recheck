@@ -1,3 +1,5 @@
 query: >-
   message:"TypeError: int() argument must be a string or a number, not 'NoneType'" AND
-  tags:console
+  tags:console AND (
+  build_name:"check-neutron-dsvm-functional" OR
+  build_name:"gate-neutron-dsvm-functional")
