@@ -5,4 +5,4 @@ query: >
   OR
   message: "Too many retries, giving up"
   )
-  AND tags:"grenade.sh.txt"
+  AND tags:console
