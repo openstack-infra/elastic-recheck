@@ -1,0 +1,4 @@
+query: >-
+  message:"Sample for metric:memory with query:" AND
+  message:"has not been added to the database within" AND
+  tags:console
