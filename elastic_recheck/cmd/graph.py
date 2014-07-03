@@ -62,7 +62,13 @@ def main():
     ts = datetime(ts.year, ts.month, ts.day, ts.hour)
     # ms since epoch
     now = int(((ts - epoch).total_seconds()) * 1000)
-    start = now - (14 * 24 * STEP)
+    # number of days to match to, this should be the same as we are
+    # indexing in logstash
+    days = 10
+    # How far back to start in the graphs
+    start = now - (days * 24 * STEP)
+    # ER timeframe for search
+    timeframe = days * 24 * STEP / 1000
 
     for query in classifier.queries:
         if args.queue:
@@ -73,7 +79,7 @@ def main():
         urlq = dict(search=query['query'],
                     fields=[],
                     offset=0,
-                    timeframe="604800",
+                    timeframe=str(timeframe),
                     graphmode="count")
         logstash_query = base64.urlsafe_b64encode(json.dumps(urlq))
         bug_data = get_launchpad_bug(query['bug'])
