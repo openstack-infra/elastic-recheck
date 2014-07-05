@@ -1,0 +1,3 @@
+query: >-
+  message:"EnvironmentError: mysql_config not found" AND
+  tags:console
