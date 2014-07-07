@@ -49,6 +49,10 @@ def required_files(job):
             files.extend([
                 'logs/screen-n-net.txt',
                 ])
+    # make sure that grenade logs exist
+    if re.match("grenade", job):
+        files.extend(['logs/grenade.sh.txt'])
+
     return files
 
 
