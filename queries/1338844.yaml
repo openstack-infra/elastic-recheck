@@ -1,0 +1,4 @@
+query: >-
+  message:"BuildAbortException: Build of instance" AND
+  message:"aborted: Failed to allocate the network(s) with error Maximum number of fixed ips exceeded, not rescheduling." AND
+  tags:"screen-n-cpu.txt"
