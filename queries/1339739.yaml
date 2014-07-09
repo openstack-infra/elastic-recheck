@@ -1,0 +1,4 @@
+query: >-
+  message:"AttributeError: 'PostgreSQLOpportunisticFixture' object has no attribute '_details'" AND
+  tags:console AND
+  project:"openstack/nova"
