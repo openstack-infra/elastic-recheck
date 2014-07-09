@@ -1,0 +1,6 @@
+query: >-
+  (message:"FAIL: test_index \(openstack_dashboard.dashboards.project.access_and_security.tests.AccessAndSecurityTests\)" OR
+   message:"FAIL: test_index \(openstack_dashboard.dashboards.project.access_and_security.tests.AccessAndSecurityNeutronProxyTests\)") AND
+  tags:console AND
+  project:"openstack/horizon" AND
+  build_queue:"gate"
