@@ -1,0 +1,3 @@
+query: >
+  message:"The apache2 instance did not start" AND
+  tags:"console"
