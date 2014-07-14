@@ -1,0 +1,3 @@
+query: >
+  message:"com.rackspace.cloud.api.docs.pipeline.PipelineException: net.sf.saxon.s9api.SaxonApiException: Processing terminated by xsl:message at line -1 in null"
+  AND tags:"console"
