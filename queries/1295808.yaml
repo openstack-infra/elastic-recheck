@@ -1,0 +1,4 @@
+query: >
+  message:"File \"tempest/scenario/test_security_groups_basic_ops.py\"" AND
+  message:"_verify_mac_addr" AND
+  tags:"console"
