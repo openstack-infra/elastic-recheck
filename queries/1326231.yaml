@@ -1,3 +1,0 @@
-query: >-
-  message:"timeout: invalid option"
-  AND tags:console

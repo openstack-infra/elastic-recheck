@@ -1,4 +1,0 @@
-query: >-
-  message:"self.t.setdefault(self.RESOURCES, {})[name] = cfn_tmpl" AND
-  tags:"console" AND
-  project:"openstack/heat"

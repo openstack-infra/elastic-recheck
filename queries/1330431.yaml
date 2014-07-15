@@ -1,5 +1,0 @@
-query: >
-  message:"NameError: global name 'external_event_obj' is not defined" AND
-  tags:console AND
-  project:"openstack/nova" AND
-  build_queue:"gate"
