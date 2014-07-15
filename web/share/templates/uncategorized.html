@@ -39,11 +39,11 @@
         $("#2days").click(function(e) {
           filter_log_age(e, 2);
         });
-        $("#1week").click(function(e) {
+        $("#7days").click(function(e) {
           filter_log_age(e, 7);
         });
-        $("#2weeks").click(function(e) {
-          filter_log_age(e, 14);
+        $("#10days").click(function(e) {
+          filter_log_age(e, 10);
         });
     });
 </script>
@@ -72,8 +72,8 @@ Overall Categorization Rate: {{ rate['overall'] }}%
   Generated at: <span id="generated-date">{{ generated_at }}</span>
   (View: <a id="24hours" href="#">24 hours</a>,
          <a id="2days" href="#">2 days</a>,
-         <a id="1week" href="#">1 week</a>,
-         <a id="2weeks" href="#">2 weeks</a>)
+         <a id="7days" href="#">7 days</a>,
+         <a id="10days" href="#">10 days</a>)
 </p>
 {% for job in jobs %}
 <a name="{{job[0]}}"></a>
