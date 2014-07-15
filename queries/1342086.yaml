@@ -1,0 +1,4 @@
+query: >
+  message:"Deadlock found when trying to get lock"
+  AND message:"UPDATE instances SET"
+  AND tags:"screen-n-api.txt"
