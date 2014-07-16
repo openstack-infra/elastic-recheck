@@ -1,0 +1,3 @@
+query: >
+  message:"libvirtError: monitor socket did not show up: No such file or directory"
+  AND tags:"screen-n-cpu.txt"
