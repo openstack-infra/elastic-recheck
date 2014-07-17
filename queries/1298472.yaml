@@ -1,4 +1,0 @@
-query: >-
-  message:"SSHTimeout: Connection to the" AND
-  message:"via SSH timed out." AND
-  tags:"console"
