@@ -1,0 +1,4 @@
+query: >
+  message:"tempest/cli"
+  AND message:"test_cinder_extra_specs_list"
+  AND tags:"console"
