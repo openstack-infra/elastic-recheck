@@ -1,3 +1,0 @@
-query: >-
-  message:"HTTP exception thrown\: Instance has not been resized" AND
-  tags:"screen-n-api.txt"

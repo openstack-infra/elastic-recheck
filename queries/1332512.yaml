@@ -1,3 +1,0 @@
-query: >
-    message:"FAIL: tempest.tests.test_ssh.TestSshClient.test_get_ssh_connection_two_attemps"
-    AND build_name:"gate-tempest-python27"

@@ -1,7 +1,0 @@
-query: >-
-  (message:"FAIL\: tests.alarm.test_rpc.TestRPCAlarmPartitionCoordination.test_ordination_presence" OR
-   message:"FAIL\: tests.alarm.test_rpc.TestRPCAlarmPartitionCoordination.test_ordination_assign" OR
-   message:"FAIL\: tests.alarm.test_rpc.TestRPCAlarmPartitionCoordination.test_ordination_allocate") AND
-  tags:"console" AND
-  project:"openstack/ceilometer" AND
-  build_queue:"gate"
