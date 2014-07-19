@@ -1,0 +1,4 @@
+query: >
+  message:"Stack" AND
+  message:"already has an action \(DELETE\) in progress" AND
+  tags:"console"
