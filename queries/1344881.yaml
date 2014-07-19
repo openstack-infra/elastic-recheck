@@ -1,0 +1,3 @@
+query: >
+  message:"ValueError: list modified during sort" AND
+  tags:"horizon_error.txt"
