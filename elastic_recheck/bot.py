@@ -323,7 +323,8 @@ def setup_logging(config):
         "gerrit.GerritWatcher": logging.INFO,
         "paramiko.transport": logging.INFO,
         "pyelasticsearch": logging.INFO,
-        "requests.packages.urllib3.connectionpool": logging.WARN
+        "requests.packages.urllib3.connectionpool": logging.WARN,
+        "urllib3.connectionpool": logging.WARN
     }
 
     if config.has_option('ircbot', 'log_config'):
