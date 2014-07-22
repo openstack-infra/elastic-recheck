@@ -1,4 +1,5 @@
 query: >
   message:"MessagingTimeout: No reply on topic" AND
   tags:console AND
-  (build_name:"gate-nova-python27" OR build_name:"gate-nova-python26")
+  (build_name:"gate-nova-python27" OR build_name:"gate-nova-python26") AND
+  build_queue:"gate"
