@@ -20,6 +20,7 @@ class GerritDone(Exception):
 
 
 class Gerrit(object):
+    reviews = []
     """A fake gerrit libobject that emits a bunch of events."""
     def __init__(self, *args):
         with open("elastic_recheck/tests/unit/gerrit/events.json") as f:
@@ -33,3 +34,6 @@ class Gerrit(object):
             return self.events.pop()
         else:
             raise GerritDone()
+
+    def review(self, project, name, msg):
+        self.reviews.append({'project': project, 'name': name, 'msg': msg})

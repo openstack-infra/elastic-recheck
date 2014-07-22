@@ -103,11 +103,12 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
 
 
 class RecheckWatch(threading.Thread):
-    def __init__(self, ircbot, channel_config, username,
+    def __init__(self, ircbot, channel_config, msgs, username,
                  queries, host, key, commenting=True):
         super(RecheckWatch, self).__init__()
         self.ircbot = ircbot
         self.channel_config = channel_config
+        self.msgs = msgs
         self.log = logging.getLogger('recheckwatchbot')
         self.username = username
         self.queries = queries
@@ -206,12 +207,18 @@ class RecheckWatch(threading.Thread):
                     self._read(event)
                     stream.leave_comment(
                         event,
+                        self.msgs,
                         debug=not self.commenting)
             except er.ResultTimedOut as e:
                 self.log.warning(e.message)
                 self._read(msg=e.message)
             except Exception:
                 self.log.exception("Uncaught exception processing event.")
+
+
+class MessageConfig(dict):
+    def __init__(self, data):
+        self.__dict__.update(data['messages'])
 
 
 class ChannelConfig(object):
@@ -272,6 +279,7 @@ def _main(args, config):
         raise Exception("Channel Config must be specified in config file.")
 
     channel_config = ChannelConfig(yaml.load(open(fp)))
+    msgs = MessageConfig(yaml.load(open(fp)))
 
     if not args.noirc:
         bot = RecheckWatchBot(
@@ -287,6 +295,7 @@ def _main(args, config):
     recheck = RecheckWatch(
         bot,
         channel_config,
+        msgs,
         config.get('gerrit', 'user'),
         config.get('gerrit', 'query_file'),
         config.get('gerrit', 'host', 'review.openstack.org'),

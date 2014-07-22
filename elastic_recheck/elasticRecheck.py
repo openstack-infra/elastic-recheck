@@ -132,6 +132,10 @@ class FailEvent(object):
                 x in bugs]
         return urls
 
+    def bug_list(self):
+        """A pretty printed bug list."""
+        return "- " + "\n- ".join(self.bug_urls_map())
+
     def bug_urls_map(self):
         """Produce map of which jobs failed due to which bugs."""
         if not self.get_all_bugs():
@@ -324,33 +328,20 @@ class Stream(object):
             if self._does_es_have_data(fevent):
                 return fevent
 
-    def leave_comment(self, event, debug=False):
+    def leave_comment(self, event, msgs, debug=False):
         if event.get_all_bugs():
-            message = """I noticed jenkins failed, I think you hit bug(s):
-
-- %(bugs)s
-""" % {'bugs': "\n- ".join(event.bug_urls_map())}
+            msg = msgs['found_bug'] % {'bugs': event.bug_list()}
             if event.is_fully_classified():
-                message += """
-We don't automatically recheck or reverify, so please consider
-doing that manually if someone hasn't already. For a code review
-which is not yet approved, you can recheck by leaving a code
-review comment with just the text:
-
-    recheck bug %(bug)s""" % {'bug': list(event.get_all_bugs())[0]}
+                msg += msgs['recheck_instructions']
             else:
-                message += """
-You have some unrecognized errors."""
-            message += """
-For bug details see: http://status.openstack.org/elastic-recheck/"""
+                msg += msgs['unrecognized']
+            msg += msgs['footer']
         else:
-            message = ("I noticed jenkins failed, refer to: "
-                       "https://wiki.openstack.org/wiki/"
-                       "GerritJenkinsGithub#Test_Failures")
+            msg += msgs['no_bugs_found']
         self.log.debug("Compiled comment for commit %s:\n%s" %
-                       (event.name(), message))
+                       (event.name(), msg))
         if not debug:
-            self.gerrit.review(event.project, event.name(), message)
+            self.gerrit.review(event.project, event.name(), msg)
 
 
 class Classifier():
