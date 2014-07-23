@@ -21,6 +21,7 @@ import json
 import os
 
 from launchpadlib import launchpad
+import requests
 
 import elastic_recheck.elasticRecheck as er
 from elastic_recheck import results as er_results
@@ -40,7 +41,24 @@ def get_launchpad_bug(bug):
                              (x.bug_target_name, x.status),
                              lp_bug.bug_tasks))
     bugdata['affects'] = projects
+    bugdata['reviews'] = get_open_reviews(bug)
     return bugdata
+
+
+def get_open_reviews(bug_number):
+    "return list of open gerrit reviews for a given bug."""
+    r = requests.get("https://review.openstack.org:443/changes/"
+                     "?q=status:open++message:`%s`" % bug_number)
+    # strip off first few chars because 'the JSON response body starts with a
+    # magic prefix line that must be stripped before feeding the rest of the
+    # response body to a JSON parser'
+    # https://review.openstack.org/Documentation/rest-api.html
+    reviews = []
+    result = None
+    result = json.loads(r.text[4:])
+    for review in result:
+        reviews.append(review['_number'])
+    return reviews
 
 
 def main():
