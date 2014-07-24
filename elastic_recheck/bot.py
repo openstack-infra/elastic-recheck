@@ -217,6 +217,11 @@ class RecheckWatch(threading.Thread):
 class ChannelConfig(object):
     def __init__(self, data):
         self.data = data
+        # for compatibility reasons we support a pre channel hierarchy
+        # model of the world.
+        if 'channels' in data:
+            self.data = data['channels']
+
         keys = data.keys()
         for key in keys:
             if key[0] != '#':

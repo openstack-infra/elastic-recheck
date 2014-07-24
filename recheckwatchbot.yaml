@@ -1,19 +1,18 @@
-openstack-nova:
-    projects:
-      - nova
-    events:
-      - positive
-
-openstack-glance:
-    projects:
-      - glance
-    events:
-      - positive
-
-openstack-qa:
-    projects:
-      - all
-    events:
-      - positive
-      - negative
+channels:
+    openstack-nova:
+      projects:
+        - nova
+      events:
+        - positive
+    openstack-glance:
+      projects:
+        - glance
+      events:
+        - positive
+    openstack-qa:
+      projects:
+        - all
+      events:
+        - positive
+        - negative
 
