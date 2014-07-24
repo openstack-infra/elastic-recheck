@@ -1,0 +1,7 @@
+query: >
+  message:"TestEncryptedCinderVolumes" AND (
+  (message:"detach_volume" AND
+   message:"TypeError: <type 'NoneType'> can't be decoded") OR
+  (message:"attach_volume" AND
+   message:"DeviceIsBusy: The supplied device (vdb) is busy")) AND
+  tags:"screen-n-cpu.txt"
