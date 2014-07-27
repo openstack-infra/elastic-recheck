@@ -1,0 +1,4 @@
+query: >
+  message:"FAIL: tests.unit.rpc.test_fake.RpcFakeTestCase.test_multithreaded_resp_routing" AND
+  project:"openstack/oslo-incubator" AND
+  tags:"console"
