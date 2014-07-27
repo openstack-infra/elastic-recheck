@@ -1,0 +1,4 @@
+query: >
+  message:"FAIL: tests.unit.rpc.test_qpid.RpcQpidTestCase.test_consume_thread_exception" AND
+  project:"openstack/oslo-incubator" AND
+  tags:"console"
