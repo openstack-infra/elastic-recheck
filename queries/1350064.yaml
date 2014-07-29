@@ -1,0 +1,5 @@
+query: >
+  message:"Deadlock found when trying to get lock; try restarting transaction" AND
+  message:"SELECT quota_usages.created_at" AND
+  tags:"screen-n-api.txt" AND
+  module:"nova.api.openstack"
