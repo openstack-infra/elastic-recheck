@@ -1,0 +1,3 @@
+query: >-
+  message:"Returning exception Virtual Interface creation failed to caller" AND
+  tags:"screen-n-cpu.txt"
