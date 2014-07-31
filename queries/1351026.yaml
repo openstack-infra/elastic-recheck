@@ -1,0 +1,4 @@
+query: >
+  (message:"(TokensV3TestJSON:test_rescope_token): 404 POST" OR
+   message:"(TokensV3TestXML:test_rescope_token): 404 POST") AND
+  tags:"tempest.txt"
