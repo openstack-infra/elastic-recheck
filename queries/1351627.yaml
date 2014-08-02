@@ -1,0 +1,4 @@
+query: >
+  message:"Details: Sample for metric:image.update with query:('resource', 'eq'" AND
+  message:"has not been added to the database within" AND
+  tags:"console"
