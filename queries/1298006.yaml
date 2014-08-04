@@ -1,3 +1,5 @@
 query: >-
-  message:"fatal: unable to connect to git.openstack.org"
-  AND tags:console
+  message:"fatal: unable to" AND (
+  message:"connect to git.openstack.org" OR
+  message:"Failed to connect to git.openstack.org port 443: Connection timed out") AND
+  tags:console
