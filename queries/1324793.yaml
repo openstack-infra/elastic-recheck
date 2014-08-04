@@ -1,3 +1,0 @@
-query: >
-  message:"Log: n-cond not allowed to have ERRORS or TRACES"
-  AND tags:console
