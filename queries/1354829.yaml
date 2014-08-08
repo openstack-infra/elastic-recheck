@@ -1,0 +1,3 @@
+query: >
+  message:"sudo: 3 incorrect password attempts" AND tags:"console" AND
+  build_node:*-rax-dfw-*
