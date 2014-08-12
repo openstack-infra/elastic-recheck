@@ -218,7 +218,8 @@ class RecheckWatch(threading.Thread):
 
 class MessageConfig(dict):
     def __init__(self, data):
-        self.__dict__.update(data['messages'])
+        super(MessageConfig, self).__init__()
+        self.update(data['messages'])
 
 
 class ChannelConfig(object):

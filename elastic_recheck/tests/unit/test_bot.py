@@ -135,3 +135,8 @@ class TestBotWithTestTools(tests.TestCase):
                     job.bugs = ['123456']
             self.assertTrue(self.recheck_watch.display('channel', event))
             self.recheck_watch.error_found('channel', event)
+
+    def test_message_config(self):
+        data = {'messages': {'test': 'message'}}
+        config = bot.MessageConfig(data)
+        self.assertEqual(config['test'], data['messages']['test'])
