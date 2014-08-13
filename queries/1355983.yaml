@@ -1,0 +1,5 @@
+query: >
+  message:"+ echo \'Could not find mongod command\'" AND
+  tags:"console" AND (
+  build_name:"periodic-ceilometer-python26-havana" OR
+  build_name:"gate-ceilometer-python26")
