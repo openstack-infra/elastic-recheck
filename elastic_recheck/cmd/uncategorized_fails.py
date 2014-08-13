@@ -15,8 +15,10 @@
 #    under the License.
 
 import argparse
+import base64
 import collections
 import datetime
+import json
 import operator
 import re
 
@@ -72,7 +74,8 @@ def all_fails(classifier):
                 log = result.log_url.split("console.html")[0]
                 all_fails["%s.%s" % (build, name)] = {
                     'log': log,
-                    'timestamp': timestamp
+                    'timestamp': timestamp,
+                    'build_uuid': result.build_uuid
                 }
     return all_fails
 
@@ -85,7 +88,7 @@ def num_fails_per_build_name(all_jobs):
     return counts
 
 
-def classifying_rate(fails, data, engine):
+def classifying_rate(fails, data, engine, classifier):
     """Builds and prints the classification rate.
 
     It's important to know how good a job we are doing, so this
@@ -121,8 +124,22 @@ def classifying_rate(fails, data, engine):
                                    key=lambda v: v['timestamp'], reverse=True)
         # Convert timestamp into string
         for url in bad_job_urls[job]:
+            urlq = {}
             url['timestamp'] = url['timestamp'].strftime(
                 "%Y-%m-%dT%H:%M")
+            # setup crm114 query for build_uuid
+            query = ('build_uuid: "%s" '
+                     'AND error_pr:["-1000.0" TO "-10.0"] '
+                     % url['build_uuid'])
+            urlq = dict(search=query,
+                        fields=[],
+                        offset=0,
+                        timeframe=str(864000))
+            logstash_query = base64.urlsafe_b64encode(json.dumps(urlq))
+            logstash_url = 'http://logstash.openstack.org/#%s' % logstash_query
+            results = classifier.hits_by_query(query, size=1)
+            if results:
+                url['crm114'] = logstash_url
 
     classifying_rate = collections.defaultdict(int)
     classifying_rate['overall'] = "%.1f" % (
@@ -231,7 +248,7 @@ def main():
     fails = all_fails(classifier)
     data = collect_metrics(classifier, fails)
     engine = setup_template_engine(opts.templatedir)
-    html = classifying_rate(fails, data, engine)
+    html = classifying_rate(fails, data, engine, classifier)
     if opts.output:
         with open(opts.output, "w") as f:
             f.write(html)
