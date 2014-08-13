@@ -1,0 +1,3 @@
+query: >
+   message:"This error usually means that PostgreSQL's request for a shared memory segment exceeded your kernel's SHMMAX parameter"
+   AND tags:"console"
