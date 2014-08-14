@@ -329,15 +329,17 @@ class Stream(object):
                 return fevent
 
     def leave_comment(self, event, msgs, debug=False):
+        parts = []
         if event.get_all_bugs():
-            msg = msgs['found_bug'] % {'bugs': event.bug_list()}
+            parts.append(msgs['found_bug'] % {'bugs': event.bug_list()})
             if event.is_fully_classified():
-                msg += msgs['recheck_instructions']
+                parts.append(msgs['recheck_instructions'])
             else:
-                msg += msgs['unrecognized']
-            msg += msgs['footer']
+                parts.append(msgs['unrecognized'])
+            parts.append(msgs['footer'])
         else:
-            msg += msgs['no_bugs_found']
+            parts.append(msgs['no_bugs_found'])
+        msg = '\n'.join(parts)
         self.log.debug("Compiled comment for commit %s:\n%s" %
                        (event.name(), msg))
         if not debug:
