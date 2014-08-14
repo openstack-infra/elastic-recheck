@@ -1,0 +1,4 @@
+query: >
+  message:"delete failed \(client error\)\: Unable to complete operation on subnet" AND
+  message:"One or more ports have an IP allocation from this subnet" AND
+  tags:"screen-q-svc.txt"
