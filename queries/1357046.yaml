@@ -1,0 +1,4 @@
+query: >
+  message:("Create member" AND
+           "AttributeError: 'NoneType' object has no attribute 'fixed_ips'") AND
+  tags:"screen-q-lbaas.txt"
