@@ -1,0 +1,5 @@
+query: >
+  message:"ERROR:  source database \"template1\" is being accessed by other users" AND
+  tags:"console" AND
+  build_branch:"stable/havana" AND
+  build_name:"gate-nova-python26"
