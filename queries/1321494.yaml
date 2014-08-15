@@ -1,5 +1,0 @@
-query: >
-        tags:"screen-ir-api.txt"
-        AND message:"Node"
-        AND message:"is locked by host"
-        AND message:"please retry after the current operation is completed."

@@ -1,3 +1,0 @@
-query: >
-  message:"error: can't copy 'etc/neutron/plugins/cisco/cisco_cfg_agent.ini': doesn't exist or not a regular file" AND
-  tags:"console"

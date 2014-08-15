@@ -1,4 +1,0 @@
-query: >
-  message:"Timed out during operation: cannot acquire state
-  change lock"
-  AND tags:"screen-n-cpu.txt"

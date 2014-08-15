@@ -1,3 +1,0 @@
-query: >
-  message:"test_coordination_presence"
-  AND (build_name:"gate-ceilometer-python26" OR  build_name:"gate-ceilometer-python27") AND tags:"console"

@@ -1,4 +1,0 @@
-query: >
-  message:"ConfigFilesNotFoundError: Failed to read some config files: /etc/tempest/tempest.conf" AND
-  build_name:"gate-tempest-python27" AND
-  tags:"console"

@@ -1,4 +1,0 @@
-query: >
-  message:"add_image_ref"
-  AND message:"Caught error: 'image_id'"
-  AND tags: "screen-n-api.txt"

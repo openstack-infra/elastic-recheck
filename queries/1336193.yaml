@@ -1,5 +1,0 @@
-query: >-
-  (message:"FAIL: tests.alarm.test_rpc.TestRPCAlarmPartitionCoordination.test_coordination_allocate" OR
-   message:"FAIL: tests.alarm.test_rpc.TestRPCAlarmPartitionCoordination.test_coordination_assign") AND
-  project:"openstack/ceilometer" AND
-  tags:console
