@@ -1,0 +1,5 @@
+query: >
+  message:"Failed to terminate process"
+  AND message:"InstanceNotRescuable"
+  AND message:"Exception during message handling"
+  AND tags:"screen-n-cpu.txt"
