@@ -1,0 +1,7 @@
+# NOTE(dolph): only ~39% of the tracebacks this would match without the
+# build_status filter are actually failures, but in the failed builds i
+# investigated where this traceback occurred, it appears to be the cause.
+query: >
+  message:"nova.quota OperationalError: (OperationalError) (1213, 'Deadlock found when trying to get lock; try restarting transaction')"
+  AND tags:"screen-n-api.txt"
+  AND build_status:"FAILURE"
