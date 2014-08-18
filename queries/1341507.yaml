@@ -1,4 +1,0 @@
-query: >
-  message: "ERROR: Failure: ImportError (No module named mock)"
-  AND (build_name:"check-swift-dsvm-functional" OR build_name:"gate-swift-dsvm-functional")
-  AND tags: "console"

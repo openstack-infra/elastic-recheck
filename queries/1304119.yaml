@@ -1,3 +1,0 @@
-query: >-
-  message:"(ObjectExpiryTest:test_get_object_at_expiry_time): 404 HEAD"
-  AND tags:console

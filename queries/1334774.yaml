@@ -1,4 +1,0 @@
-query: >-
-  message:"UnicodeError: Message objects do not support str() because they may contain non-ascii characters. Please use unicode() or translate() instead." AND
-  tags:console AND
-  project:"openstack/glance"

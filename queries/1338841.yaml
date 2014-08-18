@@ -1,3 +1,0 @@
-query: >-
-  message:"Unexpected OperationalError raised: (OperationalError) asynchronous connection failed" AND
-  tags:"screen-n-api.txt"

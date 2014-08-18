@@ -1,3 +1,0 @@
-query: >
-  message:"self.assertTrue" AND message:"end_time - start_time" AND
-  tags:console AND build_name:"gate-tempest-python27"
