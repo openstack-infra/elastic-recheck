@@ -1,0 +1,5 @@
+query: >
+  tags:"console.html"
+  AND project:"openstack/nova"
+  AND ( build_name:"gate-nova-python27" OR build_name:"gate-nova-python26")
+  AND message:"INFO [nova.tests.integrated.test_multiprocess_api] waiting on process"
