@@ -1,0 +1,4 @@
+query: >
+  message:"Invalid input for field/attribute foo" AND
+  tags:"console" AND
+  project:"openstack/nova"
