@@ -109,9 +109,10 @@ class TestBotWithTestTools(tests.TestCase):
     def fake_print(self, channel, msg):
         reference = ("openstack/keystone change: https://review.openstack.org/"
                      "64750 failed because of: gate-keystone-python27: "
-                     "unrecognized error, gate-keystone-python2"
+                     "unrecognized error", "gate-keystone-python2"
                      "6: https://bugs.launchpad.net/bugs/123456")
-        self.assertEqual(reference, msg)
+        for ref in reference:
+            self.assertIn(ref, msg)
 
     def fake_display(self, channel, msg):
         return True

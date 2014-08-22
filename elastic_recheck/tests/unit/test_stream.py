@@ -151,10 +151,12 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.queue(), "gate")
             self.assertEqual(event.bug_urls(),
                              ['https://bugs.launchpad.net/bugs/123456'])
-            self.assertEqual(event.bug_urls_map(),
-                             ['gate-keystone-python27: unrecognized error',
-                              'gate-keystone-python26: '
-                              'https://bugs.launchpad.net/bugs/123456'])
+            errors = ['gate-keystone-python27: unrecognized error',
+                      'gate-keystone-python26: '
+                      'https://bugs.launchpad.net/bugs/123456']
+            bug_map = event.bug_urls_map()
+            for error in errors:
+                self.assertIn(error, bug_map)
             self.assertEqual(sorted(event.failed_job_names()),
                              ['gate-keystone-python26',
                               'gate-keystone-python27'])
