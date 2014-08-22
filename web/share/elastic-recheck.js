@@ -48,6 +48,23 @@ function update() {
                 $('<h3/>', {
                     text: 'Projects: ' + bug['bug_data']['affects']
                 }).appendTo(div);
+                var reviews = bug['bug_data']['reviews'];
+                if (reviews.length>0) {
+                    $('<h3/>', {
+                        text: 'Open reviews: '
+                    }).appendTo($('<span/>', {
+                        'class': 'extlink'
+                    }).appendTo(div));
+                }
+                for (var i = 0; i < reviews.length ; i++) {
+                        $('<a/>', {
+                            href: 'https://review.openstack.org/#/c/'+reviews[i],
+                            text: reviews[i]
+                        }).appendTo($('<span/>', {
+                            'class': 'extlink'
+                        }).appendTo(div));
+
+                }
 		$('<div/>', {'class': 'graph'}).appendTo(div);
 		$('<a/>', {
 		    href: 'http://logstash.openstack.org/#'+bug['logstash_query'],
