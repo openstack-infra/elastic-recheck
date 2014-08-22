@@ -180,9 +180,9 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.bug_urls(),
                              ['https://bugs.launchpad.net/bugs/123456'])
             self.assertEqual(event.bug_urls_map(),
-                             ['gate-keystone-python27: unrecognized error',
-                              'gate-keystone-python26: '
-                              'https://bugs.launchpad.net/bugs/123456'])
+                             ['gate-keystone-python26: '
+                              'https://bugs.launchpad.net/bugs/123456',
+                              'gate-keystone-python27: unrecognized error'])
             self.assertEqual(sorted(event.failed_job_names()),
                              ['gate-keystone-python26',
                               'gate-keystone-python27'])

@@ -137,7 +137,7 @@ class FailEvent(object):
         return "- " + "\n- ".join(self.bug_urls_map())
 
     def bug_urls_map(self):
-        """Produce map of which jobs failed due to which bugs."""
+        """Produce sorted list of which jobs failed due to which bugs."""
         if not self.get_all_bugs():
             return None
         bug_map = {}
@@ -152,7 +152,7 @@ class FailEvent(object):
                 bug_list.append("%s: unrecognized error" % job)
             else:
                 bug_list.append("%s: %s" % (job, bug_map[job]))
-        return bug_list
+        return sorted(bug_list)
 
     def is_fully_classified(self):
         if self.get_all_bugs() is None:
