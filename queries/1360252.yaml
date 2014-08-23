@@ -1,0 +1,5 @@
+query: >
+  (message:"TestCase.setUp was already called. Do not explicitly call setUp from your tests. In your own setUp, use super to call the base setUp" OR
+   message:"TestCase.tearDown was already called. Do not explicitly call tearDown from your tests. In your own tearDown, use super to call the base tearDown") AND
+  tags:"console" AND
+  build_queue:"gate"
