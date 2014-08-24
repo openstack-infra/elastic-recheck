@@ -1,0 +1,3 @@
+query: >
+  message:"NotRegistered: Dashboard with slug \"sahara\" is not registered" AND
+  tags:"apacheerror"
