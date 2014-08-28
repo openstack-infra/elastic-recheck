@@ -1,0 +1,3 @@
+query: >
+  message:"Starting dropbear sshd: mkdir: can't create directory '/etc/dropbear': Read-only file system"
+  AND tags:"console"
