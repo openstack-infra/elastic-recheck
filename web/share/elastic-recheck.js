@@ -51,7 +51,8 @@ function update() {
                 var reviews = bug['bug_data']['reviews'];
                 if (reviews.length>0) {
                     $('<h3/>', {
-                        text: 'Open reviews: '
+                        text: 'Open reviews: ',
+                        style:'font-weight: bold;'
                     }).appendTo($('<span/>', {
                         'class': 'extlink'
                     }).appendTo(div));
@@ -59,6 +60,7 @@ function update() {
                 for (var i = 0; i < reviews.length ; i++) {
                         $('<a/>', {
                             href: 'https://review.openstack.org/#/c/'+reviews[i],
+                            style:'font-weight: bold;',
                             text: reviews[i]
                         }).appendTo($('<span/>', {
                             'class': 'extlink'
