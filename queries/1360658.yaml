@@ -1,0 +1,5 @@
+query: >
+  message:"/etc/neutron/rootwrap.d/functional.filters: Permission denied" AND
+  tags:"console" AND (
+  build_name:"check-neutron-dsvm-functional" OR
+  build_name:"gate-neutron-dsvm-functional")
