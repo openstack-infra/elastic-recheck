@@ -1,0 +1,2 @@
+query: >
+  message:"AttributeError: 'tuple' object has no attribute 'lower'" AND tags:"console"
