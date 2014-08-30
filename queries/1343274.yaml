@@ -1,4 +1,0 @@
-query: >
-  message:"DBDeadlock" AND
-  message:"INSERT INTO quota_usages" AND
-  tags:"screen-c-api.txt"

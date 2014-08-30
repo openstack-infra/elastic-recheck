@@ -1,5 +1,0 @@
-# note this is a low freq error that goes back at least until mid 2013, best
-# to not remove it when purging queries
-query: >
-  message:"An error occurred while enabling hairpin mode on domain with xml"
-  AND tags:screen-n-cpu.txt

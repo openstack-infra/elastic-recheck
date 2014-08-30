@@ -1,3 +1,0 @@
-query: >-
-  message:"(OperationalError) (1213, 'Deadlock found when trying to get lock; try restarting transaction') 'DELETE FROM ipavailabilityranges"
-  AND tags:screen-q-svc.txt

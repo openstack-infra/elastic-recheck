@@ -1,4 +1,0 @@
-query: >
-  tags:"console"
-  AND message:"mount: wrong fs type, bad option, bad superblock on /dev/loop1,"
-  AND (build_name:"check-grenade-dsvm-neutron" OR build_name:"gate-grenade-dsvm-neutron")
