@@ -1,5 +1,0 @@
-query: >
-  message:"format_stack_output" AND
-  message:"cinderclient" AND
-  message:"NotFound: The resource could not be found" AND
-  tags:"screen-h-eng.txt"

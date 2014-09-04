@@ -1,5 +1,0 @@
-query: >
-  message:"Can\\'t remove open logical volume" AND
-  message:"Exit code: 5" AND
-  message:"Exception during message handling" AND
-  tags:"screen-c-vol.txt"

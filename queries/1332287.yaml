@@ -1,6 +1,0 @@
-query: >
-  message:"IOError" AND
-  message:"No such file or directory" AND
-  message:"build/httpretty/readme.rst" AND
-  tags:"console" AND NOT (
-  build_queue:"periodic" OR build_queue:"post")

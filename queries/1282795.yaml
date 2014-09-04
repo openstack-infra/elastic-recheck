@@ -1,4 +1,0 @@
-query: >
-  message:"ERROR: InterpreterNotFound: python2.6"
-  AND tags:"console.html"
-  AND build_name:*python26

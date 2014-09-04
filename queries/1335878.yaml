@@ -1,7 +1,0 @@
-query: >-
-  message:"ConnectionError: HTTPConnectionPool" AND
-  message:"Max retries exceeded with url" AND
-  message:"class 'socket.error'" AND
-  message:"ECONNREFUSED" AND
-  tags:console AND
-  project:"openstack/glance"

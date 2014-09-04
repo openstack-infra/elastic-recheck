@@ -1,3 +1,0 @@
-query: >
-  message:"Failed to connect to 2001:4800:"
-  AND tags:"console"

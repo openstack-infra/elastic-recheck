@@ -1,5 +1,0 @@
-query: >
-  message:"Exception during message handling"
-  AND message:"expected string or buffer"
-  AND message:"connection_info = jsonutils.loads(bdm.connection_info)"
-  AND tags:screen-n-cpu.txt
