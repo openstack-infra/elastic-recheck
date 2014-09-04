@@ -1,0 +1,3 @@
+query: >
+  message:"TypeError: 'TestVolumeBootPattern' object is not iterable" AND
+  tags:"console"
