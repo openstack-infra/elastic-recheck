@@ -1,0 +1,3 @@
+query: >
+  message:"requests.packages.urllib3.exceptions.ProtocolError: ('Connection aborted.', gaierror(-2, 'Name or service not known'))" AND
+  tags:"console"
