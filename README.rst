@@ -63,6 +63,12 @@ In order to support rapidly added queries, it's considered socially acceptable
 to approve changes that only add 1 new bug query, and to even self approve
 those changes by core reviewers.
 
+Note that old queries which are no longer hitting in logstash and are
+associated with fixed or incomplete bugs are routinely deleted. This is to keep
+the load on the elastic-search engine as low as possible when checking a job
+failure. If a bug marked as Incomplete does show up again, the bug should be
+re-opened with a link to the failure and the e-r query should be restored.
+
 Adding Bug Signatures
 ---------------------
 
@@ -86,6 +92,13 @@ stack that can cause many tempest tests to fail.
 #. Tag your commit with a ``Related-Bug`` tag in the footer, or add a comment
    to the bug with the query you identified and a link to the logstash URL for
    that query search.
+
+   Putting the logstash query link in the bug report is also valuable in the
+   case of rare failures that fall outside the window of how far back log
+   results are stored. In such cases the bug might be marked as Incomplete
+   and the e-r query could be removed, only for the failure to re-surface
+   later. If a link to the query is in the bug report someone can easily
+   track when it started showing up again.
 
 #. Add the query to ``elastic-recheck/queries/BUGNUMBER.yaml``
    (All queries can be found on `git.openstack.org
