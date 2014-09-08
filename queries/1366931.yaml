@@ -1,0 +1,4 @@
+query: >
+  message:"Cannot set up guest memory 'pc.ram': Cannot allocate memory"
+  AND tags:"screen-n-cpu.txt"
+  AND  tags:"multiline"
