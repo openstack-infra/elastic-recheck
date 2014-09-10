@@ -1,0 +1,4 @@
+query: >
+  message:"ImportError: No module named 'ConfigParser'" AND
+  build_name:"gate-oslo.db-python33" AND
+  tags:"console"
