@@ -1,0 +1,3 @@
+query: >
+  message:"RuleAncestry"
+  AND tags:"horizon_error.txt"
