@@ -1,4 +1,0 @@
-query: >
-  message:"ImageKilledException: Image"
-  AND message:"'killed' while waiting for 'active'"
-  AND tags:"console"
