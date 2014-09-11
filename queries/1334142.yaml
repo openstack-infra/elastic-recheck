@@ -1,3 +1,4 @@
-query: >-
-  message:"Failed to add interface: Dump was interrupted and may be inconsistent"
-  AND tags:screen-n-cpu.txt
+query: >
+  message:"Failed to add interface: Dump was interrupted and may be inconsistent."
+  AND (tags:"screen-n-cpu.txt" OR tags:"screen-n-net.txt")
+  AND tags:"multiline"
