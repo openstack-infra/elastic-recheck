@@ -1,0 +1,4 @@
+query: >
+  message:"WARNING: intersphinx inventory"
+  AND tags:"console.html"
+  AND build_name:"gate-nova-docs"
