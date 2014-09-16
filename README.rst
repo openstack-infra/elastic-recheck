@@ -34,8 +34,9 @@ keyword which is the query text for elastic search.
 Guidelines for good queries:
 
 - Queries should get as close as possible to fingerprinting the root cause. A
-  filename query is typically better than a console one, as that's matching a
-  deep failure versus a surface symptom.
+  screen log query (e.g. ``tags:"screen-n-net.txt"``) is typically better than
+  a console one (``tags:"console"``), as that's matching a deep failure versus
+  a surface symptom.
 
 - Queries should not return any hits for successful jobs, this is a sign the
   query isn't specific enough. A rule of thumb is > 10% success hits probably
