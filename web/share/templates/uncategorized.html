@@ -62,6 +62,10 @@
 <li><a href="#{{job[0]}}">{{job[0]}} ({{job[1]}})</a></li>
 {% endfor %}
 </div>
+<div class='crm114-verbiage'>
+The crm114 links are logstash queries showing log messages that have been flagged as potential errors.<br>
+More information on the system can be found <a href="http://ci.openstack.org/logstash.html#crm114">here</a>
+</div>
 <div class="jobs">
 <h1>Unclassified failed jobs</h1>
 Overall Categorization Rate: {{ rate['overall'] }}%
@@ -81,8 +85,11 @@ Overall Categorization Rate: {{ rate['overall'] }}%
 <h2>{{ job[0] }} : {{ job[1] }} Uncategorized Fails. {{rate[job[0]]}}% Classification Rate ({{total_job_failures[job[0]]}} Total Fails)</h2>
 <ul>
   {% for url in urls[job[0]] %}
-
-  <li class="log-link">{{url['timestamp']}}: <a href="{{ url['log'] }}">{{ url['log'] }}</a></li>
+    {% if url['crm114'] %}
+      <li class="log-link">{{url['timestamp']}}: <a href="{{ url['log'] }}">{{ url['log'] }}</a> : <a href="{{ url['crm114'] }}">crm114</a></li>
+    {% else %}
+      <li class="log-link">{{url['timestamp']}}: <a href="{{ url['log'] }}">{{ url['log'] }}</a></li>
+    {% endif %}
   {% endfor %}
 </ul>
 {% endfor %}
