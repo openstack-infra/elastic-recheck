@@ -1,0 +1,4 @@
+query: >
+  message:"_get_ssh_connection" AND
+  message:"error: [Errno 113] No route to host" AND
+  tags:"tempest.txt"
