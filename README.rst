@@ -105,6 +105,11 @@ stack that can cause many tempest tests to fail.
    <https://git.openstack.org/cgit/openstack-infra/elastic-recheck/tree/queries>`_)
    and push the patch up for review.
 
+You can also help classify `Unclassified failed jobs
+<http://status.openstack.org/elastic-recheck/data/uncategorized.html>`_, which is
+an aggregation of all failed gate jobs that don't currently have elastic-recheck
+fingerprints.
+
 Future Work
 ------------
 
