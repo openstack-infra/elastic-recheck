@@ -1,3 +1,0 @@
-query: >-
-  message:"g-api did not start"
-  AND tags:console
