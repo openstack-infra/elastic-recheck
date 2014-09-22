@@ -1,0 +1,4 @@
+query: >-
+  message:"'StrOpt' object has no attribute 'type'" AND
+  module:glance AND
+  loglevel:CRITICAL
