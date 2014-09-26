@@ -1,5 +1,0 @@
-query: >
-  message:"Freeing unused kernel memory"
-  AND message:"Initializing cgroup subsys cpuset"
-  AND NOT message:"initramfs loading root from"
-  AND tags:"console"
