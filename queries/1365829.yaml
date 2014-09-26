@@ -1,6 +1,0 @@
-query: >
-  message:"FAIL: neutron.tests.unit.test_security_groups_rpc.TestSecurityGroupAgentEnhancedRpcWithIptables.test_prepare_remove_port"
-  AND project:"openstack/neutron"
-  AND tags:"console"
-  AND build_queue:"gate"
-  AND build_name:("gate-neutron-python27" "gate-neutron-python26")

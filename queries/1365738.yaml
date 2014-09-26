@@ -1,3 +1,0 @@
-query: >
-  message:"not allowed to have ERRORS or TRACES"
-  AND build_name:("check-grenade-dsvm" "gate-grenade-dsvm" "check-grenade-dsvm-partial-ncpu" "gate-grenade-dsvm-partial-ncpu")

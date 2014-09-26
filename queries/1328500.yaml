@@ -1,3 +1,0 @@
-query: >-
-  message:"Service cinder-backup could not be found"
-  AND tags:"screen-c-api.txt"

@@ -1,6 +1,0 @@
-query: >
-  (message:"safe_minidom_parse_string" AND
-   message:"ExpatError" AND
-   tags:"screen-c-api.txt") OR
-  (message:"XMLSyntaxError: Start tag expected, '<' not found, line 1, column 1" AND
-   tags:"console")

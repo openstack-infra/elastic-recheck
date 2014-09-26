@@ -1,4 +1,0 @@
-query: >
-  message:(+"InstanceInvalidState: Instance" +"in task_state powering-off. Cannot snapshot_volume_backed while the instance is in this state.")
-  AND project:"openstack/nova"
-  AND tags:"console.html"

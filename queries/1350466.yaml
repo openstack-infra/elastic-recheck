@@ -1,4 +1,0 @@
-query: >
-  message:"nova.openstack.common.periodic_task"
-  AND message:"Deadlock found"
-  AND tags:"screen-n-sch.txt"
