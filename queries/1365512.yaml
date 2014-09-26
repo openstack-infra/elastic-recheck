@@ -1,3 +1,0 @@
-query: >
-  message:"No distributions matching the version for oslotest>=1.1.0.0a1" AND
-  tags:"console"

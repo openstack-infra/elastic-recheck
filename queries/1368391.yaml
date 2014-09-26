@@ -1,3 +1,0 @@
-query: >
-  message:"OperationalError: (OperationalError) cannot commit - no transaction is active u'COMMIT;' ()" AND
-  tags:"console"

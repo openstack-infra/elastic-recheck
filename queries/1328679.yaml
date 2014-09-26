@@ -1,5 +1,0 @@
-query: >
-  message:"Build timed out (after "
-  AND message:"Marking the build as failed"
-  AND project:"openstack/ceilometer"
-

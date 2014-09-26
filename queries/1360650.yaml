@@ -1,3 +1,0 @@
-query: >
-  message:"ProgrammingError: (ProgrammingError) column \"locked_by\" is of type shadow_instances0locked_by but expression is of type instances0locked_by" AND
-  tags:"console"

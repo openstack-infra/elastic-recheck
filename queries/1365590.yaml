@@ -1,4 +1,0 @@
-query: >
-  message:"/home/jenkins/workspace/gate-devstack-bashate/tools/xen/functions: L340" AND
-  build_name:"gate-devstack-bashate" AND
-  tags:"console"

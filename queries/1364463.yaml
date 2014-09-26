@@ -1,7 +1,0 @@
-query: >
-  message:"StackBuildErrorException\: Stack heat-"
-  AND message:"is in CREATE_FAILED status due to 'Resource CREATE failed: EndpointNotFound\: "
-  AND message:"endpoint for "
-  AND message:"service in "
-  AND message:"region not found'"
-  AND tags:"console"

@@ -1,3 +1,0 @@
-query: >
-  message:"Cannot 'rebuild' while instance is in task_state rebuilding"
-  AND tags:"screen-n-api.txt"
