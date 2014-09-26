@@ -1,0 +1,4 @@
+query: >-
+  message:"Details: (ServerRescueNegativeTestJSON:tearDownClass) Failed to delete resource" AND
+  message:"within the required time" AND
+  tags:"console"
