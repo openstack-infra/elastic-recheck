@@ -12,7 +12,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-
+import dateutil.parser as dp
 import gerritlib.gerrit
 import pyelasticsearch
 
@@ -367,6 +367,15 @@ class Classifier():
         else:
             es_query = qb.generic(query, facet=facet)
         return self.es.search(es_query, size=size)
+
+    def most_recent(self):
+        """Return the datetime of the most recently indexed event."""
+        query = qb.most_recent_event()
+        results = self.es.search(query, size='1')
+        if len(results) > 0:
+            last = dp.parse(results[0].timestamp)
+            return last
+        return datetime.datetime.utcfromtimestamp(0)
 
     def classify(self, change_number, patch_number,
                  build_short_uuid, recent=False):

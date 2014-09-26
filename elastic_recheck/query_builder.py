@@ -110,3 +110,11 @@ def single_patch(query, review, patch, build_short_uuid):
                    'AND build_patchset:"%s"'
                    'AND build_short_uuid:%s' %
                    (query, review, patch, build_short_uuid))
+
+
+def most_recent_event():
+    return generic(
+        'filename:console.html '
+        'AND (build_queue:gate OR build_queue:check) '
+        'AND NOT tags:_grokparsefailure '
+        'AND NOT message:"%{logmessage}" ')

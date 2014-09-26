@@ -21,6 +21,7 @@ import json
 import os
 
 from launchpadlib import launchpad
+import pytz
 import requests
 
 import elastic_recheck.elasticRecheck as er
@@ -81,9 +82,13 @@ def main():
 
     buglist = []
 
-    epoch = datetime.utcfromtimestamp(0)
-    ts = datetime.now()
-    ts = datetime(ts.year, ts.month, ts.day, ts.hour)
+    # if you don't hate timezones, you don't program enough
+    epoch = datetime.utcfromtimestamp(0).replace(tzinfo=pytz.utc)
+    ts = datetime.utcnow().replace(tzinfo=pytz.utc)
+    # rawnow is useful for sending to javascript
+    rawnow = int(((ts - epoch).total_seconds()) * 1000)
+
+    ts = datetime(ts.year, ts.month, ts.day, ts.hour).replace(tzinfo=pytz.utc)
     # ms since epoch
     now = int(((ts - epoch).total_seconds()) * 1000)
     # number of days to match to, this should be the same as we are
@@ -93,6 +98,18 @@ def main():
     start = now - (days * 24 * STEP)
     # ER timeframe for search
     timeframe = days * 24 * STEP / 1000
+
+    last_indexed = int(
+        ((classifier.most_recent() - epoch).total_seconds()) * 1000)
+    behind = now - last_indexed
+
+    # the data we're going to return, including interesting headers
+    jsondata = {
+        'now': rawnow,
+        'last_indexed': last_indexed,
+        'behind': behind,
+        'buglist': []
+    }
 
     for query in classifier.queries:
         if args.queue:
@@ -151,8 +168,9 @@ def main():
     buglist = sorted(buglist,
                      key=lambda bug: -(bug['fails24'] * 100000 + bug['fails']))
 
+    jsondata['buglist'] = buglist
     out = open(args.output, 'w')
-    out.write(json.dumps(buglist))
+    out.write(json.dumps(jsondata))
     out.close()
 
 
