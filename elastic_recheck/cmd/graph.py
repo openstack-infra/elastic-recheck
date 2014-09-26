@@ -24,11 +24,14 @@ from launchpadlib import launchpad
 import requests
 
 import elastic_recheck.elasticRecheck as er
+from elastic_recheck import log as logging
 from elastic_recheck import results as er_results
 
 STEP = 3600000
 
 LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
+
+LOG = logging.getLogger('ergraph')
 
 
 def get_launchpad_bug(bug):
@@ -69,6 +72,9 @@ def main():
                         help='output filename')
     parser.add_argument('-q', dest='queue',
                         help='limit results to a specific query')
+    parser.add_argument('-v', dest='verbose',
+                        action='store_true', default=False,
+                        help='print out details as we go')
     args = parser.parse_args()
 
     classifier = er.Classifier(args.queries)
@@ -94,6 +100,8 @@ def main():
                                                args.queue)
         if query.get('suppress-graph'):
             continue
+        if args.verbose:
+            LOG.debug("Starting query for bug %s" % query['bug'])
         urlq = dict(search=query['query'],
                     fields=[],
                     offset=0,
