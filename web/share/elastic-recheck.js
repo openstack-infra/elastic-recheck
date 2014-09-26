@@ -29,11 +29,38 @@ function graphite_hit_count(job, color) {
     return graph;
 }
 
+function update_critical_dates(data) {
+    var last_updated = new Date(data['now']);
+    var last_indexed = new Date(data['last_indexed']);
+    $('#last_updated').text(last_updated.toString());
+    $('#last_indexed').text(last_indexed.toString());
+
+    var hours = parseInt(data['behind'] / 60 / 60 / 1000);
+    var behind = $('#behind');
+    if (hours > 0) {
+        behind.css('font-weight', 'bold');
+        behind.text("Indexing behind by " + hours + " hours");
+        $('#behind').text("Indexing behind by " + hours + " hours");
+        if (hours > 0) {
+            behind.css('color', 'red');
+        }
+    } else {
+        behind.css('font-weight', 'normal');
+        $('#behind').text("Up to date");
+    }
+}
 
 function update() {
     $.getJSON(data_url, function(data) {
 	var seen = [];
-	$.each(data, function(i, bug) {
+        var buglist = data;
+        // compatibility while we flip data over
+        if ('buglist' in data) {
+            buglist = data['buglist'];
+            update_critical_dates(data);
+        }
+
+	$.each(buglist, function(i, bug) {
 	    var id = 'bug-'+bug['number'];
 	    seen.push(id);
 	    var div = $('#'+id);
