@@ -29,6 +29,19 @@ function graphite_hit_count(job, color) {
     return graph;
 }
 
+function update_graph_for_bug(main, bug) {
+    var div = main.find("#bug-" + bug['number'] + " .graph");
+    if (bug['data'].length > 0) {
+        $.plot(div, bug['data'],
+               {xaxis: {
+                   mode: "time"
+               }}
+              );
+    } else {
+        div.html("No matches");
+    }
+}
+
 function update_critical_dates(data) {
     var last_updated = new Date(data['now']);
     var last_indexed = new Date(data['last_indexed']);
@@ -51,8 +64,9 @@ function update_critical_dates(data) {
 }
 
 function update() {
+    var source   = $("#bug-template").html();
+    var template = Handlebars.compile(source);
     $.getJSON(data_url, function(data) {
-	var seen = [];
         var buglist = data;
         // compatibility while we flip data over
         if ('buglist' in data) {
@@ -60,74 +74,25 @@ function update() {
             update_critical_dates(data);
         }
 
-	$.each(buglist, function(i, bug) {
-	    var id = 'bug-'+bug['number'];
-	    seen.push(id);
-	    var div = $('#'+id);
+        var main = $('#main-container');
+        var content = "";
 
-	    if (!div.length) {
-		div = $('<div/>', {'id': id, 'class': 'bug-container'});
-		div.appendTo($('#main-container'));
-		$('<h2/>', {text: 'Bug ' + bug['number'] + " - " + bug['bug_data']['name']}).appendTo(div);
-                $('<h3/>', {
-                    text: bug['fails24'] + ' fails in 24hrs / ' + bug['fails'] + ' fails in 10 days'
-                }).appendTo(div);
-                $('<h3/>', {
-                    text: 'Projects: ' + bug['bug_data']['affects']
-                }).appendTo(div);
-                var reviews = bug['bug_data']['reviews'];
-                if (reviews.length>0) {
-                    $('<h3/>', {
-                        text: 'Open reviews: ',
-                        style:'font-weight: bold;'
-                    }).appendTo($('<span/>', {
-                        'class': 'extlink'
-                    }).appendTo(div));
-                }
-                for (var i = 0; i < reviews.length ; i++) {
-                        $('<a/>', {
-                            href: 'https://review.openstack.org/#/c/'+reviews[i],
-                            style:'font-weight: bold;',
-                            text: reviews[i]
-                        }).appendTo($('<span/>', {
-                            'class': 'extlink'
-                        }).appendTo(div));
+        $.each(buglist, function(i, bug) {
+            content += template({'bug': bug});
+        });
+        main.append(content);
 
-                }
-		$('<div/>', {'class': 'graph'}).appendTo(div);
-		$('<a/>', {
-		    href: 'http://logstash.openstack.org/#'+bug['logstash_query'],
-		    text: 'Logstash'
-		}).appendTo($('<span/>', {
-		    'class': 'extlink'
-		}).appendTo(div));
-		$('<a/>', {
-		    href: 'https://bugs.launchpad.net/bugs/'+bug['number'],
-		    text: 'Launchpad'
-		}).appendTo($('<span/>', {
-		    'class': 'extlink'
-		}).appendTo(div));
-	    }
-	    div = div.find(".graph");
-
-	    if (bug['data'].length > 0) {
-		$.plot(div, bug['data'],
-		       {xaxis: {
-			   mode: "time"
-		       }}
-		      );
-	    } else {
-		div.html("No matches");
-	    }
-
-	});
-	$.each($('.bug-container'), function(i, container) {
-	    if (seen.indexOf(container.id) == -1) {
-		container.remove();
-	    }
-	});
+        // The graph functions are slow, but there is actually no
+        // reason to hold up the main paint thread for them, so put
+        // them into an async mode to run as soon as they can. This
+        // dramatically increases percevied page load speed.
+        $.each(buglist, function(i, bug) {
+            setTimeout(function() {
+                update_graph_for_bug(main, bug);
+            }, 1);
+        });
     });
-}
+};
 
 $(function() {
     update();

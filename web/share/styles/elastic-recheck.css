@@ -55,3 +55,11 @@ ul.nav.nav-tabs li.active a {
     border: 1px solid #EEEEEE;
     border-top: none;
 }
+
+.openreviews {
+    font-weight: bold;
+}
+
+div.openreviews {
+    margin-left: 2em;
+}

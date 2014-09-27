@@ -6,6 +6,7 @@
 
 <script type="text/javascript"
 	src="http://status.openstack.org/jquery.min.js"></script>
+<script type="text/javascript" src="handlebars-v2.0.0.js"></script>
 <script type="text/javascript"
 	src="http://status.openstack.org/jquery-visibility.min.js"></script>
 <script type="text/javascript"
@@ -39,7 +40,10 @@
     <!-- Page Specific CSS -->
     <link rel="stylesheet" href="http://www.openstack.org/themes/openstack/css/home.css" type="text/css" media="screen, projection, print"/>
 
-    <link rel="stylesheet" type="text/css" href="http://www.openstack.org/themes/openstack/css/main.css" />
+    <link rel="stylesheet" type="text/css"
+    href="http://www.openstack.org/themes/openstack/css/main.css" />
+
+
 
 
     <!-- Project specific css -->
@@ -52,6 +56,27 @@
 
   <BODY>
     <script type="text/javascript">header('Rechecks');</script>
+    <!-- this template is process by handlebar js... and makes
+    javascript sane again! -->
+    <script id="bug-template" type="text/x-handlebars-template">
+      <div id="bug-{{bug.number}}" class="bug-container">
+        <h2>Bug {{bug.number}} - {{bug.bug_data.name}}</h2>
+           <h3>{{bug.fails24}} fails in 24 hrs / {{bug.fails}} fails in
+             10 days</h3>
+           <h3>Projects: {{bug.bug_data.affects}}</h3>
+           {{#if bug.bug_data.reviews}}
+           <h3 class="openreviews">Open Reviews:</h3>
+           <div class="openreviews">
+             {{#each bug.bug_data.reviews}}
+             <a class="openreview" href="https://review.openstack.org/#/c/{{this}}">{{this}}</a>
+             {{/each}}
+           </div>
+           {{/if}}
+           <div class="graph"></div>
+           <a class="extlink" href="http://logstash.openstack.org/#{{bug.logstash_query}}">Logstash</a>
+           <a class="extlink" href="http://bugs.launchpad.net/bugs/{{bug.number}}">Logstash</a>
+      </div>
+    </script>
     <div class="container">
         <ul class="nav nav-tabs">
             <li class="active"><a href="index.html">All Pipelines</a></li>
