@@ -17,6 +17,12 @@ table {
 h2 {
     padding-top: 1em;
 }
+
+/** keep the h2 color even if it's a link */
+h2 a, h2 a:visited {
+    color: inherit;
+}
+
 h3 {
     font-size: 1.1em;
 }
