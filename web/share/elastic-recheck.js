@@ -31,7 +31,7 @@ function graphite_hit_count(job, color) {
 
 function update_graph_for_bug(main, bug) {
     var div = main.find("#bug-" + bug['number'] + " .graph");
-    if (bug['data'].length > 0) {
+    if (bug['fails'] > 0) {
         $.plot(div, bug['data'],
                {xaxis: {
                    mode: "time"
@@ -39,6 +39,8 @@ function update_graph_for_bug(main, bug) {
               );
     } else {
         div.html("No matches");
+        div.css('height', 'auto');
+        div.parent().css('opacity', '0.5');
     }
 }
 
