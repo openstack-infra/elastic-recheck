@@ -40,8 +40,6 @@ openstack-qa:
 import argparse
 import ConfigParser
 import daemon
-import logging
-import logging.config
 import os
 import textwrap
 import threading
@@ -50,6 +48,8 @@ import yaml
 
 import irc.bot
 from launchpadlib import launchpad
+
+from elastic_recheck import log as logging
 
 LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
 
@@ -269,7 +269,7 @@ def get_options():
 
 
 def _main(args, config):
-    setup_logging(config)
+    logging.setup_logging(config)
 
     fp = config.get('ircbot', 'channel_config')
     if fp:
@@ -326,37 +326,6 @@ def main():
         pid = pid_file_module.TimeoutPIDLockFile(pid_fn, 10)
         with daemon.DaemonContext(pidfile=pid):
             _main(args, config)
-
-
-def setup_logging(config):
-    """Turn down dependent library log levels so they aren't noise."""
-    FORMAT = '%(asctime)s  %(levelname)-8s [%(name)-15s] %(message)s'
-    DATEFMT = '%Y-%m-%d %H:%M:%S'
-    # set 3rd party library logging levels to sanity points
-    loglevels = {
-        "irc.client": logging.INFO,
-        "gerrit.GerritWatcher": logging.INFO,
-        "paramiko.transport": logging.INFO,
-        "pyelasticsearch": logging.INFO,
-        "requests.packages.urllib3.connectionpool": logging.WARN,
-        "urllib3.connectionpool": logging.WARN
-    }
-
-    if config.has_option('ircbot', 'log_config'):
-        log_config = config.get('ircbot', 'log_config')
-        fp = os.path.expanduser(log_config)
-        if not os.path.exists(fp):
-            raise Exception("Unable to read logging config file at %s" % fp)
-        logging.config.fileConfig(fp)
-    else:
-        logging.basicConfig(
-            level=logging.DEBUG,
-            format=FORMAT,
-            datefmt=DATEFMT
-        )
-        for module in loglevels:
-            log = logging.getLogger(module)
-            log.setLevel(loglevels[module])
 
 
 if __name__ == "__main__":
