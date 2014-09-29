@@ -1,0 +1,4 @@
+query: >-
+  message:"(CfnInitScenarioTest:test_server_cfn_init) Timed out waiting for" AND
+  message:"to become reachable" AND
+  tags:"console"
