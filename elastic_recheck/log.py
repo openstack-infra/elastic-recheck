@@ -17,6 +17,7 @@
 """Common logging for all ER efforts"""
 
 import logging
+import logging.config
 import os
 
 CONFIGURED = False
