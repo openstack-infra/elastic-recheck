@@ -3,4 +3,7 @@ query: >
     OR
     (message:"Error: Service" AND message:"is not running"))
     AND tags:"console"
-    AND NOT build_name:"check-grenade-dsvm-partial-ncpu"
+    AND NOT
+    (build_name:"check-grenade-dsvm-partial-ncpu"
+    OR
+    build_name:"check-grenade-dsvm-partial-ncpu-icehouse")
