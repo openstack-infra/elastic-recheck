@@ -60,7 +60,7 @@
     javascript sane again! -->
     <script id="bug-template" type="text/x-handlebars-template">
       <div id="bug-{{bug.number}}" class="bug-container">
-        <h2>Bug {{bug.number}} - {{bug.bug_data.name}}</h2>
+        <h2><a name="{{bug.number}}" href="#{{bug.number}}">Bug {{bug.number}} - {{bug.bug_data.name}}></a></h2>
            <h3>{{bug.fails24}} fails in 24 hrs / {{bug.fails}} fails in
              10 days</h3>
            <h3>Projects: {{bug.bug_data.affects}}</h3>
