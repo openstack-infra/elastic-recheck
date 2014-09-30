@@ -52,14 +52,19 @@ def get_launchpad_bug(bug):
 def get_open_reviews(bug_number):
     "return list of open gerrit reviews for a given bug."""
     r = requests.get("https://review.openstack.org:443/changes/"
-                     "?q=status:open++message:`%s`" % bug_number)
+                     "?q=status:open++message:`%s`+NOT+"
+                     "project:openstack-infra/elastic-recheck" % bug_number)
     # strip off first few chars because 'the JSON response body starts with a
     # magic prefix line that must be stripped before feeding the rest of the
     # response body to a JSON parser'
     # https://review.openstack.org/Documentation/rest-api.html
     reviews = []
     result = None
-    result = json.loads(r.text[4:])
+    try:
+        result = json.loads(r.text[4:])
+    except ValueError:
+        LOG.debug("gerrit response '%s' is not valid JSON" % r.text.strip())
+        raise
     for review in result:
         reviews.append(review['_number'])
     return reviews
