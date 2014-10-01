@@ -1,0 +1,3 @@
+query: >
+  message:"curl" AND message:"Failed to connect to cloud-images.ubuntu.com"
+  AND tags:"console"
