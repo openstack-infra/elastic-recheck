@@ -224,11 +224,12 @@ class MessageConfig(dict):
 
 class ChannelConfig(object):
     def __init__(self, data):
-        self.data = data
         # for compatibility reasons we support a pre channel hierarchy
         # model of the world.
         if 'channels' in data:
-            self.data = data['channels']
+            data = data['channels']
+
+        self.data = data
 
         keys = data.keys()
         for key in keys:
