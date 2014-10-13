@@ -1,0 +1,6 @@
+query: >
+  message:"_destroy" AND
+  message:"libvirtError: Failed to terminate process" AND
+  message:"with SIGKILL: Device or resource busy" AND
+  module:"nova.compute.manager" AND
+  tags:"screen-n-cpu.txt"
