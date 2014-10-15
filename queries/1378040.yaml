@@ -1,5 +1,0 @@
-query: >
-  message:"bash: /opt/stack/new/python-openstackclient/post_test_hook.sh: No such file or directory" AND
-  tags:"console" AND (
-  build_name:"check-osc-dsvm-functional" OR
-  build_name:"gate-osc-dsvm-functional")

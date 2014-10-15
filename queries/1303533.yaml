@@ -1,4 +1,0 @@
-query: >
-  message:"FAIL\: nova.tests.integrated.v3.test_suspend_server.SuspendServerSamplesJsonTest.test_post_resume" AND
-  tags:"console" AND
-  (build_name:"gate-nova-python26" OR build_name:"gate-nova-python27")

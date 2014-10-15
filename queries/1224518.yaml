@@ -1,3 +1,0 @@
-query: >
-  message:"Current status: HARD_REBOOT"
-  AND tags:"console"

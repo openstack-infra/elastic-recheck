@@ -1,5 +1,0 @@
-query: >
-  message:"No such file or directory" AND
-  message:"kernel.part" AND
-  tags:"screen-n-cpu.txt" AND
-  tags:"multiline"

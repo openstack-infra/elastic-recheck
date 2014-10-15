@@ -1,6 +1,0 @@
-query: >
-  (message:"FAIL: keystone.tests.test_serializer.XmlSerializerTestCase.test_collection_member" OR
-   message:"FAIL: keystone.tests.test_serializer.XmlSerializerTestCase.test_collection_list") AND
-  project:"openstack/keystone" AND
-  tags:"console" AND
-  build_queue:"gate"

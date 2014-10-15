@@ -1,5 +1,0 @@
-query: >
-  message:"Got error from Swift\: put_object" AND
-  message:"failure and no ability to reset contents for reupload" AND
-  tags:"screen-g-api.txt" AND
-  module:"glance.store.swift"

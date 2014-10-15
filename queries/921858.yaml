@@ -1,3 +1,0 @@
-query: >
-  message:"Failed to get metadata for ip" AND
-  tags:screen-n-api-meta.txt

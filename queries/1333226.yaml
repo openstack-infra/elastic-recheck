@@ -1,3 +1,0 @@
-query: >-
-  message:"E: Could not get lock /var/lib/apt/lists/lock"
-  AND tags:console
