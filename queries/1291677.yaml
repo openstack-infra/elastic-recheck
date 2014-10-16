@@ -1,4 +1,0 @@
-query: >
-  message:"PortNotFound: Port"
-  AND message:"is not attached"
-  AND tags:"screen-n-cpu.txt"

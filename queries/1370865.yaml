@@ -1,3 +1,0 @@
-query: >
-  message:"reference = {'random1': 'OS::Heat::RandomString'}" AND
-  tags:"console"

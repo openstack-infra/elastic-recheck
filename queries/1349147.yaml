@@ -1,4 +1,0 @@
-query: >
-  message:"FAIL: nova.tests.db.test_db_api.SecurityGroupTestCase.test_security_group_get_no_instances" AND
-  project:"openstack/nova" AND
-  tags:"console"

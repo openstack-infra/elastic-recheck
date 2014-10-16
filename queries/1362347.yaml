@@ -1,3 +1,0 @@
-query: >
-    tags:syslog AND
-    message:"oom-killer"

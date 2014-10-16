@@ -1,3 +1,0 @@
-query: >
-  message:"HTTP exception thrown: Error. Unable to associate floating ip" AND
-  tags:"screen-n-api.txt"

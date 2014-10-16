@@ -1,3 +1,0 @@
-query: >
-  message:"Timed out waiting for firewall" AND
-  message:"become ACTIVE" AND tags:console
