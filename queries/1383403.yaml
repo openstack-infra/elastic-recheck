@@ -1,0 +1,3 @@
+query: >
+  message:"fatal: unable to access 'https://git.openstack.org/openstack-infra/devstack-gate/': gnutls_handshake() failed: A TLS packet with unexpected length was received." AND
+  tags:"console"
