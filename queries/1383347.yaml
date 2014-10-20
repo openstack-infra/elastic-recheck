@@ -1,0 +1,4 @@
+query: >
+  message:"MismatchError: 'DOWN' != u'ACTIVE': FloatingIP" AND
+  message:"is at status: ACTIVE. failed  to reach status: DOWN" AND
+  tags:"console"
