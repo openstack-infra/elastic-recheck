@@ -208,7 +208,7 @@ class Stream(object):
         if (username != 'jenkins'):
             return False
 
-        if not ("Build failed.  For information on how to proceed" in
+        if not ("Build failed" in
                 event['comment']):
             return False
 
