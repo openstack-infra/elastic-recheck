@@ -15,10 +15,8 @@
 #    under the License.
 
 import argparse
-import base64
 import collections
 import datetime
-import json
 import operator
 import re
 
@@ -26,6 +24,7 @@ import dateutil.parser as dp
 import jinja2
 
 import elastic_recheck.elasticRecheck as er
+import elastic_recheck.query_builder as qb
 import elastic_recheck.results as er_results
 
 
@@ -124,18 +123,13 @@ def classifying_rate(fails, data, engine, classifier):
                                    key=lambda v: v['timestamp'], reverse=True)
         # Convert timestamp into string
         for url in bad_job_urls[job]:
-            urlq = {}
             url['timestamp'] = url['timestamp'].strftime(
                 "%Y-%m-%dT%H:%M")
             # setup crm114 query for build_uuid
             query = ('build_uuid: "%s" '
                      'AND error_pr:["-1000.0" TO "-10.0"] '
                      % url['build_uuid'])
-            urlq = dict(search=query,
-                        fields=[],
-                        offset=0,
-                        timeframe=str(864000))
-            logstash_query = base64.urlsafe_b64encode(json.dumps(urlq))
+            logstash_query = qb.encode_logstash_query(query)
             logstash_url = 'http://logstash.openstack.org/#%s' % logstash_query
             results = classifier.hits_by_query(query, size=1)
             if results:

@@ -15,7 +15,6 @@
 # under the License.
 
 import argparse
-import base64
 from datetime import datetime
 import json
 import os
@@ -26,7 +25,8 @@ import requests
 
 import elastic_recheck.elasticRecheck as er
 from elastic_recheck import log as logging
-from elastic_recheck import results as er_results
+import elastic_recheck.query_builder as qb
+import elastic_recheck.results as er_results
 
 STEP = 3600000
 
@@ -124,12 +124,8 @@ def main():
             continue
         if args.verbose:
             LOG.debug("Starting query for bug %s" % query['bug'])
-        urlq = dict(search=query['query'],
-                    fields=[],
-                    offset=0,
-                    timeframe=str(timeframe),
-                    graphmode="count")
-        logstash_query = base64.urlsafe_b64encode(json.dumps(urlq))
+        logstash_query = qb.encode_logstash_query(query['query'],
+                                                  timeframe=timeframe)
         bug_data = get_launchpad_bug(query['bug'])
         bug = dict(number=query['bug'],
                    query=query['query'],
