@@ -1,0 +1,3 @@
+query: >
+  message:"pkg_resources.DistributionNotFound: cliff==1.6.1"
+  AND tags:"grenade.sh.txt"
