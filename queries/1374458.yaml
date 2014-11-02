@@ -1,4 +1,0 @@
-query: >-
-  message:"Details: (TestEncryptedCinderVolumes:_run_cleanups) Failed to delete resource" AND
-  message:"within the required time" AND
-  tags:"console"

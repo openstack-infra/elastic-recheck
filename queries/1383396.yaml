@@ -1,5 +1,0 @@
-query: >
-  message:"ERROR: openstack 'NoneType' object has no attribute 'service_catalog'" AND
-  tags:"console" AND (
-  build_name:"check-osc-dsvm-functional" OR
-  build_name:"gate-osc-dsvm-functional")

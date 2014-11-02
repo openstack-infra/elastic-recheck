@@ -1,3 +1,0 @@
-query: >
-  message:"ERROR neutron.agent.linux.ovs_lib [-] Unable to retrieve bridges. Exception" AND
-  tags:"console"

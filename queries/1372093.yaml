@@ -1,4 +1,0 @@
-query: >-
-  message:"Failed to compute_task_migrate_server: No valid host was found" AND
-  module:"nova.scheduler.utils" AND
-  tags:"screen-n-cond.txt"
