@@ -1,3 +1,0 @@
-query: >-
-  message:"Deadlock found when trying to get lock; try restarting transaction"
-  AND tags:screen-g-reg.txt
