@@ -1,0 +1,3 @@
+query: >-
+  message:"subunit.run discover: error: no such option: --list"
+  AND tags:console
