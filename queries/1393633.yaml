@@ -1,0 +1,4 @@
+query: >-
+  message:"Command: psql -w -U openstack_citest -h localhost -c 'drop database if exists openstack_citest;' -d postgres" AND
+  tags:"console" AND
+  build_name:"gate-nova-python27"
