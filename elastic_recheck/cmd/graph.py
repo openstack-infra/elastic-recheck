@@ -39,13 +39,18 @@ def get_launchpad_bug(bug):
     lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
                                                'production',
                                                LPCACHEDIR)
-    lp_bug = lp.bugs[bug]
-    bugdata = {'name': lp_bug.title}
-    projects = ", ".join(map(lambda x: "(%s - %s)" %
-                             (x.bug_target_name, x.status),
-                             lp_bug.bug_tasks))
-    bugdata['affects'] = projects
-    bugdata['reviews'] = get_open_reviews(bug)
+    try:
+        lp_bug = lp.bugs[bug]
+        bugdata = {'name': lp_bug.title}
+        projects = ", ".join(map(lambda x: "(%s - %s)" %
+                                 (x.bug_target_name, x.status),
+                                 lp_bug.bug_tasks))
+        bugdata['affects'] = projects
+        bugdata['reviews'] = get_open_reviews(bug)
+    except KeyError:
+        # if someone makes a bug private, we lose access to it.
+        bugdata = dict(name='Unknown (Private Bug)',
+                       affects='Unknown (Private Bug)', reviews=[])
     return bugdata
 
 
