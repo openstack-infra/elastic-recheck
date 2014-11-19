@@ -1,0 +1,4 @@
+query: >
+  message:"/opt/stack/new/devstack-gate/devstack-vm-gate.sh: line" AND
+  message:"cd: /opt/stack/new/devstack: No such file or directory" AND
+  tags:"console"
