@@ -1,0 +1,4 @@
+query: >
+  message:"AssertionError: Correct notifications were not received after" AND
+  build_branch:"stable/icehouse" AND
+  tags:"console"
