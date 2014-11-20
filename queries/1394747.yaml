@@ -1,0 +1,4 @@
+query: >
+  message:"The test run didn't actually run any tests" AND
+  tags:"console" AND
+  build_queue:"gate"
