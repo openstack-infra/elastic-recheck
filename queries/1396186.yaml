@@ -1,4 +1,0 @@
-query: >
-  message:"(TestVolumeBootPattern:_run_cleanups) Failed to delete volume" AND
-  message:"within the required time" AND
-  tags:"console"
