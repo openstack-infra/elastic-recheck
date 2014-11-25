@@ -172,6 +172,26 @@ Steps:
   then remove the related query.
 
 
+Running Queries Locally
+-----------------------
+
+You can execute an individual query locally and analyze the search results::
+
+    $ elastic-recheck-query queries/1331274.yaml
+    total hits: 133
+    build_status
+      100% FAILURE
+    build_name
+      48% check-grenade-dsvm
+      15% check-grenade-dsvm-partial-ncpu
+      13% gate-grenade-dsvm
+      9% check-grenade-dsvm-icehouse
+      9% check-grenade-dsvm-partial-ncpu-icehouse
+    build_branch
+      95% master
+      4% stable/icehouse
+
+
 Future Work
 -----------
 

@@ -1,0 +1,48 @@
+total hits: 353
+build_branch
+  86% master
+  6% feature/lbaasv2
+  4% stable/icehouse
+  3% stable/juno
+build_change
+  5% 136792
+  4% 123485
+  3% 128258
+  2% 136511
+  1% 126244
+build_name
+  6% check-tempest-dsvm-full
+  6% check-tempest-dsvm-postgres-full
+  5% check-tempest-dsvm-neutron-full
+  5% check-grenade-dsvm
+  5% check-tempest-dsvm-neutron-heat-slow
+build_node
+  0% bare-centos6-rax-dfw-35738
+  0% bare-centos6-rax-dfw-35823
+  0% bare-centos6-rax-iad-36267
+  0% bare-precise-rax-iad-35805
+  0% bare-precise-rax-iad-36349
+build_queue
+  72% check
+  21% gate
+  4% check-tripleo
+  0% experimental
+  0% experimental-tripleo
+build_status
+  100% FAILURE
+filename
+  100% console.html
+log_url
+  0% http://logs.openstack.org/00/123000/8/check/check-neutron-dsvm-functional/da1210d/console.html
+  0% http://logs.openstack.org/00/123000/8/check/check-tempest-dsvm-neutron-full-2/78d5bf3/console.html
+  0% http://logs.openstack.org/00/123000/8/check/check-tempest-dsvm-neutron-heat-slow/caa6dc9/console.html
+  0% http://logs.openstack.org/00/123000/8/check/gate-rally-dsvm-neutron-neutron/58a4e58/console.html
+  0% http://logs.openstack.org/00/123000/8/check/gate-tempest-dsvm-neutron-large-ops/8faa759/console.html
+project
+  30% openstack/neutron
+  20% openstack/nova
+  6% openstack/cinder
+  6% openstack/tempest
+  5% openstack/swift
+tags
+  100% console.html console
