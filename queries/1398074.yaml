@@ -1,0 +1,3 @@
+query: >
+  message:"internal error: process exited while connecting to monitor: Cannot set up guest memory 'pc.ram': Cannot allocate memory" AND
+  tags:"screen-n-cpu.txt"
