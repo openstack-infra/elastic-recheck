@@ -1,0 +1,4 @@
+query: >
+  message:"TypeError: acquire() got an unexpected keyword argument 'delay'" AND
+  tags:"console" AND
+  build_name:"gate-nova-python27"
