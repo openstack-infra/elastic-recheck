@@ -1,0 +1,2 @@
+query: >
+  message:"u'port_state': u'BUILD'}" AND tags:"console"
