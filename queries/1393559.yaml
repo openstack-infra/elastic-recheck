@@ -1,4 +1,0 @@
-query: >-
-  message:"+# Maximum db connection retries during startup. Set to -1 to" AND
-  tags:"console" AND
-  build_queue:"gate"

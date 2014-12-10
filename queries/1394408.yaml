@@ -1,3 +1,0 @@
-query: >
-    message:"'suds-jurko' is not a global requirement but it should be,something went wrong"
-    AND tags:"console"
