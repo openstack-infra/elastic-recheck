@@ -1,0 +1,4 @@
+query: >-
+  message:"TypeError: 'SetuptoolsVersion' object does not support indexing" AND
+  tags:"console" AND
+  build_name:"gate-nova-python27"
