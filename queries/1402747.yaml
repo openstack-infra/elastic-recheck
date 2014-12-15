@@ -1,3 +1,5 @@
 query: >-
-  message:"VersionConflict: SQLAlchemy 0.9.8 is installed but SQLAlchemy&lt;=0.8.99,&lt;=0.9.99,>=0.8.4,>=0.9.7 is required by ['oslo.db']" AND
-  tags:"console"
+  (message:"VersionConflict: SQLAlchemy 0.9.8 is installed but SQLAlchemy&lt;=0.8.99,&lt;=0.9.99,>=0.8.4,>=0.9.7 is required by ['oslo.db']" AND
+   tags:"console") OR
+  (message:"Client disconnected before sending all data to backend" AND
+   tags:"screen-g-api.txt")
