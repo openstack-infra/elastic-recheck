@@ -1,4 +1,0 @@
-query: >-
-  message:"AssertionError: Expected client error, got 200:{\"output\": \"\"}"
-  AND tags:"console"
-  AND NOT build_queue:"silent"
