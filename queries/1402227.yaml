@@ -1,0 +1,8 @@
+query: >-
+  message:"troveclient.compat.client" AND
+  message:"Instance" AND
+  message:"is not ready" AND
+  message:"\"code\"\: 422" AND
+  tags:"console" AND
+  build_name:"gate-trove-functional-dsvm-mysql" AND
+  build_queue:"gate"
