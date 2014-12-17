@@ -1,0 +1,5 @@
+query: >
+  message:"ModelNotFoundError: InstanceServiceStatus Not Found" AND
+  tags:"console" AND
+  build_name:"gate-trove-python27" AND
+  build_queue:"gate"
