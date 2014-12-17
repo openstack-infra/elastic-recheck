@@ -1,0 +1,6 @@
+query: >
+  message:"- function.__call__(&lt;nova.tests.unit.conductor.test_conductor.FakeContext object at" AND
+  message:"NoValidHost(u'No valid host was found. fake-reason',)" AND
+  tags:"console" AND
+  build_name:"gate-nova-python27" AND
+  build_queue:"gate"
