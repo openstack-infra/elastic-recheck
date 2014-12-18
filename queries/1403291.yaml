@@ -1,0 +1,5 @@
+query: >
+  message:"check_public_network_connectivity" AND
+  message:"AssertionError: False is not true : Timed out waiting for" AND
+  message:"to become reachable" AND
+  tags:"tempest.txt"
