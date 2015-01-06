@@ -1,3 +1,0 @@
-query: >
-  message:"TypeError: object.__new__(Markup) is not safe, use unicode.__new__()" AND
-  tags:"console"

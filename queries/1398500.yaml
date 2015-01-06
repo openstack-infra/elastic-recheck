@@ -1,5 +1,0 @@
-query: >
-  message:"HTTP error 404 while getting" AND
-  message:"oslotest" AND
-  message:"1.3.0" AND
-  tags:"console"

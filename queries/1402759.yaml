@@ -1,3 +1,0 @@
-query: >-
-  message:"ValueError: (\"Expected ',' or end-of-list in\", u'neutron==2015.1" AND
-  tags:"console"

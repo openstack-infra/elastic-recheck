@@ -1,3 +1,0 @@
-query: >
-  message:"Error communicating with" AND message:"timed out" AND
-  (build_queue:check-tripleo OR build_queue:experimental-tripleo)

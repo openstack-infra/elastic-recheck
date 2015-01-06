@@ -1,4 +1,0 @@
-query: >
-  message:"HTTP error 404 while getting" AND
-  message:"packages/source/l/logilab-common/logilab-common" AND
-  tags:"console"

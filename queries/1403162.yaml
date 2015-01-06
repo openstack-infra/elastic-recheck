@@ -1,5 +1,0 @@
-query: >
-  message:"ValueError: Circular reference detected"
-  AND build_name:"gate-nova-python27"
-  AND build_queue:"gate"
-  AND tags:"console"

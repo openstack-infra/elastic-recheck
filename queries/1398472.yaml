@@ -1,3 +1,0 @@
-query: >-
-  message:"from oslo.concurrency import processutils does not import a module"
-  AND tags:console

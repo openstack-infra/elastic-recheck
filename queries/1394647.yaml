@@ -1,3 +1,0 @@
-query: >
-    message:"'wrapt' is not a global requirement but it should be,something went wrong"
-    AND tags:"console"
