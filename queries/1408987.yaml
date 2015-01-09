@@ -1,0 +1,5 @@
+query: >
+  message:"EC2ResponseError: 400 Bad Request" AND
+  message:"AuthFailure" AND
+  message:"Signature not provided" AND
+  tags:"tempest.txt"
