@@ -1,5 +1,8 @@
 query: >
-  message:"EC2ResponseError: 400 Bad Request" AND
-  message:"AuthFailure" AND
-  message:"Signature not provided" AND
-  tags:"tempest.txt"
+  (message:"EC2ResponseError: 400 Bad Request" AND
+   message:"AuthFailure" AND
+   message:"Signature not provided" AND
+   tags:"tempest.txt") OR
+  (message:"self.ec2.create_key_pair(keyname)" AND
+   tags:"console" AND
+   build_name:"gate-nova-python27")
