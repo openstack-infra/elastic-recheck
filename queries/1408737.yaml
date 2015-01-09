@@ -1,0 +1,4 @@
+query: >
+  message:"AttributeError: 'module' object has no attribute '_ISO8601_TIME_FORMAT'" AND
+  tags:"console" AND
+  build_name:"gate-ceilometer-python27"
