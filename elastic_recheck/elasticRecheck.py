@@ -86,9 +86,9 @@ class FailJob(object):
     def __init__(self, name, url):
         self.name = name
         self.url = url
-        # The last 7 characters of the URL are the first 7 digits
+        # The last set of characters of the URL are the first 7 digits
         # of the build_uuid.
-        self.build_short_uuid = url[-7:]
+        self.build_short_uuid = filter(None, url.split('/'))[-1]
 
     def __str__(self):
         return self.name
