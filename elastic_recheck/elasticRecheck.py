@@ -385,6 +385,8 @@ class Classifier():
         self.queries = loader.load(self.queries_dir)
         bug_matches = []
         for x in self.queries:
+            if x.get('suppress-notification'):
+                continue
             self.log.debug(
                 "Looking for bug: https://bugs.launchpad.net/bugs/%s"
                 % x['bug'])
