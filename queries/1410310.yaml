@@ -1,0 +1,5 @@
+query: >
+  message:"allocate_for_instance" AND
+  message:"KeyError\: u'\'headroom\'" AND
+  tags:"screen-n-cpu.txt" AND
+  module:"nova.compute.manager"
