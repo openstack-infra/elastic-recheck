@@ -1,0 +1,3 @@
+query: >
+  message:"Quota exceeded for resources: ['subnet']"
+  AND tags:"console"
