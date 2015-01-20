@@ -1,0 +1,5 @@
+query: >
+  message:"MismatchError: set(['9.8.7.6']) != set(['1.2.3.4'])" AND
+  message:"Looking for servers: ['9.8.7.6']" AND
+  message:"Retrieved DNS nameservers: ['1.2.3.4']" AND
+  tags:"console"
