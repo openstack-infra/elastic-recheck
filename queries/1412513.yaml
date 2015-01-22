@@ -1,0 +1,5 @@
+query: >
+  (message:"MismatchError: 3 != 2" OR
+  message:"MismatchError: 5 != 4") AND
+  AND tags:"console"
+  AND build_name:"gate-cinder-python27"
