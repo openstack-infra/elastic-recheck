@@ -1,7 +1,7 @@
 six
 python-dateutil>=2.0
 pytz
-pyelasticsearch
+pyelasticsearch<1.0
 gerritlib
 python-daemon<2.0 # BUg https://storyboard.openstack.org/#!/story/2000107
 irc
