@@ -60,6 +60,11 @@ Guidelines for good queries:
 
    (build_name:"gate-nova-python26" OR build_name:"gate-nova-python27")
 
+When adding queries you can optionally suppress the creation of graphs
+and notifications by adding ``suppress-graph: true`` or
+``suppress-notifcation: true`` to the yaml file.  These can be used to make
+sure expected failures don't show up on the unclassified page.
+
 In order to support rapidly added queries, it's considered socially acceptable
 to approve changes that only add 1 new bug query, and to even self approve
 those changes by core reviewers.
