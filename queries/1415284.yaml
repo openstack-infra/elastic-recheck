@@ -1,0 +1,4 @@
+query: >
+  message:"pkg_resources.ContextualVersionConflict: (eventlet" AND
+  message:"set(['oslo.messaging']))" AND
+  tags:"console"
