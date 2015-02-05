@@ -1,0 +1,3 @@
+query: >-
+  message:"Details: No new port attached to the server in time" AND
+  tags:"console"
