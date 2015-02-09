@@ -1,0 +1,5 @@
+query: >
+  message:"error in setup command" AND
+  message:"ValueError: git history requires a target version of pbr.version.SemanticVersion(2014.2.3), but target version is pbr.version.SemanticVersion(2014.2.2)" AND
+  tags:"console" AND
+  project:"openstack/requirements"
