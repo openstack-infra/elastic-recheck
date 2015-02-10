@@ -1,0 +1,4 @@
+query: >
+  message:"devstack/exercises/volumes.sh" AND
+  message:"Server ex-vol-inst not deleted" AND
+  tags:"console"
