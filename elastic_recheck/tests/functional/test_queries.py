@@ -12,12 +12,17 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
+import os
+
 import ConfigParser
+from launchpadlib import launchpad
 import pyelasticsearch
 
 from elastic_recheck import elasticRecheck
 import elastic_recheck.query_builder as qb
 from elastic_recheck import tests
+
+LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
 
 
 class TestQueries(tests.TestCase):
@@ -34,6 +39,28 @@ class TestQueries(tests.TestCase):
         config.read('elasticRecheck.conf')
         self.queries = config.get('gerrit', 'query_file')
         self.classifier = elasticRecheck.Classifier(self.queries)
+        self.lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
+                                                        'production',
+                                                        LPCACHEDIR)
+        self.openstack_projects = (self.get_group_projects('openstack') +
+                                   self.get_group_projects('oslo'))
+
+    def get_group_projects(self, group_name):
+        group = self.lp.project_groups[group_name]
+        return map(lambda project: project.name,
+                   group.projects)
+
+    def test_launchpad(self):
+        bad_bugs = []
+        for x in self.classifier.queries:
+            print("Looking for bug: https://bugs.launchpad.net/bugs/%s"
+                  % x['bug'])
+            if not self._is_valid_launchpad_bug(x['bug']):
+                bad_bugs.append("https://bugs.launchpad.net/bugs/%s" %
+                                x['bug'])
+        if len(bad_bugs) > 0:
+            self.fail("the following bugs are not targeted to openstack "
+                      "on launchpad: %s" % bad_bugs)
 
     def test_elasticsearch_query(self):
         for x in self.classifier.queries:
@@ -55,3 +82,16 @@ class TestQueries(tests.TestCase):
             print("Didn't find any hits for bug %s" % x['bug'])
         # don't fail tests if no hits for a bug
         return True
+
+    def _is_valid_launchpad_bug(self, bug):
+        bug_tasks = self.lp.bugs[bug].bug_tasks
+        projects = map(lambda bug_task: bug_task.bug_target_name, bug_tasks)
+        # Check that at least one bug_tasks is targeted to an OpenStack Project
+        for project in projects:
+            if '/' in project:
+                # project is a specific series, ignore
+                continue
+            if project in self.openstack_projects:
+                return True
+        print("bug has no targets in the openstack launchpad group")
+        return False
