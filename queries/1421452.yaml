@@ -1,0 +1,3 @@
+query: >
+  message:"pip/_vendor/cachecontrol/filewrapper.py"
+  AND tags:"console"
