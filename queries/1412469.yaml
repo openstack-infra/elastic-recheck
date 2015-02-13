@@ -1,4 +1,0 @@
-query: >
-  message:"WebDriverException: Message: The browser appears to have exited before we could connect."
-  AND build_name:"gate-horizon-dsvm-integration"
-  AND tags:"console"

@@ -1,4 +1,0 @@
-query: >
-  message:"AttributeError: 'module' object has no attribute 'sys_executable'" AND
-  tags:"console"
-

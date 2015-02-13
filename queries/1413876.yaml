@@ -1,5 +1,0 @@
-query: >
-  message:"django-openstack-auth\=\=1.1.8" AND
-  tags:"console" AND (
-  build_name:"gate-horizon-python27" OR
-  build_name:"gate-horizon-python27-django14")

@@ -1,4 +1,0 @@
-query: >
-  message:"'block_device_mapping_v2' was unexpected"
-  AND tags:"console"
-  AND build_name:"gate-nova-python27"

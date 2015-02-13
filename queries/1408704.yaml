@@ -1,7 +1,0 @@
-query: >
-  message:"+ metadata_set.__call__" AND
-  message:"ExactCapacity : 1" AND
-  tags:"console" AND
-  build_name:"gate-heat-python27" AND
-  build_queue:"gate" AND
-  build_branch:"stable/juno"

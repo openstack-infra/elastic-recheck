@@ -1,3 +1,0 @@
-query: >
-  message:"+ echo 'This test has failed because it attempted to execute commands'" AND
-  tags:"console"
