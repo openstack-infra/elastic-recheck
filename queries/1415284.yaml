@@ -1,5 +1,0 @@
-query: >
-  message:"pkg_resources.ContextualVersionConflict: (eventlet" AND (
-  message:"set(['oslo.messaging']))" OR
-  message:"set(['oslo.vmware']))") AND
-  tags:"console"

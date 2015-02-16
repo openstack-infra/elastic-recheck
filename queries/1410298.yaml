@@ -1,3 +1,0 @@
-query: >-
-  message:"AttributeError: 'TestModelsMigrationsMysql' object has no attribute 'check_foreign_keys'" AND
-  tags:"console"

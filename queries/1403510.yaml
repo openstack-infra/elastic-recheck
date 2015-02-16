@@ -1,3 +1,0 @@
-query: >
-  message:"NameError: name 'StandardError' is not defined"  AND
-  tags:"console.html"

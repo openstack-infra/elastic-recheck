@@ -1,5 +1,0 @@
-query: >
-  message:"Failed to create iscsi target for volume" AND
-  message:"Unexpected error while running command" AND
-  message:"this target already exists" AND
-  tags:"screen-c-vol.txt"

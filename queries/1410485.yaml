@@ -1,4 +1,0 @@
-query: >
-  message:"RequiredOptError: value required for option: lock_path" AND
-  tags:"console" AND
-  build_name:"gate-cinder-python27"

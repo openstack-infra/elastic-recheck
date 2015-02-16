@@ -1,3 +1,0 @@
-query: >
-  message:"ValueError: \(\"EntryPoint must be in 'name=module\:attrs \[extras\]' format\", 'html\+mako = mako.ext.pygmentplugin\:MakoHtmlLexer'\)" AND
-  tags:"console"
