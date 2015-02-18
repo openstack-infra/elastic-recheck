@@ -1,0 +1,5 @@
+query: >
+  message:"py.error.EACCES: [Permission denied]: mkdir('/opt/stack/new/swift/.tox',)" AND (
+  build_name:"check-swift-dsvm-functional" OR
+  build_name:"gate-swift-dsvm-functional") AND
+  tags:"console"
