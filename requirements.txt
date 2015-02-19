@@ -4,7 +4,7 @@ pytz
 pyelasticsearch<1.0
 gerritlib
 python-daemon<2.0 # BUg https://storyboard.openstack.org/#!/story/2000107
-irc
+irc<11.1
 pyyaml
 lockfile
 pbr>=0.8.1,<1.0
