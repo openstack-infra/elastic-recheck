@@ -1,7 +1,4 @@
 query: >-
-  (message:"INFO: task lvm:" AND
-   message:"blocked for more than 120 seconds" AND
-   tags:"syslog") OR
-  (message:"Failed to delete volume" AND
-   message:"within the required time" AND
-   tags:"console")
+  message:"INFO: task lvm:" AND
+  message:"blocked for more than 120 seconds" AND
+  tags:"syslog"
