@@ -1,0 +1,8 @@
+query: >-
+  message:"MismatchError" AND
+  message:"::" AND
+  message:"not in" AND
+  message:"inet6" AND
+  message:"scope link" AND
+  message:"valid_lft forever preferred_lft forever" AND
+  tags:"console"
