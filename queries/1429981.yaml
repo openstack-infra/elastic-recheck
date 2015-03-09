@@ -1,0 +1,4 @@
+query: >-
+  message:"choices_text = ', '.join(opt.type.choices)" AND
+  tags:"console" AND
+  build_name:"gate-tempest-pep8"
