@@ -1,0 +1,3 @@
+query: >-
+  message:"Details: Stack" AND message:"failed to reach CREATE_COMPLETE status (current: CREATE_IN_PROGRESS) within the required time" AND
+  tags:"console"
