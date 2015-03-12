@@ -1,0 +1,3 @@
+query: >
+  message:"tempest.exceptions.InvalidCredentials: Invalid Credentials" AND
+  tags:"console" AND build_name:"gate-tempest-python27"
