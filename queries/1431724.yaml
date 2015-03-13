@@ -1,0 +1,4 @@
+query: >
+  message:"File \"tempest/scenario/test_network_basic_ops.py\", "
+  AND message:"in test_preserve_preexisting_port"
+  AND tags:console
