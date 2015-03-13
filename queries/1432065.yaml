@@ -1,0 +1,3 @@
+query: >
+  message:"DBDeadlock: (OperationalError) (1213, 'Deadlock found when trying to get lock; try restarting transaction') 'DELETE FROM ipallocationpools WHERE ipallocationpools.id" AND
+  tags:"screen-q-svc.txt"
