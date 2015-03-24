@@ -37,7 +37,7 @@ class TestQueries(tests.TestCase):
         super(TestQueries, self).setUp()
         config = ConfigParser.ConfigParser({'server_password': None})
         config.read('elasticRecheck.conf')
-        self.queries = config.get('gerrit', 'query_file')
+        self.queries = 'queries'
         self.classifier = elasticRecheck.Classifier(self.queries)
         self.lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
                                                         'production',
