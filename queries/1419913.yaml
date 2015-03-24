@@ -1,3 +1,0 @@
-query: >
-  message:"pkg_resources.ContextualVersionConflict: (oslo.config 1.4.0 (/usr/local/lib/python2.7/dist-packages), Requirement.parse('oslo.config>=1.6.0'), set(['tempest-lib']))" AND
-  tags:"console"

@@ -1,4 +1,0 @@
-query: >
-  message:"ValueError: You must specify a valid interface name." AND
-  message:"get_machine_ips" AND
-  tags:"screen-n-cpu.txt"

@@ -1,5 +1,0 @@
-query: >-
-  message:"nova.tests.unit.test_context.ContextTestCase.test_store_when_no_overwrite" AND
-  message:"FAILED" AND
-  tags:"console" AND
-  build_name:"gate-nova-python27"

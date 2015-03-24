@@ -1,3 +1,0 @@
-query: >
-  message:"self.assertTrue(len(addresses) >= 1)"
-  AND tags:"console.html"

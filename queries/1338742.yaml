@@ -1,3 +1,0 @@
-query: >-
-  message:"fatal: read error: Connection reset by peer"
-  AND tags:console

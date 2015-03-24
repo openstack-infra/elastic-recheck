@@ -1,3 +1,0 @@
-query: >-
-   message: "u\'tgtadm: this access control rule does not exist" AND
-   tags:"screen-c-vol.txt"

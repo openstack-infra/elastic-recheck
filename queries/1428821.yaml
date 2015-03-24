@@ -1,3 +1,0 @@
-query: >-
-  message:"TypeError: server() got an unexpected keyword argument 'socket_timeout'" AND
-  tags:"screen-n-api.txt"

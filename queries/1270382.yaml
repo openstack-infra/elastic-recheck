@@ -1,3 +1,0 @@
-query: >
-  message:"Temporary failure in name resolution"
-  AND tags:"console"

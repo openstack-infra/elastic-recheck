@@ -1,3 +1,0 @@
-query: >
-  message:"Caused by: java.io.IOException: SSH channel is closed"
-  AND tags:"console.html"

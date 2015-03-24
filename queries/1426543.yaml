@@ -1,3 +1,0 @@
-query: >-
-  message:"DBDeadlock: (OperationalError) (1205, 'Lock wait timeout exceeded; try restarting transaction') 'UPDATE floatingips SET status" AND
-  tags:"screen-q-svc.txt"

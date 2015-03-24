@@ -1,4 +1,0 @@
-query: >
-  build_name:"check-tempest-dsvm-ironic-agent_ssh"
-  AND tags:"screen-ir-cond.txt"
-  AND message:"u\'ImageDownloadError\'"
