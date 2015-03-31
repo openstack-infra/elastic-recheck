@@ -1,0 +1,4 @@
+query: >-
+  message:"Could not install requirement XStatic-Angular-Irdragndrop>=1.0.2.1" AND
+  message:"URL" AND
+  tags:console
