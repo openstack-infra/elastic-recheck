@@ -1,0 +1,3 @@
+query: >-
+  message:"AttributeError: 'InstallRequirement' object has no attribute 'url'" AND
+  tags:"console"
