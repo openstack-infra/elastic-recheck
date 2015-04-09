@@ -1,0 +1,3 @@
+query: >-
+  message:"Exception raised: (oslo.utils 1.2.1 (/usr/local/lib/python2.7/dist-packages), Requirement.parse('oslo.utils<1.5.0,>=1.4.0'), set(['python-neutronclient']))" AND
+  tags:"console"
