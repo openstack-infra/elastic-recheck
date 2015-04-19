@@ -1,0 +1,5 @@
+query: >-
+  message:"Instance failed to spawn" AND
+  message:"allocate_for_instance" AND
+  message:"PortNotUsable" AND
+  tags:"screen-n-cpu.txt"
