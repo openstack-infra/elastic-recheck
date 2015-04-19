@@ -1,8 +1,0 @@
-query: >
-    message:"No valid host was found"
-    AND tags:"console" AND
-    (
-    build_name:"check-grenade-dsvm-ironic-sideways" OR
-    build_name:"gate-grenade-dsvm-ironic-sideways" OR
-    build_name:"check-tempest-dsvm-ironic-parallel-nv"
-    )
