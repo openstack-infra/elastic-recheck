@@ -1,3 +1,0 @@
-query: >-
-    (message:"VersionConflict: SQLAlchemy" message:"is installed but"
-     message:"is required by ['oslo.db']" AND tags:"console")

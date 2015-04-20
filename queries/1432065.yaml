@@ -1,3 +1,0 @@
-query: >
-  message:"DBDeadlock: (OperationalError) (1213, 'Deadlock found when trying to get lock; try restarting transaction')" AND
-  tags:"screen-q-svc.txt"

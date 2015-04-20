@@ -1,3 +1,0 @@
-query: >
-  message:"Bad md5 hash for package"
-  AND tags:"console"

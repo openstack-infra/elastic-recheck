@@ -1,4 +1,0 @@
-query: >
-  message:"TypeError" AND
-  build_name:"gate-ceilometer-docs" AND
-  tags:"console"

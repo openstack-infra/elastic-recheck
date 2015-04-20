@@ -1,3 +1,0 @@
-query: >
-  message:"ERROR: openstackclient.shell Exception raised: (python-keystoneclient 0.11.2 (/usr/local/lib/python2.7/dist-packages), Requirement.parse('python-keystoneclient>=1.1.0'), set(['python-neutronclient']))" AND
-  tags:"console"

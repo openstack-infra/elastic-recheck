@@ -1,3 +1,0 @@
-query: >
-  message:"pkg_resources.VersionConflict: (unittest2 0.5.1"
-  AND tags:"console"

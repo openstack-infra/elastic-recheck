@@ -1,3 +1,0 @@
-query: >
-    message:"Remove dead screens with 'screen -wipe'."
-    AND tags:"console"

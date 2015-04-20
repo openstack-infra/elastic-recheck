@@ -1,4 +1,0 @@
-query: >-
-  message:"ValueError: need more than 2 values to unpack" AND
-  tags:"screen-n-cond.txt" AND
-  build_branch:"stable/juno"

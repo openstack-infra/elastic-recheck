@@ -1,7 +1,0 @@
-query: >
-  message:"+ instance_update_and_get_original.__call__" AND
-  message:"nova.context.RequestContext object at" AND
-  message:"'vm_state': 'shelved'" AND
-  project:"openstack/nova" AND
-  tags:"console" AND
-  build_queue:"gate"
