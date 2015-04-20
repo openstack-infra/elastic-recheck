@@ -1,4 +1,0 @@
-query: >
-  message:"_find_first_floating" AND
-  message:"TypeError: string indices must be integers" AND
-  tags:"javelin.txt"

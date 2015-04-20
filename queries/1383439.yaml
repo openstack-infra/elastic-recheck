@@ -1,5 +1,0 @@
-query: >
-  message:"KeyError: 'private'" AND
-  tags:"javelin.txt" AND (
-  build_name:"check-grenade-dsvm-neutron" OR
-  build_name:"gate-grenade-dsvm-neutron")

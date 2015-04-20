@@ -1,5 +1,0 @@
-query: >
-  message:"CommandFailed"
-  AND message:"encryption-type-list"
-  AND message:"returned non-zero exit status 1"
-  AND tags:"console"

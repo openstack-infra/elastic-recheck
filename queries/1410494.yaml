@@ -1,5 +1,0 @@
-query: >
-  message:"OperationalError: (OperationalError) cannot start a transaction within a transaction" AND
-  message:"This is necessary because SQLite does not support" AND
-  tags:"console" AND
-  build_name:"gate-glance-python27"

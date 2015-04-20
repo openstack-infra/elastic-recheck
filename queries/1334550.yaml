@@ -1,3 +1,0 @@
-query: >-
-  message:"Could not find any downloads that satisfy the requirement" AND
-  tags:console

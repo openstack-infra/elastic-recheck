@@ -1,3 +1,0 @@
-query: >
-  message:(+"[ERROR]" +"Horizon front page not functioning!")
-  AND tags:"console"

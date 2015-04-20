@@ -1,4 +1,0 @@
-query: >-
-  message:"Firewall Policy" AND
-  message:"is being used" AND
-  tags:"screen-q-svc.txt"

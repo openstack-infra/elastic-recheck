@@ -1,4 +1,0 @@
-query: >
-  message:"Max attempts reached for git remote update; giving up." AND NOT
-  message:"echo" AND
-  tags:"console"

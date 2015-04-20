@@ -1,4 +1,0 @@
-query: >
-  message:"KeyError: 'cpus'" AND
-  message:"baremetal_nodes.py" AND
-  tags:"screen-n-api.txt"

@@ -1,4 +1,0 @@
-query: >
-  message:"UnicodeDecodeError: 'utf8' codec can't decode byte 0x8a in position 8: invalid start byte" AND
-  tags:"console" AND
-  build_name:"gate-nova-python27"
