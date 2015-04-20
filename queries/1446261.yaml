@@ -1,0 +1,7 @@
+query: >-
+  message:"TRACE" AND
+  message:"Stderr: Cannot open network namespace \"qrouter" AND
+  message:"@agent1\": No such file or directory" AND (
+  build_name:"gate-neutron-dsvm-functional" OR
+  build_name:"check-neutron-dsvm-functional") AND
+  tags:"console"
