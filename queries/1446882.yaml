@@ -1,0 +1,3 @@
+query: >
+  message:"TypeError: cannot create weak reference to 'Struct' object"
+  AND tags:"console.html"
