@@ -1,0 +1,3 @@
+query: >
+  message:"File \"/usr/local/lib/python2.7/dist-packages/django_pyscss/compiler.py\", line 4" AND
+  tags:"console"
