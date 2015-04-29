@@ -93,6 +93,11 @@ function update() {
                 update_graph_for_bug(main, bug);
             }, 1);
         });
+
+        // we have anchor tags, however on first load the relevant
+        // sections don't exist, so after we load graph points, change
+        // our anchor as well.
+        window.location.replace(window.location.href);
     });
 };
 
