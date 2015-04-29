@@ -42,6 +42,13 @@ function update_graph_for_bug(main, bug) {
         div.css('height', 'auto');
         div.parent().css('opacity', '0.5');
     }
+
+    // if we've updated the bug number in question, and our requested
+    // location is this bug, reset the window location to visually
+    // scroll us to this point.
+    if ( ("#" + bug) == window.location.hash ) {
+        window.location.replace(window.location.href);
+    }
 }
 
 function update_critical_dates(data) {
@@ -93,11 +100,6 @@ function update() {
                 update_graph_for_bug(main, bug);
             }, 1);
         });
-
-        // we have anchor tags, however on first load the relevant
-        // sections don't exist, so after we load graph points, change
-        // our anchor as well.
-        window.location.replace(window.location.href);
     });
 };
 
