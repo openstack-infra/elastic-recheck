@@ -46,7 +46,7 @@ function update_graph_for_bug(main, bug) {
     // if we've updated the bug number in question, and our requested
     // location is this bug, reset the window location to visually
     // scroll us to this point.
-    if ( ("#" + bug) == window.location.hash ) {
+    if ( ("#" + bug['number']) == window.location.hash ) {
         window.location.replace(window.location.href);
     }
 }
