@@ -120,8 +120,7 @@ class MockDatetimeYesterday(datetime.datetime):
 
 @mock.patch.object(pyelasticsearch.ElasticSearch, 'search', return_value={})
 class TestSearchEngine(tests.TestCase):
-    """Tests that the elastic search API is called correctly.
-    """
+    """Tests that the elastic search API is called correctly."""
 
     def setUp(self):
         super(TestSearchEngine, self).setUp()
