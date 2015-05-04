@@ -1,0 +1,5 @@
+query: >-
+  message:"Actual call: request" AND
+  message:"OpenStack-ESX-Adapter" AND
+  tags:"console" AND
+  build_name:"gate-nova-python27"
