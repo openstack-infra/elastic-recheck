@@ -1,3 +1,4 @@
 query: >-
+  message:"libvirt" AND
   message:"internal error: received hangup / error event on socket" AND
   tags:"screen-n-cpu.txt"
