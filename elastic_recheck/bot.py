@@ -64,6 +64,10 @@ except Exception:
     pid_file_module = daemon.pidfile
 
 
+class ElasticRecheckException(Exception):
+    pass
+
+
 class RecheckWatchBot(irc.bot.SingleServerIRCBot):
     def __init__(self, channels, nickname, password, server, port=6667,
                  server_password=None):
@@ -184,7 +188,7 @@ class RecheckWatch(threading.Thread):
                         if channel in self.channel_config.events['negative']:
                             self.new_error(channel, event)
             else:
-                raise Exception('No event or msg specified')
+                raise ElasticRecheckException('No event or msg specified')
 
     def run(self):
         # Import here because it needs to happen after daemonization
@@ -276,9 +280,11 @@ def _main(args, config):
     if fp:
         fp = os.path.expanduser(fp)
         if not os.path.exists(fp):
-            raise Exception("Unable to read layout config file at %s" % fp)
+            raise ElasticRecheckException(
+                "Unable to read layout config file at %s" % fp)
     else:
-        raise Exception("Channel Config must be specified in config file.")
+        raise ElasticRecheckException(
+            "Channel Config must be specified in config file.")
 
     channel_config = ChannelConfig(yaml.load(open(fp)))
     msgs = MessageConfig(yaml.load(open(fp)))

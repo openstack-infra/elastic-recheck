@@ -113,7 +113,7 @@ class FailEvent(object):
         self.project = event['change']['project']
         self.url = event['change']['url']
         self.comment = event["comment"]
-        #TODO(jogo) make FailEvent generate the jobs
+        # TODO(jogo): make FailEvent generate the jobs
         self.failed_jobs = failed_jobs
 
     def is_openstack_project(self):
@@ -253,8 +253,8 @@ class Stream(object):
         for i in range(NUMBER_OF_RETRIES):
             try:
                 for job in event.failed_jobs:
-                    #TODO(jogo) if there are three failed jobs and only the
-                    #last one isn't ready we don't need to keep rechecking
+                    # TODO(jogo): if there are three failed jobs and only the
+                    # last one isn't ready we don't need to keep rechecking
                     # the first two
                     self._job_console_uploaded(
                         event.change, event.rev, job.name,
@@ -324,7 +324,7 @@ class Stream(object):
 
             self.log.info("Looking for failures in %d,%d on %s" %
                           (fevent.change, fevent.rev,
-                          ", ".join(fevent.failed_job_names())))
+                           ", ".join(fevent.failed_job_names())))
             if self._does_es_have_data(fevent):
                 return fevent
 
@@ -346,7 +346,7 @@ class Stream(object):
             self.gerrit.review(event.project, event.name(), msg)
 
 
-class Classifier():
+class Classifier(object):
     """Classify failed tempest-devstack jobs based.
 
     Given a change and revision, query logstash with a list of known queries
@@ -381,7 +381,7 @@ class Classifier():
                  build_short_uuid, recent=False):
         """Returns either empty list or list with matched bugs."""
         self.log.debug("Entering classify")
-        #Reload each time
+        # Reload each time
         self.queries = loader.load(self.queries_dir)
         bug_matches = []
         for x in self.queries:

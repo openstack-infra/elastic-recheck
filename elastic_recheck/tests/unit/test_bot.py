@@ -63,7 +63,7 @@ class TestBot(unittest.TestCase):
 
     def test_read_channel_config_not_specified(self):
         self.fake_config.set('ircbot', 'channel_config', None)
-        with self.assertRaises(Exception) as exc:
+        with self.assertRaises(bot.ElasticRecheckException) as exc:
             bot._main([], self.fake_config)
         raised_exc = exc.exception
         self.assertEqual(str(raised_exc), "Channel Config must be specified "
@@ -71,14 +71,14 @@ class TestBot(unittest.TestCase):
 
     def test_read_channel_config_invalid_path(self):
         self.fake_config.set('ircbot', 'channel_config', 'fake_path.yaml')
-        with self.assertRaises(Exception) as exc:
+        with self.assertRaises(bot.ElasticRecheckException) as exc:
             bot._main([], self.fake_config)
         raised_exc = exc.exception
         error_msg = "Unable to read layout config file at fake_path.yaml"
         self.assertEqual(str(raised_exc), error_msg)
 
     def test__read_no_event_no_msg(self):
-        with self.assertRaises(Exception) as exc:
+        with self.assertRaises(bot.ElasticRecheckException) as exc:
             self.recheck_watch._read()
         raised_exc = exc.exception
         error_msg = 'No event or msg specified'
