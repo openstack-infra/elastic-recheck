@@ -1,0 +1,4 @@
+query: >-
+  message:"--single-version-externally-managed" AND
+  tags:"console" AND
+  build_name:gate-*-pypy
