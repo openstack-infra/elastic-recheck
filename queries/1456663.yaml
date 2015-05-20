@@ -1,0 +1,3 @@
+query: >-
+  message:"AttributeError: pre_run" AND
+  tags:"console"
