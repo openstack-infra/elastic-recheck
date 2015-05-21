@@ -1,7 +1,0 @@
-query: >
-  (message:"File \"tempest/scenario/test_security_groups_basic_ops.py\"" AND
-   message:"_verify_mac_addr") OR
-  (message:"File \"tempest/scenario/test_volume_boot_pattern.py\"" AND
-   message:"in _ssh_to_server") AND
-  message:"EOFError" AND
-  tags:"tempest.txt"
