@@ -1,0 +1,5 @@
+query: >-
+  message:"stevedore.extension"
+  AND message:"Could not load"
+  AND message:"pbr 1.0.1"
+  AND tags:"console"
