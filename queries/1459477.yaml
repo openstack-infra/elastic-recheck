@@ -1,0 +1,4 @@
+query: >-
+  message:"selenium.common.exceptions.NoSuchElementException: Message: Unable to locate element: {\"method\":\"css selector\",\"selector\":\"div.modal-dialog\"}" AND
+  project:"openstack/horizon" AND
+  tags:"console"
