@@ -1,0 +1,6 @@
+query: >-
+  message:"AssertionError: metadata proxy unreachable on" AND
+  message:"before timeout" AND
+  tags:"console" AND (
+  build_name:"check-neutron-dsvm-functional" OR
+  build_name:"gate-neutron-dsvm-functional")
