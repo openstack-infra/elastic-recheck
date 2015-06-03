@@ -1,4 +1,5 @@
 query: >
-   message:"FixedIpLimitExceeded"
-   AND tags:"screen-n-net.txt"
-   AND module:"oslo.messaging.rpc.dispatcher"
+  message:"Quota exceeded for project" AND
+  message:"tried to allocate fixed IP." AND
+  message:"of 99 are in use or are already reserved." AND
+  tags:"screen-n-net.txt"
