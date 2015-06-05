@@ -1,5 +1,0 @@
-query: >
-  build_name:"gate-tempest-dsvm-full-ceph"
-  AND (build_branch:"stable/juno" OR build_branch:"stable/icehouse")
-  AND message:"Could not open 'rbd:vms" AND
-  tags:"screen-n-cpu.txt"

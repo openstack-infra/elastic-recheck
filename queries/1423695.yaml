@@ -1,5 +1,0 @@
-query: >
-  message:"exercises/volumes.sh" AND
-  message:"Failure attaching volume" AND
-  message:"to ex-vol-inst" AND
-  tags:"console"

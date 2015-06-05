@@ -1,4 +1,0 @@
-query: >-
-  (message:"stevedore 1.2.0 (/usr/local/lib/python2.7/dist-packages), Requirement.parse('stevedore>=1.3.0'), set(['cliff'])" OR
-  message:"stevedore 1.4.0 (/usr/local/lib/python2.7/dist-packages), Requirement.parse('stevedore<1.2,>=0.14'), set(['ceilometer'])") AND
-  tags:"console"

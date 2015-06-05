@@ -1,4 +1,0 @@
-query: >-
-  message:"testtools.matchers._impl.MismatchError: None matches Is(None): No auth_url configured" AND
-  tags:"console" AND
-  build_name:"check-heat-dsvm-functional-mysql"

@@ -1,2 +1,0 @@
-query: >-
-  message:"with open(self.sourcefilename, \"w\") as fp:"
