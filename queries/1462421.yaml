@@ -1,0 +1,3 @@
+query: >-
+  message:"This backport is for Python 2.7 only." AND
+  tags:"console"
