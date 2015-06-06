@@ -1,0 +1,4 @@
+query: >-
+  message:"ReferenceError: Can't find variable: angular" AND
+  build_name:"gate-horizon-npm-run-test" AND
+  tags:"console"
