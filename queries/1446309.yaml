@@ -1,4 +1,0 @@
-query: >-
-  message:"httplib2.ServerNotFoundError: Unable to find the server at fake_url"
-  AND tags:"console" AND
-  build_name:"gate-tempest-python27"

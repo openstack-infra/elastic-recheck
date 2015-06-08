@@ -1,4 +1,0 @@
-query: >-
-  message:"INFO: task lvm:" AND
-  message:"blocked for more than 120 seconds" AND
-  tags:"syslog"

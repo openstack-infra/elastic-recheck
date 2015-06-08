@@ -1,3 +1,0 @@
-query: >
-  message:"Failed to shutdown neutron"
-  AND tags:"grenade.sh.txt"
