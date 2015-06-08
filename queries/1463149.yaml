@@ -1,0 +1,3 @@
+query: >-
+  message:"OSError: [Errno 13] Permission denied: '/opt/stack/new/.cache/pip/wheels" AND
+  tags:"console"
