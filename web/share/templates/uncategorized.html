@@ -16,6 +16,10 @@
         ev.preventDefault();
         var generated = $('#generated-date').text();
         var gen_date = Date.parse(generated);
+
+        $("div.job").each(function () {
+            $(this).show();
+        });
         $( "li.log-link" ).each(function() {
             if (! $( this ).hasClass("dated") ) {
                 var timestamp = $( this ).text().substr(0,16);
@@ -30,6 +34,21 @@
                 $( this ).show();
             }
         });
+        $("div.job").each(function () {
+            var visible = $('ul li:visible', $(this)).size()
+            if (visible == 0) $(this).hide();
+            else $(this).show();
+        });
+        $("#menu li").each(function () {
+            var h = $("a", this).attr('href').substring(1);
+            if ($('a[name="' + h + '"]').closest("div").is(":visible")){
+               $(this).show();
+            }else{
+               $(this).hide();
+            }
+
+        });
+
     }
 
     $(function() {
@@ -56,7 +75,7 @@
 </div>
 
 
-<div class="menu">
+<div class="menu" id="menu">
 <a name="top"></a>
 {% for job in jobs %}
 <li><a href="#{{job[0]}}">{{job[0]}} ({{job[1]}})</a></li>
@@ -81,18 +100,20 @@ Overall Categorization Rate: {{ rate['overall'] }}%
          <a id="10days" href="#">10 days</a>)
 </p>
 {% for job in jobs %}
-<a name="{{job[0]}}"></a>
-<a href="#top"><i>back to top</i></a>
-<h2>{{ job[0] }} : {{ job[1] }} Uncategorized Fails. {{rate[job[0]]}}% Classification Rate ({{total_job_failures[job[0]]}} Total Fails)</h2>
-<ul>
-  {% for url in urls[job[0]] %}
-    {% if url['crm114'] %}
-      <li class="log-link">{{url['timestamp']}}: <a href="{{ url['log'] }}">{{ url['log'] }}</a> : <a href="{{ url['crm114'] }}">crm114</a></li>
-    {% else %}
-      <li class="log-link">{{url['timestamp']}}: <a href="{{ url['log'] }}">{{ url['log'] }}</a></li>
-    {% endif %}
-  {% endfor %}
-</ul>
+<div class="job">
+  <a name="{{job[0]}}"></a>
+  <a href="#top"><i>back to top</i></a>
+  <h2>{{ job[0] }} : {{ job[1] }} Uncategorized Fails. {{rate[job[0]]}}% Classification Rate ({{total_job_failures[job[0]]}} Total Fails)</h2>
+  <ul>
+    {% for url in urls[job[0]] %}
+      {% if url['crm114'] %}
+        <li class="log-link">{{url['timestamp']}}: <a href="{{ url['log'] }}">{{ url['log'] }}</a> : <a href="{{ url['crm114'] }}">crm114</a></li>
+      {% else %}
+        <li class="log-link">{{url['timestamp']}}: <a href="{{ url['log'] }}">{{ url['log'] }}</a></li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
 {% endfor %}
 {% endblock %}
 </div>

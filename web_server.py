@@ -40,6 +40,7 @@ class ERHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         # if the file exists locally, we'll serve it up directly
         fname = "web/share" + self.path
         if os.path.isfile(fname):
+            print "found local file %s" % (fname)
             self.send_response(200, "Success")
             self.end_headers()
             with open(fname) as f:
