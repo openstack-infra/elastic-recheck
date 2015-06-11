@@ -1,0 +1,5 @@
+query: >
+  message:"Delete snapshot failed, due to snapshot busy." AND
+  tags:"screen-c-vol.txt" AND (
+  build_name:"check-tempest-dsvm-full-ceph" OR
+  build_name:"gate-tempest-dsvm-full-ceph")
