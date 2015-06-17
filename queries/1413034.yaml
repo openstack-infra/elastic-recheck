@@ -1,3 +1,4 @@
 query: >
-    message:"+ die 47 \'Download of get-pip.py failed\'" AND
-    tags:"console"
+  message:"[ERROR]" AND
+  message:"Download of get-pip.py failed" AND
+  tags:"console"
