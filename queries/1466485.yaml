@@ -1,0 +1,3 @@
+query: >-
+  message:"ArgsAlreadyParsedError: arguments already parsed: cannot register CLI option"
+  AND tags:keystone.txt
