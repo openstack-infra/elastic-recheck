@@ -1,3 +1,0 @@
-query: >
-  message:("libvirtError: Failed to terminate process" NOT "in _shutdown_instance")
-  AND tags:"screen-n-cpu.txt"
