@@ -1,0 +1,3 @@
+query: >-
+  message:"testtools.matchers._impl.MismatchError: &lt;bound method type.create_port of &lt;class 'tempest.api.network.test_dhcp_ipv6.NetworksTestDHCPv6'>> returned" AND
+  tags:"console"
