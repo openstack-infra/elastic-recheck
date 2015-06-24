@@ -1,0 +1,4 @@
+query: >
+  message:"FAIL: heat.tests.db.test_sqlalchemy_api.DBAPICryptParamsPropsTest.test_db_encrypt_decrypt" AND
+  build_name:"gate-heat-python27" AND
+  tags:"console"
