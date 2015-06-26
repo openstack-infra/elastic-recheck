@@ -12,23 +12,6 @@
 // License for the specific language governing permissions and limitations
 // under the License.
 
-function graphite_moving_avg(job, color) {
-    var time = '5hours';
-    var graph = "color(alias(movingAverage(asPercent(";
-    graph += "stats.zuul.pipeline.gate.job." + job + ".FAILURE,";
-    graph += "sum(stats.zuul.pipeline.gate.job." + job + ".{SUCCESS,FAILURE})";
-    graph += "),'" + time + "'), '" + job + "'),'" + color + "')";
-    return graph;
-}
-
-function graphite_hit_count(job, color) {
-    var time = '5hours';
-    var graph = "color(alias(hitcount(";
-    graph += "sum(stats.zuul.pipeline.gate.job." + job + ".{SUCCESS,FAILURE})";
-    graph += ",'" + time + "'), '" + job + "'),'" + color + "')";
-    return graph;
-}
-
 function update_graph_for_bug(main, bug) {
     var div = main.find("#bug-" + bug['number'] + " .graph");
     if (bug['fails'] > 0) {
@@ -94,7 +77,7 @@ function update() {
         // The graph functions are slow, but there is actually no
         // reason to hold up the main paint thread for them, so put
         // them into an async mode to run as soon as they can. This
-        // dramatically increases percevied page load speed.
+        // dramatically increases perceived page load speed.
         $.each(buglist, function(i, bug) {
             setTimeout(function() {
                 update_graph_for_bug(main, bug);
