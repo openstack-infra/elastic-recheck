@@ -1,0 +1,4 @@
+query: >
+  (message:"AttributeError: 'NoneType' object has no attribute 'obj_to_primitive'" OR
+   message:"y = callable(*args)") AND
+  tags:"console"
