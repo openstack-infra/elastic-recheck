@@ -1,0 +1,3 @@
+query: >
+  message:"return self._cleanups(raise_errors=raise_first)" AND
+  tags:"console"
