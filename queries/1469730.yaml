@@ -1,0 +1,3 @@
+query: >
+  (message: "failure: repodata\/repomd.xml from epel: [Errno 256] No more mirrors to try." OR message: "Host 'centos-70-x64' exited with 6 running")
+  AND tags:"console"
