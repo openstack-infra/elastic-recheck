@@ -1,0 +1,4 @@
+query: >-
+  message:"Maximum recursion depth exceeded" AND
+  tags:"console" AND
+  project:"openstack/nova"
