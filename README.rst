@@ -86,8 +86,12 @@ stack that can cause many tempest tests to fail.
    <http://logs.openstack.org/>`_ and try to find a log that is associated with
    the failure. The closer to the root cause the better.
 
-   Note that queries can only be written against INFO level and higher log
-   messages. This is by design to not overwhelm the search cluster.
+   - Note that queries can only be written against INFO level and higher log
+     messages. This is by design to not overwhelm the search cluster.
+   - Since non-voting jobs are not allowed in the gate queue and e-r is
+     primarily used for tracking bugs in the gate queue, it doesn't spend time
+     tracking race failures in non-voting jobs since they are considered
+     unstable by definition (since they don't vote).
 
 #. Go to `logstash.openstack.org <http://logstash.openstack.org/>`_ and create
    an elastic search query to find the log message from step 1. To see the
@@ -117,7 +121,7 @@ an aggregation of all failed gate jobs that don't currently have elastic-recheck
 fingerprints.
 
 Future Work
-------------
+-----------
 
 - Move config files into a separate directory
 - Make unit tests robust
