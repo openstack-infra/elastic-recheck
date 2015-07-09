@@ -1,0 +1,3 @@
+query: >-
+  message: "InstanceIsLocked" AND
+  tags: "screen-n-cell-child.txt"
