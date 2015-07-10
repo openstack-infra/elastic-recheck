@@ -1,0 +1,4 @@
+query: >-
+  message:"sphinx_config.init_values()" AND
+  tags:"console" AND
+  build_name:"gate-nova-docs"
