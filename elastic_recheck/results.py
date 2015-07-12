@@ -75,9 +75,12 @@ class ResultSet(list):
     natural.
 
     For instance:
-         results = se.search(...)
-         for hit in results:
-              print hit.build_status
+
+    ::
+
+        results = se.search(...)
+        for hit in results:
+            print hit.build_status
 
     This greatly simplifies code that is interacting with search results, and
     allows us to handle some schema instability with elasticsearch, through
