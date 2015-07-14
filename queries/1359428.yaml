@@ -1,0 +1,6 @@
+query: >
+  message:"Checksum error" AND
+  message:"Volume group for uuid not found" AND
+  message:"libdevmapper exiting with" AND
+  message:"still suspended" AND
+  tags:"screen-c-vol.txt"
