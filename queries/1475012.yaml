@@ -1,0 +1,4 @@
+query: >-
+  message:"+ echo '*** /dev/vdb appears to already be mounted'" AND
+  tags:"console" AND
+  build_node:devstack-trusty-hpcloud*
