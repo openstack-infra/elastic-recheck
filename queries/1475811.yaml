@@ -1,0 +1,4 @@
+query: >-
+  message:"c_uint64" AND
+  message:"TypeError: an integer is required" AND
+  tags:"screen-g-api.txt"
