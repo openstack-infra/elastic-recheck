@@ -1,0 +1,4 @@
+query: >-
+  message:"_wrap_pool_connect" AND
+  message:"KeyError: 'pid'" AND NOT
+  build_queue:"periodic-qa"
