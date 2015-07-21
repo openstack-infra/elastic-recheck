@@ -1,0 +1,5 @@
+query: >-
+  message:"Volume" AND
+  message:"failed to reach available status (current error_restoring) within the required time" AND
+  tags:"console" AND
+  build_name:"gate-tempest-dsvm-full-ceph"
