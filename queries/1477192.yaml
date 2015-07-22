@@ -1,0 +1,4 @@
+query: >-
+  message:"Command 'set -eu -o pipefail; PATH=$PATH:/sbin; ping -c1 -w1 -s56" AND NOT
+  build_queue:"experimental" AND
+  tags:"console"
