@@ -1,4 +1,0 @@
-query: >-
-  message:"Build timed out (after 30 minutes). Marking the build as failed."
-  AND build_name:"gate-infra-puppet-apply-centos6"
-  AND tags:"console"
