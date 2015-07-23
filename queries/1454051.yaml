@@ -1,4 +1,0 @@
-query: >-
-  tags:"console" AND
-  message:"failed with error code" AND
-  message:"httpretty"

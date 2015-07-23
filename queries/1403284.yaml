@@ -1,3 +1,0 @@
-query: >
-  message:"RemoteError: Remote error: OperationalError (OperationalError) (1040, 'Too many connections') "
-  AND tags:"screen"

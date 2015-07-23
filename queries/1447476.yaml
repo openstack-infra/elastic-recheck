@@ -1,6 +1,0 @@
-query: >
-  ((message:"File \"/usr/local/lib/python2.7/dist-packages/django_pyscss/compiler.py\", line 4") OR (
-    message:"cannot import name Compiler" AND NOT (
-    build_name:"gate-horizon-docs" OR
-    build_name:"horizon-docs"))) AND
-  tags:"console"

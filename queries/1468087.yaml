@@ -1,5 +1,0 @@
-query: >-
-  message:"testtools.matchers._impl.MismatchError: &lt;bound method Instance.save of Instance"
-  AND message:"returned None"
-  AND tags:"console"
-  AND build_name:"gate-nova-python27"
