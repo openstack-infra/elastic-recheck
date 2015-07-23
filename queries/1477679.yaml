@@ -1,0 +1,4 @@
+query: >-
+  message:"stop_instance" AND
+  message:"InstanceIsLocked" AND
+  tags:"screen-n-cell-child.txt"
