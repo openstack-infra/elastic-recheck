@@ -1,5 +1,0 @@
-query: >-
-  (message:"ImportError: No module named middleware" AND NOT
-  build_name:"gate-designate-docs" AND tags:"screen") OR
-  (message:"[ERROR] /opt/stack/new/devstack/lib/ceilometer:380 ceilometer-api did not start"
-  AND tags:grenade.sh.txt)

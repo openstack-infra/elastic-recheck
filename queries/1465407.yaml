@@ -1,3 +1,0 @@
-query: >
-  message:"DBDeadlock: (_mysql_exceptions.OperationalError) (1213, 'Deadlock found when trying to get lock; try restarting transaction') [SQL: u'UPDATE ipavailabilityranges SET first_ip=%s WHERE ipavailabilityranges.allocation_pool_id" AND
-  tags:"screen-q-svc.txt"

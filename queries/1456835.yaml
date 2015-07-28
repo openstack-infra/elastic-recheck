@@ -1,4 +1,0 @@
-query: >-
-  message:"/opt/stack/old/devstack/lib/keystone" AND
-  message:"disable_apache_site: command not found" AND
-  tags:"console"

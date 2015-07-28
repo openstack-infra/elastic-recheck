@@ -1,4 +1,0 @@
-query: >-
-  message:"Faults: ['VMwareDriverException']" AND
-  build_name:"gate-nova-python27" AND
-  tags:"console"

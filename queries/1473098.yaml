@@ -1,4 +1,0 @@
-query: >-
-    message:"[ERROR]" AND
-    message:"The following services are still running: cinder-api" AND
-    tags:"grenade.sh.txt"
