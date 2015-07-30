@@ -1,0 +1,6 @@
+query: >-
+  message:"File \"nova/tests/unit/api/ec2/test_cloud.py\"" AND
+  message:"in test_describe_instances_with_filters_tags" AND
+  tags:"console" AND
+  project:"openstack/nova" AND
+  build_queue:"gate"
