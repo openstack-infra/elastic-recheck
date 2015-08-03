@@ -1,0 +1,4 @@
+query: >-
+  message:"traffic=True, verbose=True" AND
+  tags:"console" AND
+  build_name:"gate-nova-python27"
