@@ -1,0 +1,4 @@
+query: >-
+  message:"in create_vpnservice" AND
+  tags:"console" AND
+  build_name:"gate-neutron-dsvm-api"
