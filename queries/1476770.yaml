@@ -1,4 +1,0 @@
-query: >-
-  message:"_translate_from_glance" AND
-  message:"AttributeError: id" AND
-  tags:"screen-n-api.txt"
