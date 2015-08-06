@@ -1,4 +1,4 @@
 query: >-
-  message:"nova.tests.unit.virt.libvirt.test_driver.LibvirtConnTestCase.test_clean_shutdown_first_time [] ... inprogress" AND
+  message:"Segmentation fault (core dumped)" AND
   build_name:"gate-nova-python27" AND
   tags:"console"
