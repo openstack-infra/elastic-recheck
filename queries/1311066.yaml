@@ -2,3 +2,4 @@ query: >
   message:"WARNING: devstack run took"
   AND message:"minutes, this is a very slow node."
   AND tags:console.html
+suppress-notification: true
