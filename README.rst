@@ -69,11 +69,6 @@ In order to support rapidly added queries, it's considered socially acceptable
 to approve changes that only add 1 new bug query, and to even self approve
 those changes by core reviewers.
 
-Note that old queries which are no longer hitting in logstash and are
-associated with fixed or incomplete bugs are routinely deleted. This is to keep
-the load on the elastic-search engine as low as possible when checking a job
-failure. If a bug marked as Incomplete does show up again, the bug should be
-re-opened with a link to the failure and the e-r query should be restored.
 
 Adding Bug Signatures
 ---------------------
@@ -119,6 +114,37 @@ You can also help classify `Unclassified failed jobs
 <http://status.openstack.org/elastic-recheck/data/uncategorized.html>`_, which is
 an aggregation of all failed gate jobs that don't currently have elastic-recheck
 fingerprints.
+
+
+Removing Bug Signatures
+-----------------------
+
+Old queries which are no longer hitting in logstash and are associated with
+fixed or incomplete bugs are routinely deleted. This is to keep the load on the
+elastic-search engine as low as possible when checking a job failure. If a bug
+marked as Incomplete does show up again, the bug should be re-opened with a
+link to the failure and the e-r query should be restored.
+
+Queries that have "suppress-graph: true" in them generally should not be
+removed since we basically want to keep those around, they are persistent infra
+issues and are not going away.
+
+Steps:
+
+#. Go to the `All Pipelines <http://status.openstack.org/elastic-recheck/index.html>`_ page.
+#. Look for anything that is grayed out at the bottom which means it has not
+   had any hits in 10 days.
+#. From those, look for the ones that are status of
+   Fixed/Incomplete/Invalid/Won't Fix in Launchpad - those are candidates for
+   removal.
+
+.. note::
+
+  Sometimes bugs are still New/Confirmed/Triaged/In Progress but have
+  not had any hits in over 10 days. Those bugs should be re-assessed to see
+  if they are now actually fixed or incomplete/invalid, marked as such and
+  then remove the related query.
+
 
 Future Work
 -----------
