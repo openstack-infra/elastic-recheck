@@ -15,6 +15,9 @@
 import dateutil.parser as dp
 import gerritlib.gerrit
 import pyelasticsearch
+import sqlalchemy
+from sqlalchemy import orm
+from subunit2sql.db import api as db_api
 
 import datetime
 import logging
@@ -26,6 +29,7 @@ import elastic_recheck.query_builder as qb
 from elastic_recheck import results
 
 ES_URL = "http://logstash.openstack.org/elasticsearch"
+DB_URI = 'mysql+pymysql://query:query@logstash.openstack.org/subunit2sql'
 
 
 def required_files(job):
@@ -346,6 +350,16 @@ class Stream(object):
             self.gerrit.review(event.project, event.name(), msg)
 
 
+def check_failed_test_ids_for_job(build_uuid, test_ids, session):
+    failing_test_ids = db_api.get_failing_test_ids_from_runs_by_key_value(
+        'build_short_uuid', build_uuid, session)
+    for test_id in test_ids:
+        if test_id in failing_test_ids:
+            return True
+    else:
+        return False
+
+
 class Classifier(object):
     """Classify failed tempest-devstack jobs based.
 
@@ -384,6 +398,9 @@ class Classifier(object):
         # Reload each time
         self.queries = loader.load(self.queries_dir)
         bug_matches = []
+        engine = sqlalchemy.create_engine(DB_URI)
+        Session = orm.sessionmaker(bind=engine)
+        session = Session()
         for x in self.queries:
             if x.get('suppress-notification'):
                 continue
@@ -394,5 +411,15 @@ class Classifier(object):
                                     build_short_uuid)
             results = self.es.search(query, size='10', recent=recent)
             if len(results) > 0:
-                bug_matches.append(x['bug'])
+                if x.get('test_ids', None):
+                    test_ids = x['test_ids']
+                    self.log.debug(
+                        "For bug %s checking subunit2sql for failures on "
+                        "test_ids: %s" % (x['bug'], test_ids))
+                    if check_failed_test_ids_for_job(build_short_uuid,
+                                                     test_ids, session):
+                        bug_matches.append(x['bug'])
+                else:
+                    bug_matches.append(x['bug'])
+
         return bug_matches

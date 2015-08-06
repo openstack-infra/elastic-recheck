@@ -65,6 +65,29 @@ and notifications by adding ``suppress-graph: true`` or
 ``suppress-notifcation: true`` to the yaml file.  These can be used to make
 sure expected failures don't show up on the unclassified page.
 
+If the only signature available is overly broad and adding additional logging
+can't reasonably make a good signature, you can also filter the results of a
+query based on the test_ids that failed for the run being checked.
+This can be done by adding a ``test_ids`` keyword to the query file and then a
+list of the test_ids to verify failed. The test_id also should exclude any
+attrs, this is the list of attrs appended to the test_id between '[]'. For
+example, 'smoke', 'slow', any service tags, etc. This is how subunit-trace
+prints the test ids by default if you're using it. If any of the listed
+test_ids match as failing for the run being checked with the query it will
+return a match. Since filtering leverages subunit2sql which only receives
+results from the gate pipeline, this technique will only work on the gate
+queue. For example, if your query yaml file looked like::
+
+    query: >-
+      message:"ExceptionA"
+    test_ids:
+      - tempest.api.compute.servers.test_servers.test_update_server_name
+      - tempest.api.compute.servers.test_servers_negative.test_server_set_empty_name
+
+this will only match the bug if the logstash query had a hit for the run and
+either test_update_server_name or test_server_set_empty name failed during the
+run.
+
 In order to support rapidly added queries, it's considered socially acceptable
 to approve changes that only add 1 new bug query, and to even self approve
 those changes by core reviewers.
