@@ -195,10 +195,11 @@ class Stream(object):
 
     log = logging.getLogger("recheckwatchbot")
 
-    def __init__(self, user, host, key, thread=True):
+    def __init__(self, user, host, key, thread=True, es_url=None):
+        self.es_url = es_url or ES_URL
         port = 29418
         self.gerrit = gerritlib.gerrit.Gerrit(host, user, port, key)
-        self.es = results.SearchEngine(ES_URL)
+        self.es = results.SearchEngine(self.es_url)
         if thread:
             self.gerrit.startWatching()
 
@@ -370,8 +371,10 @@ class Classifier(object):
 
     queries = None
 
-    def __init__(self, queries_dir):
-        self.es = results.SearchEngine(ES_URL)
+    def __init__(self, queries_dir, es_url=None, db_uri=None):
+        self.es_url = es_url or ES_URL
+        self.db_uri = db_uri or DB_URI
+        self.es = results.SearchEngine(self.es_url)
         self.queries_dir = queries_dir
         self.queries = loader.load(self.queries_dir)
 
@@ -398,7 +401,7 @@ class Classifier(object):
         # Reload each time
         self.queries = loader.load(self.queries_dir)
         bug_matches = []
-        engine = sqlalchemy.create_engine(DB_URI)
+        engine = sqlalchemy.create_engine(self.db_uri)
         Session = orm.sessionmaker(bind=engine)
         session = Session()
         for x in self.queries:
