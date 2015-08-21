@@ -1,0 +1,4 @@
+query: >-
+  message:"500 GET" AND
+  message:"servers\/detail?all_tenants= " AND
+  tags:"tempest.txt"
