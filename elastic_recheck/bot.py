@@ -27,6 +27,10 @@ channel_config=/path/to/yaml/config
 
 [gerrit]
 user=gerrit2
+
+[data_source[
+es_url=URLofELASTICSEARCH
+db_uri=SQLALCHEMY_URI_TO_SUBUNIT2SQL
 """
 
 # The yaml channel config should look like:
@@ -108,7 +112,8 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
 
 class RecheckWatch(threading.Thread):
     def __init__(self, ircbot, channel_config, msgs, username,
-                 queries, host, key, commenting=True):
+                 queries, host, key, commenting=True, es_url=None,
+                 db_uri=None):
         super(RecheckWatch, self).__init__()
         self.ircbot = ircbot
         self.channel_config = channel_config
@@ -124,6 +129,8 @@ class RecheckWatch(threading.Thread):
                                                         'production',
                                                         LPCACHEDIR,
                                                         timeout=60)
+        self.es_url = es_url
+        self.db_uri = db_uri
 
     def display(self, channel, event):
         display = False
@@ -193,8 +200,8 @@ class RecheckWatch(threading.Thread):
     def run(self):
         # Import here because it needs to happen after daemonization
         import elastic_recheck.elasticRecheck as er
-        classifier = er.Classifier(self.queries)
-        stream = er.Stream(self.username, self.host, self.key)
+        classifier = er.Classifier(self.queries, self.es_url, self.db_uri)
+        stream = er.Stream(self.username, self.host, self.key, self.es_url)
         while True:
             try:
                 event = stream.get_failed_tempest()
@@ -308,7 +315,12 @@ def _main(args, config):
         config.get('gerrit', 'query_file'),
         config.get('gerrit', 'host', 'review.openstack.org'),
         config.get('gerrit', 'key'),
-        not args.nocomment
+        not args.nocomment,
+        config.get('data_source', 'es_url',
+                   'http://logstash.openstack.org/elasticsearch'),
+        config.get('data_source, db_uri',
+                   'mysql+pymysql://query:query@logstash.openstack.org/'
+                   'subunit2sql'),
     )
 
     recheck.start()
