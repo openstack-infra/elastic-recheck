@@ -1,4 +1,6 @@
 query: >-
-  message:"500 GET" AND
-  message:"servers\/detail?all_tenants= " AND
-  tags:"tempest.txt"
+  message:"servers\/detail?all_tenants= " AND (
+  message:"404 GET" OR
+  message:"500 GET") AND
+  tags:"tempest.txt" AND NOT
+  build_queue:"experimental"
