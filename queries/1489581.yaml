@@ -1,0 +1,5 @@
+query: >-
+  message:"Invalid volume: Volume still has 1 dependent snapshots"
+test_ids:
+  - tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern.test_create_ebs_image_and_check_boot
+  - tempest.scenario.test_volume_boot_pattern.TestVolumeBootPatternV2.test_create_ebs_image_and_check_boot
