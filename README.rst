@@ -75,8 +75,9 @@ example, 'smoke', 'slow', any service tags, etc. This is how subunit-trace
 prints the test ids by default if you're using it. If any of the listed
 test_ids match as failing for the run being checked with the query it will
 return a match. Since filtering leverages subunit2sql which only receives
-results from the gate pipeline, this technique will only work on the gate
-queue. For example, if your query yaml file looked like::
+tempest test results from the gate pipeline, this technique will only work on
+tempest or grenade jobs in the gate queue. For more information about this
+refer to the `infra subunit2sql documentation`_ For example, if your query yaml file looked like::
 
     query: >-
       message:"ExceptionA"
@@ -87,6 +88,8 @@ queue. For example, if your query yaml file looked like::
 this will only match the bug if the logstash query had a hit for the run and
 either test_update_server_name or test_server_set_empty name failed during the
 run.
+
+.. _infra subunit2sql documentation: http://docs.openstack.org/infra/system-config/logstash.html#subunit2sql
 
 In order to support rapidly added queries, it's considered socially acceptable
 to approve changes that only add 1 new bug query, and to even self approve
