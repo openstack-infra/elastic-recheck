@@ -1,5 +1,8 @@
 query: >-
-  message:"Invalid volume: Volume still has 1 dependent snapshots"
-test_ids:
-  - tempest.scenario.test_volume_boot_pattern.TestVolumeBootPattern.test_create_ebs_image_and_check_boot
-  - tempest.scenario.test_volume_boot_pattern.TestVolumeBootPatternV2.test_create_ebs_image_and_check_boot
+  (message:"InvalidInput: Invalid input received: Invalid snapshot: Originating snapshot status must be one of 'available" AND
+   tags:"screen-n-cpu.txt") OR (
+   message:"Cannot delete snapshot" AND
+   message:"snapshot is busy" AND
+   tags:"screen-c-vol.txt") OR (
+   message:"HTTP exception thrown: Block Device Mapping is Invalid: Boot sequence for the instance and image/block device mapping combination is not valid." AND
+   tags:"screen-n-api.txt")
