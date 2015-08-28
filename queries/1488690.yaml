@@ -1,0 +1,4 @@
+query: >-
+  message:"AttributeError: '_SentinelObject' object has no attribute 'readlines'" AND
+  build_name:"gate-cinder-python27" AND
+  tags:"console"
