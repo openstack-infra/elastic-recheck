@@ -1,0 +1,3 @@
+query: >-
+  message:"pkg_resources.ContextualVersionConflict: (pbr 0.11.0 (/usr/local/lib/python2.7/dist-packages), Requirement.parse(\'pbr<2.0,>=1.3\'), set([\'sqlalchemy-migrate\']))" AND
+  tags:"console"
