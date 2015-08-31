@@ -2,5 +2,10 @@ query: >-
   ((message:"Error validating value"
   AND message:"Invalid MAC address")
   OR
-  (message:"Invalid mac address detected"))
+  (message:"Invalid mac address detected")
+  OR
+  (message:"invalid IPNetwork None/31")
+  OR
+  (message:"if (int(dst.network) >= int(rd.broadcast) or")
+  )
   AND tags:console
