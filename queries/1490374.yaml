@@ -1,0 +1,4 @@
+query: >-
+  message:"Error validating value"
+  AND message:"Invalid MAC address"
+  AND tags:console
