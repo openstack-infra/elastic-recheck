@@ -1,0 +1,3 @@
+query: >-
+  message:"sha256sum: standard input: no properly formatted SHA256 checksum lines found"
+  AND tags:console
