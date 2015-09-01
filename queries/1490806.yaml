@@ -1,0 +1,3 @@
+query: >-
+  message:"Server returned an unexpected response code. [403]" AND
+  tags:"console"
