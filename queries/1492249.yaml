@@ -1,3 +1,0 @@
-query: >-
-  message:"Failed to deallocate network for instance"
-  AND build_name:*large-ops*
