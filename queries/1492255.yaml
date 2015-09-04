@@ -1,0 +1,4 @@
+query: >-
+  message:"AssertionError: False is not true : No tenant networks found." AND
+  build_name:"gate-tempest-dsvm-cells" AND
+  tags:"console"
