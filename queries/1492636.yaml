@@ -1,0 +1,4 @@
+query: >
+  message:"Real HTTP connections are disabled. Unregistered request : GET"
+  AND tags:"console"
+  AND (project:"openstack/puppet-nova" OR project:"openstack/puppet-swift" OR project:"openstack/puppet-ceilometer")
