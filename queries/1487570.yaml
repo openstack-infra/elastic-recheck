@@ -1,6 +1,0 @@
-query: >-
-  message:"servers\/detail?all_tenants= " AND (
-  message:"404 GET" OR
-  message:"500 GET") AND
-  tags:"tempest.txt" AND NOT
-  build_queue:"experimental"

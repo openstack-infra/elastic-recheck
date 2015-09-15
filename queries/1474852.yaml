@@ -1,3 +1,0 @@
-query: >-
-  message:"Failed building wheel for python-qpid-proton" AND
-  tags:"console"

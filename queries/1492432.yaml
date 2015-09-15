@@ -1,5 +1,0 @@
-query: >-
-  message:"except rbd.ImageExists" AND
-  message:"AttributeError: 'module' object has no attribute 'ImageExists'" AND
-  build_name:"gate-tempest-dsvm-full-ceph" AND
-  tags:"screen-g-api.txt"

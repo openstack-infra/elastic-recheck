@@ -1,3 +1,0 @@
-query: >-
-  message:"Filesystem has duplicate UUID"
-  AND tags:syslog
