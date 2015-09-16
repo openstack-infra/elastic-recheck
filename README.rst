@@ -184,3 +184,5 @@ Future Work
 - Move away from polling ElasticSearch to discover if its ready or not
 - Add nightly job to propose a patch to remove bug queries that return
   no hits -- Bug hasn't been seen in 2 weeks and must be closed
+- Store whether or not the job is non-voting in ElasticSearch so that we can
+  filter non-voting jobs from the uncategorized bugs page.
