@@ -1,4 +1,0 @@
-query: >-
-  message:"Segmentation fault (core dumped)" AND
-  build_name:"gate-nova-python27" AND
-  tags:"console"

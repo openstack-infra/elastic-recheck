@@ -1,4 +1,0 @@
-query: >-
-  message:"AttributeError: assert_called_ince_with" AND
-  project:"openstack/ironic" AND
-  tags:"console"

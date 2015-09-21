@@ -1,4 +1,0 @@
-query: >-
-  message:"unscheduling router failed" AND
-  tags:"console" AND NOT
-  build_queue:"experimental"

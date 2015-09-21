@@ -1,4 +1,0 @@
-query: >-
-  message:"openstack endpoint list: error: argument -f/--format: invalid choice: 'value' (choose from 'csv', 'html', 'json', 'table', 'yaml')" AND
-  build_name:"gate-trove-functional-dsvm-mysql" AND
-  tags:"console"

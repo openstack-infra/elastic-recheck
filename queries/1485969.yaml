@@ -1,3 +1,0 @@
-query: >-
-  message:"RuntimeError: Set changed size during iteration" AND
-  tags:"screen-q-svc.txt"
