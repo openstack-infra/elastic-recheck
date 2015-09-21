@@ -4,4 +4,4 @@ source = elastic_recheck
 omit = elastic_recheck/tests/*,elastic_recheck/openstack/*
 
 [report]
-ignore-errors = True
+ignore_errors = True
