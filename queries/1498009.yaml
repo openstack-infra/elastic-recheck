@@ -1,0 +1,5 @@
+query: >-
+  message:"Build timed out" AND
+  message:"Marking the build as failed." AND
+  tags:"console" AND
+  build_name:"gate-openstack-ansible-dsvm-commit"
