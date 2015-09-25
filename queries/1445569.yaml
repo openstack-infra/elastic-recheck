@@ -1,4 +1,0 @@
-query: >
-  message:"no address available"
-  AND tags:"syslog"
-suppress-notification: true
