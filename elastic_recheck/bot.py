@@ -318,7 +318,7 @@ def _main(args, config):
         not args.nocomment,
         config.get('data_source', 'es_url',
                    'http://logstash.openstack.org/elasticsearch'),
-        config.get('data_source, db_uri',
+        config.get('data_source', 'db_uri',
                    'mysql+pymysql://query:query@logstash.openstack.org/'
                    'subunit2sql'),
     )
