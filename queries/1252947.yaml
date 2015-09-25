@@ -1,4 +1,0 @@
-query: >
-  message:"libvirt" AND
-  message:"Cannot recv data: Connection reset by peer" AND
-  tags:"screen-n-cpu.txt"

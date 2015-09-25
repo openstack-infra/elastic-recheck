@@ -1,3 +1,0 @@
-query: >-
-  message:"(OperationalError) (1205, 'Lock wait timeout exceeded; try restarting transaction') 'UPDATE routers SET gw_port_id"
-  AND tags:screen-q-svc.txt

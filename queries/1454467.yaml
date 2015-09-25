@@ -1,3 +1,0 @@
-query: >-
-  message:"ERROR: openstackclient.shell Exception raised: (python-cinderclient 1.2.1 (/usr/local/lib/python2.7/dist-packages), Requirement.parse('python-cinderclient<1.2.0,>=1.1.0'))" AND
-  tags:"console"
