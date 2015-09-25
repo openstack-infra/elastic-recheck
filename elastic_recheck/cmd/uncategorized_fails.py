@@ -27,6 +27,20 @@ import elastic_recheck.elasticRecheck as er
 import elastic_recheck.query_builder as qb
 import elastic_recheck.results as er_results
 
+# Not all teams actively used elastic recheck for categorizing their
+# work, so to keep the uncategorized page more meaningful, we exclude
+# jobs from teams that don't use this toolchain.
+EXCLUDED_JOBS = (
+    # Docs team
+    "api-site",
+    "operations-guide",
+    "openstack-manuals",
+    # Ansible
+    "ansible"
+)
+
+EXCLUDED_JOBS_REGEX = re.compile('(' + '|'.join(EXCLUDED_JOBS) + ')')
+
 
 def get_options():
     parser = argparse.ArgumentParser(
@@ -65,6 +79,10 @@ def all_fails(classifier):
     facets.detect_facets(results, ["build_uuid"])
     for build in facets:
         for result in facets[build]:
+            # If the job is on the exclude list, skip
+            if re.search(EXCLUDED_JOBS_REGEX, result.build_name):
+                continue
+
             # not perfect, but basically an attempt to show the integrated
             # gate. Would be nice if there was a zuul attr for this in es.
             if re.search("(^openstack/|devstack|grenade)", result.project):
