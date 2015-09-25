@@ -1,0 +1,3 @@
+query: >-
+  message:"Failure when receiving data from the peer for"
+  AND NOT message:"repodata"
