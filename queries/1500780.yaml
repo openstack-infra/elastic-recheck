@@ -1,0 +1,4 @@
+query: >-
+  message:"testtools.matchers._impl.MismatchError: 'a descriptive description' != None" AND
+  tags:"console" AND
+  build_name:"gate-tempest-dsvm-heat"
