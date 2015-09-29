@@ -1,0 +1,4 @@
+query: >-
+  message:"libvirtError: Error while building firewall: Some rules could not be created for interface" AND
+  message:"Illegal target name" AND
+  tags:"screen-n-cpu.txt"
