@@ -1,0 +1,4 @@
+query: >-
+  message:"ensure_ebtables_rules" AND
+  message:"Unable to update the kernel. Two possible causes" AND
+  tags:"screen-n-net.txt"
