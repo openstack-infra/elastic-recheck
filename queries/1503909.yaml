@@ -1,0 +1,3 @@
+query: >-
+  message:"<html><body><h1>503 Service Unavailable</h1>" AND
+  tags:"grenade.sh.txt"
