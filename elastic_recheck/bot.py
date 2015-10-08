@@ -200,8 +200,10 @@ class RecheckWatch(threading.Thread):
     def run(self):
         # Import here because it needs to happen after daemonization
         import elastic_recheck.elasticRecheck as er
-        classifier = er.Classifier(self.queries, self.es_url, self.db_uri)
-        stream = er.Stream(self.username, self.host, self.key, self.es_url)
+        classifier = er.Classifier(self.queries, es_url=self.es_url,
+                                   db_uri=self.db_uri)
+        stream = er.Stream(self.username, self.host, self.key,
+                           es_url=self.es_url)
         while True:
             try:
                 event = stream.get_failed_tempest()
