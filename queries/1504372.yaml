@@ -1,0 +1,3 @@
+query: >-
+  message:"jsonrpclib/setup.py" AND
+  tags:"console"
