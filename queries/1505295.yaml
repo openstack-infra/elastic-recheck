@@ -1,0 +1,3 @@
+query: >-
+  message:"AttributeError: 'str' object has no attribute 'DEALER'" AND
+  tags:"console"
