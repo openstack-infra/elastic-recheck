@@ -18,8 +18,7 @@ A set of utility methods to build the kinds of queries that are needed
 by elastic recheck to talk with elastic search.
 """
 
-import base64
-import json
+from six.moves.urllib.parse import urlencode
 
 
 def generic(raw_query, facet=None):
@@ -134,9 +133,5 @@ def encode_logstash_query(query, timeframe=864000):
     and an optional timeframe argument.
 
     """
-    urlq = dict(search=query,
-                fields=[],
-                offset=0,
-                timeframe=str(timeframe),
-                graphmode="count")
-    return base64.urlsafe_b64encode(json.dumps(urlq))
+    timeframe = str(timeframe) + 's'
+    return urlencode({'query': query, 'from': timeframe})
