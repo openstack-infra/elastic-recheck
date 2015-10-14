@@ -1,0 +1,4 @@
+query: >-
+  message:"novaclient.exceptions.ClientException: Unknown Error (HTTP 300)" AND
+  tags:"console" AND
+  build_name:"gate-novaclient-dsvm-functional"
