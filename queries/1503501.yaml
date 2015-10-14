@@ -1,0 +1,7 @@
+query: >-
+  message:"ImportError: No module named testresources" AND
+  tags:"console" AND
+  NOT build_queue:"post" AND
+  NOT (build_name:"gate-vmware-nsx-docs" OR
+       build_name:"gate-ironic-docs" OR
+       build_name:"gate-neutron-docs")
