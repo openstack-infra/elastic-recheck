@@ -14,4 +14,5 @@ key=/home/mtreinish/.ssh/id_rsa
 
 [data_source]
 es_url=http://logstash.openstack.org/elasticsearch
+ls_url=http://logstash.openstack.org
 db_uri=mysql+pymysql://query:query@logstash.openstack.org/subunit2sql

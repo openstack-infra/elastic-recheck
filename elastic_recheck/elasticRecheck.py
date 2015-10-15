@@ -28,7 +28,8 @@ import elastic_recheck.loader as loader
 import elastic_recheck.query_builder as qb
 from elastic_recheck import results
 
-ES_URL = "http://logstash.openstack.org/elasticsearch"
+ES_URL = 'http://logstash.openstack.org/elasticsearch'
+LS_URL = 'http://logstash.openstack.org'
 DB_URI = 'mysql+pymysql://query:query@logstash.openstack.org/subunit2sql'
 
 

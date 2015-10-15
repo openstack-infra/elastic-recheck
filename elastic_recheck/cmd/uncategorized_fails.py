@@ -16,6 +16,7 @@
 
 import argparse
 import collections
+import ConfigParser
 import datetime
 import operator
 import re
@@ -51,6 +52,10 @@ def get_options():
                         default="queries")
     parser.add_argument('-t', '--templatedir', help="Template Directory")
     parser.add_argument('-o', '--output', help="Output File")
+    parser.add_argument('-c', '--conf', help="Elastic Recheck Configuration "
+                        "file to use for data_source options such as "
+                        "elastic search url, logstash url, and database "
+                        "uri.")
     return parser.parse_args()
 
 
@@ -105,7 +110,7 @@ def num_fails_per_build_name(all_jobs):
     return counts
 
 
-def classifying_rate(fails, data, engine, classifier):
+def classifying_rate(fails, data, engine, classifier, ls_url):
     """Builds and prints the classification rate.
 
     It's important to know how good a job we are doing, so this
@@ -148,8 +153,8 @@ def classifying_rate(fails, data, engine, classifier):
                      'AND error_pr:["-1000.0" TO "-10.0"] '
                      % url['build_uuid'])
             logstash_query = qb.encode_logstash_query(query)
-            logstash_url = 'http://logstash.openstack.org' \
-                '/#/dashboard/file/logstash.json?%s' % logstash_query
+            logstash_url = ('%s/#/dashboard/file/logstash.json?%s'
+                            % (ls_url, logstash_query))
             results = classifier.hits_by_query(query, size=1)
             if results:
                 url['crm114'] = logstash_url
@@ -262,11 +267,26 @@ def collect_metrics(classifier, fails):
 
 def main():
     opts = get_options()
-    classifier = er.Classifier(opts.dir)
+    # Start with defaults
+    es_url = er.ES_URL
+    ls_url = er.LS_URL
+    db_uri = er.DB_URI
+
+    if opts.conf:
+        config = ConfigParser.ConfigParser({'es_url': er.ES_URL,
+                                            'ls_url': er.LS_URL,
+                                            'db_uri': er.DB_URI})
+        config.read(opts.conf)
+        if config.has_section('data_source'):
+            es_url = config.get('data_source', 'es_url')
+            ls_url = config.get('data_source', 'ls_url')
+            db_uri = config.get('data_source', 'db_uri')
+
+    classifier = er.Classifier(opts.dir, es_url=es_url, db_uri=db_uri)
     fails = all_fails(classifier)
     data = collect_metrics(classifier, fails)
     engine = setup_template_engine(opts.templatedir)
-    html = classifying_rate(fails, data, engine, classifier)
+    html = classifying_rate(fails, data, engine, classifier, ls_url)
     if opts.output:
         with open(opts.output, "w") as f:
             f.write(html)
