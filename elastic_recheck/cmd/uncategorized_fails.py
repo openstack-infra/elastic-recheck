@@ -154,8 +154,13 @@ def classifying_rate(fails, data, engine, classifier):
                 url['crm114'] = logstash_url
 
     classifying_rate = collections.defaultdict(int)
-    classifying_rate['overall'] = "%.1f" % (
-        (float(count) / float(total)) * 100.0)
+    rate = 0
+    # avoid a divide by 0
+    if total > 0:
+        rate = (float(count) / float(total)) * 100.0
+
+    classifying_rate['overall'] = "%.1f" % rate
+
     for job in bad_jobs:
         if bad_jobs[job] == 0 and total_job_failures[job] == 0:
             classifying_rate[job] = 0
