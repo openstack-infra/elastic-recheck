@@ -148,7 +148,8 @@ def classifying_rate(fails, data, engine, classifier):
                      'AND error_pr:["-1000.0" TO "-10.0"] '
                      % url['build_uuid'])
             logstash_query = qb.encode_logstash_query(query)
-            logstash_url = 'http://logstash.openstack.org/#%s' % logstash_query
+            logstash_url = 'http://logstash.openstack.org' \
+                '/#/dashboard/file/logstash.json?%s' % logstash_query
             results = classifier.hits_by_query(query, size=1)
             if results:
                 url['crm114'] = logstash_url
