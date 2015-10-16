@@ -7,7 +7,7 @@ python-daemon<2.0 # BUg https://storyboard.openstack.org/#!/story/2000107
 irc!=11.1
 pyyaml
 lockfile
-pbr>=0.8.1,<1.0
+pbr>=1.6
 Babel>=0.9.6
 launchpadlib
 Jinja2
