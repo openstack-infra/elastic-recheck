@@ -191,6 +191,12 @@ You can execute an individual query locally and analyze the search results::
       95% master
       4% stable/icehouse
 
+Notes
+-----
+
+The html generation will generate links that work with Kibana3's logstash.json
+dashboard. If you want the links to work properly on these generated files
+you will need to host a Kibana3 with that dashboard.
 
 Future Work
 -----------
