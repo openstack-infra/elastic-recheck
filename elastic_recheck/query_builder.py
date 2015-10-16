@@ -19,7 +19,7 @@ by elastic recheck to talk with elastic search.
 """
 
 import json
-from six.moves.urllib.parse import urlencode
+from six.moves.urllib.parse import quote as urlquote
 
 
 def generic(raw_query, facet=None):
@@ -139,6 +139,9 @@ def encode_logstash_query(query, timeframe=864000):
     # things like " are properly escaped. But we dont
     # want the outer ""s that result from dumpsing the
     # string so we strip those off again. And finally
-    # the whole thing gets urlencoded.
+    # the whole thing gets quoted to escape spaces and
+    # special characters. Note that kibana3 is braindead
+    # and expects its parameters url quoted not parameter
+    # encoded
     query = json.dumps(query)[1:-1]
-    return urlencode({'query': query, 'from': timeframe})
+    return 'query=' + urlquote(query) + "&from=" + timeframe
