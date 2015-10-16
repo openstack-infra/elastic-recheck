@@ -18,6 +18,7 @@ A set of utility methods to build the kinds of queries that are needed
 by elastic recheck to talk with elastic search.
 """
 
+import json
 from six.moves.urllib.parse import urlencode
 
 
@@ -134,4 +135,10 @@ def encode_logstash_query(query, timeframe=864000):
 
     """
     timeframe = str(timeframe) + 's'
+    # We need to first json encode the query so that
+    # things like " are properly escaped. But we dont
+    # want the outer ""s that result from dumpsing the
+    # string so we strip those off again. And finally
+    # the whole thing gets urlencoded.
+    query = json.dumps(query)[1:-1]
     return urlencode({'query': query, 'from': timeframe})
