@@ -82,7 +82,7 @@ def main():
     parser.add_argument('-o', dest='output',
                         help='output filename')
     parser.add_argument('-q', dest='queue',
-                        help='limit results to a specific query')
+                        help='limit results to a specific build queue')
     parser.add_argument('-v', dest='verbose',
                         action='store_true', default=False,
                         help='print out details as we go')
