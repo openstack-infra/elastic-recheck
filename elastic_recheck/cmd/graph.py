@@ -15,6 +15,7 @@
 # under the License.
 
 import argparse
+import ConfigParser
 from datetime import datetime
 import json
 import os
@@ -83,12 +84,31 @@ def main():
                         help='output filename')
     parser.add_argument('-q', dest='queue',
                         help='limit results to a specific build queue')
+    parser.add_argument('-c', '--conf', help="Elastic Recheck Configuration "
+                        "file to use for data_source options such as "
+                        "elastic search url, logstash url, and database "
+                        "uri.")
     parser.add_argument('-v', dest='verbose',
                         action='store_true', default=False,
                         help='print out details as we go')
     args = parser.parse_args()
 
-    classifier = er.Classifier(args.queries)
+    # Start with defaults
+    es_url = er.ES_URL
+    ls_url = er.LS_URL
+    db_uri = er.DB_URI
+
+    if args.conf:
+        config = ConfigParser.ConfigParser({'es_url': er.ES_URL,
+                                            'ls_url': er.LS_URL,
+                                            'db_uri': er.DB_URI})
+        config.read(args.conf)
+        if config.has_section('data_source'):
+            es_url = config.get('data_source', 'es_url')
+            ls_url = config.get('data_source', 'ls_url')
+            db_uri = config.get('data_source', 'db_uri')
+
+    classifier = er.Classifier(args.queries, es_url=es_url, db_uri=db_uri)
 
     buglist = []
 
@@ -131,10 +151,12 @@ def main():
             LOG.debug("Starting query for bug %s" % query['bug'])
         logstash_query = qb.encode_logstash_query(query['query'],
                                                   timeframe=timeframe)
+        logstash_url = ("%s/#/dashboard/file/logstash.json?%s"
+                        % (ls_url, logstash_query))
         bug_data = get_launchpad_bug(query['bug'])
         bug = dict(number=query['bug'],
                    query=query['query'],
-                   logstash_query=logstash_query,
+                   logstash_url=logstash_url,
                    bug_data=bug_data,
                    fails=0,
                    fails24=0,
