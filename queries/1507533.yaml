@@ -1,0 +1,3 @@
+query: >-
+  message:"Resolving download.cirros-cloud.net (download.cirros-cloud.net)... failed: Name or service not known"
+  AND tags:"grenade.sh.txt"
