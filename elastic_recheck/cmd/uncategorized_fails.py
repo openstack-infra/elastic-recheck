@@ -18,8 +18,10 @@ import argparse
 import collections
 import ConfigParser
 import datetime
+import logging
 import operator
 import re
+import requests
 
 import dateutil.parser as dp
 import jinja2
@@ -41,6 +43,8 @@ EXCLUDED_JOBS = (
 )
 
 EXCLUDED_JOBS_REGEX = re.compile('(' + '|'.join(EXCLUDED_JOBS) + ')')
+
+LOG = logging.getLogger('eruncategorized')
 
 
 def get_options():
@@ -253,16 +257,19 @@ def _failure_percentage(hits, fails):
 def collect_metrics(classifier, fails):
     data = {}
     for q in classifier.queries:
-        results = classifier.hits_by_query(q['query'], size=30000)
-        hits = _status_count(results)
-        data[q['bug']] = {
-            'fails': _failure_count(hits),
-            'hits': hits,
-            'percentages': _failure_percentage(results, fails),
-            'query': q['query'],
-            'failed_jobs': _failed_jobs(results)
-        }
-
+        try:
+            results = classifier.hits_by_query(q['query'], size=30000)
+            hits = _status_count(results)
+            data[q['bug']] = {
+                'fails': _failure_count(hits),
+                'hits': hits,
+                'percentages': _failure_percentage(results, fails),
+                'query': q['query'],
+                'failed_jobs': _failed_jobs(results)
+            }
+        except requests.exceptions.ReadTimeout:
+            LOG.exception("Failed to collection metrics for query %s" %
+                          q['query'])
     return data
 
 
