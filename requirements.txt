@@ -1,7 +1,7 @@
 six
 python-dateutil>=2.0
 pytz
-pyelasticsearch<1.0
+pyelasticsearch>=1.4
 gerritlib
 python-daemon<2.0 # BUg https://storyboard.openstack.org/#!/story/2000107
 # irc depends on jaraco modules. jaraco.functools 1.6 attempts to import
