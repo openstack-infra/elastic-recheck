@@ -1,0 +1,4 @@
+query: >-
+  message:"b'novaclient.exceptions.RequestTimeout: Request Timeout (HTTP )'" AND
+  build_name:"gate-cinder-python34" AND
+  tags:"console"
