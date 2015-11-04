@@ -1,0 +1,6 @@
+query: >-
+  message:"Setting instance vm_state to ERROR" AND
+  message:"deallocate_for_instance" AND
+  message:"MessagingTimeout" AND
+  build_name:"gate-tempest-dsvm-large-ops" AND
+  tags:"screen-n-cpu-1.txt"
