@@ -78,7 +78,8 @@ def all_fails(classifier):
     all_fails = {}
     query = ('filename:"console.html" '
              'AND message:"Finished: FAILURE" '
-             'AND build_queue:"gate"')
+             'AND build_queue:"gate" '
+             'AND voting:"1"')
     results = classifier.hits_by_query(query, size=30000)
     facets = er_results.FacetSet()
     facets.detect_facets(results, ["build_uuid"])
