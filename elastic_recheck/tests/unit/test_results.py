@@ -124,7 +124,7 @@ class TestSearchEngine(tests.TestCase):
 
     def setUp(self):
         super(TestSearchEngine, self).setUp()
-        self.engine = results.SearchEngine('fake-url')
+        self.engine = results.SearchEngine('http://fake-url')
         self.query = 'message:"foo" AND tags:"console"'
 
     def test_search_not_recent(self, search_mock):
