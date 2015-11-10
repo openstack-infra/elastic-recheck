@@ -1,0 +1,6 @@
+query: >-
+  (message:"Build timed out (after 50 minutes). Marking the build as failed." OR
+   message:"Build timed out (after 40 minutes). Marking the build as failed.") AND
+  tags:"console" AND
+  (build_name:"gate-nova-tox-functional" OR
+   build_name:"gate-nova-python27")
