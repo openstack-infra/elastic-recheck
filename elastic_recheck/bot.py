@@ -319,7 +319,7 @@ def _main(args, config):
         config.get('gerrit', 'key'),
         not args.nocomment,
         config.get('data_source', 'es_url',
-                   'http://logstash.openstack.org/elasticsearch'),
+                   'http://logstash.openstack.org:80/elasticsearch'),
         config.get('data_source', 'db_uri',
                    'mysql+pymysql://query:query@logstash.openstack.org/'
                    'subunit2sql'),
