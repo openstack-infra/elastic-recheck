@@ -19,6 +19,7 @@ import ConfigParser
 from datetime import datetime
 import json
 import os
+import sys
 
 from launchpadlib import launchpad
 import pytz
@@ -81,7 +82,7 @@ def main():
     parser.add_argument(dest='queries',
                         help='path to query file')
     parser.add_argument('-o', dest='output',
-                        help='output filename')
+                        help='output filename. Omit for stdout')
     parser.add_argument('-q', dest='queue',
                         help='limit results to a specific build queue')
     parser.add_argument('-c', '--conf', help="Elastic Recheck Configuration "
@@ -197,9 +198,15 @@ def main():
                      key=lambda bug: -(bug['fails24'] * 100000 + bug['fails']))
 
     jsondata['buglist'] = buglist
-    out = open(args.output, 'w')
-    out.write(json.dumps(jsondata))
-    out.close()
+    if args.output:
+        out = open(args.output, 'w')
+    else:
+        out = sys.stdout
+
+    try:
+        out.write(json.dumps(jsondata))
+    finally:
+        out.close()
 
 
 if __name__ == "__main__":
