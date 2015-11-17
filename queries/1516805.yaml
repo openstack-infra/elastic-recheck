@@ -1,0 +1,5 @@
+query: >-
+  message:"registry = cls()" AND
+  tags:"console" AND
+  project:"openstack/nova" AND
+  NOT build_queue:"post"
