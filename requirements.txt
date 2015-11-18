@@ -8,6 +8,8 @@ python-daemon<2.0 # BUg https://storyboard.openstack.org/#!/story/2000107
 # backports which do not exist. This appears to be a dependency issue
 # upstream. Avoid this by forcing the use of older jaraco.functools.
 jaraco.functools<1.6
+jaraco.itertools<1.6
+jaraco.collections<1.2
 irc!=11.1
 pyyaml
 lockfile
