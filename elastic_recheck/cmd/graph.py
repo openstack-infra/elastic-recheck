@@ -25,6 +25,18 @@ from launchpadlib import launchpad
 import pytz
 import requests
 
+try:
+    # Disable InsecurePlatformWarning warnings as documented here
+    # https://github.com/kennethreitz/requests/issues/2214
+    from requests.packages.urllib3.exceptions import InsecurePlatformWarning
+    requests.packages.urllib3.disable_warnings(InsecurePlatformWarning)
+except ImportError:
+    # If there's an import error, then urllib3 may be packaged
+    # separately, so apply it there too
+    import urllib3
+    from urllib3.exceptions import InsecurePlatformWarning
+    urllib3.disable_warnings(InsecurePlatformWarning)
+
 import elastic_recheck.elasticRecheck as er
 from elastic_recheck import log as logging
 import elastic_recheck.query_builder as qb
