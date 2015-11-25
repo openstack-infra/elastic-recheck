@@ -14,6 +14,7 @@
 
 import ConfigParser
 import os
+import re
 
 DEFAULT_INDEX_FORMAT = 'logstash-%Y.%m.%d'
 
@@ -25,6 +26,32 @@ JOBS_RE = '(tempest-dsvm-full|gate-tempest-dsvm-virtual-ironic)'
 CI_USERNAME = 'jenkins'
 
 PID_FN = '/var/run/elastic-recheck/elastic-recheck.pid'
+
+# Not all teams actively used elastic recheck for categorizing their
+# work, so to keep the uncategorized page more meaningful, we exclude
+# jobs from teams that don't use this toolchain.
+EXCLUDED_JOBS = (
+    # Docs team
+    "api-site",
+    "operations-guide",
+    "openstack-manuals",
+    # Ansible
+    "ansible",
+    # Puppet
+    "puppet",
+)
+
+EXCLUDED_JOBS_REGEX = re.compile('(' + '|'.join(EXCLUDED_JOBS) + ')')
+
+INCLUDED_PROJECTS_REGEX = "(^openstack/|devstack|grenade)"
+
+ALL_FAILS_QUERY = ('filename:"console.html" '
+                   'AND (message:"Finished: FAILURE" '
+                   'OR message:"[Zuul] Job complete, result: FAILURE") '
+                   'AND build_queue:"gate" '
+                   'AND voting:"1"')
+
+UNCAT_MAX_SEARCH_SIZE = 30000
 
 
 class Config(object):
@@ -38,7 +65,11 @@ class Config(object):
                  jobs_re=None,
                  ci_username=None,
                  pid_fn=None,
-                 es_index_format=None):
+                 es_index_format=None,
+                 all_fails_query=None,
+                 excluded_jobs_regex=None,
+                 included_projects_regex=None,
+                 uncat_search_size=None):
 
         self.es_url = es_url or ES_URL
         self.ls_url = ls_url or LS_URL
@@ -49,6 +80,11 @@ class Config(object):
         self.pid_fn = pid_fn or PID_FN
         self.ircbot_channel_config = None
         self.irc_log_config = None
+        self.all_fails_query = all_fails_query or ALL_FAILS_QUERY
+        self.excluded_jobs_regex = excluded_jobs_regex or EXCLUDED_JOBS_REGEX
+        self.included_projects_regex = \
+            included_projects_regex or INCLUDED_PROJECTS_REGEX
+        self.uncat_search_size = uncat_search_size or UNCAT_MAX_SEARCH_SIZE
 
         if config_file or config_obj:
             if config_obj:
