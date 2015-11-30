@@ -15,7 +15,6 @@
 # under the License.
 
 import argparse
-import ConfigParser
 from datetime import datetime
 import json
 import os
@@ -38,6 +37,8 @@ except ImportError:
     from urllib3.exceptions import InsecurePlatformWarning
     urllib3.disable_warnings(InsecurePlatformWarning)
 
+
+import elastic_recheck.config as er_conf
 import elastic_recheck.elasticRecheck as er
 from elastic_recheck import log as logging
 import elastic_recheck.query_builder as qb
@@ -111,22 +112,9 @@ def main():
                         help='print out details as we go')
     args = parser.parse_args()
 
-    # Start with defaults
-    es_url = er.ES_URL
-    ls_url = er.LS_URL
-    db_uri = er.DB_URI
+    config = er_conf.Config(config_file=args.conf)
 
-    if args.conf:
-        config = ConfigParser.ConfigParser({'es_url': er.ES_URL,
-                                            'ls_url': er.LS_URL,
-                                            'db_uri': er.DB_URI})
-        config.read(args.conf)
-        if config.has_section('data_source'):
-            es_url = config.get('data_source', 'es_url')
-            ls_url = config.get('data_source', 'ls_url')
-            db_uri = config.get('data_source', 'db_uri')
-
-    classifier = er.Classifier(args.queries, es_url=es_url, db_uri=db_uri)
+    classifier = er.Classifier(args.queries, config=config)
 
     buglist = []
 
@@ -160,7 +148,7 @@ def main():
     }
 
     # Get the cluster health for the header
-    es = pyelasticsearch.ElasticSearch(es_url)
+    es = pyelasticsearch.ElasticSearch(config.es_url)
     jsondata['status'] = es.health()['status']
 
     for query in classifier.queries:
@@ -174,7 +162,7 @@ def main():
         logstash_query = qb.encode_logstash_query(query['query'],
                                                   timeframe=timeframe)
         logstash_url = ("%s/#/dashboard/file/logstash.json?%s"
-                        % (ls_url, logstash_query))
+                        % (config.ls_url, logstash_query))
         bug_data = get_launchpad_bug(query['bug'])
         bug = dict(number=query['bug'],
                    query=query['query'],

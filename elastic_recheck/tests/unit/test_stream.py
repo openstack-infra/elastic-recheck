@@ -47,7 +47,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.url, "https://review.openstack.org/64750")
             self.assertEqual(sorted(event.build_short_uuids()),
                              ["5dd41fe", "d3fd328"])
-            self.assertTrue(event.is_openstack_project())
+            self.assertTrue(event.is_included_job())
             self.assertEqual(event.queue(), "gate")
             self.assertEqual(event.bug_urls(), None)
             self.assertEqual(event.bug_urls_map(), None)
@@ -65,7 +65,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.url, "https://review.openstack.org/64749")
             self.assertEqual(sorted(event.build_short_uuids()),
                              ["5dd41fe", "d3fd328"])
-            self.assertTrue(event.is_openstack_project())
+            self.assertTrue(event.is_included_job())
             self.assertEqual(event.queue(), "check")
             self.assertEqual(event.bug_urls(), None)
             self.assertEqual(event.bug_urls_map(), None)
@@ -147,7 +147,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.url, "https://review.openstack.org/64750")
             self.assertEqual(sorted(event.build_short_uuids()),
                              ["5dd41fe", "d3fd328"])
-            self.assertTrue(event.is_openstack_project())
+            self.assertTrue(event.is_included_job())
             self.assertEqual(event.queue(), "gate")
             self.assertEqual(event.bug_urls(),
                              ['https://bugs.launchpad.net/bugs/123456'])
@@ -175,7 +175,7 @@ class TestStream(tests.TestCase):
             self.assertEqual(event.url, "https://review.openstack.org/64749")
             self.assertEqual(sorted(event.build_short_uuids()),
                              ["5dd41fe", "d3fd328"])
-            self.assertTrue(event.is_openstack_project())
+            self.assertTrue(event.is_included_job())
             self.assertEqual(event.queue(), "check")
             self.assertEqual(event.bug_urls(),
                              ['https://bugs.launchpad.net/bugs/123456'])

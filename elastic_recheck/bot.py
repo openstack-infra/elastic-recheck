@@ -42,7 +42,6 @@ openstack-qa:
 """
 
 import argparse
-import ConfigParser
 import daemon
 import os
 import textwrap
@@ -53,6 +52,7 @@ import yaml
 import irc.bot
 from launchpadlib import launchpad
 
+import elastic_recheck.config as er_conf
 from elastic_recheck import log as logging
 
 LPCACHEDIR = os.path.expanduser('~/.launchpadlib/cache')
@@ -73,13 +73,16 @@ class ElasticRecheckException(Exception):
 
 
 class RecheckWatchBot(irc.bot.SingleServerIRCBot):
-    def __init__(self, channels, nickname, password, server, port=6667,
-                 server_password=None):
+    def __init__(self, channels, config):
         super(RecheckWatchBot, self).__init__(
-            [(server, port, server_password)], nickname, nickname)
+            [(config.ircbot_server,
+              config.ircbot_port,
+              config.ircbot_server_password)],
+            config.ircbot_nick,
+            config.ircbot_nick)
         self.channel_list = channels
-        self.nickname = nickname
-        self.password = password
+        self.nickname = config.ircbot_nick
+        self.password = config.ircbot_pass
         self.log = logging.getLogger('recheckwatchbot')
 
     def on_nicknameinuse(self, c, e):
@@ -111,26 +114,24 @@ class RecheckWatchBot(irc.bot.SingleServerIRCBot):
 
 
 class RecheckWatch(threading.Thread):
-    def __init__(self, ircbot, channel_config, msgs, username,
-                 queries, host, key, commenting=True, es_url=None,
-                 db_uri=None):
+    def __init__(self, ircbot, channel_config, msgs, config=None,
+                 commenting=True):
         super(RecheckWatch, self).__init__()
+        self.config = config or er_conf.Config()
         self.ircbot = ircbot
         self.channel_config = channel_config
         self.msgs = msgs
         self.log = logging.getLogger('recheckwatchbot')
-        self.username = username
-        self.queries = queries
-        self.host = host
+        self.username = config.gerrit_user
+        self.queries = config.gerrit_query_file
+        self.host = config.gerrit_host
         self.connected = False
         self.commenting = commenting
-        self.key = key
+        self.key = config.gerrit_host_key
         self.lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
                                                         'production',
                                                         LPCACHEDIR,
                                                         timeout=60)
-        self.es_url = es_url
-        self.db_uri = db_uri
 
     def display(self, channel, event):
         display = False
@@ -200,10 +201,9 @@ class RecheckWatch(threading.Thread):
     def run(self):
         # Import here because it needs to happen after daemonization
         import elastic_recheck.elasticRecheck as er
-        classifier = er.Classifier(self.queries, es_url=self.es_url,
-                                   db_uri=self.db_uri)
+        classifier = er.Classifier(self.queries, config=self.config)
         stream = er.Stream(self.username, self.host, self.key,
-                           es_url=self.es_url)
+                           config=self.config)
         while True:
             try:
                 event = stream.get_failed_tempest()
@@ -285,7 +285,7 @@ def get_options():
 def _main(args, config):
     logging.setup_logging(config)
 
-    fp = config.get('ircbot', 'channel_config')
+    fp = config.ircbot_channel_config
     if fp:
         fp = os.path.expanduser(fp)
         if not os.path.exists(fp):
@@ -301,11 +301,7 @@ def _main(args, config):
     if not args.noirc:
         bot = RecheckWatchBot(
             channel_config.channels,
-            config.get('ircbot', 'nick'),
-            config.get('ircbot', 'pass'),
-            config.get('ircbot', 'server'),
-            config.getint('ircbot', 'port'),
-            config.get('ircbot', 'server_password'))
+            config=config)
     else:
         bot = None
 
@@ -313,16 +309,8 @@ def _main(args, config):
         bot,
         channel_config,
         msgs,
-        config.get('gerrit', 'user'),
-        config.get('gerrit', 'query_file'),
-        config.get('gerrit', 'host', 'review.openstack.org'),
-        config.get('gerrit', 'key'),
-        not args.nocomment,
-        config.get('data_source', 'es_url',
-                   'http://logstash.openstack.org:80/elasticsearch'),
-        config.get('data_source', 'db_uri',
-                   'mysql+pymysql://query:query@logstash.openstack.org/'
-                   'subunit2sql'),
+        config=config,
+        commenting=not args.nocomment,
     )
 
     recheck.start()
@@ -333,18 +321,12 @@ def _main(args, config):
 def main():
     args = get_options()
 
-    config = ConfigParser.ConfigParser({'server_password': None})
-    config.read(args.conffile)
-
-    if config.has_option('ircbot', 'pidfile'):
-        pid_fn = os.path.expanduser(config.get('ircbot', 'pidfile'))
-    else:
-        pid_fn = '/var/run/elastic-recheck/elastic-recheck.pid'
+    config = er_conf.Config(config_file=args.conffile)
 
     if args.foreground:
         _main(args, config)
     else:
-        pid = pid_file_module.TimeoutPIDLockFile(pid_fn, 10)
+        pid = pid_file_module.TimeoutPIDLockFile(config.pid_fn, 10)
         with daemon.DaemonContext(pidfile=pid):
             _main(args, config)
 

@@ -15,18 +15,16 @@
 #    under the License.
 
 import argparse
-import ConfigParser
 import itertools
 import json
 import yaml
 
-import elastic_recheck.elasticRecheck as er
+import elastic_recheck.config as er_conf
 import elastic_recheck.log as logging
 import elastic_recheck.results as er_results
 
 LOG = logging.getLogger('erquery')
 
-DEFAULT_INDEX_FORMAT = 'logstash-%Y.%m.%d'
 DEFAULT_NUMBER_OF_DAYS = 10
 DEFAULT_MAX_QUANTITY = 5
 IGNORED_ATTRIBUTES = [
@@ -64,11 +62,11 @@ def analyze_attributes(attributes):
     return analysis
 
 
-def query(query_file_name, days=DEFAULT_NUMBER_OF_DAYS, es_url=er.ES_URL,
-          quantity=DEFAULT_MAX_QUANTITY, verbose=False,
-          indexfmt=DEFAULT_INDEX_FORMAT):
-
-    es = er_results.SearchEngine(url=es_url, indexfmt=indexfmt)
+def query(query_file_name, config=None, days=DEFAULT_NUMBER_OF_DAYS,
+          quantity=DEFAULT_MAX_QUANTITY, verbose=False,):
+    _config = config or er_conf.Config()
+    es = er_results.SearchEngine(url=_config.es_url,
+                                 indexfmt=_config.es_index_format)
 
     with open(query_file_name) as f:
         query_file = yaml.load(f.read())
@@ -119,21 +117,10 @@ def main():
                         "elastic search url, logstash url, and database uri.")
     args = parser.parse_args()
 
-    # Start with defaults
-    es_url = er.ES_URL
-    es_index_format = DEFAULT_INDEX_FORMAT
+    config = er_conf.Config(config_file=args.conf)
 
-    if args.conf:
-        config = ConfigParser.ConfigParser({
-            'es_url': er.ES_URL,
-            'index_format': DEFAULT_INDEX_FORMAT})
-        config.read(args.conf)
-        if config.has_section('data_source'):
-            es_url = config.get('data_source', 'es_url')
-            es_index_format = config.get('data_source', 'index_format')
-
-    query(args.query_file.name, days=args.days, quantity=args.quantity,
-          verbose=args.verbose, es_url=es_url, indexfmt=es_index_format)
+    query(args.query_file.name, config=config, days=args.days,
+          quantity=args.quantity, verbose=args.verbose)
 
 
 if __name__ == "__main__":

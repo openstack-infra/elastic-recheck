@@ -38,9 +38,8 @@ def setup_logging(config=None):
         "urllib3.connectionpool": logging.WARN
     }
 
-    if config is not None and config.has_option('ircbot', 'log_config'):
-        log_config = config.get('ircbot', 'log_config')
-        fp = os.path.expanduser(log_config)
+    if config and config.irc_log_config:
+        fp = os.path.expanduser(config.irc_log_config)
         if not os.path.exists(fp):
             raise Exception("Unable to read logging config file at %s" % fp)
         logging.config.fileConfig(fp)

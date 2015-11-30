@@ -24,13 +24,10 @@ import logging
 import re
 import time
 
+import elastic_recheck.config as er_conf
 import elastic_recheck.loader as loader
 import elastic_recheck.query_builder as qb
 from elastic_recheck import results
-
-ES_URL = 'http://logstash.openstack.org:80/elasticsearch'
-LS_URL = 'http://logstash.openstack.org'
-DB_URI = 'mysql+pymysql://query:query@logstash.openstack.org/subunit2sql'
 
 
 def required_files(job):
@@ -112,7 +109,7 @@ class FailEvent(object):
     comment = None
     failed_jobs = []
 
-    def __init__(self, event, failed_jobs):
+    def __init__(self, event, failed_jobs, config=None):
         self.change = int(event['change']['number'])
         self.rev = int(event['patchSet']['number'])
         self.project = event['change']['project']
@@ -120,10 +117,10 @@ class FailEvent(object):
         self.comment = event["comment"]
         # TODO(jogo): make FailEvent generate the jobs
         self.failed_jobs = failed_jobs
+        self.config = config or er_conf.Config()
 
-    def is_openstack_project(self):
-        return ("tempest-dsvm-full" in self.comment or
-                "gate-tempest-dsvm-virtual-ironic" in self.comment)
+    def is_included_job(self):
+        return re.search(self.config.jobs_re, self.comment)
 
     def name(self):
         return "%d,%d" % (self.change, self.rev)
@@ -201,22 +198,22 @@ class Stream(object):
 
     log = logging.getLogger("recheckwatchbot")
 
-    def __init__(self, user, host, key, thread=True, es_url=None):
-        self.es_url = es_url or ES_URL
+    def __init__(self, user, host, key, config=None, thread=True):
+        self.config = config or er_conf.Config()
         port = 29418
         self.gerrit = gerritlib.gerrit.Gerrit(host, user, port, key)
-        self.es = results.SearchEngine(self.es_url)
+        self.es = results.SearchEngine(self.config.es_url)
         if thread:
             self.gerrit.startWatching()
 
     @staticmethod
-    def parse_jenkins_failure(event):
+    def parse_jenkins_failure(event, ci_username=er_conf.CI_USERNAME):
         """Is this comment a jenkins failure comment."""
         if event.get('type', '') != 'comment-added':
             return False
 
         username = event['author'].get('username', '')
-        if (username not in ['jenkins', 'zuul']):
+        if (username not in [ci_username, 'zuul']):
             return False
 
         if not ("Build failed" in
@@ -324,15 +321,17 @@ class Stream(object):
         while True:
             event = self.gerrit.getEvent()
 
-            failed_jobs = Stream.parse_jenkins_failure(event)
+            failed_jobs = Stream.parse_jenkins_failure(
+                event, ci_username=self.config.ci_username)
             if not failed_jobs:
                 # nothing to see here, lets try the next event
                 continue
 
             fevent = FailEvent(event, failed_jobs)
 
-            # bail if it's not an openstack project
-            if not fevent.is_openstack_project():
+            # bail if the failure is from a project
+            # that hasn't run any of the included jobs
+            if not fevent.is_included_job():
                 continue
 
             self.log.info("Looking for failures in %d,%d on %s" %
@@ -379,10 +378,9 @@ class Classifier(object):
 
     queries = None
 
-    def __init__(self, queries_dir, es_url=None, db_uri=None):
-        self.es_url = es_url or ES_URL
-        self.db_uri = db_uri or DB_URI
-        self.es = results.SearchEngine(self.es_url)
+    def __init__(self, queries_dir, config=None):
+        self.config = config or er_conf.Config()
+        self.es = results.SearchEngine(self.config.es_url)
         self.queries_dir = queries_dir
         self.queries = loader.load(self.queries_dir)
 
@@ -409,7 +407,7 @@ class Classifier(object):
         # Reload each time
         self.queries = loader.load(self.queries_dir)
         bug_matches = []
-        engine = sqlalchemy.create_engine(self.db_uri)
+        engine = sqlalchemy.create_engine(self.config.db_uri)
         Session = orm.sessionmaker(bind=engine)
         session = Session()
         for x in self.queries:
