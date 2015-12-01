@@ -1,0 +1,4 @@
+query: >
+  message:"Client.delete_port('my_portid1')"
+  AND build_name:"gate-nova-python34"
+  AND tags:"console"
