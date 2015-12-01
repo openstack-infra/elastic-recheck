@@ -96,7 +96,7 @@ def main():
     parser.add_argument('-o', dest='output',
                         help='output filename. Omit for stdout')
     parser.add_argument('-q', dest='queue',
-                        help='limit results to a specific build queue')
+                        help='limit results to a build queue regex')
     parser.add_argument('-c', '--conf', help="Elastic Recheck Configuration "
                         "file to use for data_source options such as "
                         "elastic search url, logstash url, and database "
@@ -156,7 +156,7 @@ def main():
 
     for query in classifier.queries:
         if args.queue:
-            query['query'] = query['query'] + (' AND build_queue:"%s"' %
+            query['query'] = query['query'] + (' AND build_queue:%s' %
                                                args.queue)
         if query.get('suppress-graph'):
             continue
