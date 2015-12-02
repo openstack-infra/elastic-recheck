@@ -95,7 +95,7 @@ class FailJob(object):
         # of the build_uuid.
         self.build_short_uuid = filter(None, url.split('/'))[-1]
 
-    def __str__(self):
+    def __repr__(self):
         return self.name
 
 
@@ -186,6 +186,11 @@ class FailEvent(object):
         if len(bugs) is 0:
             return None
         return list(bugs)
+
+    def __repr__(self):
+        return ("<FailEvent change:%s, rev:%s, project:%s,"
+                "url:%s, comment:%s>" %
+                (self.change, self.rev, self.project, self.url, self.comment))
 
 
 class Stream(object):
