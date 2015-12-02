@@ -30,5 +30,6 @@ def load(directory='queries'):
         bugnum = os.path.basename(fname).rstrip('.yaml')
         query = yaml.load(open(fname).read())
         query['bug'] = bugnum
+        query['query'] = "%s AND voting:1" % query['query'].rstrip()
         data.append(query)
     return data
