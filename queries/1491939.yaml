@@ -1,3 +1,0 @@
-query: >-
-  message:"+ echo 'Server returned an unexpected response code. [404]'" AND tags:"console" AND
-  project:"openstack/trove"
