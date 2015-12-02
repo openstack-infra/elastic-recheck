@@ -220,6 +220,8 @@ class Stream(object):
 
         failed_tests = []
         for line in event['comment'].split("\n"):
+            # this is needed to know if we care about categorizing
+            # these items. It's orthoginal to non voting ES searching.
             if " (non-voting)" in line:
                 continue
             m = re.search("- ([\w-]+)\s*(http://\S+)\s*:\s*FAILURE", line)
