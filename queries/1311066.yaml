@@ -1,3 +1,0 @@
-query: >-
-  message:"Killed timeout -s 9"
-  AND tags:console.html
