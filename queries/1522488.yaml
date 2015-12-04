@@ -1,0 +1,4 @@
+query: >-
+  message:"libvirtError: cannot read header"
+  AND message:"'/dev/disk/by-path"
+  AND tags:"screen-n-cpu.txt"
