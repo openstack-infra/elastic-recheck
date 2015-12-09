@@ -103,6 +103,14 @@ def main():
                         help='output filename. Omit for stdout')
     parser.add_argument('-q', dest='queue',
                         help='limit results to a build queue regex')
+    parser.add_argument('--es-query-suffix',
+                        help='further limit results with an '
+                             'elastic search query suffix. This will be ANDed '
+                             'to all queries. '
+                             'For example, to limit all queries to a '
+                             'specific branch use: '
+                             ' --es-query-suffix "build_branch:\\"stable/'
+                             'liberty\\""')
     parser.add_argument('-c', '--conf', help="Elastic Recheck Configuration "
                         "file to use for data_source options such as "
                         "elastic search url, logstash url, and database "
@@ -153,8 +161,10 @@ def main():
 
     for query in classifier.queries:
         if args.queue:
-            query['query'] = query['query'] + (' AND build_queue:%s' %
-                                               args.queue)
+            query['query'] += ' AND build_queue:%s' % args.queue
+        if args.es_query_suffix:
+            query['query'] += ' AND (%s)' % args.es_query_suffix
+
         if query.get('suppress-graph'):
             continue
         if args.verbose:
