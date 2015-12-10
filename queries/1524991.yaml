@@ -1,0 +1,3 @@
+query: >-
+  message:"ImportError: No module named netifaces" AND
+  tags:"console"
