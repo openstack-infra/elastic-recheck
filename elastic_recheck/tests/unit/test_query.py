@@ -17,17 +17,8 @@ import sys
 import mock
 
 from elastic_recheck.cmd import query
+from elastic_recheck.results import ResultSet
 from elastic_recheck.tests import unit
-
-
-class FakeResponse(object):
-    def __init__(self, response_text):
-        super(FakeResponse, self).__init__()
-        self.text = response_text
-        self.status_code = 200
-
-    def json(self):
-        return json.loads(self.text)
 
 
 class TestQueryCmd(unit.UnitTestCase):
@@ -43,9 +34,11 @@ class TestQueryCmd(unit.UnitTestCase):
     def test_query(self):
         with open('elastic_recheck/tests/unit/logstash/1284371.analysis') as f:
             expected_stdout = f.read()
-        with mock.patch('requests.get') as mock_get:
+        with mock.patch('elastic_recheck.results.SearchEngine.search') as \
+                mock_search:
             with open('elastic_recheck/tests/unit/logstash/1284371.json') as f:
-                mock_get.return_value = FakeResponse(f.read())
+                jsonResponse = json.loads(f.read())
+                mock_search.return_value = ResultSet(jsonResponse)
             query.query('elastic_recheck/tests/unit/queries/1284371.yaml')
             sys.stdout.seek(0)
             self.assertEqual(expected_stdout, sys.stdout.read())

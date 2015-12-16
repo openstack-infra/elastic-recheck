@@ -15,20 +15,17 @@
 #    under the License.
 
 import argparse
-import base64
+import ConfigParser
 import itertools
 import json
-import time
-
-import requests
 import yaml
 
-from elastic_recheck import log as logging
-
+import elastic_recheck.elasticRecheck as er
+import elastic_recheck.log as logging
+import elastic_recheck.results as er_results
 
 LOG = logging.getLogger('erquery')
 
-ENDPOINT = 'http://logstash.openstack.org/api'
 DEFAULT_NUMBER_OF_DAYS = 10
 DEFAULT_MAX_QUANTITY = 5
 IGNORED_ATTRIBUTES = [
@@ -42,42 +39,6 @@ IGNORED_ATTRIBUTES = [
     'received_at',
     'type',
 ]
-
-
-def _GET(path):
-    r = requests.get(ENDPOINT + path)
-
-    if r.status_code != requests.codes.ok:
-        LOG.info('Got HTTP %s, retrying...' % r.status_code)
-        # retry once
-        r = requests.get(ENDPOINT + path)
-
-    try:
-        return r.json()
-    except Exception:
-        raise SystemExit(r.text)
-
-
-def _encode(q):
-    """Encode a JSON dict for inclusion in a URL."""
-    return base64.b64encode(json.dumps(q))
-
-
-def _unix_time_in_microseconds():
-    return int(time.time() * 1000)
-
-
-def search(q, days):
-    search = {
-        'search': q,
-        'fields': [],
-        'offset': 0,
-        'timeframe': str(days * 86400),
-        'graphmode': 'count',
-        'time': {
-            'user_interval': 0},
-        'stamp': _unix_time_in_microseconds()}
-    return _GET('/search/%s' % _encode(search))
 
 
 def analyze_attributes(attributes):
@@ -102,17 +63,21 @@ def analyze_attributes(attributes):
     return analysis
 
 
-def query(query_file_name, days=DEFAULT_NUMBER_OF_DAYS,
+def query(query_file_name, days=DEFAULT_NUMBER_OF_DAYS, es_url=er.ES_URL,
           quantity=DEFAULT_MAX_QUANTITY, verbose=False):
+
+    es = er_results.SearchEngine(es_url)
+
     with open(query_file_name) as f:
         query_file = yaml.load(f.read())
         query = query_file['query']
 
-    r = search(q=query, days=days)
-    print('total hits: %s' % r['hits']['total'])
+    r = es.search(query, days=days)
+    print('total hits: %s' % r.hits['total'])
 
     attributes = {}
-    for hit in r['hits']['hits']:
+
+    for hit in r.hits['hits']:
         for key, value in hit['_source'].iteritems():
             value_hash = json.dumps(value)
             attributes.setdefault(key, {}).setdefault(value_hash, 0)
@@ -125,7 +90,7 @@ def query(query_file_name, days=DEFAULT_NUMBER_OF_DAYS,
             continue
 
         print(attribute)
-        for percentage, value in itertools.islice(results, None, quantity):
+        for percentage, value in itertools.islice(results, quantity):
             if isinstance(value, list):
                 value = ' '.join(unicode(x) for x in value)
             print('  %d%% %s' % (percentage, value))
@@ -147,9 +112,22 @@ def main():
     parser.add_argument(
         '--verbose', '-v', action='store_true', default=False,
         help='Report on additional query metadata.')
+    parser.add_argument('-c', '--conf', help="Elastic Recheck Configuration "
+                        "file to use for data_source options such as "
+                        "elastic search url, logstash url, and database uri.")
     args = parser.parse_args()
 
-    query(args.query_file.name, args.days, args.quantity, args.verbose)
+    # Start with defaults
+    es_url = er.ES_URL
+
+    if args.conf:
+        config = ConfigParser.ConfigParser({'es_url': er.ES_URL})
+        config.read(args.conf)
+        if config.has_section('data_source'):
+            es_url = config.get('data_source', 'es_url')
+
+    query(args.query_file.name, days=args.days, quantity=args.quantity,
+          verbose=args.verbose, es_url=es_url)
 
 
 if __name__ == "__main__":
