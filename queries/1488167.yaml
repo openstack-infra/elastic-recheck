@@ -1,4 +1,3 @@
 query: >-
   message:"AssertionError: Models and migration scripts aren't in sync" AND
-  build_name:"gate-neutron-dsvm-functional" AND
   tags:"console"
