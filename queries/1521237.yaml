@@ -1,0 +1,4 @@
+query: >
+  message:"internal error: process exited while connecting to monitor: Cannot set up guest memory 'pc.ram': Cannot allocate memory"
+  AND project:"openstack/magnum"
+  AND tags:"screen-n-cond.txt"
