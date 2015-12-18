@@ -1,0 +1,5 @@
+query: >-
+  message:"_create_domain" AND
+  message:"libvirtError: internal error: early end of file from monitor: possible problem" AND
+  message:"qemu: terminating on signal 15 from pid" AND
+  tags:"screen-n-cpu.txt"
