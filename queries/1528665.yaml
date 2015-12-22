@@ -1,0 +1,5 @@
+query: >
+  message:"create_share_instance" AND
+  message:"_wait_for_available_volume" AND
+  message:"ManilaException: Failed to create volume" AND
+  tags:"screen-m-shr.txt"
