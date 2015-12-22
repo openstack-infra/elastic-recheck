@@ -1,4 +1,5 @@
 query: >-
   message:"create_db_entry_for_new_instance" AND
-  message:"Deadlock found when trying to get lock; try restarting transaction') [SQL: u'INSERT INTO instance_extra" AND
+  message:"DBDeadlock" AND
+  message:"u'INSERT INTO instance_extra" AND
   tags:"screen-n-api.txt"
