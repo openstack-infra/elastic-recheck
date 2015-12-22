@@ -28,7 +28,7 @@ def generic(raw_query, facet=None):
     Takes a raw_query string for elastic search. This is typically the same
     content that you've typed into logstash to get to a unique result.
 
-    Optionally supports a facet, which is required for certain opperations,
+    Optionally supports a facet, which is required for certain operations,
     like ensuring that all the expected log files for a job have been
     uploaded.
     """
