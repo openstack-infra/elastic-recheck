@@ -1,0 +1,3 @@
+query: >
+  message:"ValueError: No closing quotation" AND
+  tags:"console"
