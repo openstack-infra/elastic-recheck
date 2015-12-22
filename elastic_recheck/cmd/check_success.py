@@ -45,7 +45,7 @@ def get_options():
 
 
 def all_fails(classifier):
-    """Find all the the fails in the integrated gate.
+    """Find all the fails in the integrated gate.
 
     This attempts to find all the build jobs in the integrated gate
     so we can figure out how good we are doing on total classification.

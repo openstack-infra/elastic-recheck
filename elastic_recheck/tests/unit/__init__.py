@@ -32,7 +32,7 @@ class FakeES(object):
 
     This provides a stub of the elastic search interface, so we can return
     fake results based on the samples we've already collected to use for
-    other unit tests. It does this by buiding a reverse mapping from our
+    other unit tests. It does this by building a reverse mapping from our
     queries.yaml file, and grabbing the results we'd find for known bugs.
     """
     def __init__(self, url):

@@ -243,7 +243,7 @@ var __module2__ = (function(__dependency1__, __dependency2__) {
   function registerDefaultHelpers(instance) {
     instance.registerHelper('helperMissing', function(/* [args, ]options */) {
       if(arguments.length === 1) {
-        // A missing field in a {{foo}} constuct.
+        // A missing field in a {{foo}} construct.
         return undefined;
       } else {
         // Someone is actually trying to call something, blow up.
@@ -343,7 +343,7 @@ var __module2__ = (function(__dependency1__, __dependency2__) {
       if (isFunction(conditional)) { conditional = conditional.call(this); }
 
       // Default behavior is to render the positive path if the value is truthy and not empty.
-      // The `includeZero` option may be set to treat the condtional as purely not empty based on the
+      // The `includeZero` option may be set to treat the conditional as purely not empty based on the
       // behavior of isEmpty. Effectively this determines if 0 is handled by the positive path or negative.
       if ((!options.hash.includeZero && !conditional) || Utils.isEmpty(conditional)) {
         return options.inverse(this);
@@ -456,7 +456,7 @@ var __module6__ = (function(__dependency1__, __dependency2__, __dependency3__) {
     }
 
     // Note: Using env.VM references rather than local var references throughout this section to allow
-    // for external users to override these as psuedo-supported APIs.
+    // for external users to override these as pseudo-supported APIs.
     env.VM.checkRevision(templateSpec.compiler);
 
     var invokePartialWrapper = function(partial, indent, name, context, hash, helpers, partials, data, depths) {
@@ -1431,7 +1431,7 @@ var __module10__ = (function(__dependency1__) {
         omitLeft(inverse.statements, null, true);
       }
 
-      // Find standalone else statments
+      // Find standalone else statements
       if (isPrevWhitespace(program.statements)
           && isNextWhitespace(inverse.statements)) {
 
@@ -1566,7 +1566,7 @@ var __module10__ = (function(__dependency1__) {
       return;
     }
 
-    // We omit the last node if it's whitespace only and not preceeded by a non-content node.
+    // We omit the last node if it's whitespace only and not preceded by a non-content node.
     var original = current.string;
     current.string = current.string.replace(multiple ? (/\s+$/) : (/[ \t]+$/), '');
     current.leftStripped = current.string !== original;
