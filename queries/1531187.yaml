@@ -1,0 +1,3 @@
+query: >-
+  message:"bash: install_package: command not found" AND
+  tags:console
