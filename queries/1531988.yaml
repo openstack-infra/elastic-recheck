@@ -1,0 +1,4 @@
+query: >-
+  message:"b'    raise exception.ImageNotFound(image_id=image_id)'" AND
+  tags:"console" AND
+  build_name:"gate-nova-python34"
