@@ -1,5 +1,0 @@
-query: >-
-  (message:"(LiveBlockMigrationTestJSON:test_live_block_migration_paused)"  AND
-  message:"(LiveBlockMigrationTestJSON:test_live_block_migration)") OR
-  message:"Current status: MIGRATING. Current task state: migrating."
-  tags:"console"
