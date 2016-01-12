@@ -1,0 +1,3 @@
+query: >-
+  message:"NameError: global name 'wmi' is not defined" AND
+  tags:"console"
