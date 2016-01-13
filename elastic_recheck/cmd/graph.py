@@ -184,7 +184,8 @@ def main():
         try:
             results = classifier.hits_by_query(query['query'],
                                                args.queue,
-                                               size=3000)
+                                               size=3000,
+                                               days=days)
         except pyelasticsearch.exceptions.InvalidJsonResponseError:
             LOG.exception("Invalid Json while collecting metrics for query %s"
                           % query['query'])
