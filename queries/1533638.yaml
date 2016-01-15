@@ -1,0 +1,7 @@
+query: >-
+  (message:"b'AssertionError" OR
+   message:"AssertionError") AND
+  message:"DeprecationWarning" AND
+  message:"neutronclient.i18n" AND
+  tags:"console" AND
+  project:"openstack/neutron"
