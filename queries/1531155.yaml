@@ -1,3 +1,0 @@
-query: >-
-  message:"unable to handle kernel paging request at" AND
-  tags:console

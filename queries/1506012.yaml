@@ -1,4 +1,0 @@
-query: >-
-  message:"Command: env LC_ALL=C LANG=C qemu-img info"
-  AND message:"Exit code: -11"
-  AND tags:screen-n-cpu.txt

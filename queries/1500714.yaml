@@ -1,4 +1,0 @@
-query: >-
-  message:"keystoneclient.exceptions.EndpointNotFound: publicURL endpoint for volume service in RegionOne region not found" AND
-  tags:"console" AND
-  project:"openstack/heat"

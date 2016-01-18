@@ -1,5 +1,0 @@
-query: >-
-  (message:"ERROR: unknown environment 'py27-constraints'" OR
-   message:"ERROR: unknown environment 'py34-constraints'") AND
-  tags:"console" AND
-  project:"openstack/neutron"

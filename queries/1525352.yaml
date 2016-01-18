@@ -1,3 +1,0 @@
-query: >-
-  message:"name, rest = line.split('=', 1)" AND
-  tags:"console"

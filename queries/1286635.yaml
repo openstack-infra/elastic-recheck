@@ -1,3 +1,0 @@
-query: >
-  message:"WARNING: The following packages cannot be authenticated"
-  AND tags:"console"

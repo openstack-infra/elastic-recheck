@@ -1,3 +1,0 @@
-query: >
-  tags:"console"
-  AND message:("download.py\", line 495" "download.py\", line 433" "download.py\", line 237" "package_index.py\", line 682")

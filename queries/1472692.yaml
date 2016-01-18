@@ -1,5 +1,0 @@
-query: >-
-  message:"lambda: self._expected_plugin_rpc_call(" AND
-  tags:"console" AND (
-  build_name:"check-neutron-dsvm-functional" OR
-  build_name:"gate-neutron-dsvm-functional")

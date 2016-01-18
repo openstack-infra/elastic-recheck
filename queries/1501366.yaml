@@ -1,5 +1,0 @@
-query: >-
-  message:"libvirtError: Error while building firewall: Some rules could not be created for interface" AND
-  (message:"Illegal target name" OR (
-   message:"Chain" AND message:"doesn't exist")) AND
-  tags:"screen-n-cpu.txt"

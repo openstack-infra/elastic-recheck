@@ -1,3 +1,0 @@
-query: >-
-  message:"create failed (client error): Quota exceeded for resources: ['firewall_policy']" AND
-  tags:"screen-q-svc.txt"
