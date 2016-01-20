@@ -1,4 +1,0 @@
-query: >-
-  (message:"novaclient.exceptions.RequestTimeout" OR
-   message:"b'novaclient.exceptions.RequestTimeout") AND
-  tags:"console"

@@ -1,3 +1,0 @@
-query: >
-  message:"operation failed: cannot read cputime for domain"
-  AND tags:"screen-n-cpu.txt"

@@ -1,4 +1,0 @@
-query: >-
-  message:"python3-all-dev : Depends" AND NOT
-  build_queue:"experimental" AND
-  tags:"console"

@@ -1,4 +1,0 @@
-query: >
-  message:"[ERROR] /opt/stack/new/devstack/exercises/"
-  AND message:" server didn't become active!"
-  AND tags:"console"

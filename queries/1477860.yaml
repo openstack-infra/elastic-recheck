@@ -1,5 +1,0 @@
-query: >-
-  tags:"console" AND
-  message:", in test_async_process_respawns" AND
-  (build_name:"check-neutron-dsvm-functional" OR
-   build_name:"gate-neutron-dsvm-functional")

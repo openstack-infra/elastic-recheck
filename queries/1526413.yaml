@@ -1,3 +1,0 @@
-query: >-
-  message:"requests.exceptions.SSLError: hostname '[::1]' doesn't match either of 'localhost', 'ip6-localhost', '127.0.0.1', '::1'" AND
-  tags:"console"

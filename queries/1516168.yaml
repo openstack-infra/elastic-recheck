@@ -1,4 +1,0 @@
-query: >-
-  message:"TypeError: __init__() got an unexpected keyword argument 'item_type'" AND
-  tags:"console" AND
-  build_name:"gate-ceilometer-dsvm-integration"

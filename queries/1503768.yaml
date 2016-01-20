@@ -1,4 +1,0 @@
-query: >-
-  message:"Failed to establish a new connection: [Errno -2] Name or service not known',))" AND
-  tags:"console" AND
-  project:"openstack/python-glanceclient"

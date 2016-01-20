@@ -1,4 +1,0 @@
-query: >
-  message:"init_l3" AND
-  message:"RTNETLINK answers: File exists" AND
-  tags:"screen-q-dhcp.txt"

@@ -1,4 +1,0 @@
-query: >-
-  message:"ERROR: openstack_dashboard.test.integration_tests.tests.test_keypair.TestKeypair.test_keypair" AND
-  tags:"console" AND
-  build_name:"gate-horizon-dsvm-integration"

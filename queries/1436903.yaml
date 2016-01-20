@@ -1,6 +1,0 @@
-query: >
-  (message:"FAIL: openstack_dashboard.test.integration_tests.tests.test_sahara_image_registry.TestSaharaImageRegistry.test_image_register_unregister" OR
-   message:"FAIL: openstack_dashboard.test.integration_tests.tests.test_user_create_delete.TestUser.test_create_delete_user") AND
-  tags:"console" AND
-  build_name:"gate-horizon-dsvm-integration" AND
-  build_queue:"gate"

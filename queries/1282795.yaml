@@ -1,3 +1,0 @@
-query: >
-  message:"ERROR: InterpreterNotFound"
-  AND tags:console

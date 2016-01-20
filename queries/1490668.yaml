@@ -1,3 +1,0 @@
-query: >-
-  message:"Failed to import test module: cinder.tests.unit.test_emc_vmax"
-  AND tags:console
