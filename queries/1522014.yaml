@@ -1,0 +1,4 @@
+query: >-
+  message:"DuplicateOptError: duplicate option: auth_section" AND
+  tags:"console" AND
+  build_name:"gate-ceilometer-dsvm-integration"
