@@ -32,7 +32,7 @@ class SearchEngine(object):
     def __init__(self, url):
         self._url = url
 
-    def search(self, query, size=1000, recent=False):
+    def search(self, query, size=1000, recent=False, days=0):
         """Search an elasticsearch server.
 
         `query` parameter is the complicated query structure that
@@ -47,19 +47,25 @@ class SearchEngine(object):
         a real time query that you only care about the last hour of time.
         Using recent dramatically reduces the load on the ES cluster.
 
+        `days` search only the last number of days.
+
         The returned result is a ResultSet query.
 
         """
         es = pyelasticsearch.ElasticSearch(self._url)
         args = {'size': size}
-        if recent:
+        if recent or days:
             # today's index
             datefmt = 'logstash-%Y.%m.%d'
             now = datetime.datetime.utcnow()
-            lasthr = now - datetime.timedelta(hours=1)
             indexes = [now.strftime(datefmt)]
-            if (lasthr.strftime(datefmt) != now.strftime(datefmt)):
-                indexes.append(lasthr.strftime(datefmt))
+            if recent:
+                lasthr = now - datetime.timedelta(hours=1)
+                if lasthr.strftime(datefmt) != now.strftime(datefmt):
+                    indexes.append(lasthr.strftime(datefmt))
+            for day in range(1, days):
+                lastday = now - datetime.timedelta(days=day)
+                indexes.append(lastday.strftime(datefmt))
             args['index'] = indexes
 
         results = es.search(query, **args)
