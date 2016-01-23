@@ -22,6 +22,7 @@ import os
 import sys
 
 from launchpadlib import launchpad
+import pyelasticsearch
 import pytz
 import requests
 
@@ -50,10 +51,10 @@ LOG = logging.getLogger('ergraph')
 
 
 def get_launchpad_bug(bug):
-    lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
-                                               'production',
-                                               LPCACHEDIR)
     try:
+        lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
+                                                   'production',
+                                                   LPCACHEDIR)
         lp_bug = lp.bugs[bug]
         bugdata = {'name': lp_bug.title}
         projects = ", ".join(map(lambda x: "(%s - %s)" %
@@ -65,6 +66,10 @@ def get_launchpad_bug(bug):
         # if someone makes a bug private, we lose access to it.
         bugdata = dict(name='Unknown (Private Bug)',
                        affects='Unknown (Private Bug)', reviews=[])
+    except requests.exceptions.RequestException:
+        LOG.exception("Failed to get Launchpad data for bug %s" % bug)
+        bugdata = dict(name='Unable to get launchpad data',
+                       affects='Unknown', reviews=[])
     return bugdata
 
 
@@ -175,9 +180,18 @@ def main():
                    fails24=0,
                    data=[])
         buglist.append(bug)
-        results = classifier.hits_by_query(query['query'],
-                                           args.queue,
-                                           size=3000)
+        try:
+            results = classifier.hits_by_query(query['query'],
+                                               args.queue,
+                                               size=3000)
+        except pyelasticsearch.exceptions.InvalidJsonResponseError:
+            LOG.exception("Invalid Json while collecting metrics for query %s"
+                          % query['query'])
+            continue
+        except requests.exceptions.ReadTimeout:
+            LOG.exception("Timeout while collecting metrics for query %s" %
+                          query['query'])
+            continue
 
         facets_for_fail = er_results.FacetSet()
         facets_for_fail.detect_facets(results,
