@@ -1,0 +1,4 @@
+# TODO(sdague): add a flag to not ignore non-voting jobs so this shows up in the status page
+query: >
+  message:"Migration running for 30 secs, memory 100% remaining; (bytes processed=0, remaining=0, total=0)"
+  AND tags:"screen-n-cpu.txt"
