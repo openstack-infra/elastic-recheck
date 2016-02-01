@@ -30,6 +30,10 @@ def load(directory='queries'):
         bugnum = os.path.basename(fname).rstrip('.yaml')
         query = yaml.load(open(fname).read())
         query['bug'] = bugnum
-        query['query'] = "%s AND voting:1" % query['query'].rstrip()
+        # By default we filter out non-voting jobs, but in certain cases we
+        # want to show failures for non-voting jobs in the graph while we
+        # stabilize a job, so check for a special 'allow-nonvoting' key.
+        if not query.get('allow-nonvoting', False):
+            query['query'] = "%s AND voting:1" % query['query'].rstrip()
         data.append(query)
     return data
