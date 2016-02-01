@@ -29,6 +29,11 @@ class TestLoadQueries(tests.TestCase):
         for q in queries:
             self.assertIsNotNone(q['bug'])
             self.assertIsNotNone(q['query'])
+            # check for the allow-nonvoting flag
+            if q['bug'] == '1539271':
+                self.assertNotIn('voting:1', q['query'])
+            else:
+                self.assertIn('voting:1', q['query'])
 
     def test_grenade_compat(self):
         # grenade logs are in logs/new/ and logs/old, while devstack is in

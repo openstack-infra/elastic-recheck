@@ -114,6 +114,11 @@ stack that can cause many tempest tests to fail.
      tracking race failures in non-voting jobs since they are considered
      unstable by definition (since they don't vote).
 
+     - There is, however, a special 'allow-nonvoting' key that can be added
+       to a query yaml file to allow tracking non-voting job bug failures in
+       the graph. They won't show up in the bot though (IRC or Gerrit
+       comments).
+
 #. Go to `logstash.openstack.org <http://logstash.openstack.org/>`_ and create
    an elastic search query to find the log message from step 1. To see the
    possible fields to search on click on an entry. Lucene query syntax is
