@@ -1,3 +1,4 @@
 query: >
-    message:"Timed out waiting for Nova hypervisor-stats count >= 1" AND
-    filename:"logs/devstacklog.txt"
+  message:"ERROR" AND
+  message:"Timed out waiting for Nova hypervisor-stats count >= 1" AND
+  tags:"console"
