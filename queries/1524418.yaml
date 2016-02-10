@@ -1,5 +1,0 @@
-query: >-
-  (message:"AttributeError: 'LocalManager' object has no attribute 'l3driver'" OR
-  message:"MessagingTimeout") AND
-  message:"_disassociate_floating_ip" AND
-  tags:"screen-n-api.txt"
