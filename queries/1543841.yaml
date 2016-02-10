@@ -1,0 +1,3 @@
+query: >-
+  message:"tempest verify-config: error: unrecognized arguments: -uro" AND
+  tags:"console"
