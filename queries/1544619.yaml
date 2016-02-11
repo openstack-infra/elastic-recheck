@@ -1,0 +1,4 @@
+query: >-
+  message:"error: [Errno 111] Connection refused" AND
+  tags:"console" AND
+  build_name:"gate-horizon-dsvm-integration"
