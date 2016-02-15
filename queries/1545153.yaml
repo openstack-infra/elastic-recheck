@@ -1,0 +1,6 @@
+query: >-
+  message:"BadRequest: Invalid input for dns_name." AND
+  message:"not a valid PQDN or FQDN" AND
+  message:"must not start or end with a hyphen.." AND
+  message:"create_port" AND
+  tags:"screen-n-cpu.txt"
