@@ -61,6 +61,11 @@
            <h3>{{bug.fails24}} fails in 24 hrs / {{bug.fails}} fails in
              10 days</h3>
            <h3>Projects: {{bug.bug_data.affects}}</h3>
+           <!-- only display that a job is non-voting since voting:1 is the
+                default filter -->
+           {{#unless bug.voting}}
+           <h3>Voting: False</h3>
+           {{/unless}}
            {{#if bug.bug_data.reviews}}
            <h3 class="openreviews">Open Reviews:</h3>
            <div class="openreviews">
