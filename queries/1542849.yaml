@@ -1,0 +1,4 @@
+query: >-
+  message:"ERROR:zuul.Repo:Unable to initialize repo for" AND
+  tags:"console"
+
