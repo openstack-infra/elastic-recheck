@@ -178,7 +178,8 @@ def main():
                    bug_data=bug_data,
                    fails=0,
                    fails24=0,
-                   data=[])
+                   data=[],
+                   voting=(False if query.get('allow-nonvoting') else True))
         buglist.append(bug)
         try:
             results = classifier.hits_by_query(query['query'],
