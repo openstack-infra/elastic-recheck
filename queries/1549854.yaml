@@ -1,0 +1,6 @@
+query: >-
+  message:"has not been heard from in a while" AND
+  tags:"screen-n-sch.txt" AND (
+  build_name:"gate-tempest-dsvm-full-ceph" OR
+  build_name:"gate-tempest-dsvm-full-ceph-src-os-brick" OR
+  build_name:"gate-tempest-dsvm-full-ceph-src-glance_store")
