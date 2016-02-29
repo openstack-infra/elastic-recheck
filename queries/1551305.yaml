@@ -1,0 +1,5 @@
+query: >-
+  (message:"HTTP exception thrown: Service cinder-backup could not be found." OR
+   message:"pure virtual method called") AND
+  build_name:"gate-tempest-dsvm-full-ceph" AND
+  tags:"screen"
