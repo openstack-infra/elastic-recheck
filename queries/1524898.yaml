@@ -1,0 +1,6 @@
+# NOTE(mriedem): This is a non-voting job but we want to track the failures
+# for volume-backed live migration in the multinode jobs.
+allow-nonvoting: True
+query: >
+  message:"Live Migration failure: operation failed: migration job: unexpectedly failed" AND
+  tags:"screen-n-cpu.txt"
