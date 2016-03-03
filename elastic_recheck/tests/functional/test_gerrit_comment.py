@@ -32,6 +32,7 @@ class TestGerritComment(testtools.TestCase):
         port = 29418
         self.gerrit = gerritlib.gerrit.Gerrit(host, self.user, port)
 
+    @testtools.skip("Skip until Bug 1517730")
     def test_bug_found(self):
         bug_numbers = set(['1223158'])
         project = 'gtest-org/test'
@@ -48,6 +49,7 @@ class TestGerritComment(testtools.TestCase):
             "https://bugs.launchpad.net/bugs/1223158",
             comment.get('message'))
 
+    @testtools.skip("Skip until Bug 1517730")
     def test_bugs_found(self):
         bug_numbers = set(['1223158', '424242'])
         project = 'gtest-org/test'
