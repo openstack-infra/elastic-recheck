@@ -17,7 +17,6 @@ pbr>=1.6
 Babel>=0.9.6
 launchpadlib
 Jinja2
-argparse
 requests
 subunit2sql>=0.9.0
 SQLAlchemy>=0.9.7,<1.1.0
