@@ -1,0 +1,4 @@
+query: >-
+  message:"Uhhuh. NMI received for unknown reason" AND
+  tags:"console" AND
+  build_name:"gate-novaclient-dsvm-functional"
