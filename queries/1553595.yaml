@@ -1,0 +1,3 @@
+query: >-
+  message:"AssertionError: False is not true : Public subnets visible" AND
+  tags:console
