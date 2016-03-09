@@ -231,7 +231,9 @@ def main():
         out = sys.stdout
 
     try:
-        out.write(json.dumps(jsondata))
+        # indent the json output if we're writing to a file
+        indent = 4 if args.output else None
+        out.write(json.dumps(jsondata, indent=indent))
     finally:
         out.close()
 
