@@ -55,6 +55,20 @@ function update_critical_dates(data) {
     }
 }
 
+function update_health(data) {
+    var health = $('#health');
+    health.text(data['status']);
+    $('#health').text(data['status']);
+    if (data['status'] == 'red') {
+        // TODO(mriedem): link to the cluster health details
+        // http://logstash.openstack.org/elasticsearch/_cluster/health?pretty=true
+        health.css('font-weight', 'bold');
+    } else {
+        health.css('font-weight', 'normal');
+    }
+    health.css('color', data['status']);
+}
+
 function update() {
     var source   = $("#bug-template").html();
     var template = Handlebars.compile(source);
@@ -64,6 +78,7 @@ function update() {
         if ('buglist' in data) {
             buglist = data['buglist'];
             update_critical_dates(data);
+            update_health(data);
         }
 
         var main = $('#main-container');

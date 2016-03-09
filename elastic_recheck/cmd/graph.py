@@ -159,6 +159,10 @@ def main():
         'buglist': []
     }
 
+    # Get the cluster health for the header
+    es = pyelasticsearch.ElasticSearch(es_url)
+    jsondata['status'] = es.health()['status']
+
     for query in classifier.queries:
         if args.queue:
             query['query'] = query['query'] + (' AND build_queue:%s' %
