@@ -81,7 +81,7 @@ def result_ready(review, patch, name, build_short_uuid):
                    'AND build_status:"FAILURE" '
                    'AND build_change:"%s" '
                    'AND build_patchset:"%s" '
-                   'AND build_name:"%s"'
+                   'AND build_name:"%s" '
                    'AND build_short_uuid:%s' %
                    (review, patch, name, build_short_uuid))
 
@@ -96,8 +96,8 @@ def files_ready(review, patch, name, build_short_uuid):
     """
     return generic('build_status:"FAILURE" '
                    'AND build_change:"%s" '
-                   'AND build_patchset:"%s"'
-                   'AND build_name:"%s"'
+                   'AND build_patchset:"%s" '
+                   'AND build_name:"%s" '
                    'AND build_short_uuid:%s' %
                    (review, patch, name, build_short_uuid),
                    facet='filename')
@@ -111,7 +111,7 @@ def single_patch(query, review, patch, build_short_uuid):
     """
     return generic('%s '
                    'AND build_change:"%s" '
-                   'AND build_patchset:"%s"'
+                   'AND build_patchset:"%s" '
                    'AND build_short_uuid:%s' %
                    (query, review, patch, build_short_uuid))
 
