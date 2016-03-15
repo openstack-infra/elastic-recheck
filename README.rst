@@ -199,9 +199,10 @@ You can execute an individual query locally and analyze the search results::
 Notes
 -----
 
-The html generation will generate links that work with Kibana3's logstash.json
-dashboard. If you want the links to work properly on these generated files
-you will need to host a Kibana3 with that dashboard.
+* The html generation will generate links that work with Kibana3's
+  logstash.json dashboard. If you want the links to work properly on these
+  generated files you will need to host a Kibana3 with that dashboard.
+* View the OpenStack ElasticSearch `cluster health here`_.
 
 Future Work
 -----------
@@ -215,3 +216,6 @@ Future Work
 - Move away from polling ElasticSearch to discover if its ready or not
 - Add nightly job to propose a patch to remove bug queries that return
   no hits -- Bug hasn't been seen in 2 weeks and must be closed
+
+
+.. _cluster health here: http://logstash.openstack.org/elasticsearch/_cluster/health?pretty=true
