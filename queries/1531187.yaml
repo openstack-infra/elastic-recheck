@@ -1,3 +1,5 @@
 query: >-
-  message:"bash: install_package: command not found" AND
+  ((message:"bash: install_package: command not found") OR
+  (message:"ssh: connect to host" AND message:"Connection timed out"))
+  AND
   tags:console
