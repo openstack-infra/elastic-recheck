@@ -1,3 +1,0 @@
-query: >-
-  message:".sh: traceroute6: not found" AND
-  tags:"console"
