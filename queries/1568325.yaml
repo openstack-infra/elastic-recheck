@@ -1,0 +1,3 @@
+query: >-
+  message:"npm ERR! Failed at the phantomjs@1.9.17 install script 'node install.js'." AND
+  tags:"console"
