@@ -39,7 +39,9 @@ EXCLUDED_JOBS = (
     "operations-guide",
     "openstack-manuals",
     # Ansible
-    "ansible"
+    "ansible",
+    # Puppet
+    "puppet",
 )
 
 EXCLUDED_JOBS_REGEX = re.compile('(' + '|'.join(EXCLUDED_JOBS) + ')')
