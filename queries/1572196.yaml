@@ -1,0 +1,3 @@
+query: >-
+    message:"pkg_resources.ContextualVersionConflict: (pbr 0.11.1 (/usr/local/lib/python2.7/dist-packages), Requirement.parse('pbr>=1.8'), set(['testresources']))" AND
+    tags:"console"
