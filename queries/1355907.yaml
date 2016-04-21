@@ -1,2 +1,0 @@
-query: >
-  message:"sudo: yum: command not found" AND tags:"console"
