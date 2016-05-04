@@ -1,0 +1,4 @@
+query: >-
+  (message:"testtools.matchers._impl.MismatchError: &lt;bound method RolesClient.list_roles of &lt;tempest.services.identity.v2.json.roles_client.RolesClient" OR
+   message:"testtools.matchers._impl.MismatchError: &lt;bound method TokenClient.auth_token of &lt;tempest.lib.services.identity.v2.token_client.TokenClient") AND
+  tags:"console"
