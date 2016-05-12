@@ -1,5 +1,0 @@
-query: >-
-  message:"UnicodeDecodeError: 'ascii' codec can't decode byte 0xc3 in position 133: ordinal not in range(128)" AND
-  build_name:"gate-requirements-integration-dsvm" AND
-  tags:"console" AND
-  build_branch:"stable/liberty"

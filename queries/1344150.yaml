@@ -1,5 +1,0 @@
-query: >
-  message:"Stack heat" AND
-  message:"already has an action \(SUSPEND\) in progress" AND
-  message:"Conflict" AND
-  tags:"console"

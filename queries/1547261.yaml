@@ -1,4 +1,0 @@
-query: >
-  message:"BadRequest: Network" AND
-  message:"requires a subnet in order to boot instances on" AND
-  tags:"screen-h-eng.txt"

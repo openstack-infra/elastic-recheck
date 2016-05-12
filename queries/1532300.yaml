@@ -1,3 +1,0 @@
-query: >-
-  message:"IOError: [Errno 13] Permission denied: '/opt/stack/new/devstack/src/horizon/openstack_dashboard/local/_opt_stack_new_devstack_src_horizon_openstack_dashboard_local_.secret_key_store.lock'" AND
-  tags:"console"

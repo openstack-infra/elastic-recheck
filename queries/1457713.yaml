@@ -1,3 +1,0 @@
-query: >-
-  message:"Missing parameter(s): " AND
-  tags:"devstacklog.txt"

@@ -1,3 +1,0 @@
-query: >-
-  message:"No matching distribution found for pbr"
-  AND tags:console

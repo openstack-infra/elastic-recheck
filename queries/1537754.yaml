@@ -1,5 +1,0 @@
-query: >
-    tags:"screen-q-svc.txt" AND
-    ( message:"tempest-BaremetalBasicOps-" AND
-      message:"update failed (client error): Router" AND
-      message:"could not be found")

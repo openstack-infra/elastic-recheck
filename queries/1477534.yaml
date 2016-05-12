@@ -1,4 +1,0 @@
-query: >-
-  message:"neutron.agent.linux.utils" AND
-  message:"Stderr: RTNETLINK answers: File exists" AND
-  tags:"console"

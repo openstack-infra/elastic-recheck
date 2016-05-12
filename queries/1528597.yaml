@@ -1,6 +1,0 @@
-query: >
-  message:"Killed" AND
-  message:"timeout -s 9" AND
-  tags:"console" AND
-  (build_name:"gate-manila-tempest-dsvm-neutron" OR
-   build_name:"gate-manila-tempest-dsvm-neutron-multibackend")

@@ -1,4 +1,0 @@
-query: >
-  message:"The Key \(heat-" AND
-  message:"could not be found" AND
-  tags:"console"

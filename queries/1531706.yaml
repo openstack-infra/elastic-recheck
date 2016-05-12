@@ -1,5 +1,0 @@
-query: >-
-  message:"_create_floatingip" AND
-  message:"ExternalIpAddressExhausted" AND
-  tags:"screen-q-svc.txt" AND
-  build_name:"gate-neutron-dsvm-api"

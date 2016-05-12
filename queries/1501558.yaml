@@ -1,4 +1,0 @@
-query: >-
-  (message:"Unable to update the kernel. Two possible causes" OR
-   message:"Couldn't update kernel counters") AND
-  tags:"multiline"
