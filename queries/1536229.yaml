@@ -1,3 +1,0 @@
-query: >-
-  message:"Detected a distutils installed project" AND
-  tags:console

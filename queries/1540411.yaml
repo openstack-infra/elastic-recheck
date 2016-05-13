@@ -1,4 +1,0 @@
-query: >
-  message:"error in setup command: Error parsing" AND
-  message:"ValueError: git history requires a target version of pbr.version.SemanticVersion(2015.1.4), but target version is pbr.version.SemanticVersion(2015.1.3)" AND
-  tags:"console"

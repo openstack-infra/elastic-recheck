@@ -1,5 +1,0 @@
-query: >-
-  message:"libvirtError: Unable to add bridge" AND
-  message:"Device or resource busy" AND
-  tags:screen-n-cpu.txt AND
-  build_name:"gate-tempest-dsvm-neutron-linuxbridge"

@@ -1,4 +1,0 @@
-query: >-
-  message:"Timeout waiting for vif plugging callback for instance" AND
-  tags:"screen-n-cpu.txt" AND
-  build_name:"gate-tempest-dsvm-neutron-linuxbridge"

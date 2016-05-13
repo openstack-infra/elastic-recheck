@@ -1,4 +1,0 @@
-query: >-
-  message:"39mPhantomJS crashed"
-  AND tags:"console"
-  AND build_name:"gate-horizon-npm-run-test"

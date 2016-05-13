@@ -1,4 +1,0 @@
-query: >
-  message:"[ERROR]" AND
-  message:"Download of get-pip.py failed" AND
-  tags:"console"

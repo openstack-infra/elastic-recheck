@@ -1,3 +1,0 @@
-query: >
-    message:"libvirtError: Failed to connect socket to '/var/run/libvirt/libvirt-sock': Connection refused'"
-    AND tags:"screen-n-cpu.txt"

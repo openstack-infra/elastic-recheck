@@ -1,3 +1,0 @@
-query: >-
-  message:"from django.template.utils import InvalidTemplateEngineError" AND
-  tags:"console"

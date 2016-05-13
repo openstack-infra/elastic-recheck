@@ -1,4 +1,0 @@
-query: >-
-  message:"not using configured address" AND
-  message:"because it is leased to" AND
-  tags:"syslog"

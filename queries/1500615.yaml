@@ -1,6 +1,0 @@
-query: >-
-  message:"Server" AND
-  message:"failed to reach ACTIVE status and task state \"None\" within the required time" AND
-  message:"Current status: BUILD. Current task state: scheduling." AND
-  tags:"console" AND
-  build_name:"gate-tempest-dsvm-large-ops"

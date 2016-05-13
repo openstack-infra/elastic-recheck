@@ -1,3 +1,0 @@
-query: >
-  message:"`rbuf_fill': execution expired (Timeout::Error)"
-  AND tags:console

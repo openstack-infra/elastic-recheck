@@ -1,3 +1,0 @@
-query: >
-  message:"timeout=CONF.baremetal.unprovision_timeout)" AND
-  tags:"console"

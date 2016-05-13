@@ -1,7 +1,0 @@
-query: >-
-  (message:"+ echo 'Job timed out\'" OR
-   message:"Build timed out (after") AND
-  tags:"console" AND
-  (build_queue:check OR
-   build_queue:gate) AND
-  node_provider:"ymq-1"

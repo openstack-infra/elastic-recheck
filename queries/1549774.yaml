@@ -1,3 +1,0 @@
-query: >-
-  message:"ERROR! Specified hosts options do not match any hosts" AND
-  tags:"console"

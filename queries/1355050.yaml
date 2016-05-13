@@ -1,4 +1,0 @@
-query: >
-  message:"No distributions at all found for"
-  AND NOT "(from pbr)"
-  AND tags:"console"

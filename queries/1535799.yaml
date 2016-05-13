@@ -1,3 +1,0 @@
-query: >-
-  message:"Host CPU does not provide required features" AND
-  tags:screen-n-cpu.txt

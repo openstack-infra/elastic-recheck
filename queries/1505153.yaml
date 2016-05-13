@@ -1,6 +1,0 @@
-query: >-
-  message:"status_generic_reasons" AND
-  tags:"console" AND (
-  build_name:"gate-cinder-python27" OR
-  build_name:"gate-nova-python27" OR
-  build_name:"gate-manila-python27")
