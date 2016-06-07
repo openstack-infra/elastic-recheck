@@ -1,0 +1,2 @@
+query: >
+  message:"AH00072: make_sock: could not bind to address [::]:8088" AND tags:"console"
