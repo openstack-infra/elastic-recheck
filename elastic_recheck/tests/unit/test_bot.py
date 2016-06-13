@@ -106,7 +106,7 @@ class TestBotWithTestTools(tests.TestCase):
                 self.fake_config.get('gerrit', 'key'),
                 False)
 
-    def fake_print(self, channel, msg):
+    def fake_print(self, cls, channel, msg):
         reference = ("openstack/keystone change: https://review.openstack.org/"
                      "64750 failed because of: "
                      "gate-keystone-python26: "
@@ -114,7 +114,7 @@ class TestBotWithTestTools(tests.TestCase):
                      "gate-keystone-python27: unrecognized error")
         self.assertEqual(reference, msg)
 
-    def fake_display(self, channel, msg):
+    def fake_display(self, *args):
         return True
 
     def test_error_found(self):
