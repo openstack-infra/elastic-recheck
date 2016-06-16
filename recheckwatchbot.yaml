@@ -18,7 +18,7 @@ channels:
 messages:
   # | means don't fold newlines, > means do
   found_bug: |
-    I noticed jenkins failed, I think you hit bug(s):
+    I noticed Zuul failed, I think you hit bug(s):
 
     %(bugs)s
   footer: >-
@@ -32,5 +32,5 @@ messages:
     us classify these issues so that they can be part of Elastic Recheck
     http://status.openstack.org/elastic-recheck/
   no_bugs_found: >-
-    I noticed jenkins failed, refer to:
+    I noticed Zuul failed, refer to:
     http://docs.openstack.org/infra/manual/developers.html#automated-testing

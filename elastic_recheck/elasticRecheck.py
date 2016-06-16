@@ -216,7 +216,7 @@ class Stream(object):
             return False
 
         username = event['author'].get('username', '')
-        if (username != 'jenkins'):
+        if (username not in ['jenkins', 'zuul']):
             return False
 
         if not ("Build failed" in
