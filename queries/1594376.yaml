@@ -1,0 +1,7 @@
+query: >-
+  message:"ObjectDeletedError: Instance '<IPAllocation" AND
+  message:"has been deleted, or its row is otherwise not present." AND
+  message:"delete_subnet" AND
+  tags:"screen-q-svc.txt" AND
+  NOT build_name:"gate-rally-dsvm-neutron-rally" AND
+  NOT build_queue:"post"
