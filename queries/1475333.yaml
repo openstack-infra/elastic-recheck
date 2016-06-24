@@ -1,5 +1,4 @@
 query: >-
   message:"Insufficient free space for volume creation on host" AND
-  message:"(requested / avail): 1/0.0" AND
-  tags:"screen-c-sch.txt" AND NOT
-  build_queue:"periodic-stable"
+  message:"ceph#ceph \(requested / avail\): 1/" AND
+  tags:"screen-c-sch.txt"
