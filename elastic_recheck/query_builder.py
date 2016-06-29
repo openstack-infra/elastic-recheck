@@ -77,7 +77,8 @@ def result_ready(review, patch, name, build_short_uuid):
     """
     return generic('filename:"console.html" AND '
                    '(message:"[SCP] Copying console log" '
-                   'OR message:"Grabbing consoleLog") '
+                   'OR message:"Grabbing consoleLog" '
+                   'OR message:"[Zuul] Job complete") '
                    'AND build_status:"FAILURE" '
                    'AND build_change:"%s" '
                    'AND build_patchset:"%s" '
