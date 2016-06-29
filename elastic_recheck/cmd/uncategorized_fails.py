@@ -83,7 +83,8 @@ def all_fails(classifier):
     """
     all_fails = {}
     query = ('filename:"console.html" '
-             'AND message:"Finished: FAILURE" '
+             'AND (message:"Finished: FAILURE" '
+             'OR message:"[Zuul] Job complete, result: FAILURE") '
              'AND build_queue:"gate" '
              'AND voting:"1"')
     results = classifier.hits_by_query(query, size=30000)
