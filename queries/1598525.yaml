@@ -1,0 +1,3 @@
+query: >-
+  message:"KeyError: 'processor_architecture'" AND
+  tags:"console"
