@@ -386,12 +386,12 @@ class Classifier(object):
         self.queries_dir = queries_dir
         self.queries = loader.load(self.queries_dir)
 
-    def hits_by_query(self, query, queue=None, facet=None, size=100):
+    def hits_by_query(self, query, queue=None, facet=None, size=100, days=0):
         if queue:
             es_query = qb.single_queue(query, queue, facet=facet)
         else:
             es_query = qb.generic(query, facet=facet)
-        return self.es.search(es_query, size=size)
+        return self.es.search(es_query, size=size, days=days)
 
     def most_recent(self):
         """Return the datetime of the most recently indexed event."""
