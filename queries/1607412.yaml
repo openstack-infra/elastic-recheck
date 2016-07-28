@@ -1,0 +1,4 @@
+query: >-
+  message:"BadRequest: Unrecognized attribute(s) 'dns_name'" AND
+  message:"create_port" AND
+  tags:"screen-n-cpu.txt"
