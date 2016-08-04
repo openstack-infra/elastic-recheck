@@ -1,0 +1,4 @@
+query: >
+  message:"unsupported operand type(s) for *: 'NoneType' and 'int'"
+  AND tags:"screen-n-sch.txt"
+  AND voting:1
