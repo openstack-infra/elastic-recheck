@@ -29,8 +29,9 @@ pp = pprint.PrettyPrinter()
 
 class SearchEngine(object):
     """Wrapper for pyelasticsearch so that it returns result sets."""
-    def __init__(self, url):
+    def __init__(self, url, indexfmt='logstash-%Y.%m.%d'):
         self._url = url
+        self._indexfmt = indexfmt
 
     def search(self, query, size=1000, recent=False, days=0):
         """Search an elasticsearch server.
@@ -56,7 +57,7 @@ class SearchEngine(object):
         args = {'size': size}
         if recent or days:
             # today's index
-            datefmt = 'logstash-%Y.%m.%d'
+            datefmt = self._indexfmt
             now = datetime.datetime.utcnow()
             indexes = [now.strftime(datefmt)]
             if recent:
