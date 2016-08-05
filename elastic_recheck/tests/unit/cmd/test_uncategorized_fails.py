@@ -54,5 +54,8 @@ class TestUncategorizedFails(testtools.TestCase):
         all_fails = fails.all_fails(classifier)
         # assert that we only have the single result
         self.assertThat(all_fails,
+                        testtools.matchers.HasLength(2))
+        self.assertThat(all_fails['integrated_gate'],
                         testtools.matchers.HasLength(1))
-        self.assertIn('gate-tempest-dsvm-full', all_fails.keys()[0])
+        self.assertIn('gate-tempest-dsvm-full',
+                      all_fails['integrated_gate'].keys()[0])
