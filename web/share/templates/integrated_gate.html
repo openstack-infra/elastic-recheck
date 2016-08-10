@@ -70,7 +70,8 @@
   <ul class="nav nav-tabs">
     <li><a href="../index.html">All Pipelines</a></li>
     <li><a href="../gate.html">Gate Pipeline</a></li>
-    <li class="active"><a href="uncategorized.html">Uncategorized</a></li>
+    <li class="active"><a href="integrated_gate.html">Integrated Gate Uncategorized</a></li>
+    <li class="active"><a href="other.html">Other Projects Uncategorized</a></li>
   </ul>
 </div>
 
@@ -82,12 +83,12 @@
 {% endfor %}
 </div>
 <div class='crm114-verbiage'>
-Failures on this page are collected from all voting gate failures that don't match current elastic-recheck bug fingerprints.<br>
+Failures on this page are collected from all voting gate failures on projects running the integrated-gate job templates that don't match current elastic-recheck bug fingerprints.<br>
 The crm114 links are logstash queries showing log messages that have been flagged as potential errors.<br>
 More information on the system can be found <a href="http://docs.openstack.org/infra/system-config/logstash.html#crm114">here</a>
 </div>
 <div class="jobs">
-<h1>Unclassified failed jobs</h1>
+<h1>Unclassified failed integrated gate jobs</h1>
 Overall Categorization Rate: {{ rate['overall'] }}%
 <p>
   Total: {{ total }} - Found: {{ count }} = Unclassified: {{ uncounted }}

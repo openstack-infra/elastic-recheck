@@ -20,6 +20,7 @@ import ConfigParser
 import datetime
 import logging
 import operator
+import os
 import re
 import requests
 
@@ -57,7 +58,12 @@ def get_options():
     parser.add_argument('--dir', '-d', help="Queries Directory",
                         default="queries")
     parser.add_argument('-t', '--templatedir', help="Template Directory")
-    parser.add_argument('-o', '--output', help="Output File")
+    parser.add_argument('-o', '--output',
+                        help="The path for the directory to store the "
+                             "html output. 2 files will be created: "
+                             "integrated_gate.html and other.html. "
+                             "If this option is not specified these files "
+                             "will be written to the cwd.")
     parser.add_argument('-c', '--conf', help="Elastic Recheck Configuration "
                         "file to use for data_source options such as "
                         "elastic search url, logstash url, and database "
@@ -65,14 +71,20 @@ def get_options():
     return parser.parse_args()
 
 
-def setup_template_engine(directory):
+def setup_template_engine(directory, group='integrated_gate'):
     path = ["web/share/templates"]
     if directory:
         path.append(directory)
 
     loader = jinja2.FileSystemLoader(path)
     env = jinja2.Environment(loader=loader)
-    return env.get_template("uncategorized.html")
+    if group == 'integrated_gate':
+        filename = 'integrated_gate.html'
+    elif group == 'other':
+        filename = 'others.html'
+    else:
+        raise TypeError('Unknown job name %s' % group)
+    return env.get_template(filename)
 
 
 def all_fails(classifier):
@@ -81,6 +93,8 @@ def all_fails(classifier):
     This attempts to find all the build jobs in the integrated gate
     so we can figure out how good we are doing on total classification.
     """
+    integrated_fails = {}
+    other_fails = {}
     all_fails = {}
     query = ('filename:"console.html" '
              'AND (message:"Finished: FAILURE" '
@@ -96,17 +110,39 @@ def all_fails(classifier):
             if re.search(EXCLUDED_JOBS_REGEX, result.build_name):
                 continue
 
-            # not perfect, but basically an attempt to show the integrated
-            # gate. Would be nice if there was a zuul attr for this in es.
-            if re.search("(^openstack/|devstack|grenade)", result.project):
+            integrated_gate_projects = [
+                'openstack/cinder',
+                'openstack/glance',
+                'openstack/keystone',
+                'openstack/neutron',
+                'openstack/nova',
+                'openstack/requirements',
+                'openstack/tempest',
+                'openstack-dev/devstack',
+                'openstack-infra/devstack-gate',
+            ]
+            if result.project in integrated_gate_projects:
                 name = result.build_name
                 timestamp = dp.parse(result.timestamp)
                 log = result.log_url.split("console.html")[0]
-                all_fails["%s.%s" % (build, name)] = {
+                integrated_fails["%s.%s" % (build, name)] = {
                     'log': log,
                     'timestamp': timestamp,
                     'build_uuid': result.build_uuid
                 }
+            else:
+                name = result.build_name
+                timestamp = dp.parse(result.timestamp)
+                log = result.log_url.split("console.html")[0]
+                other_fails["%s.%s" % (build, name)] = {
+                    'log': log,
+                    'timestamp': timestamp,
+                    'build_uuid': result.build_uuid
+                }
+    all_fails = {
+        'integrated_gate': integrated_fails,
+        'other': other_fails
+    }
     return all_fails
 
 
@@ -294,15 +330,20 @@ def main():
             db_uri = config.get('data_source', 'db_uri')
 
     classifier = er.Classifier(opts.dir, es_url=es_url, db_uri=db_uri)
-    fails = all_fails(classifier)
-    data = collect_metrics(classifier, fails)
-    engine = setup_template_engine(opts.templatedir)
-    html = classifying_rate(fails, data, engine, classifier, ls_url)
-    if opts.output:
-        with open(opts.output, "w") as f:
+    all_gate_fails = all_fails(classifier)
+    for group in all_gate_fails:
+        fails = all_gate_fails[group]
+        if not fails:
+            continue
+        data = collect_metrics(classifier, fails)
+        engine = setup_template_engine(opts.templatedir, group=group)
+        html = classifying_rate(fails, data, engine, classifier, ls_url)
+        if opts.output:
+            out_dir = opts.output
+        else:
+            out_dir = os.getcwd()
+        with open(os.path.join(out_dir, group + '.html'), "w") as f:
             f.write(html)
-    else:
-        print html
 
 
 if __name__ == "__main__":
