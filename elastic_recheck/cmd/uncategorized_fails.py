@@ -119,6 +119,7 @@ def all_fails(classifier):
                 'openstack/requirements',
                 'openstack/tempest',
                 'openstack-dev/devstack',
+                'openstack-dev/grenade',
                 'openstack-infra/devstack-gate',
             ]
             if result.project in integrated_gate_projects:
