@@ -1,3 +1,0 @@
-query: >-
-  message:"AssertionError: Models and migration scripts aren't in sync" AND
-  tags:"console"
