@@ -1,0 +1,4 @@
+query: >-
+  message:"was re-scheduled: operation failed: filter 'nova-" AND
+  message:"already exists with uuid" AND
+  tags:"screen-n-cond.txt"
