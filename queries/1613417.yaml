@@ -1,0 +1,3 @@
+query: >-
+  message:"No hosts found to map to cell, exiting." AND
+  tags:"console"
