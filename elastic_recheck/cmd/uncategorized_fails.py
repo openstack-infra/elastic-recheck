@@ -61,7 +61,7 @@ def get_options():
     parser.add_argument('-o', '--output',
                         help="The path for the directory to store the "
                              "html output. 2 files will be created: "
-                             "integrated_gate.html and other.html. "
+                             "integrated_gate.html and others.html. "
                              "If this option is not specified these files "
                              "will be written to the cwd.")
     parser.add_argument('-c', '--conf', help="Elastic Recheck Configuration "
@@ -80,7 +80,7 @@ def setup_template_engine(directory, group='integrated_gate'):
     env = jinja2.Environment(loader=loader)
     if group == 'integrated_gate':
         filename = 'integrated_gate.html'
-    elif group == 'other':
+    elif group == 'others':
         filename = 'others.html'
     else:
         raise TypeError('Unknown job name %s' % group)
@@ -142,7 +142,7 @@ def all_fails(classifier):
                 }
     all_fails = {
         'integrated_gate': integrated_fails,
-        'other': other_fails
+        'others': other_fails
     }
     return all_fails
 
