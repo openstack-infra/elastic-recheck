@@ -1,0 +1,4 @@
+query: >-
+  (message:"The HTTP URL is invalid: HTTPConnectionPool(host='git.openstack.org', port=80): Max retries exceeded with url: /static/openstack.png (Caused by NewConnectionError(': Failed to establish a new connection: [Errno -2] Name or service not known',))" OR
+   message:"urllib3.exceptions.MaxRetryError: HTTPConnectionPool(host='127.0.0.1', port=9292): Max retries exceeded with url: /v1/images (Caused by ReadTimeoutError(\"HTTPConnectionPool(host='127.0.0.1', port=9292): Read timed out. (read timeout=60)\",))") AND
+  tags:"console"
