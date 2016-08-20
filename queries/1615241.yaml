@@ -1,0 +1,3 @@
+query: >-
+  message:"No image with a name or ID of 'cirros-0.3.4-x86_64-disk.img' exists." AND
+  tags:"console"
