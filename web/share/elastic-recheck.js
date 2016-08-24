@@ -55,6 +55,20 @@ function update_critical_dates(data) {
     }
 }
 
+function alert_old_generated_date() {
+    var now = new Date();
+    var generated_date = Date.parse($('#generated-date').text());
+    var delta_hours = (now - generated_date) / 60 / 60 / 1000;
+    if (delta_hours > 0) {
+        var div = $('#generated-date');
+        div.css('color', 'red');
+        div.css('font-weight', 'bold');
+        var old_text = $('#generated-date').text;
+        div.text("Data is old: " + old_text);
+    }
+
+}
+
 function update_health(data) {
     var health = $('#health');
     health.text(data['status']);
