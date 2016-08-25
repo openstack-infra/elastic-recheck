@@ -1,0 +1,3 @@
+query: >-
+  message:"E: Unable to correct problems, you have held broken packages" AND
+  tags:console
