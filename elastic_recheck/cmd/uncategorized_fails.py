@@ -32,7 +32,6 @@ import elastic_recheck.query_builder as qb
 import elastic_recheck.results as er_results
 
 LOG = logging.getLogger('eruncategorized')
-logging.basicConfig()
 
 
 def get_options():
@@ -53,7 +52,6 @@ def get_options():
                         "file to use for data_source options such as "
                         "elastic search url, logstash url, and database "
                         "uri.")
-
     parser.add_argument('--search-size',
                         help="Max search results elastic search should return",
                         default=er_config.UNCAT_MAX_SEARCH_SIZE)
@@ -70,7 +68,8 @@ def get_options():
                         help="Regular express to include only certain projects"
                              " in results",
                         default=er_config.INCLUDED_PROJECTS_REGEX)
-
+    parser.add_argument('-v', '--verbose', action='store_true',
+                        help="Print status as we go")
     return parser.parse_args()
 
 
@@ -330,7 +329,6 @@ def collect_metrics(classifier, fails, config=None):
 
 def main():
     opts = get_options()
-
     config = er_config.Config(
         config_file=opts.conf,
         uncat_search_size=opts.search_size,
@@ -340,7 +338,23 @@ def main():
 
     classifier = er.Classifier(opts.dir, config=config)
     all_gate_fails = all_fails(classifier, config=config)
+    if opts.verbose:
+        level = logging.DEBUG
+    else:
+        level = logging.INFO
+
+    logging.basicConfig(format='%(asctime)s [%(name)s]  %(levelname)s: '
+                               '%(message)s', level=level)
+    if level == logging.INFO:
+        # NOTE(mtreinish: This logger is overly chatty at INFO logging every
+        # time an HTTP connection is established. This isn't really useful
+        # at INFO for this command
+        logging.getLogger('requests.packages.urllib3.connectionpool').setLevel(
+            logging.WARN)
+
+    LOG.info("Starting search for unclassified failures")
     for group in all_gate_fails:
+        LOG.info("Processing failures for group: %s" % group)
         fails = all_gate_fails[group]
         if not fails:
             continue
