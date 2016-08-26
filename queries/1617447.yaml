@@ -1,0 +1,3 @@
+query: >-
+  message:"InterfaceAttachFailed: Failed to attach network adapter device to" AND
+  tags:screen-n-cpu.txt
