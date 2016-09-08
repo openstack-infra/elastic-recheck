@@ -1,0 +1,4 @@
+query: >-
+  message:"ObjectActionError: Object action destroy failed because: host changed" AND
+  message:"_handle_cell_delete" AND
+  tags:"screen-n-api.txt"
