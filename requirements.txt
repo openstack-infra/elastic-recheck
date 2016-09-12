@@ -4,13 +4,7 @@ pytz
 pyelasticsearch<1.0
 gerritlib
 python-daemon<2.0 # BUg https://storyboard.openstack.org/#!/story/2000107
-# irc depends on jaraco modules. jaraco.functools 1.6 attempts to import
-# backports which do not exist. This appears to be a dependency issue
-# upstream. Avoid this by forcing the use of older jaraco.functools.
-jaraco.functools<1.6
-jaraco.itertools<1.6
-jaraco.collections<1.2
-irc!=11.1
+irc>=15.0.1
 pyyaml
 lockfile
 pbr>=1.6
