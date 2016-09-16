@@ -48,3 +48,7 @@ doc/source/api/*
 # pbr generates these
 AUTHORS
 ChangeLog
+
+# Local data to test web-served html pages
+web/share/elastic-recheck
+web/share/data
