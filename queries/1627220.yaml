@@ -1,0 +1,5 @@
+query: >-
+  message:"ImageNotFound: error protecting snapshot" AND
+  message:"rbd.Image.protect_snap" AND
+  message:"create_snapshot" AND
+  tags:"screen-c-vol.txt"
