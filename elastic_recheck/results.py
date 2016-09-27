@@ -32,6 +32,18 @@ class SearchEngine(object):
     def __init__(self, url, indexfmt='logstash-%Y.%m.%d'):
         self._url = url
         self._indexfmt = indexfmt
+        self.index_cache = {}
+
+    def _is_valid_index(self, es, index):
+        if index in self.index_cache:
+            return self.index_cache[index]
+
+        try:
+            es.status(index=index)
+            self.index_cache[index] = True
+            return True
+        except pyelasticsearch.exceptions.ElasticHttpNotFoundError:
+            return False
 
     def search(self, query, size=1000, recent=False, days=0):
         """Search an elasticsearch server.
@@ -66,7 +78,9 @@ class SearchEngine(object):
                     indexes.append(lasthr.strftime(datefmt))
             for day in range(1, days):
                 lastday = now - datetime.timedelta(days=day)
-                indexes.append(lastday.strftime(datefmt))
+                index_name = lastday.strftime(datefmt)
+                if self._is_valid_index(es, index_name):
+                    indexes.append(index_name)
             args['index'] = indexes
 
         results = es.search(query, **args)
