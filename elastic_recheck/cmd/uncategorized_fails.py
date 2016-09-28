@@ -16,7 +16,6 @@
 
 import argparse
 import collections
-import ConfigParser
 import datetime
 import logging
 import operator
@@ -27,6 +26,7 @@ import requests
 import dateutil.parser as dp
 import jinja2
 
+import elastic_recheck.config as er_config
 import elastic_recheck.elasticRecheck as er
 import elastic_recheck.query_builder as qb
 import elastic_recheck.results as er_results
@@ -315,22 +315,10 @@ def collect_metrics(classifier, fails):
 
 def main():
     opts = get_options()
-    # Start with defaults
-    es_url = er.ES_URL
-    ls_url = er.LS_URL
-    db_uri = er.DB_URI
 
-    if opts.conf:
-        config = ConfigParser.ConfigParser({'es_url': er.ES_URL,
-                                            'ls_url': er.LS_URL,
-                                            'db_uri': er.DB_URI})
-        config.read(opts.conf)
-        if config.has_section('data_source'):
-            es_url = config.get('data_source', 'es_url')
-            ls_url = config.get('data_source', 'ls_url')
-            db_uri = config.get('data_source', 'db_uri')
+    config = er_config.Config(config_file=opts.conf)
 
-    classifier = er.Classifier(opts.dir, es_url=es_url, db_uri=db_uri)
+    classifier = er.Classifier(opts.dir, config=config)
     all_gate_fails = all_fails(classifier)
     for group in all_gate_fails:
         fails = all_gate_fails[group]
@@ -338,7 +326,7 @@ def main():
             continue
         data = collect_metrics(classifier, fails)
         engine = setup_template_engine(opts.templatedir, group=group)
-        html = classifying_rate(fails, data, engine, classifier, ls_url)
+        html = classifying_rate(fails, data, engine, classifier, config.ls_url)
         if opts.output:
             out_dir = opts.output
         else:

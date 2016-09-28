@@ -6,6 +6,12 @@ server=irc.freenode.net
 port=6667
 channel_config=/home/mtreinish/elasticRecheck/recheckwatchbot.yaml
 
+[recheckwatch]
+#Any project that has a job that matches this regex will have all their
+#jobs included in the recheck algorithm
+jobs_regex=(tempest-dsvm-full|gate-tempest-dsvm-virtual-ironic)
+ci_username=jenkins
+
 [gerrit]
 user=treinish
 host=review.openstack.org

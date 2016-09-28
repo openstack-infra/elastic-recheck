@@ -20,6 +20,7 @@ import fixtures
 import mock
 
 from elastic_recheck import bot
+import elastic_recheck.config as er_conf
 from elastic_recheck import elasticRecheck
 from elastic_recheck import tests
 import elastic_recheck.tests.unit.fake_gerrit as fg
@@ -29,10 +30,11 @@ def _set_fake_config(fake_config):
     fake_config.add_section('ircbot')
     fake_config.add_section('gerrit')
     # Set fake ircbot config
+    fake_config.set('ircbot', 'pidfile', er_conf.PID_FN)
     fake_config.set('ircbot', 'nick', 'Fake_User')
     fake_config.set('ircbot', 'pass', '')
     fake_config.set('ircbot', 'server', 'irc.fake.net')
-    fake_config.set('ircbot', 'port', 6667)
+    fake_config.set('ircbot', 'port', '6667')
     fake_config.set('ircbot', 'channel_config',
                     'fake_recheck_watch_bot.yaml')
     # Set fake gerrit config
@@ -49,22 +51,21 @@ class TestBot(unittest.TestCase):
         super(TestBot, self).setUp()
         self.fake_config = ConfigParser.ConfigParser({'server_password': None})
         _set_fake_config(self.fake_config)
+        config = er_conf.Config(config_obj=self.fake_config)
         self.channel_config = bot.ChannelConfig(yaml.load(
             open('recheckwatchbot.yaml')))
         with mock.patch('launchpadlib.launchpad.Launchpad'):
             self.recheck_watch = bot.RecheckWatch(
                 None,
                 self.channel_config,
-                self.fake_config.get('gerrit', 'user'),
-                self.fake_config.get('gerrit', 'query_file'),
-                self.fake_config.get('gerrit', 'host'),
-                self.fake_config.get('gerrit', 'key'),
-                False)
+                None,
+                config=config,
+                commenting=False)
 
     def test_read_channel_config_not_specified(self):
         self.fake_config.set('ircbot', 'channel_config', None)
         with self.assertRaises(bot.ElasticRecheckException) as exc:
-            bot._main([], self.fake_config)
+            bot._main([], er_conf.Config(config_obj=self.fake_config))
         raised_exc = exc.exception
         self.assertEqual(str(raised_exc), "Channel Config must be specified "
                          "in config file.")
@@ -72,7 +73,7 @@ class TestBot(unittest.TestCase):
     def test_read_channel_config_invalid_path(self):
         self.fake_config.set('ircbot', 'channel_config', 'fake_path.yaml')
         with self.assertRaises(bot.ElasticRecheckException) as exc:
-            bot._main([], self.fake_config)
+            bot._main([], er_conf.Config(config_obj=self.fake_config))
         raised_exc = exc.exception
         error_msg = "Unable to read layout config file at fake_path.yaml"
         self.assertEqual(str(raised_exc), error_msg)
@@ -94,17 +95,16 @@ class TestBotWithTestTools(tests.TestCase):
             fg.Gerrit))
         self.fake_config = ConfigParser.ConfigParser({'server_password': None})
         _set_fake_config(self.fake_config)
+        config = er_conf.Config(config_obj=self.fake_config)
         self.channel_config = bot.ChannelConfig(yaml.load(
             open('recheckwatchbot.yaml')))
         with mock.patch('launchpadlib.launchpad.Launchpad'):
             self.recheck_watch = bot.RecheckWatch(
                 None,
                 self.channel_config,
-                self.fake_config.get('gerrit', 'user'),
-                self.fake_config.get('gerrit', 'query_file'),
-                self.fake_config.get('gerrit', 'host'),
-                self.fake_config.get('gerrit', 'key'),
-                False)
+                None,
+                config=config,
+                commenting=False)
 
     def fake_print(self, cls, channel, msg):
         reference = ("openstack/keystone change: https://review.openstack.org/"
