@@ -31,23 +31,8 @@ import elastic_recheck.elasticRecheck as er
 import elastic_recheck.query_builder as qb
 import elastic_recheck.results as er_results
 
-# Not all teams actively used elastic recheck for categorizing their
-# work, so to keep the uncategorized page more meaningful, we exclude
-# jobs from teams that don't use this toolchain.
-EXCLUDED_JOBS = (
-    # Docs team
-    "api-site",
-    "operations-guide",
-    "openstack-manuals",
-    # Ansible
-    "ansible",
-    # Puppet
-    "puppet",
-)
-
-EXCLUDED_JOBS_REGEX = re.compile('(' + '|'.join(EXCLUDED_JOBS) + ')')
-
 LOG = logging.getLogger('eruncategorized')
+logging.basicConfig()
 
 
 def get_options():
@@ -68,6 +53,24 @@ def get_options():
                         "file to use for data_source options such as "
                         "elastic search url, logstash url, and database "
                         "uri.")
+
+    parser.add_argument('--search-size',
+                        help="Max search results elastic search should return",
+                        default=er_config.UNCAT_MAX_SEARCH_SIZE)
+
+    parser.add_argument('--all-fails-query',
+                        help="Query to find all failures in elastic search",
+                        default=er_config.ALL_FAILS_QUERY)
+
+    parser.add_argument('--excluded-jobs-regex',
+                        help="Regular express to exclude jobs from results",
+                        default=er_config.EXCLUDED_JOBS_REGEX)
+
+    parser.add_argument('--included-projects-regex',
+                        help="Regular express to include only certain projects"
+                             " in results",
+                        default=er_config.INCLUDED_PROJECTS_REGEX)
+
     return parser.parse_args()
 
 
@@ -87,27 +90,25 @@ def setup_template_engine(directory, group='integrated_gate'):
     return env.get_template(filename)
 
 
-def all_fails(classifier):
+def all_fails(classifier, config=None):
     """Find all the the fails in the integrated gate.
 
     This attempts to find all the build jobs in the integrated gate
     so we can figure out how good we are doing on total classification.
     """
+
+    config = config or er_config.Config()
     integrated_fails = {}
     other_fails = {}
     all_fails = {}
-    query = ('filename:"console.html" '
-             'AND (message:"Finished: FAILURE" '
-             'OR message:"[Zuul] Job complete, result: FAILURE") '
-             'AND build_queue:"gate" '
-             'AND voting:"1"')
-    results = classifier.hits_by_query(query, size=30000)
+    results = classifier.hits_by_query(config.all_fails_query,
+                                       size=config.uncat_search_size)
     facets = er_results.FacetSet()
     facets.detect_facets(results, ["build_uuid"])
     for build in facets:
         for result in facets[build]:
             # If the job is on the exclude list, skip
-            if re.search(EXCLUDED_JOBS_REGEX, result.build_name):
+            if re.search(config.excluded_jobs_regex, result.build_name):
                 continue
 
             integrated_gate_projects = [
@@ -132,14 +133,21 @@ def all_fails(classifier):
                     'build_uuid': result.build_uuid
                 }
             else:
-                name = result.build_name
-                timestamp = dp.parse(result.timestamp)
-                log = result.log_url.split("console.html")[0]
-                other_fails["%s.%s" % (build, name)] = {
-                    'log': log,
-                    'timestamp': timestamp,
-                    'build_uuid': result.build_uuid
-                }
+                # not perfect, but basically an attempt to show the integrated
+                # gate. Would be nice if there was a zuul attr for this in es.
+                if re.search(config.included_projects_regex, result.project):
+                    name = result.build_name
+                    timestamp = dp.parse(result.timestamp)
+                    log = result.log_url.split("console.html")[0]
+                    other_fails["%s.%s" % (build, name)] = {
+                        'log': log,
+                        'timestamp': timestamp,
+                        'build_uuid': result.build_uuid
+                    }
+
+            LOG.debug("Found failure: %s build_uuid: %s project %s",
+                      len(all_fails), result.build_uuid, result.project)
+
     all_fails = {
         'integrated_gate': integrated_fails,
         'others': other_fails
@@ -200,9 +208,12 @@ def classifying_rate(fails, data, engine, classifier, ls_url):
             logstash_query = qb.encode_logstash_query(query)
             logstash_url = ('%s/#/dashboard/file/logstash.json?%s'
                             % (ls_url, logstash_query))
+            LOG.debug("looking up hits for job %s query %s", job, query)
             results = classifier.hits_by_query(query, size=1)
             if results:
                 url['crm114'] = logstash_url
+                LOG.debug("Hits found. Using logstash url %s",
+                          logstash_url)
 
     classifying_rate = collections.defaultdict(int)
     rate = 0
@@ -211,7 +222,7 @@ def classifying_rate(fails, data, engine, classifier, ls_url):
         rate = (float(count) / float(total)) * 100.0
 
     classifying_rate['overall'] = "%.1f" % rate
-
+    LOG.debug("overall classifying_rate is %s", classifying_rate['overall'])
     for job in bad_jobs:
         if bad_jobs[job] == 0 and total_job_failures[job] == 0:
             classifying_rate[job] = 0
@@ -294,12 +305,16 @@ def _failure_percentage(hits, fails):
     return per
 
 
-def collect_metrics(classifier, fails):
+def collect_metrics(classifier, fails, config=None):
+    config = config or er_config.Config()
     data = {}
     for q in classifier.queries:
         try:
-            results = classifier.hits_by_query(q['query'], size=30000)
+            results = classifier.hits_by_query(q['query'],
+                                               size=config.uncat_search_size)
             hits = _status_count(results)
+            LOG.debug("Collected metrics for query %s, hits %s", q['query'],
+                      hits)
             data[q['bug']] = {
                 'fails': _failure_count(hits),
                 'hits': hits,
@@ -316,15 +331,20 @@ def collect_metrics(classifier, fails):
 def main():
     opts = get_options()
 
-    config = er_config.Config(config_file=opts.conf)
+    config = er_config.Config(
+        config_file=opts.conf,
+        uncat_search_size=opts.search_size,
+        all_fails_query=opts.all_fails_query,
+        excluded_jobs_regex=opts.excluded_jobs_regex,
+        included_projects_regex=opts.included_projects_regex)
 
     classifier = er.Classifier(opts.dir, config=config)
-    all_gate_fails = all_fails(classifier)
+    all_gate_fails = all_fails(classifier, config=config)
     for group in all_gate_fails:
         fails = all_gate_fails[group]
         if not fails:
             continue
-        data = collect_metrics(classifier, fails)
+        data = collect_metrics(classifier, fails, config=config)
         engine = setup_template_engine(opts.templatedir, group=group)
         html = classifying_rate(fails, data, engine, classifier, config.ls_url)
         if opts.output:
