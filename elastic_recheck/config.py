@@ -25,6 +25,8 @@ DB_URI = 'mysql+pymysql://query:query@logstash.openstack.org/subunit2sql'
 JOBS_RE = '(tempest-dsvm-full|gate-tempest-dsvm-virtual-ironic)'
 CI_USERNAME = 'jenkins'
 
+GERRIT_QUERY_FILE = 'queries'
+
 PID_FN = '/var/run/elastic-recheck/elastic-recheck.pid'
 
 # Not all teams actively used elastic recheck for categorizing their
@@ -69,7 +71,8 @@ class Config(object):
                  all_fails_query=None,
                  excluded_jobs_regex=None,
                  included_projects_regex=None,
-                 uncat_search_size=None):
+                 uncat_search_size=None,
+                 gerrit_query_file=None):
 
         self.es_url = es_url or ES_URL
         self.ls_url = ls_url or LS_URL
@@ -85,6 +88,7 @@ class Config(object):
         self.included_projects_regex = \
             included_projects_regex or INCLUDED_PROJECTS_REGEX
         self.uncat_search_size = uncat_search_size or UNCAT_MAX_SEARCH_SIZE
+        self.gerrit_query_file = gerrit_query_file or GERRIT_QUERY_FILE
 
         if config_file or config_obj:
             if config_obj:
@@ -99,6 +103,7 @@ class Config(object):
                      'jobs_regex': JOBS_RE,
                      'pidfile': PID_FN,
                      'index_format': DEFAULT_INDEX_FORMAT,
+                     'query_file': GERRIT_QUERY_FILE,
                      }
                 )
                 config.read(config_file)

@@ -14,10 +14,10 @@
 
 import os
 
-import ConfigParser
 from launchpadlib import launchpad
 import pyelasticsearch
 
+import elastic_recheck.config as er_conf
 from elastic_recheck import elasticRecheck
 import elastic_recheck.query_builder as qb
 from elastic_recheck import tests
@@ -35,23 +35,9 @@ class TestQueries(tests.TestCase):
 
     def setUp(self):
         super(TestQueries, self).setUp()
-        config = ConfigParser.ConfigParser({'server_password': None})
-        config.read('elasticRecheck.conf')
-        if config.has_section('data_source'):
-            es_url = config.get('data_source', 'es_url')
-            db_uri = config.get('data_source', 'db_uri')
-        else:
-            es_url = None
-            db_uri = None
-
-        if config.has_section('gerrit'):
-            self.queries = config.get('gerrit', 'query_file')
-        else:
-            self.queries = 'queries'
-
-        self.classifier = elasticRecheck.Classifier(self.queries,
-                                                    es_url=es_url,
-                                                    db_uri=db_uri)
+        config = er_conf.Config(config_file='elasticRecheck.conf')
+        self.classifier = elasticRecheck.Classifier(config.gerrit_query_file,
+                                                    config=config)
 
         self.lp = launchpad.Launchpad.login_anonymously('grabbing bugs',
                                                         'production',
