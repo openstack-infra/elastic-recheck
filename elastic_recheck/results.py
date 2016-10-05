@@ -150,7 +150,10 @@ class FacetSet(dict):
     """
     def _histogram(self, data, facet, res=3600):
         """A preprocessor for data should we want to bucket it."""
-        if facet == "timestamp":
+        # NOTE(mriedem): We sometimes hit a case where the @timestamp attribute
+        # is too large and ES won't return it. At some point we should probably
+        # log a warning/error for these so we can clean them up.
+        if facet == "timestamp" and data is not None:
             ts = dp.parse(data)
             tsepoch = int(calendar.timegm(ts.timetuple()))
             # take the floor based on resolution
@@ -212,7 +215,12 @@ class Hit(object):
         """
         def first(item):
             if type(item) == list:
-                return item[0]
+                # We've seen cases where the field data, like @timestamp, is
+                # too large so we don't get anything back from elastic-search,
+                # so skip over those.
+                if len(item) > 0:
+                    return item[0]
+                return None
             return item
 
         result = None
