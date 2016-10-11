@@ -1,3 +1,3 @@
 query: >-
   message:"ConnectFailure: Unable to establish connection to https://127.0.0.1:9696/v2.0/" AND
-  tags:"screen-n-api.txt"
+  (tags:"screen-n-api.txt" OR tags:"screen-n-cpu.txt")
