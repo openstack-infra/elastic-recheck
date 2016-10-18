@@ -71,11 +71,16 @@ class SearchEngine(object):
             # today's index
             datefmt = self._indexfmt
             now = datetime.datetime.utcnow()
-            indexes = [now.strftime(datefmt)]
+            indexes = []
+            latest_index = now.strftime(datefmt)
+            if self._is_valid_index(es, latest_index):
+                indexes.append(latest_index)
             if recent:
                 lasthr = now - datetime.timedelta(hours=1)
-                if lasthr.strftime(datefmt) != now.strftime(datefmt):
-                    indexes.append(lasthr.strftime(datefmt))
+                lasthr_index = lasthr.strftime(datefmt)
+                if lasthr_index != latest_index:
+                    if self._is_valid_index(es, lasthr_index):
+                        indexes.append(lasthr.strftime(datefmt))
             for day in range(1, days):
                 lastday = now - datetime.timedelta(days=day)
                 index_name = lastday.strftime(datefmt)

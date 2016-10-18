@@ -145,13 +145,42 @@ class TestSearchEngine(tests.TestCase):
         # The search index comparison goes back one hour and cuts off by day,
         # so test that we're one hour and one second into today so we only have
         # one index in the search call.
-        self._test_search_recent(search_mock, MockDatetimeToday,
-                                 expected_indexes=['logstash-2014.06.12'])
+        with mock.patch.object(
+                pyelasticsearch.ElasticSearch, 'status') as mock_data:
+            mock_data.return_value = "Not an exception"
+            self._test_search_recent(search_mock, MockDatetimeToday,
+                                     expected_indexes=['logstash-2014.06.12'])
 
     def test_search_recent_multiple_indexes(self, search_mock):
         # The search index comparison goes back one hour and cuts off by day,
         # so test that we're 59 minutes and 59 seconds into today so that we
         # have an index for today and yesterday in the search call.
-        self._test_search_recent(search_mock, MockDatetimeYesterday,
-                                 expected_indexes=['logstash-2014.06.12',
-                                                   'logstash-2014.06.11'])
+        with mock.patch.object(
+                pyelasticsearch.ElasticSearch, 'status') as mock_data:
+            mock_data.return_value = "Not an exception"
+            self._test_search_recent(search_mock, MockDatetimeYesterday,
+                                     expected_indexes=['logstash-2014.06.12',
+                                                       'logstash-2014.06.11'])
+
+    def test_search_no_indexes(self, search_mock):
+        # Test when no indexes are valid
+        with mock.patch.object(
+                pyelasticsearch.ElasticSearch, 'status') as mock_data:
+            mock_data.side_effect = pyelasticsearch.exceptions.\
+                ElasticHttpNotFoundError()
+            self._test_search_recent(search_mock, MockDatetimeYesterday,
+                                     expected_indexes=[])
+
+    def test_search_days(self, search_mock):
+        # Test when specific days are used.
+        with mock.patch.object(
+                pyelasticsearch.ElasticSearch, 'status') as mock_data:
+            mock_data.return_value = "Not an exception"
+            datetime.datetime = MockDatetimeYesterday
+            result_set = self.engine.search(self.query, size=10, days=3,
+                                            recent=False)
+            self.assertEqual(0, len(result_set))
+            search_mock.assert_called_once_with(self.query, size=10,
+                                                index=['logstash-2014.06.12',
+                                                       'logstash-2014.06.11',
+                                                       'logstash-2014.06.10'])
