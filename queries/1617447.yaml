@@ -1,3 +1,0 @@
-query: >-
-  (message: "InterfaceAttachFailed: Failed to attach network adapter device to" OR message: "already exists; can't create bridge with the same name")
-  AND tags:screen-n-cpu.txt

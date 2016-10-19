@@ -1,4 +1,0 @@
-query: >-
-  message:"testtools.matchers._impl.MismatchError: \"ERROR (Conflict): Instance" AND
-  message:"is in an invalid state for 'trigger_crash_dump' (HTTP 409) \" not in 'ERROR (Conflict)" AND
-  tags:"console"

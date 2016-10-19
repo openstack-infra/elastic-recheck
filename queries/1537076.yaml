@@ -1,4 +1,0 @@
-query: >
-  message:"ERROR" AND
-  message:"Timed out waiting for Nova hypervisor-stats count >= 1" AND
-  tags:"console"

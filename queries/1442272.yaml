@@ -1,4 +1,0 @@
-query: >
-  message:"fixtures._fixtures.timeout.TimeoutException" AND
-  tags:"console" AND
-  build_name:"gate-neutron-dsvm-functional"

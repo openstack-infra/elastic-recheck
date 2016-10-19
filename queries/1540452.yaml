@@ -1,6 +1,0 @@
-query: >
-  message:"Killed                  timeout -s 9 ${REMAINING_TIME}" AND
-  tags:"console" AND
-  build_name:"gate-functional-dsvm-magnum-api"
-test_ids:
-  - magnum.tests.functional.api.v1.test_bay.BayTest.test_create_list_and_delete_bays

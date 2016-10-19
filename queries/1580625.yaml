@@ -1,5 +1,0 @@
-query: >-
-  message:"rbd\.py" AND
-  message:"ImageNotFound: error opening image" AND
-  message:"at snapshot None" AND
-  tags:"screen-n-cpu.txt"

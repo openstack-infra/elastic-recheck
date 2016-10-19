@@ -1,3 +1,0 @@
-query: >-
-  message:"ImportError: cannot import name monkey" AND
-  tags:"console"

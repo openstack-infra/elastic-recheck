@@ -1,3 +1,0 @@
-query: >-
-  message:"InvalidState: Can not transition from state 'deploying' on event 'resume' (no defined transition)" AND
-  tags:screen-ir-cond.txt

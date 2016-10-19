@@ -1,3 +1,0 @@
-query: >-
-  message:"Invalid input for external_gateway_info. Reason: '' is not a valid UUID" AND
-  tags:"console.html"

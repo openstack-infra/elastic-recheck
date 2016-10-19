@@ -1,4 +1,0 @@
-query: >-
-     message:"Details:" AND
-     message:"error_message" AND
-     message:"faultstring" AND tags:"console"

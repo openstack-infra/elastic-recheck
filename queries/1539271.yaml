@@ -1,5 +1,0 @@
-# This is used to track live migration failures in the non-voting multinode job
-query: >
-  message:"Migration running for 30 secs, memory 100% remaining; (bytes processed=0, remaining=0, total=0)"
-  AND tags:"screen-n-cpu.txt"
-allow-nonvoting: true

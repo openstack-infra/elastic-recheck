@@ -1,3 +1,0 @@
-query: >
-  message:"The following services are still running" AND message:"die"
-  AND tags:"grenade.sh.txt"

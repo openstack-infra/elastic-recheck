@@ -1,5 +1,0 @@
-query: >-
-  message:"attach_interface" AND
-  message:"libvirtError: Unable to create tap device" AND
-  message:"Device or resource busy" AND
-  tags:"screen-n-cpu.txt"

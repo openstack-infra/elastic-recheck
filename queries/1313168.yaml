@@ -1,3 +1,0 @@
-query: >
-  message:"raise ValueError\(\"Unable to compute factors p and q from exponent d.\"\)"
-  AND tags:"console"

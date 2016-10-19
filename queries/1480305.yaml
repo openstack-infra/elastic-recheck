@@ -1,5 +1,0 @@
-query: >-
-  message:"ec2_instance_create" AND
-  message:"DBDeadlock" AND
-  message:"u'INSERT INTO instance_extra" AND
-  tags:"screen-n-api.txt"

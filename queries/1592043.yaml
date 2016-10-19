@@ -1,5 +1,0 @@
-query: >-
-  message:"privsep log: sudo: no tty present and no askpass program specified" AND
-  message:"FailedToDropPrivileges: privsep helper command exited non-zero (1)" AND
-  message:"get_connector_properties" AND
-  tags:"screen-n-cpu.txt"

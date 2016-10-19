@@ -1,3 +1,0 @@
-query: >-
-  message:"Killed process" AND message:"python" AND
-  project:"openstack/cinder"

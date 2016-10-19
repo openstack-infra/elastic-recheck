@@ -1,4 +1,0 @@
-query: >
-  message:"failed to reach status=ACTIVE within the required time (240 s). Current status: PENDING"
-  AND tags:"console"
-  AND (build_name: gate-tempest-dsvm-designate-powerdns OR build_name: gate-tempest-dsvm-designate-powerdns-mitaka)
