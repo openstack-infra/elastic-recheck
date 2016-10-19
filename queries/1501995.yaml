@@ -1,3 +1,0 @@
-query: >-
-  message:"Failed building wheel for Pillow" AND
-  tags:"console"
