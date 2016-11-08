@@ -354,7 +354,7 @@ def main():
 
     LOG.info("Starting search for unclassified failures")
     for group in all_gate_fails:
-        LOG.info("Processing failures for group: %s" % group)
+        LOG.info("Processing failures for group: %s", group)
         fails = all_gate_fails[group]
         if not fails:
             continue
