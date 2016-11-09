@@ -22,7 +22,7 @@ ES_URL = 'http://logstash.openstack.org:80/elasticsearch'
 LS_URL = 'http://logstash.openstack.org'
 DB_URI = 'mysql+pymysql://query:query@logstash.openstack.org/subunit2sql'
 
-JOBS_RE = '(tempest-dsvm-full|gate-tempest-dsvm-virtual-ironic)'
+JOBS_RE = 'dsvm'
 CI_USERNAME = 'jenkins'
 
 GERRIT_QUERY_FILE = 'queries'
