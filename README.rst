@@ -62,7 +62,7 @@ Guidelines for good queries:
 
 When adding queries you can optionally suppress the creation of graphs
 and notifications by adding ``suppress-graph: true`` or
-``suppress-notifcation: true`` to the yaml file.  These can be used to make
+``suppress-notification: true`` to the yaml file.  These can be used to make
 sure expected failures don't show up on the unclassified page.
 
 If the only signature available is overly broad and adding additional logging
