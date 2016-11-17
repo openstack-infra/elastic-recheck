@@ -1,0 +1,6 @@
+query: >-
+  message:"Failed to detach volume" AND
+  message:"_do_wait_and_retry_detach" AND
+  message:"libvirtError: operation failed: disk" AND
+  message:"not found" AND
+  tags:"screen-n-cpu.txt"
