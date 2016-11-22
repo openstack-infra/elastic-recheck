@@ -1,0 +1,3 @@
+query: >-
+  message:"*** Error in `/usr/sbin/libvirtd': malloc(): memory corruption:" AND
+  tags:"syslog"
