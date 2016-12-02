@@ -1,0 +1,6 @@
+query: >-
+  (message:"trap stack segment ip" OR
+  message:"general protection ip") AND
+  message:"traps: libvirtd[" AND
+  message:"error:0 in libc-2.23.so" AND
+  tags: "syslog"
