@@ -1,0 +1,3 @@
+query: >-
+  message:"Illegal instruction" AND
+  tags:"console"
