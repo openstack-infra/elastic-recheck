@@ -255,7 +255,7 @@ class Stream(object):
 
     def _does_es_have_data(self, event):
         """Wait till ElasticSearch is ready, but return False if timeout."""
-        NUMBER_OF_RETRIES = 20
+        NUMBER_OF_RETRIES = 30
         SLEEP_TIME = 40
         started_at = datetime.datetime.now()
         # this checks that we've got the console log uploaded, need to retry
