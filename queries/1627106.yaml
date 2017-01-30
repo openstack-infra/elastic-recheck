@@ -1,0 +1,6 @@
+query: >-
+  message:"neutron.agent.ovsdb.api.TimeoutException: Commands [" AND
+  message:")] exceeded timeout 10 seconds" AND
+  (build_name:"gate-neutron-dsvm-functional-ubuntu-xenial" OR
+   build_name:"gate-neutron-dsvm-functional-ubuntu-trusty") AND
+  tags:"console"
