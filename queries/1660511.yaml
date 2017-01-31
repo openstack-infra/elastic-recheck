@@ -1,5 +1,6 @@
 query: >-
-  message:"Details: Volume" AND
-  message:"failed to reach available status (current detaching) within the required time" AND
-  tags:"console" AND
-  build_name:"gate-tempest-dsvm-cells-ubuntu-xenial"
+  message:"TestVolumeSwap" AND
+  message:"Error processing message locally" AND
+  message:"_check_and_begin_detach" AND
+  message:"Invalid volume: Unable to detach volume. Volume status must be 'in-use' and attach_status must be 'attached' to detach." AND
+  tags:"screen-n-cell-child.txt"
