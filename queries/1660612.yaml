@@ -1,0 +1,5 @@
+query: >-
+  message:"Killed" AND
+  message:"timeout -s 9" AND
+  build_name:gate-tempest-dsvm-neutron-linuxbridge-ubuntu-xenial AND
+  tags:console
