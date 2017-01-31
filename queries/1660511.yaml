@@ -1,0 +1,5 @@
+query: >-
+  message:"Details: Volume" AND
+  message:"failed to reach available status (current detaching) within the required time" AND
+  tags:"console" AND
+  build_name:"gate-tempest-dsvm-cells-ubuntu-xenial"
