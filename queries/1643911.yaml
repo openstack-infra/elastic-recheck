@@ -1,3 +1,5 @@
 query: >-
-  message:"*** Error in `/usr/sbin/libvirtd': malloc(): memory corruption:" AND
+  message:"*** Error in `/usr/sbin/libvirtd': " AND
+  (message:"malloc(): memory corruption:" OR
+   message:"realloc(): invalid next size:") AND
   tags:"syslog"
