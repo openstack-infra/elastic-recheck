@@ -1,0 +1,3 @@
+query: >-
+  message:"if net_info.is_router_interface_port(i)]" AND
+  tags:"console"
