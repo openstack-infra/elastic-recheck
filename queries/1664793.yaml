@@ -1,0 +1,3 @@
+query: >-
+  message:"_wait_for_volume_available_on_the_system" AND
+  tags:"console"
