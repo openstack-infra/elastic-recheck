@@ -1,0 +1,3 @@
+query: >-
+    message:"Exited: Bad buf_getptr" AND
+    tags:"console"
