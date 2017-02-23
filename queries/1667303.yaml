@@ -1,0 +1,3 @@
+query: >-
+  message:"qemu-system : Depends: qemu-system-arm but it is not going to be installed" AND
+  tags:"console"
