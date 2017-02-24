@@ -1,2 +1,0 @@
-query: >
-  message:"Public network connectivity check failed" AND tags:console
