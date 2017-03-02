@@ -1,0 +1,3 @@
+query: >-
+  message:"AuthenticationException: Authentication failed." AND
+  tags:"console"
