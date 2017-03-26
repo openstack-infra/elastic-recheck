@@ -1,0 +1,3 @@
+query: >-
+  message:"curl#35 - \"TCP connection reset by peer\"" AND
+  tags:"console"
