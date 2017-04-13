@@ -1,0 +1,4 @@
+query: >-
+  message:"Live Migration failure: operation failed: Failed to connect to remote libvirt URI" AND
+  message:"End of file while reading data: sh: 1: nc: not found: Input/output error" AND
+  tags:"screen-n-cpu.txt"
