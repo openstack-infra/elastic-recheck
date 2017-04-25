@@ -1,0 +1,4 @@
+query: >-
+  message:"requests.exceptions.ConnectionError: ('Connection aborted.', BadStatusLine("''",))" AND
+  tags:"console" AND
+  build_name:"gate-nova-tox-functional-ubuntu-xenial"
