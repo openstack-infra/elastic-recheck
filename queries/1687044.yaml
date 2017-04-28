@@ -1,0 +1,5 @@
+query: >-
+  message:"VolumeNotDeactivated: Volume" AND
+  message:"was not deactivated in time." AND
+  message:"Extend volume failed." AND
+  filename:logs*screen-c-vol.txt
