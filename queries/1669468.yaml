@@ -1,0 +1,4 @@
+query: >-
+  (message:"AssertionError: True is not false : Token must be invalid because the connection closed." OR
+   message:"b'AssertionError: True is not false : Token must be invalid because the connection closed.'") AND
+  tags:"console"
