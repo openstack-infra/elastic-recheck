@@ -1,0 +1,5 @@
+query: >-
+  message:"Setting instance vm_state to ERROR" AND
+  message:"_unplug_vifs" AND
+  message:"UnicodeDecodeError" AND
+  tags:"screen-n-cpu.txt"
