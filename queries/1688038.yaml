@@ -1,0 +1,3 @@
+query: >-
+  message:"cannot be rescued: Driver Error: failed to connect to monitor socket: No such process" AND
+  tags:"screen-n-cpu.txt"
