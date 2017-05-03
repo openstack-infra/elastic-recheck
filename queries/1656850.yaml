@@ -1,4 +1,0 @@
-query: >-
-  message:"Out of memory: Kill process" AND
-  message:"(mysqld)" AND
-  tags:"syslog"

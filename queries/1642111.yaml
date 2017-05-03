@@ -1,5 +1,0 @@
-query: >-
-  message:"create_volume_from_snapshot" AND
-  message:"device-mapper: reload ioctl on" AND
-  message:"failed: Invalid argument" AND
-  tags:"screen-c-vol.txt"

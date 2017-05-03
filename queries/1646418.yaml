@@ -1,4 +1,0 @@
-query: >-
-  message:"truncate: Invalid number:" AND
-  message:"var/lib/ceph/drives/images/ceph.img" AND
-  tags:"console"

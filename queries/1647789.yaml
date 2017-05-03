@@ -1,3 +1,0 @@
-query: >-
-  message:"RPCVersionCapError: Requested message version, 3.1 is incompatible.  It needs to be equal in major version and less than or equal in minor version as the specified version cap 3.0." AND
-  tags:"screen-c-vol.txt"

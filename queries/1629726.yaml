@@ -1,3 +1,0 @@
-query: >-
-  message:"AssertionError: sorry, but this version only supports 100 named groups" AND
-  tags:"console"

@@ -1,4 +1,0 @@
-query: >-
-  message:"TestStampPattern" AND
-  message:"SecurityGroupNotFoundForProject" AND
-  tags:"screen-n-cell-child.txt"

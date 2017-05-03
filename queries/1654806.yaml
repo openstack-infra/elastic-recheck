@@ -1,4 +1,0 @@
-query: >-
-  message:"ERROR (Conflict): Multiple possible networks found, use a Network ID to be more specific. (HTTP 409)" AND
-  tags:"console" AND
-  project:"openstack/python-novaclient"

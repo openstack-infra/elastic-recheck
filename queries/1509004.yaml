@@ -1,4 +1,0 @@
-query: >-
-  message:"AssertionError: False is not true : Timed out waiting for 2003::1 to become reachable from" AND
-  tags:"console" AND
-  NOT build_queue:"periodic-qa"

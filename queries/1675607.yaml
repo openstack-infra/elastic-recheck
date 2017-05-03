@@ -1,4 +1,0 @@
-query: >-
-  message:"MigrationsAdminTest" AND
-  message:"Filter AvailabilityZoneFilter returned 0 hosts" AND
-  tags:"screen-n-sch.txt"

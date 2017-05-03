@@ -1,4 +1,0 @@
-query: >
-  message:"Failed to establish authenticated ssh connection to cirros@" AND
-  message:"(Error reading SSH protocol banner[Errno 104] Connection reset by peer). Number attempts" AND
-  tags:"console"

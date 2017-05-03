@@ -1,4 +1,0 @@
-query: >-
-  message:"ready = poll.poll(self.channel_timeout)" AND
-  message:"ERROR tempest.scenario.test_network_basic_ops" AND
-  tags:"grenade.sh.txt"

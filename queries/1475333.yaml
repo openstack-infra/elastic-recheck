@@ -1,4 +1,0 @@
-query: >-
-  message:"Insufficient free space for volume creation on host" AND
-  message:"ceph#ceph \(requested / avail\): 1/" AND
-  tags:"screen-c-sch.txt"

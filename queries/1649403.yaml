@@ -1,5 +1,0 @@
-query: >-
-  message:"Matcher" AND
-  message:"u'ip_addresses': []" AND
-  tags:"console" AND
-  build_name:"gate-nova-tox-db-functional-ubuntu-xenial"

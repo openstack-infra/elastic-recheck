@@ -1,7 +1,0 @@
-# this is a placeholder bug and should not be removed if there are no hits
-query: >
-  message:" ERROR: InvocationError: "
-  AND message:"pep8/bin/flake8'"
-  AND build_queue:"gate"
-  AND tags:"console.html"
-suppress-notification: true

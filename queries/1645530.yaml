@@ -1,4 +1,0 @@
-query: >-
-  message:"No weighed hosts found for volume with properties" AND
-  message:"{u'volume_backend_name': u'ceph'}" AND
-  tags:"screen-c-sch.txt"

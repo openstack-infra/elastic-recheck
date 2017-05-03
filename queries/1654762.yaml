@@ -1,4 +1,0 @@
-query: >-
-  message:"volume service is down" AND
-  message:"ceph" AND
-  tags:"screen-c-sch.txt"

@@ -1,5 +1,0 @@
-query: >-
-  message:"CalledProcessError" AND
-  message:"origin/stable/liberty" AND
-  message:"returned non-zero exit status 128" AND
-  tags:"console"

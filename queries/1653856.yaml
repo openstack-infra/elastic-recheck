@@ -1,5 +1,0 @@
-query: >-
-  message:"Request" AND
-  message:"502 POST" AND
-  message:"5000/v2.0/tokens" AND
-  tags:"tempest.txt"
