@@ -1,4 +1,0 @@
-query: >-
-  message:"Body: {\"servers\": []}" AND
-  tags:"console" AND
-  build_name:"gate-tempest-dsvm-cells-ubuntu-xenial"
