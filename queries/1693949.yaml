@@ -1,0 +1,4 @@
+query: >-
+  message:"Floating IP pool not found." AND
+  tags:"screen-n-api.txt" AND
+  build_name:"gate-tempest-dsvm-cells-ubuntu-xenial"
