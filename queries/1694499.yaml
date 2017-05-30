@@ -1,0 +1,3 @@
+query: >-
+  message:"Job for devstack@etcd.service failed because the control process exited with error code." AND
+  tags:"console"
