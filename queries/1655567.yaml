@@ -1,0 +1,6 @@
+query: >-
+  message:"NeutronError" AND
+  message:"IP address" AND
+  message:"::" AND
+  message:"already allocated in subnet" AND
+  tags:"console"
