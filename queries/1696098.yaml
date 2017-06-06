@@ -1,0 +1,4 @@
+query: >
+  message:"Unable to complete operation on subnet"
+  AND message:"One or more ports have an IP allocation from this subnet."
+  AND tags:"console"
