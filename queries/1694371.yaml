@@ -1,0 +1,4 @@
+query: >
+  message:"in test_rebuild" AND
+  tags:"console" AND
+  project:"openstack/python-novaclient"
