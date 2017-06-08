@@ -1,0 +1,5 @@
+query: >
+  message:"KeyError" AND
+  message:"allocations" AND
+  tags:"console" AND
+  project:"openstack/nova"
