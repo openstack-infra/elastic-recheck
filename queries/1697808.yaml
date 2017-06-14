@@ -1,0 +1,3 @@
+query: >
+  message:"wget: unable to resolve host address 'tarballs.openstack.org'" AND
+  tags:"console"
