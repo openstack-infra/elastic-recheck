@@ -1,0 +1,4 @@
+query: >
+  message:"novaclient.exceptions.Forbidden: Quota exceeded for instances: Requested 1, but already used 10 of 10 instances (HTTP 403)" AND
+  tags:"console" AND
+  project:"openstack/python-novaclient"
