@@ -1,0 +1,3 @@
+query: >
+  message:"/usr/local/bin/devstack-version: line 3: unexpected EOF while looking for matching `''" AND
+  tags:"console"
