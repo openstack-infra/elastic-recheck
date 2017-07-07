@@ -1,4 +1,0 @@
-query: >-
-  message:"The service catalog is empty.'" AND
-  tags:"console" AND
-  project:"openstack/nova"
