@@ -1,0 +1,5 @@
+query: >
+  message:"UsersV3TestJSON:test_password_history_not_enforced_in_admin_reset" AND
+  message:"401 POST" AND
+  message:"/identity/v3/auth/tokens" AND
+  tags:"console"
