@@ -1,0 +1,3 @@
+query: >-
+  message:"INFO [nova.api.openstack.placement.requestlog] 127.0.0.1 \"PUT /resource_classes/CUSTOM_GOLD\" status: 204 len: 0 microversion: 1.10" AND
+  tags:"console"
