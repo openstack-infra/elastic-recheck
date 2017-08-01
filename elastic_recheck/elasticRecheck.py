@@ -327,7 +327,7 @@ class Stream(object):
                 # nothing to see here, lets try the next event
                 continue
 
-            fevent = FailEvent(event, failed_jobs)
+            fevent = FailEvent(event, failed_jobs, self.config)
 
             # bail if the failure is from a project
             # that hasn't run any of the included jobs
