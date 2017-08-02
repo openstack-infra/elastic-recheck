@@ -1,0 +1,3 @@
+query: >
+  message:"trove_client._logger.setLevel(logging.CRITICAL)" AND
+  tags:"console"
