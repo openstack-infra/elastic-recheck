@@ -1,3 +1,3 @@
 query: >-
-  message:"curl#35 - \"TCP connection reset by peer\"" AND
+  message:"failure: repodata/repomd.xml from delorean-pike-testing" AND
   tags:"console"
