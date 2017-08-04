@@ -1,8 +1,0 @@
-query: >-
-  ((message:"bash: install_package: command not found") OR
-  (message:"ssh: connect to host" AND message:"Connection timed out") OR
-  (message:"ERROR! SSH encountered an unknown error during the connection.") OR
-  (message:"[ERROR] /opt/stack/new/grenade/projects/70_cinder/resources.sh" AND
-   message:"SSH to the client did not work, something very wrong"))
-  AND
-  tags:console
