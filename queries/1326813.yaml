@@ -1,4 +1,3 @@
 query: >-
-  message:"Download error on" AND
-  message:"Some packages may not be found!" AND
+  message:"distutils.errors.DistutilsError: Could not find suitable distribution" AND
   tags:console
