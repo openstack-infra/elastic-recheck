@@ -1,3 +1,0 @@
-query: >-
-  message:"Error in `/usr/sbin/libvirtd': realloc(): invalid next size" AND
-  tags:"syslog.txt"
