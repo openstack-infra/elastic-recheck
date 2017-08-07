@@ -9,7 +9,7 @@ channel_config=/home/mtreinish/elasticRecheck/recheckwatchbot.yaml
 [recheckwatch]
 #Any project that has a job that matches this regex will have all their
 #jobs included in the recheck algorithm
-jobs_regex=dsvm
+jobs_re=dsvm
 ci_username=jenkins
 
 [gerrit]

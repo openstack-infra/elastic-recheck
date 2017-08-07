@@ -100,7 +100,7 @@ class Config(object):
                      'db_uri': DB_URI,
                      'server_password': None,
                      'ci_username': CI_USERNAME,
-                     'jobs_regex': JOBS_RE,
+                     'jobs_re': JOBS_RE,
                      'pidfile': PID_FN,
                      'index_format': DEFAULT_INDEX_FORMAT,
                      'query_file': GERRIT_QUERY_FILE,
@@ -117,7 +117,7 @@ class Config(object):
 
             if config.has_section('recheckwatch'):
                 self.ci_username = config.get('recheckwatch', 'ci_username')
-                self.jobs_regex = config.get('recheckwatch', 'jobs_regex')
+                self.jobs_re = config.get('recheckwatch', 'jobs_re')
 
             if config.has_section('gerrit'):
                 self.gerrit_user = config.get('gerrit', 'user')
