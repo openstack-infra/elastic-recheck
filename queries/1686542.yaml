@@ -1,3 +1,4 @@
 query: >-
-  message:"FAILED with status: 137" AND
-  filename:"console.html"
+  (message: "FAILED with status: 137" OR
+  message: "FAILED with status: 143") AND
+  tags: "console"
