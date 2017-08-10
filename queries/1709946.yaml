@@ -1,0 +1,4 @@
+query: >-
+  message:"Filter SameHostFilter returned 0 hosts" AND
+  message:"ServersAdminTestJSON" AND
+  tags:"screen-n-sch.txt"
