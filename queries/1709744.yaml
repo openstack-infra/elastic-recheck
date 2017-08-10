@@ -1,0 +1,3 @@
+query: >-
+  message:"Gem::RemoteFetcher::UnknownHostError"
+  AND tags:"console"
