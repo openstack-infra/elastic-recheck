@@ -1,0 +1,3 @@
+query: >-
+  message:"Details: {u'message': u'Invalid volume: Volume is not local to this node.', u'code': 400}" AND
+  tags:"console"
