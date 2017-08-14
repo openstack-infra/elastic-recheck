@@ -1,0 +1,4 @@
+query: >
+  message: "Cannot find a valid baseurl for repo:" AND
+  (tags: "postci" OR
+  tags: "console")
