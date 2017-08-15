@@ -32,7 +32,7 @@ from elastic_recheck import results
 
 def required_files(job):
     files = []
-    if re.match("tempest-dsvm", job):
+    if re.match("(tempest|grenade)-dsvm", job):
         files.extend([
             'logs/screen-n-api.txt',
             'logs/screen-n-cpu.txt',
