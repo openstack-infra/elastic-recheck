@@ -1,0 +1,3 @@
+query: >-
+  message:"*** Image Build Error ***"
+  AND tags:console
