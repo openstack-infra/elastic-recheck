@@ -1,5 +1,0 @@
-query: >-
-  (message:"failure: repodata/repomd.xml from delorean-pike-testing" OR
-  message:"failure: repodata/repomd.xml from delorean-ocata-testing" OR
-  message:"failure: repodata/repomd.xml from delorean-newton-testing") AND
-  tags:"console"
