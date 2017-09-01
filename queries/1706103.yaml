@@ -1,3 +1,4 @@
 query: >-
-    message:"/dev/xvde1: No such file or directory" AND
+    ((message:"/dev/xvde1: No such file or directory") OR
+    (message:"/dev/xvde" AND message:"Device or resource busy")) AND
     tags:"console"
