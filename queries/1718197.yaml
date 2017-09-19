@@ -1,0 +1,4 @@
+query: >
+  message:"Timeout" AND
+  message:"waiting for privilege escalation prompt" AND
+  tags:"console"
