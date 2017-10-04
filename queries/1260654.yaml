@@ -2,5 +2,5 @@ query: >
   message:"java.io.IOException"
   AND message:"Remote call on"
   AND message:"failed"
-  AND tags:"console.html"
+  AND (tags:"console.html" OR tags:"job-output.txt")
 suppress-graph: true

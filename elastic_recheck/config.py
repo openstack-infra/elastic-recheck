@@ -47,11 +47,16 @@ EXCLUDED_JOBS_REGEX = re.compile('(' + '|'.join(EXCLUDED_JOBS) + ')')
 
 INCLUDED_PROJECTS_REGEX = "(^openstack/|devstack|grenade)"
 
-ALL_FAILS_QUERY = ('filename:"console.html" '
-                   'AND (message:"Finished: FAILURE" '
-                   'OR message:"[Zuul] Job complete, result: FAILURE") '
-                   'AND build_queue:"gate" '
-                   'AND voting:"1"')
+# TODO(dmsimard): Revisit this query once Zuul v2 is no longer supported
+# Let's value legibility over pep8 line width here...
+ALL_FAILS_QUERY = (
+    '((filename:"job-output.txt" AND message:"POST-RUN END" AND message:"project-config/playbooks/base/post-ssh")'  # flake8: noqa
+    ' OR '
+    '(filename:"console.html" AND (message:"[Zuul] Job complete" OR message:"[SCP] Copying console log" OR message:"Grabbing consoleLog"))'  # flake8: noqa
+    ' AND build_status:"FAILURE"'
+    ' AND build_queue:"gate"'
+    ' AND voting:"1"'
+)
 
 UNCAT_MAX_SEARCH_SIZE = 30000
 

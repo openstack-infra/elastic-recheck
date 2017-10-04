@@ -69,22 +69,30 @@ def single_queue(query, queue, facet=None):
                    (query, queue), facet=facet)
 
 
-def result_ready(review, patch, name, build_short_uuid):
+def result_ready(change, patchset, name, short_uuid):
     """A query to determine if we have a failure for a particular patch.
 
     This is looking for a particular FAILURE line in the console log, which
     lets us know that we've got results waiting that we need to process.
     """
-    return generic('filename:"console.html" AND '
-                   '(message:"[SCP] Copying console log" '
-                   'OR message:"Grabbing consoleLog" '
-                   'OR message:"[Zuul] Job complete") '
-                   'AND build_status:"FAILURE" '
-                   'AND build_change:"%s" '
-                   'AND build_patchset:"%s" '
-                   'AND build_name:"%s" '
-                   'AND build_short_uuid:%s' %
-                   (review, patch, name, build_short_uuid))
+    # TODO(dmsimard): Revisit this query once Zuul v2 is no longer supported
+    # Let's value legibility over pep8 line width here...
+    query = (
+        '((filename:"job-output.txt" AND message:"POST-RUN END" AND message:"project-config/playbooks/base/post-ssh")'  # flake8: noqa
+        ' OR '
+        '(filename:"console.html" AND (message:"[Zuul] Job complete" OR message:"[SCP] Copying console log" OR message:"Grabbing consoleLog"))'  # flake8: noqa
+        ' AND build_status:"FAILURE"'
+        ' AND build_change:"{change}"'
+        ' AND build_patchset:"{patchset}"'
+        ' AND build_name:"{name}"'
+        ' AND build_short_uuid:"{short_uuid}"'
+    )
+    return generic(query.format(
+        change=change,
+        patchset=patchset,
+        name=name,
+        short_uuid=short_uuid
+    ))
 
 
 def files_ready(review, patch, name, build_short_uuid):
@@ -119,7 +127,7 @@ def single_patch(query, review, patch, build_short_uuid):
 
 def most_recent_event():
     return generic(
-        'filename:console.html '
+        '(filename:"console.html" OR filename:"job-output.txt") '
         'AND (build_queue:gate OR build_queue:check) '
         'AND NOT tags:_grokparsefailure '
         'AND NOT message:"%{logmessage}" ')

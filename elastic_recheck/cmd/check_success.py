@@ -24,6 +24,7 @@ import time
 
 from launchpadlib import launchpad
 
+import elastic_recheck.config as er_config
 import elastic_recheck.elasticRecheck as er
 import elastic_recheck.results as er_results
 
@@ -51,17 +52,14 @@ def all_fails(classifier):
     so we can figure out how good we are doing on total classification.
     """
     all_fails = {}
-    query = ('filename:"console.html" '
-             'AND message:"Finished: FAILURE" '
-             'AND build_queue:"gate"')
-    results = classifier.hits_by_query(query, size=30000)
+    results = classifier.hits_by_query(er_config.ALL_FAILS_QUERY, size=30000)
     facets = er_results.FacetSet()
     facets.detect_facets(results, ["build_uuid"])
     for build in facets:
         for result in facets[build]:
             # not perfect, but basically an attempt to show the integrated
             # gate. Would be nice if there was a zuul attr for this in es.
-            if re.search("(^openstack/|devstack|grenade)", result.project):
+            if re.search(er_config.INCLUDED_PROJECTS_REGEX, result.project):
                 all_fails["%s.%s" % (build, result.build_name)] = False
     return all_fails
 
