@@ -74,11 +74,16 @@ def get_launchpad_bug(bug):
     return bugdata
 
 
-def get_open_reviews(bug_number):
-    "return list of open gerrit reviews for a given bug."""
+def get_open_reviews(bug_number, attempt=0):
+    """return list of open gerrit reviews for a given bug."""
     r = requests.get("https://review.openstack.org:443/changes/"
                      "?q=status:open++message:`%s`+NOT+"
                      "project:openstack-infra/elastic-recheck" % bug_number)
+    # If we got a proxy error let's retry until we're out of attempts.
+    if r.status_code == 502 and attempt < 3:
+        LOG.debug('Retry changes query for bug %s. Attempt %s of 3.',
+                  bug_number, (attempt + 1))
+        return get_open_reviews(bug_number, attempt + 1)
     # strip off first few chars because 'the JSON response body starts with a
     # magic prefix line that must be stripped before feeding the rest of the
     # response body to a JSON parser'

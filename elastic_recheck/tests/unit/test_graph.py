@@ -17,10 +17,11 @@ from elastic_recheck.tests import unit
 
 
 class FakeResponse(object):
-    def __init__(self, response_text):
+    def __init__(self, response_text, status_code=200):
         super(FakeResponse, self).__init__()
         # magic gerrit prefix
         self.text = ")]}'\n" + response_text
+        self.status_code = status_code
 
 
 class TestGraphCmd(unit.UnitTestCase):
@@ -28,6 +29,7 @@ class TestGraphCmd(unit.UnitTestCase):
         with mock.patch('requests.get') as mock_get:
             mock_get.return_value = FakeResponse("[]\n")
             self.assertEqual(graph.get_open_reviews('1353131'), [])
+        mock_get.assert_called_once()
 
     def test_get_open_reviews(self):
         with mock.patch('requests.get') as mock_get:
@@ -35,3 +37,13 @@ class TestGraphCmd(unit.UnitTestCase):
                       'gerrit-bug-query.json') as f:
                 mock_get.return_value = FakeResponse(f.read())
             self.assertEqual(graph.get_open_reviews('1288393'), [113009])
+
+    def test_get_open_reviews_502_retry(self):
+        """Tests that we retry if we get a 502 response from the server."""
+        with mock.patch('requests.get') as mock_get:
+            mock_get.side_effect = (
+                FakeResponse("bad proxy gateway", status_code=502),
+                FakeResponse("[]\n"))
+            self.assertEqual(graph.get_open_reviews('1353131'), [])
+        # We call twice because we retried once.
+        self.assertEqual(2, mock_get.call_count)
