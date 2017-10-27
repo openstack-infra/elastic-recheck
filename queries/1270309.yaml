@@ -1,4 +1,4 @@
 query: >
     message:"java.lang.InterruptedException"
-    AND tags:"console.html"
+    AND (tags:"console.html" OR tags:"job-output.txt")
 suppress-graph: true

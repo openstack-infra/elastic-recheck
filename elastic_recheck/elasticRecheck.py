@@ -31,7 +31,7 @@ from elastic_recheck import results
 
 
 def required_files(job):
-    files = ['console.html']
+    files = []
     if re.match("tempest-dsvm", job):
         files.extend([
             'logs/screen-n-api.txt',
@@ -246,9 +246,11 @@ class Stream(object):
         query = qb.files_ready(change, patch, name, build_short_uuid)
         r = self.es.search(query, size='80', recent=True)
         files = [x['term'] for x in r.terms]
+        # TODO(dmsimard): Reliably differentiate zuul v2 and v3 jobs
         required = required_files(name)
         missing_files = [x for x in required if x not in files]
-        if len(missing_files) != 0:
+        if (len(missing_files) != 0 or
+           ('console.html' not in files and 'job-output.txt' not in files)):
             msg = ("%s missing for %s %s,%s,%s" % (
                 missing_files, name, change, patch, build_short_uuid))
             raise FilesNotReady(msg)

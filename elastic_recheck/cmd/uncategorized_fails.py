@@ -125,7 +125,10 @@ def all_fails(classifier, config=None):
             if result.project in integrated_gate_projects:
                 name = result.build_name
                 timestamp = dp.parse(result.timestamp)
-                log = result.log_url.split("console.html")[0]
+                if 'console.html' in result.log_url:
+                    log = result.log_url.split('console.html')[0]
+                elif 'job-output.txt' in result.log_url:
+                    log = result.log_url.split('job-output.txt')[0]
                 integrated_fails["%s.%s" % (build, name)] = {
                     'log': log,
                     'timestamp': timestamp,
@@ -137,7 +140,10 @@ def all_fails(classifier, config=None):
                 if re.search(config.included_projects_regex, result.project):
                     name = result.build_name
                     timestamp = dp.parse(result.timestamp)
-                    log = result.log_url.split("console.html")[0]
+                    if 'console.html' in result.log_url:
+                        log = result.log_url.split('console.html')[0]
+                    elif 'job-output.txt' in result.log_url:
+                        log = result.log_url.split('job-output.txt')[0]
                     other_fails["%s.%s" % (build, name)] = {
                         'log': log,
                         'timestamp': timestamp,
