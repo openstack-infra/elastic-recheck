@@ -1,0 +1,3 @@
+query: >-
+  message:"AssertionError: The migration table left empty." AND
+  tags:"console"
