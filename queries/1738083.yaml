@@ -1,0 +1,4 @@
+query: >-
+  message:"DBDeadlock" AND
+  message:"u'INSERT INTO traits" AND
+  tags:"screen-placement-api.txt"
