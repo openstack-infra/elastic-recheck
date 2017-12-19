@@ -1,3 +1,0 @@
-query: >
-  message:"KeyError: allocations" AND
-  tags:"console"

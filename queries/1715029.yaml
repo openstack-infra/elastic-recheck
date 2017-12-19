@@ -1,3 +1,0 @@
-query: >-
-  message:"[overcloud.AllNodesDeploySteps.ControllerDeployment_Step3]: CREATE_FAILED  Resource CREATE failed: Operation cancelled" AND
-  tags:console

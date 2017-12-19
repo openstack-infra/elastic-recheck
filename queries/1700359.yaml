@@ -1,3 +1,0 @@
-query: >
-  message:"ERROR (NotFound): Could not find binary nova-scheduler on host" AND
-  tags:"console"

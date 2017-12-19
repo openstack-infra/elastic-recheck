@@ -1,3 +1,0 @@
-query: >
-  message:"Unable to establish connection to http://127.0.0.1:8006/v1/admin/stacks/"
-  AND tags:"console"

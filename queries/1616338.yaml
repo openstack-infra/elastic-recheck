@@ -1,4 +1,0 @@
-query: >-
-  message:"Failed to create iscsi target for Volume ID" AND
-  message:"Please ensure your tgtd config file contains" AND
-  tags:"screen-c-vol.txt"

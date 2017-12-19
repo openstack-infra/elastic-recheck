@@ -1,3 +1,0 @@
-query: >-
-  message:"is not on shared storage: Live migration can not be used without shared storage except a booted from volume VM which does not have a local disk" AND
-  tags:"screen-n-cpu.txt"

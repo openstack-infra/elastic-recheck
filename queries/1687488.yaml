@@ -1,4 +1,0 @@
-query: >-
-  message:"-1) not in" AND
-  message:"(u'volumes', 11)" AND
-  tags:"console"

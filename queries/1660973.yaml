@@ -1,4 +1,0 @@
-query: >-
-  message:"raise exception.PlacementNotConfigured" AND
-  tags:"screen-n-cpu.txt"
-

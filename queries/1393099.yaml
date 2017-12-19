@@ -1,5 +1,0 @@
-query: >-
-    message:"Timed out waiting for node"
-    AND message:"to reach provision_state state(s) ['active']"
-    AND tags:"console"
-

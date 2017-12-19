@@ -1,3 +1,0 @@
-query: >
-  message:"hr_instance_write(): Connection reset by peer [plugins/http/http.c line 521]" AND
-  tags:"screen-g-api.txt"

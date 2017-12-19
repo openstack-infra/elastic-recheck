@@ -1,4 +1,0 @@
-query: >-
-  message:"u'subscription_create" AND
-  message:"u'Object PUT failed" AND
-  tags:console

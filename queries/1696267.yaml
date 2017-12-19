@@ -1,3 +1,0 @@
-query: >
-  message:"reference = set(['HW_CPU_X86_3DNOW'," AND
-  tags:"console"

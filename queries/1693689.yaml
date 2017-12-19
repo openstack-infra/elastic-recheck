@@ -1,3 +1,0 @@
-query: >
-  message: "Could not determine host ip address.  See local.conf for suggestions on setting HOST_IP."
-  AND tags:"console"

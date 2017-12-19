@@ -1,3 +1,0 @@
-query: >-
-  message:"Error: Failed to set node power state to power on" AND
-  tags:"syslog" AND syslog_program:"ironic-conductor"

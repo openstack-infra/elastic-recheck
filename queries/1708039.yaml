@@ -1,3 +1,0 @@
-query: >
-  message:"No host-to-cell mapping found for selected host" AND
-  tags:"screen-n-cond.txt"

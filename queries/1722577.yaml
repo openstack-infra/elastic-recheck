@@ -1,6 +1,0 @@
-query: >
-  message:"_run_cleanups" AND
-  message:"400 DELETE" AND
-  message:"compute/v2.1/servers/" AND
-  message:"os-volume_attachments/" AND
-  tags:"console"

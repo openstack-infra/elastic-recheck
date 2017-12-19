@@ -1,3 +1,0 @@
-query: >-
-  message:"Property DockerBarbicanApiImage not assigned" AND
-  tags:console

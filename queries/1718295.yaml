@@ -1,3 +1,0 @@
-query: >
-  message:"Unexpected exception in API method: MigrationError_Remote: Migration error: Disk info file is invalid: qemu-img failed to execute on" AND
-  tags:"screen-n-api.txt"

@@ -1,3 +1,0 @@
-query: >-
-  message:"with_dict expects a dict" AND
-  filename:"job-output.txt"

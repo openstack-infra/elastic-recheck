@@ -1,3 +1,0 @@
-query: >-
-  message:"errno=Network is unreachable" AND
-  tags:console

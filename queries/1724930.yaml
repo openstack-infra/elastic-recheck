@@ -1,3 +1,0 @@
-query: >-
-  message:"[overcloud]: CREATE_FAILED  Timed out" AND
-  filename:"logs/undercloud/var/log/extra/logstash.txt.gz"

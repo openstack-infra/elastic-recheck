@@ -1,3 +1,0 @@
-query: >
-  message:"/usr/local/lib/python2.7/dist-packages/tooz/drivers/etcd3gw.py:113 in acquire" AND
-  tags:"screen-c-vol.txt"

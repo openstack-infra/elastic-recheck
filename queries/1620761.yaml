@@ -1,5 +1,0 @@
-query: >-
-  message:"Details: (ImagesOneServerNegativeTestJSON:tearDown) Server" AND
-  message:"failed to reach ACTIVE status and task state \"None\" within the required time" AND
-  message:"Current status: ACTIVE. Current task state: image_snapshot." AND
-  build_name:"gate-tempest-dsvm-cells"

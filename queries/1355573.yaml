@@ -1,6 +1,0 @@
-query: >
-  (message:"TestVolumeBootPattern:test_volume_boot_pattern" OR
-   message:"TestVolumeBootPatternV2:test_volume_boot_pattern") AND
-  message:"Initializing SSH connection to" AND
-  message:"via SSH timed out." AND
-  tags:"tempest.txt"

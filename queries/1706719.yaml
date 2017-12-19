@@ -1,3 +1,0 @@
-query: >
-  message:"u'message': u'The account is locked for user:" AND
-  tags:"console"

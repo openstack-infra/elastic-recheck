@@ -1,5 +1,0 @@
-query: >-
-  message:"Cannot '" AND
-  message:"' instance" AND
-  message:"while it is in vm_state building" AND
-  tags:"screen-n-api.txt"

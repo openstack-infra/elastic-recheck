@@ -1,3 +1,0 @@
-query: >-
-  message:"mount: mounting /dev/sr0 on /mnt failed: Device or resource busy"
-  AND (tags:"console.html" OR tags:"job-output.txt")

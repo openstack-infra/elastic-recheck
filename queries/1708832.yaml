@@ -1,4 +1,0 @@
-query: >-
-  message:"ERROR:dlrn:Received exception Error in"
-  AND tags:"console"
-  AND build_queue:"gate"
