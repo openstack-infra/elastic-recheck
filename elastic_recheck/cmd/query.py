@@ -107,8 +107,8 @@ def main():
         '--quantity', '-q', type=int, default=DEFAULT_MAX_QUANTITY,
         help='Maximum quantity of values to show for each attribute.')
     parser.add_argument(
-        '--days', '-d', type=float, default=DEFAULT_NUMBER_OF_DAYS,
-        help='Timespan to query, in days (may be a decimal).')
+        '--days', '-d', type=int, default=DEFAULT_NUMBER_OF_DAYS,
+        help='Timespan to query, in days.')
     parser.add_argument(
         '--verbose', '-v', action='store_true', default=False,
         help='Report on additional query metadata.')
