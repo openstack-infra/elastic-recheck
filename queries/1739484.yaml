@@ -1,0 +1,4 @@
+query: >-
+  message:"DetachedInstanceError" AND
+  message:"in get_all_by_group" AND
+  tags:"screen-c-api.txt"
