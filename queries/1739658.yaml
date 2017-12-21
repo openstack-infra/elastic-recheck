@@ -1,0 +1,3 @@
+query: >-
+  message:"RemoteError: Remote error: DBDeadlock (pymysql.err.InternalError) (1213, u'Deadlock found when trying to get lock; try restarting transaction') [SQL: u'UPDATE instance_actions SET updated_at" AND
+  tags:"screen-n-cpu.txt"
