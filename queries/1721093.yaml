@@ -1,0 +1,3 @@
+query: >
+  message:"Make sure this host can be reached over ssh\", \"unreachable\": true" AND
+  tags:"console"
