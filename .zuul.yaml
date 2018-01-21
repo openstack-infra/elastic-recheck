@@ -1,0 +1,15 @@
+- project:
+    check:
+      jobs:
+        - elastic-recheck-tox-queries:
+            voting: false
+
+- job:
+    name: elastic-recheck-tox-queries
+    parent: tox
+    description: |
+      Run test for elastic-recheck project.
+
+      Uses tox with the ``queries`` environment.
+    vars:
+      tox_envlist: queries
