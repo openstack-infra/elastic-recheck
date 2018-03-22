@@ -1,0 +1,11 @@
+# This is a general tracking query for all OVB infrastructure failures.
+# It is intended to serve two purposes: First, to let us know when such
+# failures are occurring, and second to notify users of what happened
+# when their job fails in this way, since it may not be obvious to them
+# what went wrong.  Please leave this query in place even if there are no
+# recent hits for it.
+query: >-
+  (message:"ERROR - Failed creating OVB stack" OR
+   message:"ERROR - Couldn't retrieve env") AND
+  tags:console
+suppress-graph: true
