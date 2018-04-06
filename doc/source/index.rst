@@ -16,17 +16,8 @@ Contents:
    usage
    contributing
 
-.. # NOTE(mriedem): This is where we hide things that we don't want shown in
-   # the top level table of contents. api/autoindex is hidden since it's in
-   # the modindex link below.
-.. toctree::
-   :hidden:
-
-   api/autoindex
-
 Indices and tables
 ==================
 
 * :ref:`genindex`
-* :ref:`modindex`
 * :ref:`search`
