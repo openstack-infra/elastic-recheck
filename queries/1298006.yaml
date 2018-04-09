@@ -1,5 +1,3 @@
 query: >-
-  message:"fatal: unable to" AND (
-  message:"connect to git.openstack.org" OR
-  message:"Failed to connect to git.openstack.org port 443: Connection timed out") AND
+  message:"ERROR: No viable v4 or v6 route found to git.openstack.org. The build node is assumed to be invalid." AND
   tags:console
