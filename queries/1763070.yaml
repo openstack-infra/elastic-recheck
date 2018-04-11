@@ -1,0 +1,3 @@
+query: >-
+  message:"urllib3.exceptions.ReadTimeoutError" AND
+  tags:"console"
