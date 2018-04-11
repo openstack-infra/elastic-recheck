@@ -1,0 +1,3 @@
+query: >-
+  message:"cn_uuid = self.compute_nodes[node].uuid" AND
+  tags:"console"
