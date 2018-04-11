@@ -1,3 +1,4 @@
 query: >-
-  message:"cn_uuid = self.compute_nodes[node].uuid" AND
+  (message:"cn_uuid = self.compute_nodes[node].uuid" OR
+   message:"self.assertEqual('completed', migrations[0]['status'])") AND
   tags:"console"
