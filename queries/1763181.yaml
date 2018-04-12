@@ -1,0 +1,3 @@
+query: >-
+  message:"AssertionError: 'host3' == 'host3'" AND
+  tags:"console"
