@@ -1,0 +1,4 @@
+query: >-
+  message:"Connection to libvirt failed: Failed to connect socket to '/var/run/libvirt/libvirt-sock': Permission denied: libvirtError: Failed to connect socket to '/var/run/libvirt/libvirt-sock': Permission denied" AND
+  tags:"screen-n-cpu.txt" AND
+  build_name:"nova-multiattach"
