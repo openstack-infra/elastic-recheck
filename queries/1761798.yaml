@@ -1,5 +1,6 @@
 query: >-
-  message:"VQ 0 size" AND
+  message:"VQ" AND
+  message:"size" AND
   message:"Guest index" AND
   message:"inconsistent with Host index" AND
   tags:"screen-n-cpu.txt"
