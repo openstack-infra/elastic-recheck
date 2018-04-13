@@ -1,0 +1,4 @@
+query: >-
+  message:"Failed to swap volume" AND
+  message:"libvirtError: block copy still active: domain has active block job" AND
+  tags:"screen-n-cpu.txt"
