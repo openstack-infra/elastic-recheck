@@ -1,0 +1,3 @@
+query: >-
+  message:"Currently installed pip version 1 does not meet minimum requirements (>=6)." AND
+  tags:"console"
