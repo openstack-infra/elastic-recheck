@@ -1,0 +1,4 @@
+query: >-
+  message:"AttributeError: 'NoneType' object has no attribute 'generation'" AND
+  tags:"screen-n-cpu.txt" AND
+  build_branch:"stable/ocata"
