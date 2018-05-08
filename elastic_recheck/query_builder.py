@@ -78,7 +78,7 @@ def result_ready(change, patchset, name, short_uuid):
     # TODO(dmsimard): Revisit this query once Zuul v2 is no longer supported
     # Let's value legibility over pep8 line width here...
     query = (
-        '((filename:"job-output.txt" AND message:"POST-RUN END" AND message:"project-config/playbooks/base/post-ssh")'  # flake8: noqa
+        '((filename:"job-output.txt" AND message:"POST-RUN END" AND message:"project-config/playbooks/base/post-ssh.yaml")'  # flake8: noqa
         ' OR '
         '(filename:"console.html" AND (message:"[Zuul] Job complete" OR message:"[SCP] Copying console log" OR message:"Grabbing consoleLog")))'  # flake8: noqa
         ' AND build_status:"FAILURE"'
