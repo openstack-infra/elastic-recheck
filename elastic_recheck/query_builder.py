@@ -80,7 +80,7 @@ def result_ready(change, patchset, name, short_uuid):
     query = (
         '((filename:"job-output.txt" AND message:"POST-RUN END" AND message:"project-config/playbooks/base/post-ssh")'  # flake8: noqa
         ' OR '
-        '(filename:"console.html" AND (message:"[Zuul] Job complete" OR message:"[SCP] Copying console log" OR message:"Grabbing consoleLog"))'  # flake8: noqa
+        '(filename:"console.html" AND (message:"[Zuul] Job complete" OR message:"[SCP] Copying console log" OR message:"Grabbing consoleLog")))'  # flake8: noqa
         ' AND build_status:"FAILURE"'
         ' AND build_change:"{change}"'
         ' AND build_patchset:"{patchset}"'
