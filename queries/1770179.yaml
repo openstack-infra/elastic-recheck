@@ -1,0 +1,4 @@
+query: >-
+  message:"group_snapshot" AND
+  message:"failed to reach creating status (current available) within the required time" AND
+  tags:"console"
