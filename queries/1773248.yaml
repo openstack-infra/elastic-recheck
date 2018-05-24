@@ -1,0 +1,3 @@
+query: >-
+  message:"ImportError: 'module' object has no attribute 'check_specifier'" AND
+  tags:"console"
