@@ -1,0 +1,3 @@
+query: >-
+  message:"actual    = {'nova_object.data': {'bdms': [{'nova_object.data': {'boot_index': None,\"" AND
+  tags:"console"
