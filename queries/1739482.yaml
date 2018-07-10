@@ -1,3 +1,4 @@
 query: >-
-  message:"VolumeBackendAPIException: Bad or unexpected response from the storage volume backend API: Create export of volume failed (Failed to create iscsi target for volume" AND
-  tags:"screen-c-vol.txt"
+  message:"_attach_volume" AND
+  module:"oslo_messaging.rpc.server" AND
+  tags:"screen-c-bak.txt"
