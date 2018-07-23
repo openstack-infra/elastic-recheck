@@ -1,0 +1,5 @@
+query: >-
+  message:"Details: Timeout while verifying metadata on server." AND
+  tags:"console"
+test_ids:
+  - tempest.api.compute.servers.test_device_tagging.TaggedAttachmentsTest.test_tagged_attachment
