@@ -1,0 +1,3 @@
+query: >-
+  message:"RESULT_TIMED_OUT: [untrusted : git.openstack.org/openstack/tempest/playbooks/devstack-tempest.yaml@master]" AND
+  tags:"console"
