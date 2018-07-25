@@ -1,0 +1,3 @@
+query: >-
+  message:"Instance compute service state on host2 expected to be down, but it was up." AND
+  tags:"console"
