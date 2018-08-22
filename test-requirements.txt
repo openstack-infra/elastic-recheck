@@ -7,5 +7,4 @@ oslo.sphinx
 testrepository>=0.0.17
 testscenarios>=0.4
 testtools>=0.9.36,!=1.2.0
-mox>=0.5.3
 mock>=1.0
