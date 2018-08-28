@@ -1,3 +1,4 @@
 query: >-
-  message:"FileNotFoundError: [Errno 2] No such file or directory: '/home/zuul/src/git.openstack.org/openstack/nova/instances/.directio.test'" AND
+  (message:"FileNotFoundError" OR message:"OSError") AND
+  message:"[Errno 2] No such file or directory: '/home/zuul/src/git.openstack.org/openstack/nova/instances/.directio.test'" AND
   tags:"console"
