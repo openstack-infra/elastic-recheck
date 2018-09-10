@@ -1,0 +1,4 @@
+query: >-
+  message:"DNSIntegrationTests:test_server_with_fip" AND
+  message:"failed to reach ACTIVE status and task state" AND
+  tags:"console"
