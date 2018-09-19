@@ -1,0 +1,3 @@
+query: >-
+  message:"rsync error: unexplained error (code 255) at" AND
+  tags:"console"
