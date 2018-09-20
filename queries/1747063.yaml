@@ -1,3 +1,0 @@
-query: >-
-  message:"Expected call: get('/allocation_candidates?" AND
-  tags:"console"

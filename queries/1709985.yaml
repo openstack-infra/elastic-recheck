@@ -1,6 +1,0 @@
-query: >-
-  message:"failed to reach ACTIVE status and task state \"None\" within the required time" AND
-  message:"Current status: REBUILD. Current task state: " AND (
-  message:"rebuild_spawning" OR message:"rebuild_block_device_mapping") AND
-  tags:"console" AND
-  build_name:"nova-cells-v1"

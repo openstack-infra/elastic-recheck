@@ -1,3 +1,0 @@
-query: >-
-  message:"cmd2 requires Python '>=3.4' but the running Python is 2.7.12" AND
-  tags:"console"

@@ -1,4 +1,0 @@
-query: >-
-  message:"libvirtError: Cannot recv data: Connection reset by peer" AND
-  tags:"screen-n-cpu.txt" AND
-  build_name:"legacy-tempest-dsvm-cells"

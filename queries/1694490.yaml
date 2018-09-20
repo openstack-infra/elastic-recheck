@@ -1,3 +1,0 @@
-query: >-
-  message:"Live Migration failure: operation failed: Failed to connect to remote libvirt URI" AND
-  tags:"screen-n-cpu.txt"

@@ -1,3 +1,0 @@
-query: >-
-  message:"self.assertEqual(set(['VM-1', 'VM-2']), server_names)" AND
-  tags:"console"
