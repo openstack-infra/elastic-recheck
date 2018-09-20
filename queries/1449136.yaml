@@ -1,3 +1,3 @@
 query: >-
-  message:"No matching distribution found for"
+  (message:"No matching distribution found for" OR message:"\nNo matching distribution found for")
   AND tags:console
