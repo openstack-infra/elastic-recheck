@@ -1,4 +1,0 @@
-query: >-
-  message:"ServerShowV254Test" AND
-  message:"Error processing message locally: OrphanedObjectError: Cannot call obj_load_attr on orphaned Instance object" AND
-  tags:"screen-n-cell-child.txt"

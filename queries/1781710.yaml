@@ -1,4 +1,0 @@
-query: >-
-  message:"AssertionError" AND
-  message:"Servers are on the same host:" AND
-  tags:"console"

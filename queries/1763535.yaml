@@ -1,3 +1,0 @@
-query: >-
-  message:"vm_utils.ImageType.KERNEL, None, 'dev')" AND
-  tags:"console" 

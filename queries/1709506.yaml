@@ -1,4 +1,0 @@
-query: >-
-  message:"Function 'nova.servicegroup.drivers.db.DbDriver._report_state' run outlasted interval by" AND
-  tags:"screen-n-cpu.txt" AND
-  node_provider:"citycloud-lon1"

@@ -1,3 +1,0 @@
-query: >-
-  message:"Failed to compute_task_build_instances: Field `compute_node_uuid' cannot be None" AND
-  tags:"console"

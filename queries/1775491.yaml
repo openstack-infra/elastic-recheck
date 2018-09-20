@@ -1,5 +1,0 @@
-query: >-
-  message:"sequence or collection is not empty:" AND (
-  message:"u'tags': [u'volume-tag']}]" OR
-  message:"volume-tag") AND
-  tags:"console"

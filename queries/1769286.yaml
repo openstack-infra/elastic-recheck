@@ -1,3 +1,0 @@
-query: >-
-  message:"SecurityProxyNegotiationFailed: Failed to negotiate security type with server: No compute auth available: No matching auth scheme: allowed types: 'AuthType.NONE', desired types: '19'" AND
-  tags:"screen-n-novnc-cell1.txt"

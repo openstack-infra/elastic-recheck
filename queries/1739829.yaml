@@ -1,3 +1,0 @@
-query: >-
-  message:"ERROR: InvocationError: '/opt/stack/tempest/.tox/venv/bin/tempest verify-config" AND
-  tags:"console"

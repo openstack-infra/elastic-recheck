@@ -1,3 +1,0 @@
-query: >-
-  message:"Couldn't communicate with cell 'child': ValueError: An object of type nova.objects.instance.TrustedCerts is required in field trusted_certs, not a dict" AND
-  tags:"screen-n-cell-child.txt"

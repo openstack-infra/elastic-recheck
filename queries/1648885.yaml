@@ -1,4 +1,0 @@
-query: >-
-  message:"TestVolumeBootPattern" AND
-  message:"Delete snapshot failed, due to snapshot busy." AND
-  tags:"screen-c-vol.txt"
