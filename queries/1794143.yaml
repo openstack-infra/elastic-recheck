@@ -1,0 +1,4 @@
+query: >-
+  message:"call('volume:retype'" AND
+  message:"status='in-use'" AND
+  tags:"console"
