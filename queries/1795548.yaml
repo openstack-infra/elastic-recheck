@@ -1,0 +1,4 @@
+query: >-
+  message:"return list(privileged.get_routing_table(ip_version, namespace))" AND
+  build_name:"neutron-functional" AND
+  tags:"console"
