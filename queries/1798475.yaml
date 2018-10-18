@@ -1,0 +1,8 @@
+query: >-
+  message:"1 packets transmitted, 0 received, 100% packet loss, time 0ms" AND
+  (build_name:"neutron-fullstack" OR build_name:"neutron-fullstack-python36") AND
+  tags:console AND
+  filename:"job-output.txt" AND
+  build_branch:"master"
+test_ids:
+  - neutron.tests.fullstack.test_l3_agent.TestHAL3Agent.test_ha_router_restart_agents_no_packet_lost
