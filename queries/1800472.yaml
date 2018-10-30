@@ -1,0 +1,4 @@
+query: >-
+  (message:"INFO [nova.filters] Filter ServerGroupAffinityFilter returned 0 hosts" OR
+   message:"INFO [nova.filters] Filter ServerGroupAntiAffinityFilter returned 0 hosts") AND
+  tags:"console"
