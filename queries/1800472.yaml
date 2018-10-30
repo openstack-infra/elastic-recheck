@@ -1,4 +1,3 @@
 query: >-
-  (message:"INFO [nova.filters] Filter ServerGroupAffinityFilter returned 0 hosts" OR
-   message:"INFO [nova.filters] Filter ServerGroupAntiAffinityFilter returned 0 hosts") AND
+  message:"WARNING [nova.compute.api] The nova-osapi_compute service version is from before Ocata" AND
   tags:"console"
