@@ -98,12 +98,12 @@ def classifying_rate(fails, data):
     print("Classification percentage: %2.2f%%" %
           ((float(count) / float(total)) * 100.0))
     sort = sorted(
-        bad_jobs.iteritems(),
+        bad_jobs.items(),
         key=operator.itemgetter(1),
         reverse=True)
     print("Job fails with most unclassified errors")
     for s in sort:
-        print "  %3s : %s" % (s[1], s[0])
+        print("  %3s : %s" % (s[1], s[0]))
 
 
 def _status_count(results):
@@ -183,10 +183,10 @@ def collect_metrics(classifier, fails):
 
 
 def print_metrics(data, with_lp=False):
-    print "Elastic recheck known issues"
-    print
+    print("Elastic recheck known issues")
+    print()
 
-    sorted_data = sorted(data.iteritems(),
+    sorted_data = sorted(data.items(),
                          key=lambda x: -x[1]['fails'])
     for d in sorted_data:
         bug = d[0]
@@ -195,13 +195,13 @@ def print_metrics(data, with_lp=False):
               % (bug, data['query'].rstrip()))
         if with_lp:
             get_launchpad_bug(d[0])
-        print "Hits"
+        print("Hits")
         for s in data['hits']:
-            print "  %s: %s" % (s, data['hits'][s])
-        print "Percentage of Gate Queue Job failures triggered by this bug"
+            print("  %s: %s" % (s, data['hits'][s]))
+        print("Percentage of Gate Queue Job failures triggered by this bug")
         for s in data['percentages']:
-            print "  %s: %2.2f%%" % (s, data['percentages'][s])
-        print
+            print("  %s: %2.2f%%" % (s, data['percentages'][s]))
+        print()
 
 
 def get_launchpad_bug(bug):
@@ -209,11 +209,11 @@ def get_launchpad_bug(bug):
                                                'production',
                                                LPCACHEDIR)
     lp_bug = lp.bugs[bug]
-    print "Title: %s" % lp_bug.title
+    print("Title: %s" % lp_bug.title)
     targets = map(lambda x: (x.bug_target_name, x.status), lp_bug.bug_tasks)
-    print "Project: Status"
+    print("Project: Status")
     for target, status in targets:
-        print "  %s: %s" % (target, status)
+        print("  %s: %s" % (target, status))
 
 
 def main():

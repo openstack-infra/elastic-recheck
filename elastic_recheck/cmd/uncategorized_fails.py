@@ -176,7 +176,7 @@ def classifying_rate(fails, data, engine, classifier, ls_url):
     classification rate. For every failure in the gate queue did
     we find a match for it.
     """
-    found_fails = {k: False for (k, v) in fails.iteritems()}
+    found_fails = {k: False for (k, v) in fails.items()}
 
     for bugnum in data:
         bug = data[bugnum]
@@ -237,7 +237,7 @@ def classifying_rate(fails, data, engine, classifier, ls_url):
                 (float(bad_jobs[job]) / float(total_job_failures[job]))
                 * 100.0)
     sort = sorted(
-        bad_jobs.iteritems(),
+        bad_jobs.items(),
         key=operator.itemgetter(1),
         reverse=True)
 

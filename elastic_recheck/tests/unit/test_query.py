@@ -11,7 +11,7 @@
 #    under the License.
 
 import json
-import StringIO
+from six import StringIO
 import sys
 
 import mock
@@ -25,7 +25,7 @@ class TestQueryCmd(unit.UnitTestCase):
     def setUp(self):
         super(TestQueryCmd, self).setUp()
         self._stdout = sys.stdout
-        sys.stdout = StringIO.StringIO()
+        sys.stdout = StringIO()
 
     def tearDown(self):
         super(TestQueryCmd, self).tearDown()

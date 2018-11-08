@@ -90,7 +90,7 @@ class FailJob(object):
         self.url = url
         # The last set of characters of the URL are the first 7 digits
         # of the build_uuid.
-        self.build_short_uuid = filter(None, url.split('/'))[-1]
+        self.build_short_uuid = list(filter(None, url.split('/')))[-1]
 
     def __repr__(self):
         return self.name

@@ -58,4 +58,4 @@ class TestUncategorizedFails(testtools.TestCase):
         self.assertThat(all_fails['integrated_gate'],
                         testtools.matchers.HasLength(1))
         self.assertIn('gate-tempest-dsvm-full',
-                      all_fails['integrated_gate'].keys()[0])
+                      list(all_fails['integrated_gate'].keys())[0])
