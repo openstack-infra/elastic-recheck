@@ -1,8 +1,17 @@
+---
 - project:
+    templates:
+      - publish-tox-docs-infra
     check:
       jobs:
         - elastic-recheck-tox-queries:
             voting: false
+        - openstack-tox-pep8
+        - openstack-tox-py27
+    gate:
+      jobs:
+        - openstack-tox-pep8
+        - openstack-tox-py27
 
 - job:
     name: elastic-recheck-tox-queries
