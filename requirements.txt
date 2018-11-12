@@ -4,7 +4,7 @@ python-dateutil>=2.0
 pytz
 pyelasticsearch<1.0
 gerritlib
-python-daemon<2.0 # BUg https://storyboard.openstack.org/#!/story/2000107
+python-daemon>=2.2.0
 irc>=15.0.1
 pyyaml
 lockfile
