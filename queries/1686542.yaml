@@ -1,4 +1,5 @@
 query: >-
   (message: "FAILED with status: 137" OR
-  message: "FAILED with status: 143") AND
+  message: "FAILED with status: 143" OR
+  message: "RUN END RESULT_TIMED_OUT") AND
   tags: "console"
