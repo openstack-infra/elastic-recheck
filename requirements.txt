@@ -9,6 +9,7 @@ irc>=15.0.1
 pyyaml
 lockfile
 Babel>=0.9.6
+httplib2<0.12.0 # required by launchpadlib, see https://bugs.launchpad.net/lazr.restfulclient/+bug/1803402
 launchpadlib
 Jinja2
 requests
