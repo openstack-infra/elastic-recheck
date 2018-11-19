@@ -1,0 +1,4 @@
+query: >-
+  message:"testtools.matchers._impl.MismatchError: [(1, 0, 'N343')] != []" AND
+  tags:"console" AND
+  build_name:"openstack-tox-py36"
