@@ -1,0 +1,3 @@
+query: >-
+  message:"fatal_signal|WARN|terminating with signal 14 (Alarm clock)" AND
+  tags:"console"
