@@ -115,6 +115,7 @@ class FailEvent(object):
         self.project = event['change']['project']
         self.url = event['change']['url']
         self.comment = event["comment"]
+        self.created_on = event["eventCreatedOn"]
         # TODO(jogo): make FailEvent generate the jobs
         self.failed_jobs = failed_jobs
         self.config = config or er_conf.Config()
@@ -257,12 +258,18 @@ class Stream(object):
 
     def _does_es_have_data(self, event):
         """Wait till ElasticSearch is ready, but return False if timeout."""
-        NUMBER_OF_RETRIES = 30
-        SLEEP_TIME = 40
-        started_at = datetime.datetime.now()
-        # this checks that we've got the console log uploaded, need to retry
+        # We wait 20 minutes wall time since receiving the event until we
+        # treat the logs as missing
+        timeout = 1200
+        # Wait 40 seconds between queries.
+        sleep_time = 40
+        timed_out = False
+        # This checks that we've got the console log uploaded, need to retry
         # in case ES goes bonkers on cold data, which it does some times.
-        for i in range(NUMBER_OF_RETRIES):
+        # We check at least once so that we can return success if data is
+        # there. But then only check again until we reach a timeout since
+        # the event was received.
+        while True:
             try:
                 for job in event.failed_jobs:
                     # TODO(jogo): if there are three failed jobs and only the
@@ -271,23 +278,32 @@ class Stream(object):
                     self._job_console_uploaded(
                         event.change, event.rev, job.name,
                         job.build_short_uuid)
+                    self._has_required_files(
+                        event.change, event.rev, job.name,
+                        job.build_short_uuid)
                 break
 
             except ConsoleNotReady as e:
                 self.log.debug(e)
-                time.sleep(SLEEP_TIME)
-                continue
+            except FilesNotReady as e:
+                self.log.info(e)
             except pyelasticsearch.exceptions.InvalidJsonResponseError:
                 # If ElasticSearch returns an error code, sleep and retry
                 # TODO(jogo): if this works pull out search into a helper
                 # function that  does this.
                 self.log.exception(
-                    "Elastic Search not responding on attempt %d" % i)
-                time.sleep(SLEEP_TIME)
-                continue
-        else:
-            elapsed = format_timedelta(datetime.datetime.now() - started_at)
-            msg = ("Console logs not available after %ss for %s %d,%d,%s" %
+                    "Elastic Search not responding")
+            # If we fall through then we had a failure of some sort.
+            # Wait until timeout is exceeded.
+            now = time.time()
+            if now > event.created_on + timeout:
+                # We've waited too long for this event, move on.
+                timed_out = True
+                break
+            time.sleep(sleep_time)
+        if timed_out:
+            elapsed = now - event.created_on
+            msg = ("Required files not ready after %ss for %s %d,%d,%s" %
                    (elapsed, job.name, event.change, event.rev,
                        job.build_short_uuid))
             raise ResultTimedOut(msg)
@@ -295,28 +311,10 @@ class Stream(object):
         self.log.debug(
             "Found hits for change_number: %d, patch_number: %d"
             % (event.change, event.rev))
-
-        for i in range(NUMBER_OF_RETRIES):
-            try:
-                for job in event.failed_jobs:
-                    self._has_required_files(
-                        event.change, event.rev, job.name,
-                        job.build_short_uuid)
-                self.log.info(
-                    "All files present for change_number: %d, patch_number: %d"
-                    % (event.change, event.rev))
-                time.sleep(10)
-                return True
-            except FilesNotReady as e:
-                self.log.info(e)
-                time.sleep(SLEEP_TIME)
-
-        # if we get to the end, we're broken
-        elapsed = format_timedelta(datetime.datetime.now() - started_at)
-        msg = ("Required files not ready after %ss for %s %d,%d,%s" %
-               (elapsed, job.name, event.change, event.rev,
-                   job.build_short_uuid))
-        raise ResultTimedOut(msg)
+        self.log.info(
+            "All files present for change_number: %d, patch_number: %d"
+            % (event.change, event.rev))
+        return True
 
     def get_failed_tempest(self):
         self.log.debug("entering get_failed_tempest")
