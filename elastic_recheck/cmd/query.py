@@ -42,7 +42,7 @@ IGNORED_ATTRIBUTES = [
 
 def analyze_attributes(attributes):
     analysis = {}
-    for attribute, values in attributes.iteritems():
+    for attribute, values in attributes.items():
         if attribute[0] == '@' or attribute == 'message':
             # skip meta attributes and raw messages
             continue
@@ -50,7 +50,7 @@ def analyze_attributes(attributes):
         analysis[attribute] = []
 
         total_hits = sum(values.values())
-        for value_hash, hits in values.iteritems():
+        for value_hash, hits in values.items():
             value = json.loads(value_hash)
             analysis[attribute].append((100.0 * hits / total_hits, value))
 
@@ -78,13 +78,13 @@ def query(query_file_name, config=None, days=DEFAULT_NUMBER_OF_DAYS,
     attributes = {}
 
     for hit in r.hits['hits']:
-        for key, value in hit['_source'].iteritems():
+        for key, value in hit['_source'].items():
             value_hash = json.dumps(value)
             attributes.setdefault(key, {}).setdefault(value_hash, 0)
             attributes[key][value_hash] += 1
 
     analysis = analyze_attributes(attributes)
-    for attribute, results in sorted(analysis.iteritems()):
+    for attribute, results in sorted(analysis.items()):
         if not verbose and attribute in IGNORED_ATTRIBUTES:
             # skip less-than-useful attributes to reduce noise in the report
             continue
@@ -92,7 +92,7 @@ def query(query_file_name, config=None, days=DEFAULT_NUMBER_OF_DAYS,
         print(attribute)
         for percentage, value in itertools.islice(results, quantity):
             if isinstance(value, list):
-                value = ' '.join(unicode(x) for x in value)
+                value = ' '.join(str(x) for x in value)
             print('  %d%% %s' % (percentage, value))
 
 

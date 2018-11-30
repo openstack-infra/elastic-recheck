@@ -1,6 +1,8 @@
 ---
 - project:
     templates:
+      - openstack-python36-jobs
+      - openstack-python37-jobs
       - publish-tox-docs-infra
     check:
       jobs:

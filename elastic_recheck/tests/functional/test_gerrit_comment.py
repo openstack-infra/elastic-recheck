@@ -12,8 +12,8 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import ConfigParser
 import gerritlib
+from six.moves import configparser
 import testtools
 
 from elastic_recheck import elasticRecheck
@@ -23,7 +23,7 @@ class TestGerritComment(testtools.TestCase):
 
     def setUp(self):
         super(TestGerritComment, self).setUp()
-        config = ConfigParser.ConfigParser({'server_password': None})
+        config = configparser.ConfigParser({'server_password': None})
         config.read('elasticRecheck.conf')
         self.user = config.get('gerrit', 'user')
         key = config.get('gerrit', 'key')

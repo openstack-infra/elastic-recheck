@@ -12,7 +12,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import ConfigParser
+from six.moves import configparser
 import unittest
 import yaml
 
@@ -49,7 +49,9 @@ def _set_fake_config(fake_config):
 class TestBot(unittest.TestCase):
     def setUp(self):
         super(TestBot, self).setUp()
-        self.fake_config = ConfigParser.ConfigParser({'server_password': None})
+        self.fake_config = configparser.ConfigParser(
+            {'server_password': None},
+            allow_no_value=True)
         _set_fake_config(self.fake_config)
         config = er_conf.Config(config_obj=self.fake_config)
         self.channel_config = bot.ChannelConfig(yaml.load(
@@ -93,7 +95,9 @@ class TestBotWithTestTools(tests.TestCase):
         self.useFixture(fixtures.MonkeyPatch(
             'gerritlib.gerrit.Gerrit',
             fg.Gerrit))
-        self.fake_config = ConfigParser.ConfigParser({'server_password': None})
+        self.fake_config = configparser.ConfigParser(
+            {'server_password': None},
+            allow_no_value=True)
         _set_fake_config(self.fake_config)
         config = er_conf.Config(config_obj=self.fake_config)
         self.channel_config = bot.ChannelConfig(yaml.load(

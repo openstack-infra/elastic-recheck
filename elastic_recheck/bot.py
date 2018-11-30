@@ -250,13 +250,13 @@ class ChannelConfig(object):
                 data['#' + key] = data.pop(key)
         self.channels = data.keys()
         self.events = {}
-        for channel, val in self.data.iteritems():
+        for channel, val in self.data.items():
             for event in val['events']:
                 event_set = self.events.get(event, set())
                 event_set.add(channel)
                 self.events[event] = event_set
         self.projects = {}
-        for channel, val in self.data.iteritems():
+        for channel, val in self.data.items():
             for project in val['projects']:
                 project_set = self.projects.get(project, set())
                 project_set.add(channel)

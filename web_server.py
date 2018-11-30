@@ -40,7 +40,7 @@ class ERHandler(BaseHTTPServer.BaseHTTPRequestHandler):
         # if the file exists locally, we'll serve it up directly
         fname = "web/share" + self.path
         if os.path.isfile(fname):
-            print "found local file %s" % (fname)
+            print("found local file %s" % (fname))
             self.send_response(200, "Success")
             self.end_headers()
             with open(fname) as f:
@@ -73,7 +73,7 @@ class ERHandler(BaseHTTPServer.BaseHTTPRequestHandler):
             return
 
         # Fall through for paths we don't understand
-        print "Unknown path requested: %s" % self.path
+        print("Unknown path requested: %s" % self.path)
 
 
 def parse_opts():
@@ -90,9 +90,9 @@ def main():
     server_address = ('', opts.port)
     httpd = BaseHTTPServer.HTTPServer(server_address, ERHandler)
 
-    print "Test Server is running at http://localhost:%s" % opts.port
-    print "Ctrl-C to exit"
-    print
+    print("Test Server is running at http://localhost:%s" % opts.port)
+    print("Ctrl-C to exit")
+    print()
 
     while True:
         httpd.handle_request()
@@ -101,5 +101,5 @@ if __name__ == '__main__':
     try:
         main()
     except KeyboardInterrupt:
-        print "\n"
-        print "Thanks for testing! Please come again."
+        print("\n")
+        print("Thanks for testing! Please come again.")

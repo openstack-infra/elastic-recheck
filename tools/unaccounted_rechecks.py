@@ -101,12 +101,12 @@ def cross_ref_with_er(changes, dirname):
 
 def summarize_changes(changes):
     no_er = {}
-    print "Summary"
-    print "%4.4s - Total Rechecks" % (len(changes))
-    print "%4.4s - Total w/Bug" % (
-        len([c for c in changes if c['bug'] != 'no bug']))
-    print "%4.4s - Total w/Bug and new recheck" % (
-        len([c for c in changes if (c['bug'] != 'no bug' and not c['er'])]))
+    print("Summary")
+    print("%4.4s - Total Rechecks" % (len(changes)))
+    print("%4.4s - Total w/Bug" % (
+        len([c for c in changes if c['bug'] != 'no bug'])))
+    print("%4.4s - Total w/Bug and new recheck" % (
+        len([c for c in changes if (c['bug'] != 'no bug' and not c['er'])])))
 
     for c in changes:
         bug = c['bug']
@@ -115,12 +115,12 @@ def summarize_changes(changes):
                 no_er[bug] = {'count': 0, 'reviews': []}
             no_er[bug]['count'] += 1
             no_er[bug]['reviews'].append(c['review'])
-    print
-    print "New bugs"
-    for k, v in no_er.iteritems():
-        print "Bug %s found %d times" % (k, v['count'])
+    print()
+    print("New bugs")
+    for k, v in no_er.items():
+        print("Bug %s found %d times" % (k, v['count']))
         for rev in v['reviews']:
-            print "  - %s" % rev
+            print("  - %s" % rev)
 
 
 def main():

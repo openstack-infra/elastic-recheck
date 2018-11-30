@@ -59,7 +59,7 @@ class TestBasicParsing(tests.TestCase):
 
         facets = results.FacetSet()
         facets.detect_facets(result_set, ["build_status"])
-        self.assertEqual(facets.keys(), ['FAILURE'])
+        self.assertEqual(list(facets.keys()), ['FAILURE'])
 
         data = load_sample(1226337)
         result_set = results.ResultSet(data)
@@ -87,17 +87,14 @@ class TestBasicParsing(tests.TestCase):
         facets.detect_facets(result_set,
                              ["timestamp", "build_status", "build_uuid"])
         self.assertEqual(len(facets.keys()), 14)
-        print facets[1382104800000].keys()
-        self.assertEqual(facets[1382104800000].keys(), ["FAILURE"])
+        print(facets[1382104800000].keys())
+        self.assertEqual(list(facets[1382104800000].keys()), ["FAILURE"])
         self.assertEqual(len(facets[1382104800000]["FAILURE"]), 2)
-        self.assertEqual(facets[1382101200000].keys(), ["FAILURE"])
+        self.assertEqual(list(facets[1382101200000].keys()), ["FAILURE"])
 
 
 # NOTE(mriedem): We can't mock built-ins so we have to override utcnow().
 class MockDatetimeToday(datetime.datetime):
-
-    def __init__(self, *args):
-        super(MockDatetimeToday, self).__init__(*args)
 
     @classmethod
     def utcnow(cls):
@@ -107,9 +104,6 @@ class MockDatetimeToday(datetime.datetime):
 
 
 class MockDatetimeYesterday(datetime.datetime):
-
-    def __init__(self, *args):
-        super(MockDatetimeYesterday, self).__init__(*args)
 
     @classmethod
     def utcnow(cls):

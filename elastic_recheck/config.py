@@ -12,7 +12,7 @@
 #    License for the specific language governing permissions and limitations
 #    under the License.
 
-import ConfigParser
+from six.moves import configparser
 import os
 import re
 
@@ -26,6 +26,7 @@ JOBS_RE = 'dsvm'
 CI_USERNAME = 'jenkins'
 
 GERRIT_QUERY_FILE = 'queries'
+GERRIT_HOST = 'review.openstack.org'
 
 PID_FN = '/var/run/elastic-recheck/elastic-recheck.pid'
 
@@ -101,7 +102,7 @@ class Config(object):
             if config_obj:
                 config = config_obj
             else:
-                config = ConfigParser.ConfigParser(
+                config = configparser.ConfigParser(
                     {'es_url': ES_URL,
                      'ls_url': LS_URL,
                      'db_uri': DB_URI,
@@ -110,7 +111,7 @@ class Config(object):
                      'jobs_re': JOBS_RE,
                      'pidfile': PID_FN,
                      'index_format': DEFAULT_INDEX_FORMAT,
-                     'query_file': GERRIT_QUERY_FILE,
+                     'query_file': GERRIT_QUERY_FILE
                      }
                 )
                 config.read(config_file)
@@ -129,8 +130,15 @@ class Config(object):
             if config.has_section('gerrit'):
                 self.gerrit_user = config.get('gerrit', 'user')
                 self.gerrit_query_file = config.get('gerrit', 'query_file')
-                self.gerrit_host = config.get('gerrit', 'host',
-                                              'review.openstack.org')
+                # workaround for python api change https://docs.python.org/3/library/configparser.html#fallback-values
+                try:
+                    self.gerrit_host = config.get('gerrit',
+                                                  'host',
+                                                  fallback=GERRIT_HOST)
+                except TypeError:
+                    self.gerrit_host = config.get('gerrit',
+                                                  'host',
+                                                  GERRIT_HOST)
                 self.gerrit_host_key = config.get('gerrit', 'key')
 
             if config.has_section('ircbot'):
