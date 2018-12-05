@@ -1,0 +1,2 @@
+query: >-
+  message:"-api did not start" AND tags:"console"
