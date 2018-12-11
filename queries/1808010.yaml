@@ -1,0 +1,3 @@
+query: >-
+  message:"failed to copy results from configdrive to /run/cirros/datasource" AND
+  tags:"console"
