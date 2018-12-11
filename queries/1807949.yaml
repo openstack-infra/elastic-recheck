@@ -1,0 +1,5 @@
+query: >-
+  tags:"screen-n-cpu.txt" AND
+  message:"OSError: [Errno 24] Too many open files" AND
+  module:"os_vif" AND
+  loglevel: "ERROR"
