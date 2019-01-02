@@ -1,0 +1,3 @@
+query: >-
+  message:"fatal: [subnode-2]: UNREACHABLE!" AND
+  tags:"console"
