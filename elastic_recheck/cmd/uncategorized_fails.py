@@ -363,6 +363,12 @@ def main():
         LOG.info("Processing failures for group: %s", group)
         fails = all_gate_fails[group]
         if not fails:
+            # It would be pretty spectacular if we had no failures so if we're
+            # using the default all failures query, there could be a problem
+            # with the query, so log a hint.
+            if opts.all_fails_query == er_config.ALL_FAILS_QUERY:
+                LOG.warning('No failures found in group "%s". The default '
+                            'ALL_FAILS_QUERY might be broken.', group)
             continue
         data = collect_metrics(classifier, fails, config=config)
         engine = setup_template_engine(opts.templatedir, group=group)
