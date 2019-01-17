@@ -52,7 +52,7 @@ INCLUDED_PROJECTS_REGEX = "(^openstack/|devstack|grenade)"
 # Let's value legibility over pep8 line width here...
 ALL_FAILS_QUERY = (
     '('
-    '(filename:"job-output.txt" AND message:"POST-RUN END" AND message:"project-config/playbooks/base/post-ssh.yaml")'  # flake8: noqa
+    '(filename:"job-output.txt" AND message:"POST-RUN END" AND message:"project-config/playbooks/base/post.yaml")'  # flake8: noqa
     ' OR '
     '(filename:"console.html" AND (message:"[Zuul] Job complete" OR message:"[SCP] Copying console log" OR message:"Grabbing consoleLog"))'  # flake8: noqa
     ')'
