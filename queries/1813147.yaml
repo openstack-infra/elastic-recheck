@@ -1,0 +1,4 @@
+query: >-
+  message:"subunit.parser" AND
+  message:"FAILED" AND
+  tags:"console"
