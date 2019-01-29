@@ -1,0 +1,5 @@
+query: >-
+  (message:"Remote error: ToozConnectionError Service Unavailable" OR
+   message:"tooz.coordination.ToozConnectionError: Service Unavailable") AND
+  (tags:"screen-c-api.txt" OR
+   tags:"screen-c-vol.txt")
