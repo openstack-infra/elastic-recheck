@@ -1,0 +1,4 @@
+query: >-
+  message:"Timeout waiting for [('network-vif-plugged'" AND
+  message:"for instance with vm_state error and task_state rebuild_spawning." AND
+  tags:"screen-n-cpu.txt"
