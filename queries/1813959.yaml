@@ -1,0 +1,4 @@
+query: >-
+  message:"Body:" AND
+  message:": One or more ports have an IP allocation from this subnet" AND
+  tags:"console"
