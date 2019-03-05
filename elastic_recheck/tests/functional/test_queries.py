@@ -47,8 +47,8 @@ class TestQueries(tests.TestCase):
 
     def get_group_projects(self, group_name):
         group = self.lp.project_groups[group_name]
-        return map(lambda project: project.name,
-                   group.projects)
+        return list(map(lambda project: project.name,
+                        group.projects))
 
     def test_launchpad(self):
         bad_bugs = []
