@@ -1,3 +1,0 @@
-query: >-
-  message:"INFO [nova.virt.libvirt.driver] Creating image" AND
-  tags:"console"
