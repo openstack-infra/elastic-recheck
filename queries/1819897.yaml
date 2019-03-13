@@ -1,0 +1,4 @@
+query: >-
+  message:"[ERROR]" AND
+  message:"Neutron did not start" AND
+  tags:"console"
