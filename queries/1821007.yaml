@@ -1,0 +1,3 @@
+query: >-
+  message:"The error was: 'gabbi_tempest_path' is undefined" AND
+  tags:"console"
