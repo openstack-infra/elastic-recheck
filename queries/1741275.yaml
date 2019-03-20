@@ -1,4 +1,0 @@
-query: >-
-  message:"Insufficient free virtual space" AND
-  message:"to accommodate thin provisioned 1GB volume on" AND
-  tags:"screen-c-sch.txt"

@@ -1,3 +1,0 @@
-query: >-
-  message:"WARNING [nova.compute.api] The nova-osapi_compute service version is from before Ocata" AND
-  tags:"console"

@@ -1,3 +1,0 @@
-query: >-
-  message:"No lease, failing" AND
-  tags:"console"

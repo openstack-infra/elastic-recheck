@@ -1,3 +1,0 @@
-query: >-
-  message:"cat: can't open '/var/run/udhcpc..pid': No such file or directory" AND
-  tags:"console"

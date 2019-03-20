@@ -1,5 +1,0 @@
-query: >-
-  message:"************* Module neutron.agent.linux.utils" AND
-  tags:"console" AND
-  build_name:"openstack-tox-pep8" AND
-  project:"openstack/neutron"

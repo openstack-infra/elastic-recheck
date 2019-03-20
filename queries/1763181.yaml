@@ -1,4 +1,0 @@
-query: >-
-  (message:"AssertionError: 'host3' == 'host3'" OR
-   message:"AssertionError: u'host3' == u'host3'") AND
-  tags:"console"

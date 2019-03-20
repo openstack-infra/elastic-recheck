@@ -1,4 +1,0 @@
-query: >-
-  message:"cinder_grenade " AND
-  message:"status must be available or downloading" AND
-  tags:"screen-n-api.txt"

@@ -1,5 +1,0 @@
-query: >-
-  message:"502 PUT" AND
-  message:"/image/v2/images/" AND
-  message:"/file" AND
-  tags:"console"

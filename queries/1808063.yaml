@@ -1,4 +1,0 @@
-query: >-
-  message:"Unexpected exception in API method: glanceclient.exc.HTTPBadGateway: 502 Proxy Error" AND
-  message:"Reason: Error reading from remote server:" AND
-  tags:"screen-n-api.txt"

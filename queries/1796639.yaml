@@ -1,3 +1,0 @@
-query: >
-  message:"heatclient.exc.HTTPInternalServerError: ERROR: [Errno 2] No such file or directory: '/etc/heat/policy.json'"
-  AND tags:"console"

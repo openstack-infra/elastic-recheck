@@ -1,4 +1,0 @@
-query: >-
-  message:"TestNetworkAdvancedServerOps:test_server_connectivity_cold_migration_revert finishes ping" AND
-  message:"and the ping result is unexpected" AND
-  tags:"console"

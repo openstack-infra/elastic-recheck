@@ -1,5 +1,0 @@
-query: >-
-  message:"SSH Error: data could not be sent to remote host" AND
-  message:"Make sure this host can be reached over ssh" AND
-  tags:"console" AND
-  node_provider:"packethost-us-west-1"

@@ -1,3 +1,0 @@
-query: >-
-  message:"from ansible.config.manager import find_ini_config_file" AND
-  tags:"console"

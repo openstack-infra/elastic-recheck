@@ -1,3 +1,0 @@
-query: >-
-  message:"tb2 = fake_notifier.VERSIONED_NOTIFICATIONS[7]['payload'][" AND
-  tags:"console"

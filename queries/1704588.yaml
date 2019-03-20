@@ -1,4 +1,0 @@
-query: >
-  message:"[nova.api.openstack.wsgi] HTTP exception thrown: Instance" AND
-  message:"is in an invalid state for 'rebuild'" AND
-  tags:"console"
