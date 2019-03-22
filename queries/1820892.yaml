@@ -1,4 +1,4 @@
 query: >-
-  message:"Error starting thread.: ModuleNotFoundError: No module named 'etcd3gw'" AND
+  message:"ModuleNotFoundError" AND
   tags:"screen" AND
   build_name:"grenade-py3"
