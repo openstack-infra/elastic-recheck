@@ -1,0 +1,3 @@
+query: >-
+  message:"sqlalchemy.exc.InterfaceError: (pymysql.err.InterfaceError) (0, '')" AND
+  tags:"console"
