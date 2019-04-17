@@ -1,0 +1,5 @@
+query: >-
+  message:"Failed to fetch" AND
+  message:"File has unexpected size" AND
+  message:"Mirror sync in progress?" AND
+  tags:"console"
