@@ -1,6 +1,0 @@
-query: >-
-  message:"ModuleNotFoundError" AND
-  tags:"screen" AND
-  ( build_name:"grenade-py3" OR
-    build_name:"neutron-grenade-multinode" OR
-    build_name:"neutron-grenade-dvr-multinode" )

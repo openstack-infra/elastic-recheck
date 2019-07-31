@@ -1,2 +1,0 @@
-query: >-
-  message:"  connection.scalar(select([1]))'" AND filename:"job-output.txt"

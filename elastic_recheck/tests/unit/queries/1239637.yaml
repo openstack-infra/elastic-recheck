@@ -1,4 +1,0 @@
-query: >
-  message:"DBError: (IntegrityError) null value in column \"network_id\"
-  violates not-null constraint"
-  AND filename:"logs/screen-q-svc.txt"

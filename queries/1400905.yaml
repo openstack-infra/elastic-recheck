@@ -1,3 +1,0 @@
-query: >-
-  message:"Hash Sum mismatch"
-  AND tags:console

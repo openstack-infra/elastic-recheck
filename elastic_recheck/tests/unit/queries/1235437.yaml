@@ -1,4 +1,0 @@
-query: >
-  message:"failed to reach ACTIVE status within the required time"
-  AND message:"Current status\: BUILD"
-  AND filename:"console.html"

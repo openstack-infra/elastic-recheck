@@ -1,5 +1,0 @@
-query: >-
-    message:"fixtures._fixtures.timeout.TimeoutException" AND
-    (build_name:"neutron-fullstack" OR build_name:"neutron-fullstack-python36") AND
-    tags:console AND
-    filename:"job-output.txt"

@@ -1,4 +1,0 @@
-query: >-
-  message:"Segmentation fault" AND
-  message:"$cmd_pip $upgrade $install_test_reqs" AND
-  tags:"console"

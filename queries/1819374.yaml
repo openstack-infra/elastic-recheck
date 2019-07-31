@@ -1,4 +1,0 @@
-query: >-
-  message:"Port" AND
-  message:"from network info_cache is no longer associated with instance in Neutron. Removing from network info_cache.'" AND
-  tags:"console"

@@ -1,3 +1,0 @@
-query: >-
-  message:"error: unrecognized arguments: --force" AND
-  tags:"console"

@@ -1,3 +1,0 @@
-query: >-
-  message:"no such option sync_on_startup in group [placement_database]" AND
-  tags:"console"

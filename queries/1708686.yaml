@@ -1,4 +1,0 @@
-query: >-
-  message:"ReadTimeoutError: HTTPConnectionPool"
-  AND message:"pypi"
-  AND tags:console

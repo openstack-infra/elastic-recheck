@@ -1,3 +1,0 @@
-query: >-
-  message:"ERROR: No viable v4 or v6 route found to git.openstack.org. The build node is assumed to be invalid." AND
-  tags:console

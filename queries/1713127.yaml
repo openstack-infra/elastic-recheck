@@ -1,3 +1,0 @@
-query: >-
-  message:"Failed to call refresh: /usr/bin/clustercheck"
-  AND tags:console

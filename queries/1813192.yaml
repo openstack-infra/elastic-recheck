@@ -1,3 +1,0 @@
-query: >-
-  message:"Cannot destroy instance, operation time out: libvirt.libvirtError: Timed out during operation: cannot acquire state change lock (held by remoteDispatchDomainBlockJobAbort)" AND
-  tags:"screen-n-cpu.txt"

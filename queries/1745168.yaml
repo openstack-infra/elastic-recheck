@@ -1,4 +1,0 @@
-query: >-
-  message:"backup" AND
-  message:"failed to reach available status (current creating) within the required time" AND
-  tags:"console"

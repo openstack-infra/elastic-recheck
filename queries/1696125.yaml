@@ -1,5 +1,0 @@
-query: >
-  message:"Detach interface failed" AND
-  message:"reason: Device detach failed for" AND
-  message:"Unable to detach from guest transient domain" AND
-  tags:"screen-n-cpu.txt"

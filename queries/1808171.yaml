@@ -1,4 +1,0 @@
-query: >-
-  message:"tempest-TaggedBootDevicesTest" AND
-  message:"Timeout waiting for [('network-vif-plugged'" AND
-  tags:"screen-n-cpu.txt"

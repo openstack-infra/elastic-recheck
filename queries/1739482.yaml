@@ -1,4 +1,0 @@
-query: >-
-  message:"_attach_volume" AND
-  module:"oslo_messaging.rpc.server" AND
-  tags:"screen-c-bak.txt"

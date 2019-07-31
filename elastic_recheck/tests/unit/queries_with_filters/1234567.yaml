@@ -1,6 +1,0 @@
-query: >
-  message:" 503"
-  AND filename:"logs/syslog.txt"
-  AND syslog_program:"proxy-server"
-test_ids:
-  - tempest.api.object_storage.test_account_services.test_list_containers

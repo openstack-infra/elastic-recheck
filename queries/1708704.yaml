@@ -1,4 +1,0 @@
-query: >-
-  message:"[Errno 256] No more mirrors to try" AND
-  tags:"console"
-allow-nonvoting: true

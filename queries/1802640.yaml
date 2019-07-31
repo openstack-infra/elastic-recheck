@@ -1,4 +1,0 @@
-query: >-
-  message:"TimeoutException: Commands [<ovsdbapp.schema.open_vswitch.commands.SetFailModeCommand object at" AND
-  message:"exceeded timeout 10 seconds" AND
-  tags:"screen-q-agt.txt"

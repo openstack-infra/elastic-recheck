@@ -1,4 +1,0 @@
-query: >-
-  message:"ImagesTestJSON:test_delete_saving_image) Image" AND
-  message:"failed to reach SAVING state (current state ACTIVE)" AND
-  tags:"console"

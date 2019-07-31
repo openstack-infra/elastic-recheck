@@ -1,3 +1,0 @@
-query: >
-  message:" Registry client request" AND message:"raised ClientConnectionError"
-  AND filename:"logs/screen-g-api.txt"

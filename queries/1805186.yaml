@@ -1,3 +1,0 @@
-query: >-
-  message:"ImageNotFoundException: Not found image: docker://docker.io/tripleomaster/" AND
-  tags:"console"

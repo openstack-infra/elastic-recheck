@@ -1,3 +1,0 @@
-query: >-
-  message:"exec user process caused \"no such file or directory" AND
-  tags:"console"

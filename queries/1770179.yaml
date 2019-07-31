@@ -1,4 +1,0 @@
-query: >-
-  (message:"group_snapshot" OR message:"group") AND
-  message:"failed to reach creating status (current available) within the required time" AND
-  tags:"console"

@@ -1,3 +1,0 @@
-query: >-
-  message:"systemd[1]: devstack@peakmem_tracker.service: Main process exited, code=exited, status=1/FAILURE" AND
-  tags:"console"

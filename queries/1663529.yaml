@@ -1,3 +1,0 @@
-query: >
-  message:"sudo mount /dev/sr0 /mnt', exit status: 255"
-  AND tags:"console"

@@ -1,5 +1,0 @@
-query: >-
-  message:"Guest refused to detach volume" AND
-  (message:"Unable to detach from guest transient domain." OR
-   message:"Unable to detach the device from the live config") AND
-  tags:"screen-n-cpu.txt"

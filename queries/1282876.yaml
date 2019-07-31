@@ -1,4 +1,0 @@
-query: >
-  (message:"fatal: The remote end hung up unexpectedly" OR
-  (message:"fatal:" AND message:"Recv failure: Connection timed out")) AND
-  tags:"console" AND NOT build_queue:"check-tripleo"

@@ -1,6 +1,0 @@
-query: >-
-  message:"RESULT_TIMED_OUT: [untrusted : git.openstack.org/openstack/tempest/playbooks/devstack-tempest.yaml@master]" AND
-  tags:"console" AND NOT
-  (build_name:"tempest-all" OR
-   build_name:"tempest-slow" OR
-   build_name:"tempest-slow-py3")

@@ -1,8 +1,0 @@
-# this is a placeholder bug and should not be removed if there are no hits
-query: >
-  message:"Requirement"
-  AND message:"does not match openstack/requirements value"
-  AND tags:"console"
-  AND build_queue:"gate"
-suppress-graph: true
-suppress-notification: true

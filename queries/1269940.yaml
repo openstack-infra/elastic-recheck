@@ -1,4 +1,0 @@
-query: >
-  message:"[EnvInject] - [ERROR] - SEVERE ERROR occurs:"
-  AND (tags:"console.html" OR tags:"job-output.txt")
-suppress-graph: true

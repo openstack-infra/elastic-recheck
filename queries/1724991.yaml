@@ -1,3 +1,0 @@
-query: >-
-  message:"resources.ControllerDeployment_Step3: Stack CREATE cancelled"
-  AND tags:"console"

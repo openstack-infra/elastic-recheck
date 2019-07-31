@@ -1,7 +1,0 @@
-# This bug exhibits itself when we have a cloud OVB failure in tripleo.
-# Please do not remove this bug without conferring with #tripleo first
-query: >
-  message:"resources.baremetal_server: Went to status ERROR"
-  AND message:"No valid host was found. There are not enough hosts available."
-  AND tags:"console"
-suppress-graph: true

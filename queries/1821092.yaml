@@ -1,3 +1,0 @@
-query: >-
-  message:"conf_fixture=placement_config, db=False) as placement:" AND
-  tags:"console"

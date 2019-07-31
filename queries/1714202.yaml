@@ -1,3 +1,0 @@
-query: >
-  message:"ERROR:dlrn:Received exception Error in build_rpm_wrapper"
-  AND tags:"console"

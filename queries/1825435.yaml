@@ -1,4 +1,0 @@
-query: >-
-  message:"| Fatal Python error: Cannot recover from stack overflow." AND
-  tags:"console" AND
-  project:"openstack/nova"

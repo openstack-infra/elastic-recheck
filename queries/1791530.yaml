@@ -1,3 +1,0 @@
-query: >-
-  message:"Could not find namespace tempest-test-ns" AND
-  tags:"console"

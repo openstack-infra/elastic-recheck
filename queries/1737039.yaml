@@ -1,4 +1,0 @@
-query: >-
-  message:"Kernel panic - not syncing" AND
-  message:"timer doesn't work" AND
-  tags:"console"

@@ -1,4 +1,0 @@
-query: >
-  message:"One or more ports have an IP allocation from this subnet"
-  AND message:" SubnetInUse: Unable to complete operation on subnet"
-  AND filename:"logs/screen-q-svc.txt"

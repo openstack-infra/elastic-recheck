@@ -1,3 +1,0 @@
-query: >-
-  message:"Exception during message handling: OSError: [Errno 5] Input/output error" AND
-  tags:"screen-c-bak.txt"

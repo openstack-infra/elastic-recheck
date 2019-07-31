@@ -1,3 +1,0 @@
-query: >-
-  message:"invoked oom-killer" AND
-  tags:"syslog.txt"

@@ -1,3 +1,0 @@
-query: >-
-  message:"testtools.matchers._impl.MismatchError: ['bfv'] != []" AND
-  tags:"console"

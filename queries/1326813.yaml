@@ -1,3 +1,0 @@
-query: >-
-  message:"distutils.errors.DistutilsError: Could not find suitable distribution" AND
-  tags:console

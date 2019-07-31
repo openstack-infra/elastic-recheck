@@ -1,3 +1,0 @@
-query: >-
-  message:"FAILED | network_sanity_check : Perform ping check." AND
-  tags:"devstack-gate-setup-host.txt"

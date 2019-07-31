@@ -1,3 +1,0 @@
-query: >-
-  message:"error mounting image volumes: unable to find user root: no matching entries in passwd file" AND
-  tags:"console"

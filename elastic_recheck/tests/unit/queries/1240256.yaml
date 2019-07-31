@@ -1,4 +1,0 @@
-query: >
-  message:" 503"
-  AND filename:"logs/syslog.txt"
-  AND syslog_program:"proxy-server"

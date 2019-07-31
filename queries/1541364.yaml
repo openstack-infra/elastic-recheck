@@ -1,3 +1,0 @@
-query: >-
-  message:"Failed to update apt repos, we're dead now" AND
-  tags:"console"

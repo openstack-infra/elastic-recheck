@@ -1,4 +1,0 @@
-query: >-
-  message:"ERROR! 'msg' is not a valid attribute for a Task" AND
-  tags:"console" AND
-  project:"openstack/neutron"

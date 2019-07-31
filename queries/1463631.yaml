@@ -1,2 +1,0 @@
-query: >-
-  message:"[Fail] Couldn't ping server" AND tags:"grenade.sh.txt"

@@ -1,4 +1,0 @@
-query: >-
-  message:"Multiple possible networks found, use a Network ID to be more specific" AND
-  tags:"console" AND
-  build_name:"nova-live-migration"

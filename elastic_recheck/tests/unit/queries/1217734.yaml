@@ -1,3 +1,0 @@
-query: >
-  message:"CalledProcessError: Command ''openssl'' returned
-  non-zero exit status"

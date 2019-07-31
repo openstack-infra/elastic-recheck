@@ -1,4 +1,0 @@
-query: >
-  message:"ConnectionFailed: Connection to neutron
-  failed: Maximum attempts reached"
-  AND filename:"console.html"
